@@ -1,0 +1,70 @@
+month_days=( 31 28 31 30 31 30 31 31 30 31 30 31 )
+#month_days=( 31 29 31 30 31 30 31 31 30 31 30 31 )
+geol=1
+year=1997
+run_dir=/p/scratch/cjibg31/jibg3101/Spinups/validation
+
+month=9
+monn=$(( month+1 ))
+mon=$(printf "%02d" $monn)
+days=${month_days[$month]}
+hours=$(( days*24 ))
+
+python $run_dir/Calculate_Storages.py
+$year
+$monn
+$run_dir/fields_${year}_Geology${geol}
+Static/cordexIHME.out.lm_profile.nc
+Timeseries/cordexIHME.out.saturation_profile_Geology${geol}_month${mon}.nc
+Timeseries/cordexIHME.out.pressure_profile_Geology${geol}_month${mon}.nc
+Static/cordexIHME.out.specific_storage_Geology${geol}.pfb.nc
+$hours
+Static/cordexIHME.out.porosity_profile.nc
+-21.98625
+-26.98625
+0.0275
+3000.0
+3000.0
+[18.0,15.0,10.0,10.0,4.0,1.0,0.7,0.5,0.3,0.2,0.13,0.07,0.05,0.03,0.02]
+1592
+1544
+15
+$run_dir/fields_${year}_Geology${geol}/Timeseries
+
+
+
+
+
+month_days=( 31 28 31 30 31 30 31 31 30 31 30 31 )
+#month_days=( 31 29 31 30 31 30 31 31 30 31 30 31 )
+geol=2
+year=1997
+run_dir=/p/scratch/cjibg31/jibg3101/Spinups/validation
+month=9
+monn=$(( month+1 ))
+mon=$(printf "%02d" $monn)
+days=${month_days[$month]}
+hours=$(( days*24 ))
+
+python $run_dir/Calculate_Storages.py
+$year
+$monn
+$run_dir/fields_${year}_Geology${geol}
+Static/cordexIHME.out.lm_profile.nc
+Timeseries/cordexIHME.out.saturation_profile_Geology${geol}_month${mon}.nc
+Timeseries/cordexIHME.out.pressure_profile_Geology${geol}_month${mon}.nc
+Static/cordexIHME.out.specific_storage_Geology${geol}.pfb.nc
+$hours
+Static/cordexIHME.out.porosity_profile.nc
+-21.98625
+-26.98625
+0.0275
+3000.0
+3000.0
+[18.0,15.0,10.0,10.0,4.0,1.0,0.7,0.5,0.3,0.2,0.13,0.07,0.05,0.03,0.02]
+1592
+1544
+15
+$run_dir/fields_${year}_Geology${geol}/Timeseries
+
+
