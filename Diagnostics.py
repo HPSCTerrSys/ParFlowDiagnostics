@@ -131,7 +131,7 @@ def loadMerge(dict, dir='.', mergeAxis=0, keepDims=True, split=None):
 def writeVarsToNCFile(dict, filename, missval,
                       lati, loni, delta,
                       ntimes, gz, nlats, nlons,  # use shape for this?
-                      tstart=0, tend=None, year=None, month=None):
+                      tstart=0, slices=[slice(None)], year=None, month=None):
     """
     dic : {varName : (unit, dndarray)}
     For 3D-dndarrays, the shape must always be (time, level, lat, lon)
@@ -156,7 +156,7 @@ def writeVarsToNCFile(dict, filename, missval,
         lats_out = lati + delta * ht.arange(nlats, dtype=ht.float32, split=0)
         lons_out = loni + delta * ht.arange(nlons, dtype=ht.float32, split=0)
         lev_out = 1.0 + ht.arange(gz, dtype=ht.float32, split=0)
-        ht.save_netcdf(time_out, filename, 'time', 'w', ['time'])
+        ht.save_netcdf(time_out, filename, 'time', 'w', ['time'], is_unlimited=True)
         ht.save_netcdf(lats_out, filename, 'lat', 'r+', ['lat'])  # Does this override existing variables?
         ht.save_netcdf(lons_out, filename, 'lon', 'r+', ['lon'])  # If so, distinguish between writing and appending
         ht.save_netcdf(lev_out, filename, 'level', 'r+', ['level'])
@@ -169,8 +169,8 @@ def writeVarsToNCFile(dict, filename, missval,
             dim_names = dims3D
         else:
             dim_names = dims2D
-        ht.save_netcdf(data, filename, varName, 'r+', dim_names,
-                       )#fill_value=missval, zlib=False, least_significant_digit=6) #zlib should be True
+        ht.save_netcdf(data, filename, varName, 'r+', dim_names, file_slices=slices,
+                       fill_value=missval, zlib=False, least_significant_digit=6) #zlib should be True
     return
 
 

@@ -369,6 +369,8 @@ else:
         new_slices = []
         if file_slices is None:
             file_slices = [slice(None) for _ in slices]
+        if type(file_slices) is slice:
+            file_slices = [file_slices]
         while len(file_slices) < len(slices):
             file_slices.append(slice(None))
         # attempt to perform parallel I/O if possible
