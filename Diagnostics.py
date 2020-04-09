@@ -556,11 +556,11 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
             self.lmfile: 'LAND_MASK',
             storagesfile: ['SURF_TWS', 'SUB_SURF_TWS'],
         }
-        lm, surf_tws, subsurf_tws = (
-            data
-            for file in load(dic, self.ncDir, self.split).values()
-            for data in file.values()
-        )  # actually this is bad style
+        loaded = load(dic, self.ncDir, self.split)
+        lm = loaded[self.lmfile]['LAND_MASK']
+        surf_tws = loaded[storagesfile]['SURF_TWS']
+        subsurf_tws = loaded[storagesfile]['SUB_SURF_TWS']
+
         lm2D = lm[self.gz - 1, :, :]
         mask = lm < 1
         mask2D = lm2D < 1
@@ -608,11 +608,13 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
             velyfile: 'VEL_Y',
             velzfile: 'VEL_Z',
         }
-        lm, por, arrvelx, time, arrvely, arrvelz = (
-            data
-            for file in load(dic, self.ncDir, self.split).values()
-            for data in file.values()
-        )  # actually this is bad style
+        loaded = load(dic, self.ncDir, self.split)
+        lm = loaded[self.lmfile]['LAND_MASK']
+        por = loaded[self.porfile]['PORO']
+        time = loaded[velxfile]['time']
+        arrvelx = loaded[velxfile]['VEL_X']
+        arrvely = loaded[velyfile]['VEL_Y']
+        arrvelz = loaded[velzfile]['VEL_Z']
 
         # We are calculating overland flow at EACH grid cell on the surface
         lm2D = lm[self.gz - 1, :, :]
@@ -692,4 +694,4 @@ if __name__ == '__main__':
     for timestep in data.storage():
         data.writeToNC(timestep, 'storages.nc')
         printroot('writing finished')
-        raise SystemExit()
+        #raise SystemExit()
