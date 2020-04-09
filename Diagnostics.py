@@ -267,10 +267,11 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         self.gy = int(gy)
         self.gz = int(gz)
 
-    def writeToNC(self, dict, filename):
+    def writeToNC(self, dict, filename, tstart=0, slices=[slice(None)]):
         writeVarsToNCFile(dict, filename, self.missval,
                           self.lati, self.loni, self.delta,
-                          self.timesteps, self.gz, self.gx, self.gy)
+                          self.timesteps, self.gz, self.gx, self.gy,
+                          tstart, slices)
 
     def aggregate(self, func, axis=None, time_resolution=None):
         """ NOT USABLE AT THIS POINT
