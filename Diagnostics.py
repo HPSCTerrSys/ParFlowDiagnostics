@@ -344,8 +344,8 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         tend[:-1] = tstart[1:]
         tend[-1] = self.timesteps
 
-        printroot(tstart)
-        printroot(tend)
+        #printroot(tstart)
+        #printroot(tend)
         for i in range(len(tstart)):
             timesteps = (tend[i] - tstart[i]).item()
             printroot("timesteps %d" % timesteps, flush=True)
@@ -377,6 +377,8 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
                 shape2D_notime, split=self.split)
             surf_stor_2D_array = ht.zeros(shape2D_notime, split=self.split)
             tws_2D_array = ht.zeros(shape2D_notime, split=self.split)
+
+            printroot('memory allocated', flush=True)
             # surf_ss = np.reshape(specsto[gz - 1, :, :], shape2D_notime)
             surf_ss = specsto[self.gz - 1, :, :]
             # surf_poro = np.reshape(por[gz - 1, :, :], shape2D_notime)
@@ -421,6 +423,7 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
 
                 # sub surface
                 for k in range(self.gz):
+                    printroot('subsurface storage level:', k, flush=True)
                     sat_levk = sat[k, :, :]
                     press_levk = press[k, :, :]
                     por_levk = por[k, :, :]
@@ -463,6 +466,7 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
                 # mask array here
                 # sat = None
                 # press = None
+                printroot('masking timestep:', j, flush=True)
                 mask_ind = ht.nonzero(mask)
                 mask_ind_2D = ht.nonzero(mask2D)
                 sat_stor_3D_array[mask_ind] = ht.nan
@@ -692,7 +696,10 @@ if __name__ == '__main__':
                        timeAxis=0, split=-1)
 
     # calc soil moisture at a grid cell/point
+    time = 0
     for timestep in data.storage():
-        data.writeToNC(timestep, 'storages.nc')
-        printroot('writing finished')
+        printroot('timestep calculation finished', flush=True)
+        data.writeToNC(timestep, 'storages.nc', tstart=time)
+        time += 96
+        printroot('writing finished', flush=True)
         #raise SystemExit()
