@@ -338,10 +338,10 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
             else:
                 tend.append(tottimesteps)
         """
-        tstart = ht.arange(0, self.tottimesteps - 1, 96)
+        tstart = ht.arange(0, self.timesteps - 1, 96)
         tend = ht.empty_like(tstart)
         tend[:-1] = tstart[1:]
-        tend[-1] = self.tottimesteps
+        tend[-1] = self.timesteps
 
         printroot(tstart)
         printroot(tend)
