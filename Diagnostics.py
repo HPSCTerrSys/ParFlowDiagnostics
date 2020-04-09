@@ -62,7 +62,8 @@ def load(dict, dir='.', split=None):
             if not file.startswith('/') or dir != '.':
                 path = dir + '/' + file
             try:
-                data[file][var] = ht.load_netcdf(path, split=split, variable=var)
+                data[file][var] = ht.load_netcdf(
+                    path, split=split, variable=var)
             except ValueError:
                 data[file][var] = ht.load_netcdf(path, split=0, variable=var)
     return data
@@ -151,26 +152,32 @@ def writeVarsToNCFile(dict, filename, missval,
     """
     dims3D = ('time', 'level', 'lon', 'lat')
     dims2D = ('time', 'lon', 'lat')
-    if not os.path.isfile(filename): # generate construct of file
-        time_out = tstart + ht.arange(ntimes, dtype=ht.float32, split=0)  # does this append?
+    if not os.path.isfile(filename):  # generate construct of file
+        # does this append?
+        time_out = tstart + ht.arange(ntimes, dtype=ht.float32, split=0)
         lats_out = lati + delta * ht.arange(nlats, dtype=ht.float32, split=0)
         lons_out = loni + delta * ht.arange(nlons, dtype=ht.float32, split=0)
         lev_out = 1.0 + ht.arange(gz, dtype=ht.float32, split=0)
-        ht.save_netcdf(time_out, filename, 'time', 'w', ['time'], is_unlimited=True)
-        ht.save_netcdf(lats_out, filename, 'lat', 'r+', ['lat'])  # Does this override existing variables?
-        ht.save_netcdf(lons_out, filename, 'lon', 'r+', ['lon'])  # If so, distinguish between writing and appending
+        ht.save_netcdf(time_out, filename, 'time', 'w',
+                       ['time'], is_unlimited=True)
+        # Does this override existing variables?
+        ht.save_netcdf(lats_out, filename, 'lat', 'r+', ['lat'])
+        # If so, distinguish between writing and appending
+        ht.save_netcdf(lons_out, filename, 'lon', 'r+', ['lon'])
         ht.save_netcdf(lev_out, filename, 'level', 'r+', ['level'])
 
     for varName, [unit, data] in dict.items():
-        printroot('writing', varName, 'is balanced:', data.is_balanced(), flush=True)
+        printroot('writing', varName, 'is balanced:',
+                  data.is_balanced(), flush=True)
         data.balance_()
         if len(data.shape) == 4:  # 4 because time is included
-            printroot('check shapes:', data.shape, (ntimes, gz, nlons, nlats), flush=True)
+            printroot('check shapes:', data.shape,
+                      (ntimes, gz, nlons, nlats), flush=True)
             dim_names = dims3D
         else:
             dim_names = dims2D
         ht.save_netcdf(data, filename, varName, 'r+', dim_names, file_slices=slices,
-                       fill_value=missval, zlib=False, least_significant_digit=6) #zlib should be True
+                       fill_value=missval, zlib=False, least_significant_digit=6)  # zlib should be True
     return
 
 
@@ -262,8 +269,8 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
 
     def writeToNC(self, dict, filename):
         writeVarsToNCFile(dict, filename, self.missval,
-                              self.lati, self.loni, self.delta,
-                              96, self.gz, self.gx, self.gy)
+                          self.lati, self.loni, self.delta,
+                          self.timesteps, self.gz, self.gx, self.gy)
 
     def aggregate(self, func, axis=None, time_resolution=None):
         """ NOT USABLE AT THIS POINT
@@ -287,46 +294,38 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         ignore g-coordinates for now as heat does not support reshape and they
         should equal the dndarrays shape.
         """
-        # quick fix for convienience: use attributes instead of parameters
-        (year, month, ncDir, lmfile, satfile, pressfile,
-         specstorfile, tottimesteps, porfile, lati, loni, delta, dx, dy,
-         dz, gx, gy, gz, outDir) = (self.year, self.month, self.ncDir, self.lmfile, self.satfile, self.pressfile,
-                                         self.specstorfile, self.timesteps, self.porfile, self.lati, self.loni, self.delta, self.dx, self.dy,
-                                         self.dz, self.gx, self.gy, self.gz, self.outDir)
 
-        #dz_list = dz_list.strip('[]')
-        #dz = [float(c) for c in dz_list.split(',')]
         # We are assuming monthly time scales (monmean)
         # TODO enforce monthly means by using aggregate
         # load vars
         dic = {
-            satfile: ['SATUR', 'time'],
-            pressfile: ['PSI'],# 'time', 'PSI'],
-            specstorfile: 'SPEC_STO_GEOL1',#'SPEC_STO',
-            lmfile: 'LAND_MASK',
-            porfile: 'PORO'
+            self.satfile: ['SATUR', 'time'],
+            self.pressfile: ['PSI'],  # 'time', 'PSI'],
+            self.specstorfile: 'SPEC_STO_GEOL1',  # 'SPEC_STO',
+            self.lmfile: 'LAND_MASK',
+            self.porfile: 'PORO'
         }
-        loaded = load(dic, ncDir, self.split)
-        sat_all, times, press_all, specsto, lm, por = (
-                loaded[satfile]['SATUR'],
-                loaded[satfile]['time'],
-                loaded[pressfile]['PSI'],
-                loaded[specstorfile]['SPEC_STO_GEOL1'],
-                loaded[lmfile]['LAND_MASK'][0], # somehow, squeeze gives an mpiError
-                loaded[porfile]['PORO'][0],
-            )
+        loaded = load(dic, self.ncDir, self.split)
+        sat_all = loaded[self.satfile]['SATUR']
+        times = loaded[self.satfile]['time']
+        press_all = loaded[self.pressfile]['PSI']
+        specsto = loaded[self.specstorfile]['SPEC_STO_GEOL1']
+        # somehow, squeeze gives an mpiError
+        lm = loaded[self.lmfile]['LAND_MASK'][0]
+        por = loaded[self.porfile]['PORO'][0]
+
         printroot('loading finished', flush=True)
         times = ht.arange(len(times), dtype=ht.float32,
                           split=None)  # self.split)
-        # lm = np.reshape(lm, (gz, gy, gx))
-        printroot("compare shapes:", lm.shape, (gz, gy, gx))
-        lm2D = lm[gz - 1]
+        # lm = np.reshape(lm, shape3D_notime)
+        printroot("compare shapes:", lm.shape, (self.gz, self.gy, self.gx))
+        lm2D = lm[self.gz - 1]
         mask = lm < 1
         mask2D = lm2D < 1
 
         del(lm, lm2D)
 
-        # por = np.reshape(por, (gz, gy, gx))
+        # por = np.reshape(por, shape3D_notime)
         # specsto = np.reshape(specsto, (gz, gy, gx))
         """
         tstart = []
@@ -339,52 +338,58 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
             else:
                 tend.append(tottimesteps)
         """
-        tstart = ht.arange(0, tottimesteps - 1, 96)
+        tstart = ht.arange(0, self.tottimesteps - 1, 96)
         tend = ht.empty_like(tstart)
         tend[:-1] = tstart[1:]
-        tend[-1] = tottimesteps
+        tend[-1] = self.tottimesteps
 
         printroot(tstart)
         printroot(tend)
         for i in range(len(tstart)):
             timesteps = (tend[i] - tstart[i]).item()
             printroot("timesteps %d" % timesteps, flush=True)
+            shape2D = (timesteps, self.gy, self.gx)
+            shape2D_notime = (self.gy, self.gx)
+            shape3D = (timesteps, self.gz, self.gy, self.gx)
+            shape3D_notime = (self.gz, self.gy, self.gx)
+
             # Some kind of factory for generating these?? No?
-            sat_stor_3D = ht.zeros((timesteps, gz, gy, gx), split=self.split)
-            unsat_stor_3D = ht.zeros((timesteps, gz, gy, gx), split=self.split)
-            tot_stor_3D = ht.zeros((timesteps, gz, gy, gx), split=self.split)
-            capi_stor_3D = ht.zeros((timesteps, gz, gy, gx), split=self.split)
-            tws_3D = ht.zeros((timesteps, gz, gy, gx), split=self.split)
-            pond_stor_2D = ht.zeros((timesteps, gy, gx), split=self.split)
-            surf_stor_sat_2D = ht.zeros((timesteps, gy, gx), split=self.split)
+            sat_stor_3D = ht.zeros(shape3D, split=self.split)
+            unsat_stor_3D = ht.zeros(shape3D, split=self.split)
+            tot_stor_3D = ht.zeros(shape3D, split=self.split)
+            capi_stor_3D = ht.zeros(shape3D, split=self.split)
+            tws_3D = ht.zeros(shape3D, split=self.split)
+            pond_stor_2D = ht.zeros(shape2D, split=self.split)
+            surf_stor_sat_2D = ht.zeros(shape2D, split=self.split)
             surf_stor_unsat_2D = ht.zeros(
-                (timesteps, gy, gx), split=self.split)
-            surf_stor_2D = ht.zeros((timesteps, gy, gx), split=self.split)
-            tws_2D = ht.zeros((timesteps, gy, gx), split=self.split)
-            sat_stor_3D_array = ht.zeros((gz, gy, gx), split=self.split)
-            unsat_stor_3D_array = ht.zeros((gz, gy, gx), split=self.split)
-            tot_stor_3D_array = ht.zeros((gz, gy, gx), split=self.split)
-            capi_stor_3D_array = ht.zeros((gz, gy, gx), split=self.split)
-            tws_3D_array = ht.zeros((gz, gy, gx), split=self.split)
-            pond_stor_2D_array = ht.zeros((gy, gx), split=self.split)
-            surf_stor_sat_2D_array = ht.zeros((gy, gx), split=self.split)
-            surf_stor_unsat_2D_array = ht.zeros((gy, gx), split=self.split)
-            surf_stor_2D_array = ht.zeros((gy, gx), split=self.split)
-            tws_2D_array = ht.zeros((gy, gx), split=self.split)
-            # surf_ss = np.reshape(specsto[gz - 1, :, :], (gy, gx))
-            surf_ss = specsto[gz - 1, :, :]
-            # surf_poro = np.reshape(por[gz - 1, :, :], (gy, gx))
-            surf_poro = por[gz - 1, :, :]
+                shape2D, split=self.split)
+            surf_stor_2D = ht.zeros(shape2D, split=self.split)
+            tws_2D = ht.zeros(shape2D, split=self.split)
+            sat_stor_3D_array = ht.zeros(shape3D_notime, split=self.split)
+            unsat_stor_3D_array = ht.zeros(shape3D_notime, split=self.split)
+            tot_stor_3D_array = ht.zeros(shape3D_notime, split=self.split)
+            capi_stor_3D_array = ht.zeros(shape3D_notime, split=self.split)
+            tws_3D_array = ht.zeros(shape3D_notime, split=self.split)
+            pond_stor_2D_array = ht.zeros(shape2D_notime, split=self.split)
+            surf_stor_sat_2D_array = ht.zeros(shape2D_notime, split=self.split)
+            surf_stor_unsat_2D_array = ht.zeros(
+                shape2D_notime, split=self.split)
+            surf_stor_2D_array = ht.zeros(shape2D_notime, split=self.split)
+            tws_2D_array = ht.zeros(shape2D_notime, split=self.split)
+            # surf_ss = np.reshape(specsto[gz - 1, :, :], shape2D_notime)
+            surf_ss = specsto[self.gz - 1, :, :]
+            # surf_poro = np.reshape(por[gz - 1, :, :], shape2D_notime)
+            surf_poro = por[self.gz - 1, :, :]
             for j in range(timesteps):  # idx = j
                 press = press_all[j, :, :, :]
-                # press = np.reshape(press, (gz, gy, gx))
+                # press = np.reshape(press, shape3D_notime)
                 sat = sat_all[j, :, :, :]
-                # sat = np.reshape(sat, (gz, gy, gx))
+                # sat = np.reshape(sat, shape3D_notime)
                 # surface where gz=15 is the surface
-                # surf_sat = np.reshape(sat[gz - 1, :, :], (gy, gx))
-                surf_sat = sat[gz - 1, :, :]
-                # surf_press = np.reshape(press[gz - 1, :, :], (gy, gx))
-                surf_press = press[gz - 1, :, :]
+                # surf_sat = np.reshape(sat[gz - 1, :, :], shape2D_notime)
+                surf_sat = sat[self.gz - 1, :, :]
+                # surf_press = np.reshape(press[gz - 1, :, :], shape2D_notime)
+                surf_press = press[self.gz - 1, :, :]
                 # get surface indicies where press>=0:
                 # ind_array = np.ma.masked_where(surf_press>=0,surf_press)
                 mask_array = surf_press >= 0.0
@@ -399,22 +404,22 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
                 surf_sat_unsat = surf_sat * inverse
                 surf_press_unsat = surf_press * inverse
                 # print np.shape(surf_sat_sat)
-                pond_stor_2D_array = surf_press_sat * dx * dy
-                surf_stor_sat_2D_array = surf_sat_sat * surf_poro * dx * dy + \
-                    surf_ss * surf_poro * surf_press_sat * surf_sat_sat * dx * dy
-                surf_stor_unsat_2D_array = surf_sat_unsat * surf_poro * dx * dy + \
-                    surf_ss * surf_poro * surf_press_unsat * surf_sat_unsat * dx * dy
+                pond_stor_2D_array = surf_press_sat * self.dx * self.dy
+                surf_stor_sat_2D_array = surf_sat_sat * surf_poro * self.dx * self.dy + \
+                    surf_ss * surf_poro * surf_press_sat * surf_sat_sat * self.dx * self.dy
+                surf_stor_unsat_2D_array = surf_sat_unsat * surf_poro * self.dx * self.dy + \
+                    surf_ss * surf_poro * surf_press_unsat * surf_sat_unsat * self.dx * self.dy
                 # take the whole field no masks
-                surf_stor_2D_array = surf_sat * surf_poro * dx * dy + \
-                    surf_ss * surf_poro * surf_press * surf_sat * dx * dy
+                surf_stor_2D_array = surf_sat * surf_poro * self.dx * self.dy + \
+                    surf_ss * surf_poro * surf_press * surf_sat * self.dx * self.dy
                 tws_2D_array = 1000.0 * \
-                    (surf_stor_2D_array + pond_stor_2D_array) / (dx * dy)
+                    (surf_stor_2D_array + pond_stor_2D_array) / (self.dx * self.dy)
 
                 del(surf_sat_sat, surf_press_sat, surf_sat_unsat, surf_press_unsat,
                     surf_sat, surf_press, mask_array)
 
                 # sub surface
-                for k in range(gz):
+                for k in range(self.gz):
                     sat_levk = sat[k, :, :]
                     press_levk = press[k, :, :]
                     por_levk = por[k, :, :]
@@ -432,23 +437,23 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
                     press_levk_m2 = press_levk * mask_array_2b
                     # NOTE: Does this indexing require the 3D variables to have
                     # a different split-Axis?
-                    if(k != (gz - 1)):
-                        sat_stor_3D_array[k, :, :] = sat_levk_m1 * por_levk * dx * dy * dz[k] + \
+                    if(k != (self.gz - 1)):
+                        sat_stor_3D_array[k, :, :] = sat_levk_m1 * por_levk * self.dx * self.dy * self.dz[k] + \
                             por_levk * press_levk_m1 * ss_levk * \
-                            sat_levk_m1 * dx * dy * dz[k]
+                            sat_levk_m1 * self.dx * self.dy * self.dz[k]
                     else:
-                        unsat_stor_3D_array[k, :, :] = sat_levk_invm1 * por_levk * dx * dy * dz[k] + \
+                        unsat_stor_3D_array[k, :, :] = sat_levk_invm1 * por_levk * self.dx * self.dy * self.dz[k] + \
                             por_levk * press_levk_invm1 * ss_levk * \
-                            sat_levk_invm1 * dx * dy * dz[k]
+                            sat_levk_invm1 * self.dx * self.dy * self.dz[k]
                     # take the whole field no masks
-                    tot_stor_3D_array[k, :, :] = sat_levk * por_levk * dx * dy * \
-                        dz[k] + por_levk * press_levk * \
-                        ss_levk * sat_levk * dx * dy * dz[k]
+                    tot_stor_3D_array[k, :, :] = sat_levk * por_levk * self.dx * self.dy * \
+                        self.dz[k] + por_levk * press_levk * \
+                        ss_levk * sat_levk * self.dx * self.dy * self.dz[k]
                     tws_3D_array[k, :, :] = 1000.0 * \
-                        tot_stor_3D_array[k, :, :] / (dx * dy)
-                    capi_stor_3D_array[k, :, :] = sat_levk_m2 * por_levk * dx * dy * dz[k] + \
+                        tot_stor_3D_array[k, :, :] / (self.dx * self.dy)
+                    capi_stor_3D_array[k, :, :] = sat_levk_m2 * por_levk * self.dx * self.dy * self.dz[k] + \
                         por_levk * press_levk_m2 * ss_levk * \
-                        sat_levk_m2 * dx * dy * dz[k]
+                        sat_levk_m2 * self.dx * self.dy * self.dz[k]
 
                     del(sat_levk, press_levk, por_levk, ss_levk, sat_levk_m1,
                         press_levk_m1, sat_levk_m2, press_levk_m2, sat_levk_invm1,
@@ -480,19 +485,6 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
                 tws_2D_array[mask_ind_2D] = ht.nan
                 tws_2D[j, :, :] = tws_2D_array
 
-            """
-            createdFile = False
-            ncfilename = outDir + '/storage_' + str(year) + '.nc'
-            if (createdFile == False):
-                writeVarOutToNCFile(ncfilename, year, month, 'SUB_SURF_SAT_STO', 'SUB_SURF_UNSAT_STO', 'SUB_SURF_CAPI_STO', 'SUB_SURF_TOT_STO', 'SUB_SURF_TWS', 'SURF_SAT_STO', 'SURF_TOT_STO', 'POND_STO', 'SURF_UNSAT_STO', 'SURF_TWS', 'm3', 'm3', 'm3', 'm3', 'mm', 'm3',
-                                    'm3', 'm3', 'm3', 'mm', lati, loni, times, delta, sat_stor_3D, unsat_stor_3D, capi_stor_3D, tot_stor_3D, tws_3D, surf_stor_sat_2D, surf_stor_2D, pond_stor_2D, surf_stor_unsat_2D, tws_2D, timesteps, tstart[i], tend[i], gy, gx, gz, self.missval, tottimesteps)
-                createdFile = True
-            else:
-                appendVarOutToNCFile(ncfilename, year, month, 'SUB_SURF_SAT_STO', 'SUB_SURF_UNSAT_STO',
-                 'SUB_SURF_CAPI_STO', 'SUB_SURF_TOT_STO', 'SUB_SURF_TWS', 'SURF_SAT_STO', 'SURF_TOT_STO',
-                  'POND_STO', 'SURF_UNSAT_STO', 'SURF_TWS', 'm3', 'm3', 'm3', 'm3', 'mm',
-                                     'm3', 'm3', 'm3', 'm3', 'mm', lati, loni, times, delta, sat_stor_3D, unsat_stor_3D, capi_stor_3D, tot_stor_3D, tws_3D, surf_stor_sat_2D, surf_stor_2D, pond_stor_2D, surf_stor_unsat_2D, tws_2D, timesteps, tstart[i], tend[i], gy, gx, gz, self.missval)
-            """
             yield {
                 'SUB_SURF_SAT_STO': ('m3', sat_stor_3D),
                 'SUB_SURF_UNSAT_STO': ('m3', unsat_stor_3D),
@@ -504,35 +496,30 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
                 'POND_STO': ('m3', pond_stor_2D),
                 'SURF_UNSAT_STO': ('m3', surf_stor_unsat_2D),
                 'SURF_TWS': ('mm', tws_2D)
-                   }
+            }
 
     def soilMoisture(self):
         #debug = 'wplotpor'
-        # bad style for convienience
-        (year, ncDir, lmfile, satfile, timesteps, porfile, lati, loni, delta, dx, dy, dz, gx, gy, gz, outDir) = (
-            self.year, self.ncDir, self.lmfile, self.satfile, self.timesteps, self.porfile, self.lati, self.loni, self.delta, self.dx, self.dy, self.dz, self.gx, self.gy, self.gz, self.outDir
-        )
-        #TODO: loading
         dic = {
             # satfile: 'time',
-            lmfile: 'LAND_MASK',
-            porfile: 'PORO'
+            self.lmfile: 'LAND_MASK',
+            self.porfile: 'PORO'
         }
-        loaded = load(dic, ncDir, self.split)
-        lm, por = loaded[lmfile]['LAND_MASK'], loaded[porfile]['PORO']
+        loaded = load(dic, self.ncDir, self.split)
+        lm, por = loaded[self.lmfile]['LAND_MASK'], loaded[self.porfile]['PORO']
         # load saturation at all timesteps
         dic = {
-            satfile + str(i + 1).zfill(2) + '.nc': 'SATUR' for i in range(timesteps)
+            self.satfile + str(i + 1).zfill(2) + '.nc': 'SATUR' for i in range(self.timesteps)
         }
         sat_all_times = loadMerge(
-            dic, ncDir, mergeAxis=0, keepDims=False, split=self.split)
+            dic, self.ncDir, mergeAxis=0, keepDims=False, split=self.split)
         # this broadcast should work if mergeAxis==0
         array = ht.multiply(sat_all_times, por)
         # sum up times from all timesteps, is this correct?
         dic = {
-            satfile + str(i + 1).zfill(2) + '.nc': 'time' for i in range(timesteps)
+            self.satfile + str(i + 1).zfill(2) + '.nc': 'time' for i in range(self.timesteps)
         }
-        times = loadMerge(dic, ncDir, mergeAxis=0,
+        times = loadMerge(dic, self.ncDir, mergeAxis=0,
                           keepDims=False, split=self.split).sum(0)
 
         arraysurf = array[:, 13:15, :, :]
@@ -545,7 +532,7 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         """#  where does por_nan come from??
         if (debug == 'plotpor') and ht.MPI_WORLD.rank == 0:
             por_nan2d = por_nan[(gz - 1), :, :]
-            por_nan2d = np.reshape(por_nan2d, (gy, gx))
+            por_nan2d = np.reshape(por_nan2d, shape2D_notime)
             ax.scatter(x2d[skip2d], y2d[skip2d],
                        por_nan2d[skip2d], color='y', s=0.5)
             ax.set_xlabel('X Axis')
@@ -558,7 +545,7 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         return {
             'SM_Surf': ('m3/m3', arraysurf),
             'SM_Root': ('m3/m3', arrayroot)
-            }
+        }
 
     def deltaTWS(self, storagesfile):
         """
@@ -675,7 +662,7 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
                 'VEL_X': ('m/hour', vel_x),
                 'VEL_Y': ('m/hour', vel_y),
                 'VEL_Z': ('m/hour', vel_z)
-                }
+            }
 
 
 if __name__ == '__main__':
