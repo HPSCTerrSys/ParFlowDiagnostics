@@ -295,7 +295,12 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         ignore g-coordinates for now as heat does not support reshape and they
         should equal the dndarrays shape.
         """
-        #SK: This function calculates different storages
+        #This function calculates different storages that are
+        # - ponded surface storage
+        # - unsaturated storage
+        # - capillary storage
+        # - saturated storage
+        # - total storage
 
         # We are assuming monthly time scales (monmean)
         # TODO enforce monthly means by using aggregate
@@ -324,6 +329,7 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         lm2D = lm[self.gz - 1]
         mask = lm < 1
         mask2D = lm2D < 1
+        #SK: We need the true parflow mask from the parflow output here; let's discuss why
 
         del(lm, lm2D)
 
@@ -381,9 +387,14 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
 
             printroot('memory allocated', flush=True)
             # surf_ss = np.reshape(specsto[gz - 1, :, :], shape2D_notime)
+            #Specific storage of the surface layer
             surf_ss = specsto[self.gz - 1, :, :]
+            #SK: All this (gz-1) is not generic; let's discuss why.
+          
+            #Porosity of the surface layer
             # surf_poro = np.reshape(por[gz - 1, :, :], shape2D_notime)
             surf_poro = por[self.gz - 1, :, :]
+          
             for j in range(timesteps):  # idx = j
                 press = press_all[j, :, :, :]
                 # press = np.reshape(press, shape3D_notime)
@@ -396,66 +407,114 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
                 surf_press = press[self.gz - 1, :, :]
                 # get surface indicies where press>=0:
                 # ind_array = np.ma.masked_where(surf_press>=0,surf_press)
+          
+                #Mask all cells at the surface where pressure >=0
+                #that is where water is ponded
                 mask_array = surf_press >= 0.0
                 mask_array.astype(ht.int, False)
                 # print mask_array
                 # make an index array of 1s and 0s /p/project/cjibg31/jibg3101/SharedData/all_scripts/analysis_pfl_clm_va
                 # mask_array = np.zeros((gy,gz))
                 # mask_array[ind_array.mask] = 1
+                
+                #Get the saturation at ponded grid cells
                 surf_sat_sat = surf_sat * mask_array
+                
+                #Get the pressure head at ponded grid cells
                 surf_press_sat = surf_press * mask_array
+                
                 inverse = 1 - mask_array
+                #Get the saturation at the surface grid cells without ponding
                 surf_sat_unsat = surf_sat * inverse
+                
+                #Get the pressure at the surface grid cells without ponding
                 surf_press_unsat = surf_press * inverse
+                
                 # print np.shape(surf_sat_sat)
+                #Calc ponded storage, L^3, for each grid cell at the surface
                 pond_stor_2D_array = surf_press_sat * self.dx * self.dy
+                
+                #Calc saturated storage, L^3, for each grid cell of surface layer
                 surf_stor_sat_2D_array = surf_sat_sat * surf_poro * self.dx * self.dy + \
                     surf_ss * surf_poro * surf_press_sat * surf_sat_sat * self.dx * self.dy
+                
+                #Calc unsaturated storage, L^3, for each grid cell of surface layer
                 surf_stor_unsat_2D_array = surf_sat_unsat * surf_poro * self.dx * self.dy + \
                     surf_ss * surf_poro * surf_press_unsat * surf_sat_unsat * self.dx * self.dy
+                
                 # take the whole field no masks
+                #Calc storage, L^3, of each grid cell (unsat, sat) of surface layer
                 surf_stor_2D_array = surf_sat * surf_poro * self.dx * self.dy + \
                     surf_ss * surf_poro * surf_press * surf_sat * self.dx * self.dy
+                
+                #Calc total storage per unit area in mm (assuming that L is meter)
+                #of surface layer + ponded water for each grid cell
                 tws_2D_array = 1000.0 * \
                     (surf_stor_2D_array + pond_stor_2D_array) / (self.dx * self.dy)
 
                 del(surf_sat_sat, surf_press_sat, surf_sat_unsat, surf_press_unsat,
                     surf_sat, surf_press, mask_array)
 
-                # sub surface
+                #Calculate storages of subsurface (including surface layer)
+                #SK: Shouldn't you loop from k=0 to (gz-1) instead of gz?
                 for k in range(self.gz):
                     printroot('subsurface storage level:', k, flush=True)
+                    
+                    #SK: Not sure why values are extracted for individual layers?
                     sat_levk = sat[k, :, :]
                     press_levk = press[k, :, :]
                     por_levk = por[k, :, :]
                     ss_levk = specsto[k, :, :]
+                    
+                    #Obtain mask for layer k, where cells are
+                    #fully saturated i.e. press>=0
                     mask_array_2a = press_levk >= 0
                     mask_array_2a.astype(ht.int, False)
                     # print mask_array_2a
+                    
+                    #Obtain mask for layer k, where cells are 
+                    #are under tension saturation (capillary fringe)
                     mask_array_2b = (press_levk < 0) & (sat_levk > 0.99)
                     mask_array_2b.astype(ht.int, False)
+                    
+                    #Extract saturations of saturated cells
                     sat_levk_m1 = sat_levk * mask_array_2a
+                    #Extract saturations of variably saturated cells
                     sat_levk_invm1 = sat_levk * (1 - mask_array_2a)
+                    #Extract saturations of capillary fringe cells
                     sat_levk_m2 = sat_levk * mask_array_2b
+                    
+                    #Extract pressures of saturated cells
                     press_levk_m1 = press_levk * mask_array_2a
+                    #Extract pressures of variably saturated cells
                     press_levk_invm1 = press_levk * (1 - mask_array_2a)
                     press_levk_m2 = press_levk * mask_array_2b
+                    
                     # NOTE: Does this indexing require the 3D variables to have
                     # a different split-Axis?
+                    #SK: See comment at the beginning gz vs. gz-1!!!
                     if(k != (self.gz - 1)):
+                        #Calc saturated storage, L^3, for each grid cell of layer k
                         sat_stor_3D_array[k, :, :] = sat_levk_m1 * por_levk * self.dx * self.dy * self.dz[k] + \
                             por_levk * press_levk_m1 * ss_levk * \
                             sat_levk_m1 * self.dx * self.dy * self.dz[k]
                     else:
+                        #Calc unsaturated storage, L^3, for each grid cell of laywer k
                         unsat_stor_3D_array[k, :, :] = sat_levk_invm1 * por_levk * self.dx * self.dy * self.dz[k] + \
                             por_levk * press_levk_invm1 * ss_levk * \
                             sat_levk_invm1 * self.dx * self.dy * self.dz[k]
+                    
                     # take the whole field no masks
+                    #Calc total storage (unsat+sat), L^3,for each grid cell of layer k
                     tot_stor_3D_array[k, :, :] = sat_levk * por_levk * self.dx * self.dy * \
                         self.dz[k] + por_levk * press_levk * \
                         ss_levk * sat_levk * self.dx * self.dy * self.dz[k]
+                    
+                    #Calc total storage in mm (assuming L is meters) per unit area for each grid cell of layer k
                     tws_3D_array[k, :, :] = 1000.0 * \
                         tot_stor_3D_array[k, :, :] / (self.dx * self.dy)
+                        
+                    #Calc capillary storage, L^3, for each grid cell of layer k
                     capi_stor_3D_array[k, :, :] = sat_levk_m2 * por_levk * self.dx * self.dy * self.dz[k] + \
                         por_levk * press_levk_m2 * ss_levk * \
                         sat_levk_m2 * self.dx * self.dy * self.dz[k]
@@ -491,6 +550,7 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
                 tws_2D_array[mask_ind_2D] = ht.nan
                 tws_2D[j, :, :] = tws_2D_array
 
+            #SK: Note, units in parflow are not always in meter; need to discuss
             yield {
                 'SUB_SURF_SAT_STO': ('m3', sat_stor_3D),
                 'SUB_SURF_UNSAT_STO': ('m3', unsat_stor_3D),
