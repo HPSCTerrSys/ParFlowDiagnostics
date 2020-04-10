@@ -295,6 +295,7 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         ignore g-coordinates for now as heat does not support reshape and they
         should equal the dndarrays shape.
         """
+        #SK: This function calculates different storages
 
         # We are assuming monthly time scales (monmean)
         # TODO enforce monthly means by using aggregate
