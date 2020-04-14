@@ -388,26 +388,19 @@ else:
                         tstop = file_slice.stop
                         tstep = 1 if file_slice.step is None else file_slice.step
                         dimlen = dim.size
-                        if tstep > 0:
-                            if tstop is not None:
-                                dimlen = max(tstop, dimlen)
-                            elif tstart is not None:
-                                if tstart < 0:
-                                    tstart = start
-                                    file_slice = slice(tstart, tstop, tstep)
-                                dimlen = max(tstart + tstep * elements, dimlen)
-                            else:
-                                dimlen = max(tstep * elements, dimlen)
+                        if tstep < 0:
+                            tstart, tstop = tstop, tstart
+                            tstep = abs(tstep)
+
+                        if tstop is not None:
+                            dimlen = max(tstop, dimlen)
+                        elif tstart is not None:
+                            if tstart < 0:
+                                tstart = start
+                                file_slice = slice(tstart, tstop, tstep)
+                            dimlen = max(tstart + tstep * elements, dimlen)
                         else:
-                            if tstart is not None:
-                                dimlen = max(tstart, dimlen)
-                            elif tstop is not None:
-                                if tstop < 0:
-                                    tstop = stop
-                                    file_slice = slice(tstart, tstop, tstep)
-                                dimlen = max(tstop + tstep * elements, dimlen)
-                            else:
-                                dimlen = max(tstep * elements, dimlen)
+                            dimlen = max(tstep * elements, dimlen)
 
                         start, stop, step = file_slice.indices(dimlen)
                         range_from_slice = range(start, stop, step)
@@ -420,6 +413,7 @@ else:
                 else:
                     var = handle.createVariable(variable, data.dtype.char(), dimension_names, **kwargs)
                 var.set_collective(True)
+                print('compare shapes:', var[tuple(new_slices)].shape, data.lshape, flush=True)
                 var[tuple(new_slices)] = (
                     data._DNDarray__array.cpu() if is_split else data._DNDarray__array[slices].cpu()
                 )
