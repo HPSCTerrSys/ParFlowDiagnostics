@@ -401,14 +401,14 @@ else:
                                 dimlen = max(tstep * elements, dimlen)
                         else:
                             if tstart is not None:
-                                dimlen = max(1 + tstart, dimlen)
+                                dimlen = max(tstart, dimlen)
                             elif tstop is not None:
                                 if tstop < 0:
                                     tstop = stop
                                     file_slice = slice(tstart, tstop, tstep)
-                                dimlen = max(1 + tstop + tstep * elements, dimlen)
+                                dimlen = max(tstop - tstep * elements, dimlen)
                             else:
-                                dimlen = max(1 + tstep * elements, dimlen)#"""
+                                dimlen = max(- tstep * elements, dimlen)
 
                         start, stop, step = file_slice.indices(dimlen)
                         range_from_slice = range(start, stop, step)
