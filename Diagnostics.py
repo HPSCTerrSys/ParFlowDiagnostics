@@ -216,6 +216,7 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
                  timeAxis=None, split=None,
                  missval=-340282346638528859811704183484516925440):
         """
+        data needs to be None, a Dictionary, or
         Is it adequate to use missval instead of nan, because heat lacks support
         of nan-safe methods? (are nan-safe methods needed?)
         Does specifying outDir make sense here?
@@ -234,9 +235,12 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         files = [satfile, pressfile, specstorfile, lmfile, porfile]
         variables = [['SATUR'],['time', 'PSI'],['SPEC_STO'],['LAND_MASK'],['PORO']]
         """
-        self.data = None  # store all loaded variables in data
+        self.data = {}  # store all loaded variables in data
         if data is not None:  # This doesnt make sense, provide files:variables dict instead
-            self.data = ht.array(data, split=split)
+            if type(data) is dict:
+                self.data = data
+            else:
+                self.data['DATA'] = ht.array(data)
 
         self.timeResolution = None
         if timeResolution in TIMES:
@@ -267,7 +271,9 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         self.gy = int(gy)
         self.gz = int(gz)
 
-    def writeToNC(self, dict, filename, tstart=0, slices=[slice(None)]):
+    def writeToNC(self, filename, dict=None, tstart=0, slices=[slice(None)]):
+        if dict is None:
+            dict = self.data
         writeVarsToNCFile(dict, filename, self.missval,
                           self.lati, self.loni, self.delta,
                           self.timesteps, self.gz, self.gx, self.gy,
@@ -287,6 +293,9 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
             axis = self.timeAxis
         self.data = func(self.data, axis)
         return self
+
+    def calculate(self, *args, **kwargs):
+        raise NotImplementedError("You need to call 'calculate' on the object of your specific diagnostic")
 
     def storage(self):
         """
