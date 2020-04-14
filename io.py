@@ -415,7 +415,10 @@ else:
                     sliced = range_from_slice[data_slice]
                     new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
 
-                var = handle.createVariable(variable, data.dtype.char(), dimension_names, **kwargs)
+                if variable in handle.variables:
+                    var = handle.variables[variable]
+                else:
+                    var = handle.createVariable(variable, data.dtype.char(), dimension_names, **kwargs)
                 var.set_collective(True)
                 var[tuple(new_slices)] = (
                     data._DNDarray__array.cpu() if is_split else data._DNDarray__array[slices].cpu()
