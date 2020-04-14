@@ -388,19 +388,27 @@ else:
                         tstop = file_slice.stop
                         tstep = 1 if file_slice.step is None else file_slice.step
                         dimlen = dim.size
-                        if tstep < 0:
-                            tstart, tstop = tstop, tstart
-                            tstep = abs(tstep)
 
-                        if tstop is not None:
-                            dimlen = max(tstop, dimlen)
-                        elif tstart is not None:
-                            if tstart < 0:
-                                tstart = start
-                                file_slice = slice(tstart, tstop, tstep)
-                            dimlen = max(tstart + tstep * elements, dimlen)
+                        if tstep > 0:
+                            if tstop is not None:
+                                dimlen = max(tstop, dimlen)
+                            elif tstart is not None:
+                                if tstart < 0:
+                                    tstart = start
+                                    file_slice = slice(tstart, tstop, tstep)
+                                dimlen = max(tstart + tstep * elements, dimlen)
+                            else:
+                                dimlen = max(tstep * elements, dimlen)
                         else:
-                            dimlen = max(tstep * elements, dimlen)
+                            if tstart is not None:
+                                dimlen = max(1 + tstart, dimlen)
+                            elif tstop is not None:
+                                if tstop < 0:
+                                    tstop = stop
+                                    file_slice = slice(tstart, tstop, tstep)
+                                dimlen = max(1 + tstop + tstep * elements, dimlen)
+                            else:
+                                dimlen = max(1 + tstep * elements, dimlen)#"""
 
                         start, stop, step = file_slice.indices(dimlen)
                         range_from_slice = range(start, stop, step)
