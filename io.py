@@ -427,6 +427,8 @@ else:
                 else:
                     var = handle.createVariable(variable, data.dtype.char(), dimension_names, **kwargs)
                 var.set_collective(True)
+                var[tuple(new_slices)] = torch.ones(1)
+                print('compare shapes:', var[tuple(new_slices)].shape, data.shape, flush=True)
                 var[tuple(new_slices)] = (
                     data._DNDarray__array.cpu() if is_split else data._DNDarray__array[slices].cpu()
                 )
