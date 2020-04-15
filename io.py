@@ -429,7 +429,7 @@ else:
                     var = handle.createVariable(variable, data.dtype.char(), dimension_names, **kwargs)
                 var.set_collective(True)
                 #var[tuple(new_slices)] = np.mgrid[tuple(new_slices)]
-                print('compare shapes:', var[tuple(new_slices)].shape, data.shape, 'numpy mgrid:', np.mgrid[tuple(new_slices)].shape, flush=True)
+                print('compare shapes:', var[tuple(new_slices)].shape, data.shape, '\nnumpy mgrid:', np.mgrid[tuple(new_slices)].shape, '\nslices', new_slices , flush=True)
                 var[tuple(new_slices)] = (
                     data._DNDarray__array.cpu() if is_split else data._DNDarray__array[slices].cpu()
                 )
