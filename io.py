@@ -394,26 +394,26 @@ else:
                                 dimlen = max(tstop, dimlen)
                             elif tstart is not None:
                                 if tstart < 0:
-                                    tstart = start
+                                    tstart = start  # use current dimlen for negative indexing
                                     file_slice = slice(tstart, tstop, tstep)
                                 dimlen = max(tstart + tstep * elements, dimlen)
                             else:
                                 dimlen = max(tstep * elements, dimlen)
                         else:  # negative step size
                             if tstart is not None:
-                                tstart += abs(tstep)
+                                tstart -= tstep  # one step further because start is inclusive
                                 dimlen = max(tstart, dimlen)
                             elif tstop is not None:
                                 if tstop < 0:
                                     tstop = stop
                                     file_slice = slice(tstart, tstop, tstep)
                                     print('new slice:', file_slice, flush=True)
-                                tstop += abs(tstep)
-                                print('dimlen:', tstop + abs(tstep) * elements, dimlen, flush=True)
+                                tstop -= tstep  # one step further because start is inclusive
                                 dimlen = max(tstop + abs(tstep) * elements, dimlen)
                             else:
                                 dimlen = max(abs(tstep) * elements, dimlen)
 
+                        print('dimlen:', dimlen, flush=True)
                         start, stop, step = file_slice.indices(dimlen)
                         range_from_slice = range(start, stop, step)
 
@@ -425,7 +425,6 @@ else:
                 else:
                     var = handle.createVariable(variable, data.dtype.char(), dimension_names, **kwargs)
                 var.set_collective(True)
-                print('compare shapes:', var[tuple(new_slices)].shape, data.lshape, flush=True)
                 var[tuple(new_slices)] = (
                     data._DNDarray__array.cpu() if is_split else data._DNDarray__array[slices].cpu()
                 )
