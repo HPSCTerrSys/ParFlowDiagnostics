@@ -400,9 +400,8 @@ else:
                             else:
                                 dimlen = max(tstep * elements, dimlen)
                         else:  # negative step size
-                            tstep = abs(tstep)
                             if tstart is not None:
-                                tstart += tstep
+                                tstart += abs(tstep)
                                 dimlen = max(tstart, dimlen)
                             elif tstop is not None:
                                 if tstop < 0:
@@ -410,10 +409,10 @@ else:
                                     file_slice = slice(tstart, tstop, tstep)
                                     print('new slice:', file_slice, flush=True)
                                 tstop += tstep
-                                dimlen = max(tstop + tstep * elements, dimlen)
+                                dimlen = max(tstop + abs(tstep) * elements, dimlen)
                                 print('dimlen:', dimlen, flush=True)
                             else:
-                                dimlen = max(tstep * elements, dimlen)
+                                dimlen = max(abs(tstep) * elements, dimlen)
 
                         start, stop, step = file_slice.indices(dimlen)
                         range_from_slice = range(start, stop, step)
