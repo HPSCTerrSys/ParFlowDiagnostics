@@ -369,10 +369,11 @@ else:
         new_slices = []
         if file_slices is None:
             file_slices = [slice(None) for _ in slices]
-        if type(file_slices) is slice:
+        if isinstance(file_slices, slice):
             file_slices = [file_slices]
         while len(file_slices) < len(slices):
             file_slices.append(slice(None))
+
         # attempt to perform parallel I/O if possible
         if __nc_has_par:
             with nc.Dataset(path, mode, parallel=True, comm=data.comm.handle) as handle:
@@ -384,38 +385,39 @@ else:
                     range_from_slice = range(start, stop, step)
 
                     if dim.isunlimited():
-                        tstart = file_slice.start
-                        tstop = file_slice.stop
-                        tstep = 1 if file_slice.step is None else file_slice.step
+                        fsstart = file_slice.start
+                        fsstop = file_slice.stop
+                        fsstep = 1 if file_slice.step is None else file_slice.step
                         dimlen = dim.size
 
-                        if tstep > 0:
-                            if tstop is not None:
-                                dimlen = max(tstop, dimlen)
-                            elif tstart is not None:
-                                if tstart < 0:
-                                    tstart = start  # use current dimlen for negative indexing
-                                    file_slice = slice(tstart, tstop, tstep)
-                                dimlen = max(tstart + tstep * elements, dimlen)
+                        if fsstep > 0:
+                            if fsstop is not None:
+                                dimlen = max(fsstop, dimlen)
+                            elif fsstart is not None:
+                                if fsstart < 0:
+                                    fsstart = start  # use current dimlen for negative indexing
+                                    file_slice = slice(fsstart, fsstop, fsstep)
+                                dimlen = max(fsstart + fsstep * elements, dimlen)
                             else:
-                                dimlen = max(tstep * elements, dimlen)
+                                dimlen = max(fsstep * elements, dimlen)
                         else:  # negative step size
-                            if tstart is not None:
-                                tstart -= tstep  # one step further because start is inclusive
-                                dimlen = max(tstart, dimlen)
-                            elif tstop is not None:
-                                if tstop < 0:
-                                    tstop = stop
-                                    file_slice = slice(tstart, tstop, tstep)
+                            if fsstart is not None:
+                                fsstart -= fsstep  # one step further because start is inclusive
+                                dimlen = max(fsstart, dimlen)
+                            elif fsstop is not None:
+                                if fsstop < 0:
+                                    fsstop = stop
+                                    file_slice = slice(fsstart, fsstop, fsstep)
                                     print('new slice:', file_slice, flush=True)
-                                tstop -= tstep  # one step further because start is inclusive
-                                dimlen = max(tstop + abs(tstep) * elements, dimlen)
+                                fsstop -= fsstep  # one step further because start is inclusive
+                                dimlen = max(fsstop + abs(fsstep) * elements, dimlen)
                             else:
-                                dimlen = max(abs(tstep) * elements, dimlen)
+                                dimlen = max(abs(fsstep) * elements, dimlen)
 
                         print('dimlen:', dimlen, flush=True)
                         start, stop, step = file_slice.indices(dimlen)
                         range_from_slice = range(start, stop, step)
+                        print('range:', range_from_slice, flush=True)
 
                     sliced = range_from_slice[data_slice]
                     new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
