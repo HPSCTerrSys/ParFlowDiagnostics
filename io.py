@@ -408,9 +408,9 @@ else:
                                     tstop = stop
                                     file_slice = slice(tstart, tstop, tstep)
                                     print('new slice:', file_slice, flush=True)
-                                tstop += tstep
+                                tstop += abs(tstep)
+                                print('dimlen:', tstop + abs(tstep) * elements, dimlen, flush=True)
                                 dimlen = max(tstop + abs(tstep) * elements, dimlen)
-                                print('dimlen:', dimlen, flush=True)
                             else:
                                 dimlen = max(abs(tstep) * elements, dimlen)
 
