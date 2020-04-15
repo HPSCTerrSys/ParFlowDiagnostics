@@ -399,18 +399,21 @@ else:
                                 dimlen = max(tstart + tstep * elements, dimlen)
                             else:
                                 dimlen = max(tstep * elements, dimlen)
-                        else: # negative step size
+                        else:  # negative step size
+                            tstep = abs(tstep)
                             if tstart is not None:
-                                dimlen = max(tstart, dimlen)  # tstart is inclusively indexed
+                                tstart += tstep
+                                dimlen = max(tstart, dimlen)
                             elif tstop is not None:
                                 if tstop < 0:
                                     tstop = stop
                                     file_slice = slice(tstart, tstop, tstep)
                                     print('new slice:', file_slice, flush=True)
-                                dimlen = max(tstop + abs(tstep) * elements, dimlen)
+                                tstop += tstep
+                                dimlen = max(tstop + tstep * elements, dimlen)
                                 print('dimlen:', dimlen, flush=True)
                             else:
-                                dimlen = max(abs(tstep) * elements, dimlen)
+                                dimlen = max(tstep * elements, dimlen)
 
                         start, stop, step = file_slice.indices(dimlen)
                         range_from_slice = range(start, stop, step)
