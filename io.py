@@ -368,6 +368,7 @@ else:
 
         # update slices using the file slices
         new_slices = []
+        shape_of_elements = []
         if file_slices is None:
             file_slices = [slice(None) for _ in slices]
         if isinstance(file_slices, slice):
@@ -421,6 +422,7 @@ else:
                         print('range:', range_from_slice, flush=True)
 
                     sliced = range_from_slice[data_slice]
+                    shape_of_elements.append(len(sliced))
                     new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
 
                 if variable in handle.variables:
@@ -428,8 +430,8 @@ else:
                 else:
                     var = handle.createVariable(variable, data.dtype.char(), dimension_names, **kwargs)
                 var.set_collective(True)
-                var[tuple(new_slices)] = np.ones(shape=(1 for _ in new_slices))
-                print('compare shapes:', var[tuple(new_slices)].shape, data.shape, '\nnumpy mgrid:', np.mgrid[tuple(new_slices)].shape, '\nslices', new_slices , flush=True)
+                print('compare shapes:', var[tuple(new_slices)].shape, data.shape, '\nshape of elements:', shape_of_elements, '\nslices', new_slices , flush=True)
+                var[tuple(new_slices)] = np.ones(shape=tuple(shape_of_elements))
                 var[tuple(new_slices)] = (
                     data._DNDarray__array.cpu() if is_split else data._DNDarray__array[slices].cpu()
                 )
