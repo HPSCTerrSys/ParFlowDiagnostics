@@ -453,7 +453,7 @@ else:
                 start = start.reshape(-1)
                 count = count.reshape(-1)
                 stride = stride.reshape(-1)
-                stop = start + stride * (count + (stride < 0).astype(np.float32))
+                stop = start + stride * (count + (stride < 0).astype(np.int32))
                 new_slices = []
                 for begin, end, step, htSlice in zip(start, stop, stride, slices):
                     range_from_slice = range(begin, end, step)
