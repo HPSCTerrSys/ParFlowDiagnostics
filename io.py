@@ -458,7 +458,7 @@ else:
                 for begin, end, step, htSlice in zip(start, stop, stride, slices):
                     range_from_slice = range(begin, end, step)
                     sliced = range_from_slice[htSlice]
-                    print('ranges:', range_from_slice, sliced, flush=True)
+                    print('range:', sliced, 'as list:', list(sliced), 'as slice:', slice(sliced.start, sliced.stop, sliced.step), flush=True)
                     shape_by_sliced.append(len(sliced))
                     new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
 
