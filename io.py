@@ -382,57 +382,57 @@ else:
                 for name, elements, data_slice, file_slice in zip(dimension_names, data.shape, slices, file_slices):
                     if name not in handle.dimensions:
                         handle.createDimension(name, elements if not is_unlimited else None)
-                    dim = handle.dimensions[name]
-
-
-                    start, stop, step = file_slice.indices(dim.size)
-                    range_from_slice = range(start, stop, step)
-
-                    if dim.isunlimited():
-                        fsstart = file_slice.start
-                        fsstop = file_slice.stop
-                        fsstep = 1 if file_slice.step is None else file_slice.step
-                        dimlen = dim.size
-
-                        if fsstep > 0:
-                            if fsstop is not None:
-                                dimlen = max(fsstop, dimlen)
-                            elif fsstart is not None:
-                                if fsstart < 0:
-                                    fsstart = start  # use current dimlen for negative indexing
-                                    file_slice = slice(fsstart, fsstop, fsstep)
-                                dimlen = max(fsstart + fsstep * elements, dimlen)
-                            else:
-                                dimlen = max(fsstep * elements, dimlen)
-                        else:  # negative step size
-                            """
-                            Because 'start' is included and 'stop' is excluded, we need to add one step when
-                            using negative steps, e.g.:
-                            [8:0:-2] yields the same values (just reversed) as
-                            [2:10:2]
-                            """
-                            if fsstart is not None:
-                                fsstart -= fsstep
-                                dimlen = max(fsstart, dimlen)
-                            elif fsstop is not None:
-                                if fsstop < 0:
-                                    fsstop = stop
-                                    file_slice = slice(fsstart, fsstop, fsstep)
-                                    #print('new slice:', file_slice, flush=True)
-                                fsstop -= fsstep
-                                dimlen = max(fsstop + abs(fsstep) * elements, dimlen)
-                            else:
-                                dimlen = max(abs(fsstep) * elements + abs(fsstep), dimlen)
-
-                        #print('dimlen:', dimlen, flush=True)
-                        start, stop, step = file_slice.indices(dimlen)
-                        range_from_slice = range(start, stop, step)
-                        #print('range:', range_from_slice, flush=True)
-
-                    sliced = range_from_slice[data_slice]
-                    shape_by_sliced.append(len(sliced))
-                    new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
-
+                    # dim = handle.dimensions[name]
+                    #
+                    #
+                    # start, stop, step = file_slice.indices(dim.size)
+                    # range_from_slice = range(start, stop, step)
+                    #
+                    # if dim.isunlimited():
+                    #     fsstart = file_slice.start
+                    #     fsstop = file_slice.stop
+                    #     fsstep = 1 if file_slice.step is None else file_slice.step
+                    #     dimlen = dim.size
+                    #
+                    #     if fsstep > 0:
+                    #         if fsstop is not None:
+                    #             dimlen = max(fsstop, dimlen)
+                    #         elif fsstart is not None:
+                    #             if fsstart < 0:
+                    #                 fsstart = start  # use current dimlen for negative indexing
+                    #                 file_slice = slice(fsstart, fsstop, fsstep)
+                    #             dimlen = max(fsstart + fsstep * elements, dimlen)
+                    #         else:
+                    #             dimlen = max(fsstep * elements, dimlen)
+                    #     else:  # negative step size
+                    #         """
+                    #         Because 'start' is included and 'stop' is excluded, we need to add one step when
+                    #         using negative steps, e.g.:
+                    #         [8:0:-2] yields the same values (just reversed) as
+                    #         [2:10:2]
+                    #         """
+                    #         if fsstart is not None:
+                    #             fsstart -= fsstep
+                    #             dimlen = max(fsstart, dimlen)
+                    #         elif fsstop is not None:
+                    #             if fsstop < 0:
+                    #                 fsstop = stop
+                    #                 file_slice = slice(fsstart, fsstop, fsstep)
+                    #                 #print('new slice:', file_slice, flush=True)
+                    #             fsstop -= fsstep
+                    #             dimlen = max(fsstop + abs(fsstep) * elements, dimlen)
+                    #         else:
+                    #             dimlen = max(abs(fsstep) * elements + abs(fsstep), dimlen)
+                    #
+                    #     #print('dimlen:', dimlen, flush=True)
+                    #     start, stop, step = file_slice.indices(dimlen)
+                    #     range_from_slice = range(start, stop, step)
+                    #     #print('range:', range_from_slice, flush=True)
+                    #
+                    # sliced = range_from_slice[data_slice]
+                    # shape_by_sliced.append(len(sliced))
+                    # new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
+                    #
 
                 if variable in handle.variables:
                     var = handle.variables[variable]
@@ -448,9 +448,18 @@ else:
                     datashape=data.shape,
                     put=True,
                     )
-                print(start.shape, count.shape, stride.shape, put.shape, flush=True)
-                print(start, count, stride, put, flush=True)
-
+                print(variable, 'ncdf', start.shape, count.shape, stride.shape, put.shape, flush=True)
+                print(variable, 'ncdf', start, count, stride, put, flush=True)
+                start = start.reshape(-1)
+                count = count.reshape(-1)
+                stride = stride.reshape(-1)
+                stop = start + stride * count
+                new_slices = []
+                for begin, end, step, htSlice in zip(start, stop, stride, slices):
+                    range_from_slice = range(start, stop, step)
+                    sliced = range_from_slice[htSlice]
+                    shape_by_sliced.append(len(sliced))
+                    new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
 
 
                 print('compare shapes:\ndata:', data.shape, '\nslices', new_slices , '\nshape defined by slices:', shape_by_sliced, flush=True)
