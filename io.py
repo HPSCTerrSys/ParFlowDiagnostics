@@ -453,7 +453,7 @@ else:
                 start = start.reshape(-1)
                 count = count.reshape(-1)
                 stride = stride.reshape(-1)
-                stop = start + stride * count
+                stop = start + stride * (count + (stride < 0).astype(np.float32))
                 new_slices = []
                 for begin, end, step, htSlice in zip(start, stop, stride, slices):
                     range_from_slice = range(begin, end, step)
@@ -462,7 +462,7 @@ else:
                     new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
 
 
-                print('compare shapes:\ndata:', data.shape, '\nslices', new_slices , '\nshape defined by slices:', shape_by_sliced, flush=True)
+                print('compare shapes:\tdata:', data.lshape, '\tslices', new_slices , '\tshape defined by slices:', shape_by_sliced, flush=True)
                 var[tuple(new_slices)] = (
                     data._DNDarray__array.cpu() if is_split else data._DNDarray__array[slices].cpu()
                 )
