@@ -368,7 +368,7 @@ else:
 
         # update slices using the file slices
         new_slices = []
-        shape_of_elements = []
+        shape_by_sliced = []
         if file_slices is None:
             file_slices = [slice(None) for _ in slices]
         if isinstance(file_slices, slice):
@@ -383,6 +383,8 @@ else:
                     if name not in handle.dimensions:
                         handle.createDimension(name, elements if not is_unlimited else None)
                     dim = handle.dimensions[name]
+
+
                     start, stop, step = file_slice.indices(dim.size)
                     range_from_slice = range(start, stop, step)
 
@@ -403,35 +405,55 @@ else:
                             else:
                                 dimlen = max(fsstep * elements, dimlen)
                         else:  # negative step size
+                            """
+                            Because 'start' is included and 'stop' is excluded, we need to add one step when
+                            using negative steps, e.g.:
+                            [8:0:-2] yields the same values (just reversed) as
+                            [2:10:2]
+                            """
                             if fsstart is not None:
-                                fsstart -= fsstep  # one step further because start is inclusive
+                                fsstart -= fsstep
                                 dimlen = max(fsstart, dimlen)
                             elif fsstop is not None:
                                 if fsstop < 0:
                                     fsstop = stop
                                     file_slice = slice(fsstart, fsstop, fsstep)
-                                    print('new slice:', file_slice, flush=True)
-                                fsstop -= fsstep  # one step further because start is inclusive
+                                    #print('new slice:', file_slice, flush=True)
+                                fsstop -= fsstep
                                 dimlen = max(fsstop + abs(fsstep) * elements, dimlen)
                             else:
-                                dimlen = max(abs(fsstep) * elements, dimlen)
+                                dimlen = max(abs(fsstep) * elements + abs(fsstep), dimlen)
 
-                        print('dimlen:', dimlen, flush=True)
+                        #print('dimlen:', dimlen, flush=True)
                         start, stop, step = file_slice.indices(dimlen)
                         range_from_slice = range(start, stop, step)
-                        print('range:', range_from_slice, flush=True)
+                        #print('range:', range_from_slice, flush=True)
 
                     sliced = range_from_slice[data_slice]
-                    shape_of_elements.append(len(sliced))
+                    shape_by_sliced.append(len(sliced))
                     new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
+
 
                 if variable in handle.variables:
                     var = handle.variables[variable]
                 else:
                     var = handle.createVariable(variable, data.dtype.char(), dimension_names, **kwargs)
                 var.set_collective(True)
-                print('compare shapes:', var[tuple(new_slices)].shape, data.shape, '\nshape of elements:', shape_of_elements, '\nslices', new_slices , flush=True)
-                var[tuple(new_slices)] = np.ones(shape=tuple(shape_of_elements))
+
+                start, count, stride, put = nc.utils._StartCountStride(
+                    elem=file_slices,
+                    shape=var.shape,
+                    dimensions=dimension_names,
+                    grp=var.group(),
+                    datashape=data.shape,
+                    put=True,
+                    )
+                print(start.shape, count.shape, stride.shape, put.shape, flush=True)
+                print(start, count, stride, put, flush=True)
+
+
+
+                print('compare shapes:\ndata:', data.shape, '\nslices', new_slices , '\nshape defined by slices:', shape_by_sliced, flush=True)
                 var[tuple(new_slices)] = (
                     data._DNDarray__array.cpu() if is_split else data._DNDarray__array[slices].cpu()
                 )
