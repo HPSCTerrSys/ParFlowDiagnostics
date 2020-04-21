@@ -309,7 +309,7 @@ else:
 
             return dndarray.DNDarray(data, gshape, dtype, split, device, comm)
 
-    def save_netcdf(data, path, variable, mode="w", dimension_names=None, is_unlimited=False, file_slices=None, **kwargs):
+    def save_netcdf(data, path, variable, mode="w", dimension_names=None, is_unlimited=False, file_slices=slice(None), **kwargs):
         """
         Saves data to a netCDF4 file. Attempts to utilize parallel I/O if possible.
 
@@ -323,8 +323,13 @@ else:
             Name of the variable the data is saved to.
         mode : str, one of 'w', 'a', 'r+'
             File access mode
-        dimension_names : list or tuple
+        dimension_names : list or tuple or string
             Specifies the netCDF Dimensions used by the variable.
+        is_unlimited : bool
+            If True, every dimension created for this variable is unlimited.
+        file_slices : tuple of integer, slice, ellipsis or 1-d bool or
+            integer sequences used to slice the netCDF Variable, as given in
+            the nc.utils._StartCountStride method.
         kwargs : dict
             additional arguments passed to the created dataset.
 
@@ -347,10 +352,12 @@ else:
         if not isinstance(variable, str):
             raise TypeError("variable must be str, not {}".format(type(path)))
         if dimension_names is not None:
+            if isinstance(dimension_names, str):
+                dimension_names = [dimension_names]
             if isinstance(dimension_names, tuple):
                 dimension_names = list(dimension_names)
             if not isinstance(dimension_names, list):
-                raise TypeError("dimension_names must be list or tuple, not{}".format(type(dimension_names)))
+                raise TypeError("dimension_names must be list or tuple or string, not{}".format(type(dimension_names)))
             if not len(dimension_names) == len(data.shape):
                 raise ValueError("{0} names given for {1} dimensions".format(len(dimension_names), len(data.shape)))
         else:
@@ -366,73 +373,12 @@ else:
         is_split = data.split is not None
         _, _, slices = data.comm.chunk(data.gshape, data.split if is_split else 0)
 
-        # update slices using the file slices
-        new_slices = []
-        shape_by_sliced = []
-        if file_slices is None:
-            file_slices = [slice(None) for _ in slices]
-        if isinstance(file_slices, slice):
-            file_slices = [file_slices]
-        while len(file_slices) < len(slices):
-            file_slices.append(slice(None))
-
         # attempt to perform parallel I/O if possible
         if __nc_has_par:
             with nc.Dataset(path, mode, parallel=True, comm=data.comm.handle) as handle:
-                for name, elements, data_slice, file_slice in zip(dimension_names, data.shape, slices, file_slices):
+                for name, elements in zip(dimension_names, data.shape):
                     if name not in handle.dimensions:
                         handle.createDimension(name, elements if not is_unlimited else None)
-                    # dim = handle.dimensions[name]
-                    #
-                    #
-                    # start, stop, step = file_slice.indices(dim.size)
-                    # range_from_slice = range(start, stop, step)
-                    #
-                    # if dim.isunlimited():
-                    #     fsstart = file_slice.start
-                    #     fsstop = file_slice.stop
-                    #     fsstep = 1 if file_slice.step is None else file_slice.step
-                    #     dimlen = dim.size
-                    #
-                    #     if fsstep > 0:
-                    #         if fsstop is not None:
-                    #             dimlen = max(fsstop, dimlen)
-                    #         elif fsstart is not None:
-                    #             if fsstart < 0:
-                    #                 fsstart = start  # use current dimlen for negative indexing
-                    #                 file_slice = slice(fsstart, fsstop, fsstep)
-                    #             dimlen = max(fsstart + fsstep * elements, dimlen)
-                    #         else:
-                    #             dimlen = max(fsstep * elements, dimlen)
-                    #     else:  # negative step size
-                    #         """
-                    #         Because 'start' is included and 'stop' is excluded, we need to add one step when
-                    #         using negative steps, e.g.:
-                    #         [8:0:-2] yields the same values (just reversed) as
-                    #         [2:10:2]
-                    #         """
-                    #         if fsstart is not None:
-                    #             fsstart -= fsstep
-                    #             dimlen = max(fsstart, dimlen)
-                    #         elif fsstop is not None:
-                    #             if fsstop < 0:
-                    #                 fsstop = stop
-                    #                 file_slice = slice(fsstart, fsstop, fsstep)
-                    #                 #print('new slice:', file_slice, flush=True)
-                    #             fsstop -= fsstep
-                    #             dimlen = max(fsstop + abs(fsstep) * elements, dimlen)
-                    #         else:
-                    #             dimlen = max(abs(fsstep) * elements + abs(fsstep), dimlen)
-                    #
-                    #     #print('dimlen:', dimlen, flush=True)
-                    #     start, stop, step = file_slice.indices(dimlen)
-                    #     range_from_slice = range(start, stop, step)
-                    #     #print('range:', range_from_slice, flush=True)
-                    #
-                    # sliced = range_from_slice[data_slice]
-                    # shape_by_sliced.append(len(sliced))
-                    # new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
-                    #
 
                 if variable in handle.variables:
                     var = handle.variables[variable]
@@ -440,7 +386,7 @@ else:
                     var = handle.createVariable(variable, data.dtype.char(), dimension_names, **kwargs)
                 var.set_collective(True)
 
-                start, count, stride, put = nc.utils._StartCountStride(
+                start, count, stride, _ = nc.utils._StartCountStride(
                     elem=file_slices,
                     shape=var.shape,
                     dimensions=dimension_names,
@@ -448,8 +394,6 @@ else:
                     datashape=data.shape,
                     put=True,
                     )
-                print(variable, 'ncdf', start.shape, count.shape, stride.shape, put.shape, flush=True)
-                print(variable, 'ncdf', start, count, stride, put, flush=True)
                 start = start.reshape(-1)
                 count = count.reshape(-1)
                 stride = stride.reshape(-1)
@@ -458,15 +402,22 @@ else:
                 for begin, end, step, htSlice in zip(start, stop, stride, slices):
                     range_from_slice = range(begin, end, step)
                     sliced = range_from_slice[htSlice]
-                    shape_by_sliced.append(len(sliced))
                     a, b, c = sliced.start, sliced.stop, sliced.step
+                    """
+                    Negative values in ranges exist to include zero (in case of
+                    negative stride) and actual negative numbers. This is
+                    incompatible with negative slicing. Because
+                    nc.utils._StartCountStride already transforms negative
+                    slice-indices to their corresponding positive value,
+                    negative values at this point only include zero. In slices,
+                    this is done by using None.
+                    """
                     a = None if a < 0 else a
                     b = None if b < 0 else b
                     print('range:', sliced, 'as list:', list(sliced), 'as slice:', slice(a, b, c), flush=True)
                     new_slices.append(slice(a, b, c))
 
-
-                print('compare shapes:\tdata:', data.lshape, '\tslices', new_slices , '\tshape defined by slices:', shape_by_sliced, flush=True)
+                print('compare shapes:\tdata:', data.lshape, '\tslices', new_slices , flush=True)
                 var[tuple(new_slices)] = (
                     data._DNDarray__array.cpu() if is_split else data._DNDarray__array[slices].cpu()
                 )
@@ -478,9 +429,12 @@ else:
                     if name not in handle.dimensions:
                         handle.createDimension(name, elements if not is_unlimited else None)
 
-                var = handle.createVariable(
-                    variable, data.dtype.char(), tuple(dimension_names), **kwargs
-                )
+                if variable in handle.variables:
+                    var = handle.variables[variable]
+                else:
+                    var = handle.createVariable(
+                        variable, data.dtype.char(), dimension_names, **kwargs
+                    )
                 if is_split:
                     var[slices] = data._DNDarray__array.cpu()
                 else:
