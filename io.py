@@ -453,14 +453,17 @@ else:
                 start = start.reshape(-1)
                 count = count.reshape(-1)
                 stride = stride.reshape(-1)
-                stop = start + stride * count  # + (stride < 0).astype(np.int32)
+                stop = start + stride * count
                 new_slices = []
                 for begin, end, step, htSlice in zip(start, stop, stride, slices):
                     range_from_slice = range(begin, end, step)
                     sliced = range_from_slice[htSlice]
-                    print('range:', sliced, 'as list:', list(sliced), 'as slice:', slice(sliced.start, sliced.stop, sliced.step), flush=True)
                     shape_by_sliced.append(len(sliced))
-                    new_slices.append(slice(sliced.start, sliced.stop, sliced.step))
+                    a, b, c = sliced.start, sliced.stop, sliced.step
+                    a = None if a < 0 else a
+                    b = None if b < 0 else b
+                    print('range:', sliced, 'as list:', list(sliced), 'as slice:', slice(a, b, c), flush=True)
+                    new_slices.append(slice(a, b, c))
 
 
                 print('compare shapes:\tdata:', data.lshape, '\tslices', new_slices , '\tshape defined by slices:', shape_by_sliced, flush=True)
