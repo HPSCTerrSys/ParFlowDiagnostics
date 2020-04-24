@@ -326,7 +326,9 @@ else:
         dimension_names : list or tuple or string
             Specifies the netCDF Dimensions used by the variable.
         is_unlimited : bool
-            If True, every dimension created for this variable is unlimited.
+            If True, every dimension created for this variable (i.e. doesn't
+            already exist) is unlimited. Already existing limited dimensions
+            cannot be changed to unlimited and vice versa.
         file_slices : tuple of integer, slice, ellipsis or 1-d bool or
             integer sequences used to slice the netCDF Variable, as given in
             the nc.utils._StartCountStride method.
@@ -400,6 +402,17 @@ else:
                 stop = start + stride * count
                 new_slices = []
                 for begin, end, step, htSlice in zip(start, stop, stride, slices):
+                    """
+                    We need var[file_slices][htSlices] = data, but netcdf can
+                    only parallelize the first call. Therefore, we need to
+                    merge the slices:
+                    var[new_slices] = data
+                    Because slices cannot be sliced but are similar to ranges
+                    (i.e. consist of start, stop, step) which can be sliced:
+                    1) Build a range
+                    2) slice the range
+                    3) Build slice of the resulting range
+                    """
                     range_from_slice = range(begin, end, step)
                     sliced = range_from_slice[htSlice]
                     a, b, c = sliced.start, sliced.stop, sliced.step
@@ -414,10 +427,8 @@ else:
                     """
                     a = None if a < 0 else a
                     b = None if b < 0 else b
-                    print('range:', sliced, 'as list:', list(sliced), 'as slice:', slice(a, b, c), flush=True)
                     new_slices.append(slice(a, b, c))
 
-                print('compare shapes:\tdata:', data.lshape, '\tslices', new_slices , flush=True)
                 var[tuple(new_slices)] = (
                     data._DNDarray__array.cpu() if is_split else data._DNDarray__array[slices].cpu()
                 )
@@ -436,9 +447,29 @@ else:
                         variable, data.dtype.char(), dimension_names, **kwargs
                     )
                 if is_split:
-                    var[slices] = data._DNDarray__array.cpu()
+                    start, count, stride, _ = nc.utils._StartCountStride(
+                        elem=file_slices,
+                        shape=var.shape,
+                        dimensions=dimension_names,
+                        grp=var.group(),
+                        datashape=data.shape,
+                        put=True,
+                        )
+                    start = start.reshape(-1)
+                    count = count.reshape(-1)
+                    stride = stride.reshape(-1)
+                    stop = start + stride * count
+                    new_slices = []
+                    for begin, end, step, htSlice in zip(start, stop, stride, slices):
+                        range_from_slice = range(begin, end, step)
+                        sliced = range_from_slice[htSlice]
+                        a, b, c = sliced.start, sliced.stop, sliced.step
+                        a = None if a < 0 else a
+                        b = None if b < 0 else b
+                        new_slices.append(slice(a, b, c))
+                    var[tuple(new_slices)] = data._DNDarray__array.cpu()
                 else:
-                    var[:] = data._DNDarray__array.cpu()
+                    var[file_slices] = data._DNDarray__array.cpu()
 
             # ping next rank if it exists
             if is_split and data.comm.size > 1:
@@ -450,7 +481,7 @@ else:
             # wait for the previous rank to finish writing its chunk, then write own part
             data.comm.Recv([None, 0, MPI.INT], source=data.comm.rank - 1)
             with nc.Dataset(path, "r+") as handle:
-                handle[variable][slices] = data._DNDarray__array.cpu()
+                handle[variable][file_slices][slices] = data._DNDarray__array.cpu()
 
             # ping the next node in the communicator, wrap around to 0 to complete barrier behavior
             next_rank = (data.comm.rank + 1) % data.comm.size

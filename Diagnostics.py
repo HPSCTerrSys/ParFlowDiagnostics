@@ -171,8 +171,6 @@ def writeVarsToNCFile(dict, filename, missval,
                   data.is_balanced(), flush=True)
         data.balance_()
         if len(data.shape) == 4:  # 4 because time is included
-            printroot('check shapes:', data.shape,
-                      (ntimes, gz, nlons, nlats), flush=True)
             dim_names = dims3D
         else:
             dim_names = dims2D
