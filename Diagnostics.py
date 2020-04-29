@@ -3,7 +3,7 @@ import heat as ht
 import numpy as np
 import sys
 import os
-
+from . import IO
 
 def printroot(*args, **kwargs):
     """ Only Root Process prints """
