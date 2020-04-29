@@ -15,7 +15,7 @@ def printroot(*args, **kwargs):
 class Diagnostics():  # Make this a subclass of ht.DNDarray?
     def __init__(self, Press, Satur, Mask, Permx, Permy, Permz,
                  Alpha, N, Sres, Poro, Sstorage, Mannings,
-                 Slopex, Slopey, Sourcesink, Returnvalue=None):
+                 Slopex, Slopey, Sourcesink, Dx, Dy, Dz, Nx, Ny, Nz):
         self.Press = Press
         self.Satur = Satur
         self.Mask = Mask
@@ -31,10 +31,20 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         self.Slopex = Slopex
         self.Slopey = Slopey
         self.Sourcesink = Sourcesink
-        self.Returnvalue = Returnvalue
+        self.Dx = Dx
+        self.Dy = Dy
+        self.Dz = Dz
+        self.Nx = Nx
+        self.Ny = Ny
+        self.Nz = Nz
 
     def TotalSubsurfaceStorage(self):
-        pass
+        shape3D = (self.Nx, self.Ny, self.Nz)
+        subsurface_storage = ht.zeros(shape3D, split=self.split)
+        subsurface_storage = self.Satur * self.Poro * self.Dx * self.Dy * self.Dz * self.Mask
+        subsurface_storage += self. Press * self.Sstorage * self.Satur * self.Dx * self.Dy * self.Dz * self.Mask
+        total_subsurface_storage = np.sum(subsurface_storage)
+        return {total_subsurface_storage}
 
 
 if __name__ == '__main__':
