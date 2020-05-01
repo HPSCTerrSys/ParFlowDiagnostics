@@ -3,7 +3,7 @@ import numpy as np
 from struct import pack, unpack
 
 
-def read_pfb(filename, split=None):
+def read_pfb(filename, split):
     with open(filename, "rb") as f:
         # read meta informations of datafile
         meta_inf = np.fromfile(f, dtype='>f8', count=3)
@@ -25,7 +25,8 @@ def read_pfb(filename, split=None):
         meta_inf = np.fromfile(f, dtype='>i4', count=1)
         nsubgrid = meta_inf[0]
 
-        data = np.ndarray(shape=(nz, ny, nx), dtype='>f8')
+        #data = np.ndarray(shape=(nz, ny, nx), dtype='>f8')
+        data = np.ndarray(shape=(nz, ny, nx))
 
         for s in range(nsubgrid):
             meta_inf = np.fromfile(f, dtype='>i4', count=9)
@@ -48,9 +49,10 @@ def read_pfb(filename, split=None):
             tmp_data = np.fromfile(
                 f, dtype='>f8', count=nn).reshape((nz, ny, nx))
 
-            data[iz:iz + nz, iy:iy + ny, ix:ix + nx] = tmp_data
+            data[iz:iz + nz, iy:iy + ny, ix:ix + nx] = np.float32(tmp_data)
+            #data[iz:iz + nz, iy:iy + ny, ix:ix + nx] = tmp_data
 
-    return ht.array(data, split=split)
+    return ht.array(data,split)
 
 
 def read_nc4(dict, dir='.', split=None):
