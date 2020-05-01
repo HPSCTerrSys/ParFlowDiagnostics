@@ -31,12 +31,12 @@ class Diagnostics():  # Make this a subclass of ht.DNDarray?
         self.Slopex = Slopex
         self.Slopey = Slopey
         self.Sourcesink = Sourcesink
-        self.Dx = Dx
-        self.Dy = Dy
-        self.Dz = Dz
-        self.Nx = Nx
-        self.Ny = Ny
-        self.Nz = Nz
+        self.Dx = float(Dx)
+        self.Dy = float(Dy)
+        self.Dz = float(Dz)
+        self.Nx = int(Nx)
+        self.Ny = int(Ny)
+        self.Nz = int(Nz)
 
     def TotalSubsurfaceStorage(self):
         shape3D = (self.Nx, self.Ny, self.Nz)
