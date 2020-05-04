@@ -182,7 +182,7 @@ def read_nc4(dict, dir='.', split=None):
     return return_dict
 
 
-def create_nc4_Construct(filename, tstart=0, loni=0, lati=0, delta=1, ntimes=None, nlevels=None, nlons=None, nlats=None):
+def create_nc4_Construct(filename, tstart=0, loni=0, lati=0, delta=1., ntimes=None, nlevels=None, nlons=None, nlats=None):
     """Generates, if given, the ('time', 'level', 'lon', 'lat')-Dimensions of a NetCDF4-File. The time-dimension is set unlimited.
 
     Parameters
