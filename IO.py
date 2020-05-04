@@ -263,3 +263,4 @@ def write_nc4(dict, filename, missval=None, slices=[slice(None)]):
             dim_names = dims2D
         ht.save_netcdf(data, filename, varName, mode, dim_names, file_slices=slices,
                        fill_value=missval, zlib=False, least_significant_digit=6)  # zlib should be True
+        mode = 'r+'
