@@ -13,7 +13,7 @@ def printroot(*args, **kwargs):
 
 
 class Diagnostics:  # Make this a subclass of ht.DNDarray?
-    def __init__(self, Press, Satur, Mask, Poro, Sstorage, Dx, Dy, Dz, Nx, Ny, Nz):
+    def __init__(self, Press, Satur, Mask, Poro, Sstorage, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz):
         self.Press      = Press
         self.Satur      = Satur
         self.Mask       = Mask
@@ -22,23 +22,33 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         self.Dx         = Dx
         self.Dy         = Dy
         self.Dz         = Dz
+        self.Dzmult     = Dzmult
         self.Nx         = Nx
         self.Ny         = Ny
         self.Nz         = Nz
+        self.Top        = None
 
-    def TotalSubsurfaceStorage(self):
-        shape3D = (self.Nx, self.Ny, self.Nz)
+    def SubsurfaceStorage(self):
+        shape3D = (self.Nz, self.Ny, self.Nx)
         subsurface_storage = ht.zeros(shape3D, split=None)
-        subsurface_storage = self.Satur * self.Poro * self.Dx * self.Dy * self.Dz 
-        subsurface_storage += self. Press * self.Sstorage * self.Satur * self.Dx * self.Dy * self.Dz 
-        total_subsurface_storage = ht.sum(subsurface_storage)
-        return(total_subsurface_storage)
+        for k in range(self.Nz):
+            subsurface_storage = self.Satur * self.Poro *  self.Dz * self.Dzmult[k]
+            subsurface_storage += self. Press * self.Sstorage * self.Satur * self.Dz * self.Dzmult[k]
+        return(subsurface_storage)
 
     def VolumetricMoisture(self):
-        shape3D = (self.Nx, self.Ny, self.Nz)
+        shape3D = (self.Nz, self.Ny, self.Nx)
         volumetric_moisture = ht.zeros(shape3D, split=None)
-        volumetric_moisture = self.Satur * self.Poro 
+        volumetric_moisture = self.Satur * self.Poro
         return(volumetric_moisture)
+
+    def Toplayer(self):
+        shape2D = (self.Ny, self.Nx)
+        self.Top = ht.zeros(shape2D,split=None)
+        check = ht.full(shape2D,-1.0,split=None)
+        for k in reversed(range(self.Nz)):
+            self.Top = ht.where((self.Mask[k,:,:]>0.0) & (check<0.0) , k, self.Top)
+            check = ht.where(self.Top>0.0, 0.0, check)
 
 if __name__ == '__main__':
     pass
