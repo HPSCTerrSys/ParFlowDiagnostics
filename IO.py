@@ -13,9 +13,9 @@ def create_pfb(filename, dndarray, delta=(1, 1, 1), subgrids=(1, 1, 1)):
     var = dndarray.numpy()
     if dndarray.comm.rank == 0:
         print(var.shape)
-        nx, ny, nz = var.shape
-        dx, dy, dz = delta
-        sx, sy, sz = subgrids
+        nz, ny, nx = var.shape
+        dz, dy, dx = delta
+        sz, sy, sx = subgrids
 
         filepfb = open(filename, "wb")
 
