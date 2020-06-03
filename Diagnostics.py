@@ -38,8 +38,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         shape3D = (self.Nz, self.Ny, self.Nx)
         subsurface_storage = ht.zeros(shape3D, split=self.Split)
         for k in range(self.Nz):
-            subsurface_storage = Satur * self.Poro *  self.Dz * self.Dzmult[k]
-            subsurface_storage += Press * self.Sstorage * Satur * self.Dz * self.Dzmult[k]
+            subsurface_storage = Satur * self.Poro *  self.Dx * self.Dy * self.Dz * self.Dzmult[k]
+            subsurface_storage += Press * self.Sstorage * Satur * self.Dx * self.Dy * self.Dz * self.Dzmult[k]
         return(subsurface_storage)
 
     def VolumetricMoisture(self,Satur):
@@ -128,7 +128,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         shape3D     = (self.Nz,self.Ny,self.Nx)
         Kmean=ht.full(shape3D,1.0,split=self.Split)
         
-        #Calculate the flux across the left face
+        #Calculate the flux across the right and left face
         grad      = ht.zeros(shape3D,split=self.Split)
         flowright = ht.zeros(shape3D,split=self.Split)
         flowleft  = ht.zeros(shape3D,split=self.Split)
@@ -138,6 +138,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
             Kmean[:,:,i]= 2./(1.0/self.Perm[:,:,i] + 1.0/self.Perm[:,:,i+1])
             flowright[:,:,i] = ( (-1) *  Kmean[:,:,i] * ht.where(grad[:,:,i]>0.0,Krel[:,:,i+1],Krel[:,:,i]) * grad[:,:,i] )
             flowleft[:,:,i+1] = flowright[:,:,i]
+        for k in range(self.Nz):
+            flowright[k,:,:] = self.Dy * self.Dz * self.Dzmult[k] * flowright[k,:,:]
+            flowleft[k,:,:]  = self.Dy * self.Dz * self.Dzmult[k] * flowleft[k,:,:]
 
         flowback = ht.zeros(shape3D,split=self.Split)
         flowfront  = ht.zeros(shape3D,split=self.Split)
@@ -147,16 +150,21 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
             Kmean[:,j,:]= 2./(1.0/self.Perm[:,j,:] + 1.0/self.Perm[:,j+1,:])
             flowback[:,j,:] = ( (-1) *  Kmean[:,j,:] * ht.where(grad[:,j,:]>0.0,Krel[:,j+1,:],Krel[:,j,:]) * grad[:,j,:] )
             flowfront[:,j+1,:] = flowback[:,j,:]
+        for k in range(self.Nz):
+            flowback[k,:,:] = self.Dx * self.Dz * self.Dzmult[k] * flowback[k,:,:]
+            flowfront[k,:,:]  = self.Dx * self.Dz * self.Dzmult[k] * flowfront[k,:,:]
 
         flowtop = ht.zeros(shape3D,split=self.Split)
         flowbottom  = ht.zeros(shape3D,split=self.Split)
         for k in range(self.Nz-1):
             #Top and bottom face
-            grad[k,:,:] = (Press[k+1,:,:] - Press[k,:,:])/(self.Dz * (self.Dzmult[k]/2.0+self.Dzmult[k+1]/2.0)) + 1.0
+            grad[k,:,:] = (Press[k+1,:,:] - Press[k,:,:])/(self.Dz * (self.Dzmult[k]/2.0 + self.Dzmult[k+1]/2.0)) + 1.0
             Kmean[k,:,:]= ( (self.Dz * (self.Dzmult[k]+self.Dzmult[k+1])) / 
                             (self.Dz*self.Dzmult[k]/self.Perm[k,:,:] + self.Dz*self.Dzmult[k+1]/self.Perm[k+1,:,:]) )
             flowtop[k,:,:] = ( (-1) *  Kmean[k,:,:] * ht.where(grad[k,:,:]>0.0,Krel[k+1,:,:],Krel[k,:,:]) * grad[k,:,:] )
             flowbottom[k+1,:,:] = flowtop[k,:,:]
+        flowtop = self.Dx * self.Dy * flowtop
+        flowbottom = self.Dx * self.Dy * flowbottom
 
         return(flowleft,flowright,flowfront,flowback,flowbottom,flowtop)
 
