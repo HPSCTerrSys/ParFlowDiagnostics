@@ -269,18 +269,23 @@ def create_nc4_Construct(
         Why the exception is raised.
 
     """
+    mode = "w"
     if ntimes is not None:
         time_out = tstart + ht.arange(ntimes, dtype=ht.float32, split=0)
-        ht.save_netcdf(time_out, filename, "time", "w", ["time"], is_unlimited=True)
+        ht.save_netcdf(time_out, filename, "time", mode, ["time"], is_unlimited=True)
+        mode = "r+"
     if nlevels is not None:
         lev_out = 1.0 + ht.arange(nlevels, dtype=ht.float32, split=0)
-        ht.save_netcdf(lev_out, filename, "level", "r+", ["level"])
+        ht.save_netcdf(lev_out, filename, "level", mode, ["level"])
+        mode = "r+"
     if nlons is not None:
         lons_out = loni + delta * ht.arange(nlons, dtype=ht.float32, split=0)
-        ht.save_netcdf(lons_out, filename, "lon", "r+", ["lon"])
+        ht.save_netcdf(lons_out, filename, "lon", mode, ["lon"])
+        mode = "r+"
     if nlats is not None:
         lats_out = lati + delta * ht.arange(nlats, dtype=ht.float32, split=0)
-        ht.save_netcdf(lats_out, filename, "lat", "r+", ["lat"])
+        ht.save_netcdf(lats_out, filename, "lat", mode, ["lat"])
+        mode = "r+"
 
 
 def write_nc4(dict, filename, missval=None, slices=[slice(None)]):
