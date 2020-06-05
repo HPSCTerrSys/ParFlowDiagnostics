@@ -79,9 +79,7 @@ def read_packed(f, fmt, size):
     return unpack(fmt, f.read(size))
 
 
-def read_pfb(
-    filename, split=None, comm=ht.MPI_WORLD,
-):
+def read_pfb(filename, dtype=">f8", split=None, comm=ht.MPI_WORLD):
     """Reads .pfb file into a dndarray. Reading is only done by the
     root process and the data gets distributed afterwards.
 
@@ -93,6 +91,8 @@ def read_pfb(
         split-Axis of resulting dndarray (the default is None).
     comm : MPI.Communicator
         Communicator of resulting dndarray (the default is ht.MPI_WORLD).
+    dtype : str or numpy dtype
+        Dtype of the data in the pfb file (the default is ">f8").
 
     Returns
     -------
@@ -129,7 +129,7 @@ def read_pfb(
             nsubgrid = meta_inf[0]
 
             # data = np.ndarray(shape=(nz, ny, nx), dtype='>f8')
-            data = np.ndarray(shape=(nz, ny, nx), dtype=np.float32)
+            data = np.ndarray(shape=(nz, ny, nx), dtype=dtype)
 
             for s in range(nsubgrid):
                 meta_inf = np.fromfile(f, dtype=">i4", count=9)
@@ -149,18 +149,17 @@ def read_pfb(
                 rz = meta_inf[8]
                 # print("---{0} Offsets (X,Y,Z):".format(s+1), rx, ry, rz)
 
-                tmp_data = np.fromfile(f, dtype=">f8", count=nn).reshape((nz, ny, nx))
+                data[iz : iz + nz, iy : iy + ny, ix : ix + nx] = np.fromfile(
+                    f, dtype=dtype, count=nn
+                ).reshape((nz, ny, nx))
 
-                data[iz : iz + nz, iy : iy + ny, ix : ix + nx] = np.float32(tmp_data)
-                # data[iz:iz + nz, iy:iy + ny, ix:ix + nx] = tmp_data
+            data = data[None, :]  # expand by empty dimension
 
-                data = data[None, :]  # expand by empty dimension
-
-                size = ht.torch.tensor(len(data.shape), dtype=ht.torch.int32)
-                comm.Bcast(size)
-                shape = ht.torch.tensor(data.shape, dtype=ht.torch.int32)
-                comm.Bcast(shape)
-                shape = shape.numpy()
+            size = ht.torch.tensor(len(data.shape), dtype=ht.torch.int32)
+            comm.Bcast(size)
+            shape = ht.torch.tensor(data.shape, dtype=ht.torch.int32)
+            comm.Bcast(shape)
+            shape = shape.numpy()
     else:  # non-root processes
         size = ht.torch.empty(1, dtype=ht.torch.int32)
         comm.Bcast(size)
@@ -168,14 +167,20 @@ def read_pfb(
         comm.Bcast(shape)
         shape = shape.numpy()
         shape[0] = 0  # empty dimension
-        data = np.empty(shape, dtype=np.float32)
+        data = np.empty(shape, dtype=dtype)
 
     split = ht.sanitize_axis(shape[1:], split)
     if split is not None:  # account for added empty dimension
         split = split + 1
-    return (
-        ht.array(data, dtype=ht.float32, is_split=0, comm=comm).resplit_(split).squeeze(0)
-    )  # reduce by empty dimension and split data
+    try:
+        return (
+            ht.array(data, is_split=0, comm=comm).resplit_(split).squeeze(0)
+        )  # reduce by empty dimension and split data
+    except ValueError:  # If byteorder is non native because HeAt needs native byteorder
+        data = data.astype(data.dtype.newbyteorder("="))
+        return (
+            ht.array(data, is_split=0, comm=comm).resplit_(split).squeeze(0)
+        )  # reduce by empty dimension and split data
 
 
 def read_nc4(dict, dir=".", split=None):
