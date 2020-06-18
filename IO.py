@@ -128,8 +128,8 @@ def read_pfb(filename, dtype=">f8", split=None, comm=ht.MPI_WORLD):
             meta_inf = np.fromfile(f, dtype=">i4", count=1)
             nsubgrid = meta_inf[0]
 
-            # data = np.ndarray(shape=(nz, ny, nx), dtype='>f8')
-            data = np.ndarray(shape=(nz, ny, nx), dtype=dtype)
+            data = np.ndarray(shape=(nz, ny, nx), dtype='>f8')
+            #data = np.ndarray(shape=(nz, ny, nx), dtype=dtype)
 
             for s in range(nsubgrid):
                 meta_inf = np.fromfile(f, dtype=">i4", count=9)
@@ -150,7 +150,7 @@ def read_pfb(filename, dtype=">f8", split=None, comm=ht.MPI_WORLD):
                 # print("---{0} Offsets (X,Y,Z):".format(s+1), rx, ry, rz)
 
                 data[iz : iz + nz, iy : iy + ny, ix : ix + nx] = np.fromfile(
-                    f, dtype=dtype, count=nn
+                    f, dtype=">f8", count=nn
                 ).reshape((nz, ny, nx))
 
             data = data[None, :]  # expand by empty dimension
@@ -172,13 +172,13 @@ def read_pfb(filename, dtype=">f8", split=None, comm=ht.MPI_WORLD):
     split = ht.sanitize_axis(shape[1:], split)
     if split is not None:  # account for added empty dimension
         split = split + 1
-    try:
-        return (
-            ht.array(data, is_split=0, comm=comm).resplit_(split).squeeze(0)
-        )  # reduce by empty dimension and split data
-    except ValueError:  # If byteorder is non native because HeAt needs native byteorder
-        data = data.astype(data.dtype.newbyteorder("="))
-        return (
+#    try:
+#    return (
+#            ht.array(data, is_split=0, comm=comm).resplit_(split).squeeze(0)
+#        )  # reduce by empty dimension and split data
+#    except ValueError:  # If byteorder is non native because HeAt needs native byteorder
+    data = data.astype(data.dtype.newbyteorder("="))
+    return (
             ht.array(data, is_split=0, comm=comm).resplit_(split).squeeze(0)
         )  # reduce by empty dimension and split data
 

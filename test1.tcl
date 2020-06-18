@@ -143,7 +143,7 @@ pfset TimeStep.Value                    1.0
 pfset Geom.Porosity.GeomNames          background
 
 pfset Geom.background.Porosity.Type    Constant
-pfset Geom.background.Porosity.Value   1.0
+pfset Geom.background.Porosity.Value   0.5
 
 #-----------------------------------------------------------------------------
 # Domain

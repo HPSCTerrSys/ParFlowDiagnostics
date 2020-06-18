@@ -36,9 +36,10 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
     def SubsurfaceStorage(self,Press,Satur):
         shape3D = (self.Nz, self.Ny, self.Nx)
-        subsurface_storage = ht.zeros(shape3D, split=self.Split)
+        subsurface_storage = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
         for k in range(self.Nz):
             subsurface_storage = Satur * self.Poro *  self.Dx * self.Dy * self.Dz * self.Dzmult[k]
+            #print(self.Poro)
             subsurface_storage += Press * self.Sstorage * Satur * self.Dx * self.Dy * self.Dz * self.Dzmult[k]
         return(subsurface_storage)
 
@@ -48,19 +49,16 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         volumetric_moisture = Satur * self.Poro
         return(volumetric_moisture)
 
-    def Toplayer(self):
-        shape1D   = (self.Ny*self.Nx)
-        Topvector = ht.zeros(shape1D,split=self.Split)
-        shape2D   = (self.Ny, self.Nx)
-        Toplayer  = ht.full(shape2D,0,split=self.Split)
+    def TopLayerPressure(self,Press):
+        shape2D        = (self.Ny, self.Nx)
+        Toplayerpress  = ht.full(shape2D,99999.0,split=self.Split)
         check     = ht.full(shape2D,-1,split=self.Split)
         for k in reversed(range(self.Nz)):
-            Toplayer[:,:] = ht.where((self.Mask[k,:,:]>0.0) & (check<0) , k, Toplayer)
-            check = ht.where(Toplayer>0, 0, check)
-        #Topvector = Toplayer.flatten()
-        return(Toplayer)
+            Toplayerpress[:,:] = ht.where((self.Mask[k,:,:]>0.0) & (check<0), Press[k,:,:], Toplayerpress)
+            check = ht.where(Toplayerpress!=99999.0, 0, check)
+        return(Toplayerpress)
 
-    def OverlandFlow(self,Press,Top_vector):
+    def OverlandFlow(self,Toplayerpress):
         shape2D = (self.Ny,self.Nx)
         dirx = ht.full(shape2D,-1.0,split=self.Split)
         diry = ht.full(shape2D,-1.0,split=self.Split)
@@ -68,21 +66,13 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         dirx = ht.where(self.Slopex>0.0, 1.0, dirx)
         diry = ht.where(self.Slopey>0.0, 1.0, diry)
 
-        #We need to pick the pressure of the top cell/layer
-        #Don't know how to do that with the top_vector therefore...
-        press = ht.zeros(shape2D,split=self.Split)
-        check = ht.full(shape2D,-1.0,split=self.Split)
-        for k in reversed(range(self.Nz)):
-            press[:,:] = ht.where((self.Mask[k,:,:]>0.0) & (check<0.0) , Press[k,:,:], press)
-            check[:,:] = ht.where(press!=0.0, 0.0, check)
-
         #We need only the positive pressure values and set the rest to zero, which results in zero overland flow
-        press = ht.where(press>0.0, press, 0.0)
+        Toplayerpress = ht.where(Toplayerpress>0.0, Toplayerpress, 0.0)
 
         flowx=ht.zeros(shape2D,split=self.Split)
         flowy=ht.zeros(shape2D,split=self.Split)
-        flowx[:,:] = dirx * (ht.absolute(self.Slopex[0,:,:]))**(1/2)/self.Mannings[0,:,:] * press**(5/3)
-        flowy[:,:] = diry * (ht.absolute(self.Slopey[0,:,:]))**(1/2)/self.Mannings[0,:,:] * press**(5/3)
+        flowx[:,:] = dirx * (ht.absolute(self.Slopex[0,:,:]))**(1/2)/self.Mannings[0,:,:] * Toplayerpress**(5/3)
+        flowy[:,:] = diry * (ht.absolute(self.Slopey[0,:,:]))**(1/2)/self.Mannings[0,:,:] * Toplayerpress**(5/3)
 
         return(flowx, flowy)
 
@@ -126,42 +116,45 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
     def SubsurfaceFlow(self,Press,Krel):
         shape3D     = (self.Nz,self.Ny,self.Nx)
-        Kmean=ht.full(shape3D,1.0,split=self.Split)
+        Kmean=ht.full(shape3D,1.0,dtype=ht.float64,split=self.Split)
         
         #Calculate the flux across the right and left face
-        grad      = ht.zeros(shape3D,split=self.Split)
-        flowright = ht.zeros(shape3D,split=self.Split)
-        flowleft  = ht.zeros(shape3D,split=self.Split)
+        grad      = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
+        flowright = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
+        flowleft  = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
         for i in range(self.Nx-1):
             #Right and left face
             grad[:,:,i] = (Press[:,:,i+1] - Press[:,:,i])/self.Dx
             Kmean[:,:,i]= 2./(1.0/self.Perm[:,:,i] + 1.0/self.Perm[:,:,i+1])
-            flowright[:,:,i] = ( (-1) *  Kmean[:,:,i] * ht.where(grad[:,:,i]>0.0,Krel[:,:,i+1],Krel[:,:,i]) * grad[:,:,i] )
+            flowright[:,:,i] = ( ht.float(-1.0) *  Kmean[:,:,i] * ht.where(grad[:,:,i]>0.0,Krel[:,:,i+1],Krel[:,:,i]) * grad[:,:,i] )
+            flowright[:,:,i] = flowright[:,:,i] * self.Mask[:,:,i]
             flowleft[:,:,i+1] = flowright[:,:,i]
         for k in range(self.Nz):
             flowright[k,:,:] = self.Dy * self.Dz * self.Dzmult[k] * flowright[k,:,:]
             flowleft[k,:,:]  = self.Dy * self.Dz * self.Dzmult[k] * flowleft[k,:,:]
 
-        flowback = ht.zeros(shape3D,split=self.Split)
-        flowfront  = ht.zeros(shape3D,split=self.Split)
+        flowback = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
+        flowfront  = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
         for j in range(self.Ny-1):
             #Back and front face
             grad[:,j,:] = (Press[:,j+1,:] - Press[:,j,:])/self.Dy 
             Kmean[:,j,:]= 2./(1.0/self.Perm[:,j,:] + 1.0/self.Perm[:,j+1,:])
-            flowback[:,j,:] = ( (-1) *  Kmean[:,j,:] * ht.where(grad[:,j,:]>0.0,Krel[:,j+1,:],Krel[:,j,:]) * grad[:,j,:] )
+            flowback[:,j,:] = ( ht.float64(-1.0) *  Kmean[:,j,:] * ht.where(grad[:,j,:]>0.0,Krel[:,j+1,:],Krel[:,j,:]) * grad[:,j,:] )
+            flowback[:,j,:] = flowback[:,j,:] * self.Mask[:,j,:]
             flowfront[:,j+1,:] = flowback[:,j,:]
         for k in range(self.Nz):
             flowback[k,:,:] = self.Dx * self.Dz * self.Dzmult[k] * flowback[k,:,:]
             flowfront[k,:,:]  = self.Dx * self.Dz * self.Dzmult[k] * flowfront[k,:,:]
 
-        flowtop = ht.zeros(shape3D,split=self.Split)
-        flowbottom  = ht.zeros(shape3D,split=self.Split)
+        flowtop = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
+        flowbottom  = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
         for k in range(self.Nz-1):
             #Top and bottom face
             grad[k,:,:] = (Press[k+1,:,:] - Press[k,:,:])/(self.Dz * (self.Dzmult[k]/2.0 + self.Dzmult[k+1]/2.0)) + 1.0
             Kmean[k,:,:]= ( (self.Dz * (self.Dzmult[k]+self.Dzmult[k+1])) / 
                             (self.Dz*self.Dzmult[k]/self.Perm[k,:,:] + self.Dz*self.Dzmult[k+1]/self.Perm[k+1,:,:]) )
-            flowtop[k,:,:] = ( (-1) *  Kmean[k,:,:] * ht.where(grad[k,:,:]>0.0,Krel[k+1,:,:],Krel[k,:,:]) * grad[k,:,:] )
+            flowtop[k,:,:] = ( ht.float64(-1.0) *  Kmean[k,:,:] * ht.where(grad[k,:,:]>0.0,Krel[k+1,:,:],Krel[k,:,:]) * grad[k,:,:] )
+            flowtop[k,:,:] = flowtop[k,:,:] * self.Mask[k,:,:]
             flowbottom[k+1,:,:] = flowtop[k,:,:]
         flowtop = self.Dx * self.Dy * flowtop
         flowbottom = self.Dx * self.Dy * flowbottom
