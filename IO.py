@@ -79,20 +79,22 @@ def read_packed(f, fmt, size):
     return unpack(fmt, f.read(size))
 
 
-def read_pfb(filename, dtype=">f8", split=None, comm=ht.MPI_WORLD):
+def read_pfb(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):
     """Reads .pfb file into a dndarray. Reading is only done by the
     root process and the data gets distributed afterwards.
+    If needed, the byteorder is changed to correspond to the system-native.
 
     Parameters
     ----------
     filename : str
         File to read.
-    split : int or None
-        split-Axis of resulting dndarray (the default is None).
-    comm : MPI.Communicator
-        Communicator of resulting dndarray (the default is ht.MPI_WORLD).
     dtype : str or numpy dtype
         Dtype of the data in the pfb file (the default is ">f8").
+    comm : MPI.Communicator
+        Communicator of resulting dndarray (the default is ht.MPI_WORLD).
+    split : int or None
+        split-Axis of resulting dndarray (the default is None).
+
 
     Returns
     -------
@@ -128,8 +130,8 @@ def read_pfb(filename, dtype=">f8", split=None, comm=ht.MPI_WORLD):
             meta_inf = np.fromfile(f, dtype=">i4", count=1)
             nsubgrid = meta_inf[0]
 
-            data = np.ndarray(shape=(nz, ny, nx), dtype='>f8')
-            #data = np.ndarray(shape=(nz, ny, nx), dtype=dtype)
+            # data = np.ndarray(shape=(nz, ny, nx), dtype='>f8')
+            data = np.ndarray(shape=(nz, ny, nx), dtype=dtype)
 
             for s in range(nsubgrid):
                 meta_inf = np.fromfile(f, dtype=">i4", count=9)
@@ -150,7 +152,7 @@ def read_pfb(filename, dtype=">f8", split=None, comm=ht.MPI_WORLD):
                 # print("---{0} Offsets (X,Y,Z):".format(s+1), rx, ry, rz)
 
                 data[iz : iz + nz, iy : iy + ny, ix : ix + nx] = np.fromfile(
-                    f, dtype=">f8", count=nn
+                    f, dtype=dtype, count=nn
                 ).reshape((nz, ny, nx))
 
             data = data[None, :]  # expand by empty dimension
@@ -172,13 +174,14 @@ def read_pfb(filename, dtype=">f8", split=None, comm=ht.MPI_WORLD):
     split = ht.sanitize_axis(shape[1:], split)
     if split is not None:  # account for added empty dimension
         split = split + 1
-#    try:
-#    return (
-#            ht.array(data, is_split=0, comm=comm).resplit_(split).squeeze(0)
-#        )  # reduce by empty dimension and split data
-#    except ValueError:  # If byteorder is non native because HeAt needs native byteorder
-    data = data.astype(data.dtype.newbyteorder("="))
-    return (
+    try:
+        return (
+            ht.array(data, is_split=0, comm=comm).resplit_(split).squeeze(0)
+        )  # reduce by empty dimension and split data
+    except ValueError:  # If byteorder is non native because HeAt needs native byteorder
+        print("changing byteorder, this should not affect performance or data values")
+        data = data.astype(data.dtype.newbyteorder("="))
+        return (
             ht.array(data, is_split=0, comm=comm).resplit_(split).squeeze(0)
         )  # reduce by empty dimension and split data
 

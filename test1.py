@@ -2,13 +2,17 @@ import heat as ht
 import numpy as np
 import sys
 import os
-from Diagnostics import Diagnostics 
+from Diagnostics import Diagnostics
 import IO as io
 
 #Run ParFlow test case
 #Export ParFlow install directory; needs to be changed by the user
 #e.g. export PARFLOW_DIR=/home/s.kollet/restore/migrated/Programs/parflow/
 #Oddly this can not be done with os.system
+
+# This can be done with os.environ, e.g.:
+# os.environ['PARFLOW_DIR'] = '/home/b.bourgart/parflow/install'
+
 cmd='tclsh test1.tcl'
 os.system(cmd)
 cmd='$PARFLOW_DIR/bin/parflow testOne'
@@ -18,10 +22,10 @@ os.system(cmd)
 split=None
 name = 'testOne'
 #Read static information
-saturPF  = io.read_pfb(name + '.out.satur.00000.pfb',split)
-sstorage = io.read_pfb(name + '.out.specific_storage.pfb',split)
-mask     = io.read_pfb(name + '.out.mask.pfb',split)
-poro     = io.read_pfb(name + '.out.porosity.pfb',split)
+saturPF  = io.read_pfb(name + '.out.satur.00000.pfb', split=split)
+sstorage = io.read_pfb(name + '.out.specific_storage.pfb', split=split)
+mask     = io.read_pfb(name + '.out.mask.pfb', split=split)
+poro     = io.read_pfb(name + '.out.porosity.pfb', split=split)
 mannings = None
 slopex   = None
 slopey   = None
@@ -69,7 +73,7 @@ for t in range (nt):
     flowleft,flowright,flowfront,flowback,flowbottom,flowtop = diag.SubsurfaceFlow(press,krel)
 
     #Column balance
-    if t > 0: 
+    if t > 0:
       column_balance  = ht.zeros(shape2D,dtype=ht.float64,split=split)
       #Change in storage for each column
       column_balance  = (ht.sum(subsurface_storage_old - subsurface_storage,axis=0))
