@@ -72,27 +72,27 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
     def NetLateralOverlandFlow(self, overland_flow_x, overland_flow_y):
         shape2D = (self.Ny, self.Nx)
         # pfmax(qx_[io], 0.0)
-        overland_flow_x = overland_flow_x.clip(a_min=0.0)
-        overland_flow_y = overland_flow_y.clip(a_min=0.0)
+        overland_flow_x = ht.float64(overland_flow_x.clip(a_min=0.0))
+        overland_flow_y = ht.float64(overland_flow_y.clip(a_min=0.0))
 
         #Calc flow east
         #ParFlow:ke_[io] = pfmax(qx_[io], 0.0) - pfmax(-qx_[io + 1], 0.0);
-        flow_east = ht.zeros(shape2D, split=self.Split)
+        flow_east = ht.zeros(shape2D, dtype=ht.float64, split=self.Split)
         flow_east[:, :-1] = -1 * ht.diff(overland_flow_x, axis=1)  # alternative: overland_flow_x[:, :-1] - overland_flow_x[:, 1:]
 
         #Calc flow west
         #ParFlow:kw_[io] = pfmax(qx_[io - 1], 0.0) - pfmax(-qx_[io], 0.0);
-        flow_west = ht.zeros(shape2D, split=self.Split)
+        flow_west = ht.zeros(shape2D, dtype=ht.float64, split=self.Split)
         flow_west[:, 1:] = ht.diff(overland_flow_x, axis=1)
 
         #Calc flow north
         #ParFlow:kn_[io] = pfmax(qy_[io], 0.0) - pfmax(-qy_[io + sy_p], 0.0);
-        flow_north = ht.zeros(shape2D, split=self.Split)
+        flow_north = ht.zeros(shape2D, dtype=ht.float64, split=self.Split)
         flow_north[:-1, :] = -1 * ht.diff(overland_flow_y, axis=0)
 
         #Calc flow south
         #ParFlow:ks_[io] = pfmax(qy_[io - sy_p], 0.0) - pfmax(-qy_[io], 0.0);
-        flow_south = ht.zeros(shape2D, split=self.Split)
+        flow_south = ht.zeros(shape2D, dtype=ht.float64, split=self.Split)
         flow_south[1:, :] = ht.diff(overland_flow_y, axis=0)
 
         #Calc net lateral overland flow for each grid cell, (L/T)
@@ -105,6 +105,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         shape3D = (self.Nz,self.Ny,self.Nx)
         Dzmult3D = ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
         inv_perm = 1.0 / ht.float64(self.Perm)
+        Press = ht.float64(Press)
         # Kmean=ht.full(shape3D,1.0,dtype=ht.float64,split=self.Split)
 
         #Calculate the flux across the right and left face
