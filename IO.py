@@ -132,6 +132,7 @@ def read_pfb(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):
 
             # data = np.ndarray(shape=(nz, ny, nx), dtype='>f8')
             data = np.ndarray(shape=(nz, ny, nx), dtype=dtype)
+            data.dtype = data.dtype.newbyteorder("=")
 
             for s in range(nsubgrid):
                 meta_inf = np.fromfile(f, dtype=">i4", count=9)
