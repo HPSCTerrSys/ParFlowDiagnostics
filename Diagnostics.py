@@ -78,22 +78,22 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #Calc flow east
         #ParFlow:ke_[io] = pfmax(qx_[io], 0.0) - pfmax(-qx_[io + 1], 0.0);
         flow_east = ht.zeros(shape2D, split=self.Split)
-        flow_east[:, :-1] = -1 * overland_flow_x.diff(axis=1)  # alternative: overland_flow_x[:, :-1] - overland_flow_x[:, 1:]
+        flow_east[:, :-1] = -1 * ht.diff(overland_flow_x, axis=1)  # alternative: overland_flow_x[:, :-1] - overland_flow_x[:, 1:]
 
         #Calc flow west
         #ParFlow:kw_[io] = pfmax(qx_[io - 1], 0.0) - pfmax(-qx_[io], 0.0);
         flow_west = ht.zeros(shape2D, split=self.Split)
-        flow_west[:, 1:] = overland_flow_x.diff(axis=1)
+        flow_west[:, 1:] = ht.diff(overland_flow_x, axis=1)
 
         #Calc flow north
         #ParFlow:kn_[io] = pfmax(qy_[io], 0.0) - pfmax(-qy_[io + sy_p], 0.0);
         flow_north = ht.zeros(shape2D, split=self.Split)
-        flow_north[:-1, :] = -1 * overland_flow_y.diff(axis=0)
+        flow_north[:-1, :] = -1 * ht.diff(overland_flow_y, axis=0)
 
         #Calc flow south
         #ParFlow:ks_[io] = pfmax(qy_[io - sy_p], 0.0) - pfmax(-qy_[io], 0.0);
         flow_south = ht.zeros(shape2D, split=self.Split)
-        flow_south[1:, :] = overland_flow_y.diff(axis=0)
+        flow_south[1:, :] = ht.diff(overland_flow_y, axis=0)
 
         #Calc net lateral overland flow for each grid cell, (L/T)
         #ParFlow: ((ke_[io] - kw_[io]) / dx + (kn_[io] - ks_[io]) / dy
@@ -103,8 +103,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
     def SubsurfaceFlow(self, Press, Krel):
         shape3D = (self.Nz,self.Ny,self.Nx)
-        Dzmult3D = ht.array(self.Dzmult).expand_dims(axis=-1).expand_dims(axis=-1)
-        inv_perm = 1.0 / self.Perm
+        Dzmult3D = ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
+        inv_perm = 1.0 / ht.float64(self.Perm)
         # Kmean=ht.full(shape3D,1.0,dtype=ht.float64,split=self.Split)
 
         #Calculate the flux across the right and left face
@@ -113,9 +113,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flowleft  = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
 
         Kmean = 2. / (inv_perm[:, :, :-1] + inv_perm[:, :, 1:])
-        grad = Press.diff(axis=2)/self.Dx
+        grad = ht.diff(Press, axis=2)/self.Dx
 
-        flowright[:, :, :-1] = - Kmean * grad * ht.where(grad > 0.0, Krel[:, :, 1:], Krel[:, :, :-1]) * self.Mask[:, :, :-1]
+        flowright[:, :, :-1] = -1 * Kmean * grad * ht.where(grad > 0.0, Krel[:, :, 1:], Krel[:, :, :-1]) * self.Mask[:, :, :-1]
         flowleft[:,:,1:] = flowright[:,:,:-1]
 
         flowright *= self.Dy * self.Dz * Dzmult3D
@@ -126,9 +126,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flowfront = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
 
         Kmean = 2. / (inv_perm[:, :-1, :] + inv_perm[:, 1:, :])
-        grad = Press.diff(axis=1)/self.Dy
+        grad = ht.diff(Press, axis=1)/self.Dy
 
-        flowback[:, :-1, :] = - Kmean * grad * ht.where(grad > 0.0, Krel[:, 1:, :], Krel[:, :-1, :]) * self.Mask[:, :-1, :]
+        flowback[:, :-1, :] = -1 * Kmean * grad * ht.where(grad > 0.0, Krel[:, 1:, :], Krel[:, :-1, :]) * self.Mask[:, :-1, :]
         flowfront[:, 1:, :] = flowback[:, :-1, :]
 
         flowright *= self.Dx * self.Dz * Dzmult3D
@@ -140,9 +140,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         Kmean = ( (Dzmult3D[:-1] + Dzmult3D[1:]) /
                   (Dzmult3D[:-1]/self.Perm[:-1] + Dzmult3D[1:]/self.Perm[1:]) )
-        grad = 1. + Press.diff(axis=0) * 2. / (self.Dz * (Dzmult3D[:-1] + Dzmult3D[1:]))
+        grad = 1. + ht.diff(Press, axis=0) * 2. / (self.Dz * (Dzmult3D[:-1] + Dzmult3D[1:]))
 
-        flowtop[:-1, :, :] = - Kmean * grad * ht.where(grad > 0.0, Krel[1:, :, :], Krel[:-1, :, :]) * self.Mask[:-1, :, :]
+        flowtop[:-1, :, :] = -1 * Kmean * grad * ht.where(grad > 0.0, Krel[1:, :, :], Krel[:-1, :, :]) * self.Mask[:-1, :, :]
         flowbottom[1:, :, :] = flowback[:-1, :, :]
 
         flowtop *= self.Dx * self.Dy
