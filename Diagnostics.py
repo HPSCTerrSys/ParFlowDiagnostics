@@ -34,79 +34,66 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         self.Nz         = Nz
         self.Split      = Split
 
-    def SubsurfaceStorage(self,Press,Satur):
+    def SubsurfaceStorage(self, Press, Satur):
         shape3D = (self.Nz, self.Ny, self.Nx)
-        subsurface_storage = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
+        subsurface_storage = ht.zeros(shape3D, dtype=ht.float64, split=self.Split)
         for k in range(self.Nz):
-            subsurface_storage = Satur * self.Poro *  self.Dx * self.Dy * self.Dz * self.Dzmult[k]
+            subsurface_storage = Satur * self.Poro * self.Dx * self.Dy * self.Dz * self.Dzmult[k]  # subsurface_storage is overwritten in every iteration
             #print(self.Poro)
             subsurface_storage += Press * self.Sstorage * Satur * self.Dx * self.Dy * self.Dz * self.Dzmult[k]
         return(subsurface_storage)
 
-    def VolumetricMoisture(self,Satur):
-        shape3D = (self.Nz, self.Ny, self.Nx)
-        volumetric_moisture = ht.zeros(shape3D, split=self.Split)
+    def VolumetricMoisture(self, Satur):
         volumetric_moisture = Satur * self.Poro
         return(volumetric_moisture)
 
-    def TopLayerPressure(self,Press):
-        shape2D        = (self.Ny, self.Nx)
-        Toplayerpress  = ht.full(shape2D,99999.0,split=self.Split)
-        check     = ht.full(shape2D,-1,split=self.Split)
+    def TopLayerPressure(self, Press):
+        shape2D = (self.Ny, self.Nx)
+        fill_val = 99999.0
+        Toplayerpress = ht.full(shape2D, fill_val, split=self.Split)
+        check = ht.full(shape2D, -1, split=self.Split)
         for k in reversed(range(self.Nz)):
             Toplayerpress[:,:] = ht.where((self.Mask[k,:,:]>0.0) & (check<0), Press[k,:,:], Toplayerpress)
-            check = ht.where(Toplayerpress!=99999.0, 0, check)
+            check = ht.where(Toplayerpress != fill_val, 0, check) # alternative: check[Toplayerpress != fill_val] = 0
         return(Toplayerpress)
 
     def OverlandFlow(self,Toplayerpress):
-        shape2D = (self.Ny,self.Nx)
-        dirx = ht.full(shape2D,-1.0,split=self.Split)
-        diry = ht.full(shape2D,-1.0,split=self.Split)
-
-        dirx = ht.where(self.Slopex>0.0, 1.0, dirx)
-        diry = ht.where(self.Slopey>0.0, 1.0, diry)
+        dirx = ht.where(self.Slopex > 0.0, 1.0, -1.0)  # alternative: 2*ht.float32(ht.bool(self.Slopex)) -1
+        diry = ht.where(self.Slopey > 0.0, 1.0, -1.0)
 
         #We need only the positive pressure values and set the rest to zero, which results in zero overland flow
-        Toplayerpress = ht.where(Toplayerpress>0.0, Toplayerpress, 0.0)
+        Toplayerpress = Toplayerpress.clip(a_min=0.0)
 
-        flowx=ht.zeros(shape2D,split=self.Split)
-        flowy=ht.zeros(shape2D,split=self.Split)
-        flowx[:,:] = dirx * (ht.absolute(self.Slopex[0,:,:]))**(1/2)/self.Mannings[0,:,:] * Toplayerpress**(5/3)
-        flowy[:,:] = diry * (ht.absolute(self.Slopey[0,:,:]))**(1/2)/self.Mannings[0,:,:] * Toplayerpress**(5/3)
+        flowx = dirx * (ht.absolute(self.Slopex[0,:,:]))**(1/2)/self.Mannings[0,:,:] * Toplayerpress**(5/3)
+        flowy = diry * (ht.absolute(self.Slopey[0,:,:]))**(1/2)/self.Mannings[0,:,:] * Toplayerpress**(5/3)
 
         return(flowx, flowy)
 
-    def NetLateralOverlandFlow(self,overland_flow_x,overland_flow_y):
+    def NetLateralOverlandFlow(self, overland_flow_x, overland_flow_y):
         shape2D = (self.Ny, self.Nx)
-        Nix = ht.zeros(shape2D, split=self.Split)
+        # pfmax(qx_[io], 0.0)
+        overland_flow_x = ht.float64(overland_flow_x.clip(a_min=0.0))
+        overland_flow_y = ht.float64(overland_flow_y.clip(a_min=0.0))
 
         #Calc flow east
         #ParFlow:ke_[io] = pfmax(qx_[io], 0.0) - pfmax(-qx_[io + 1], 0.0);
-        flow_east = ht.zeros(shape2D, split=self.Split)
-        for i in range (self.Nx-1):
-            flow_east[:,i]  = ht.maximum(overland_flow_x[:,i], Nix[:,i])
-            flow_east[:,i] -= ht.maximum((-1)*overland_flow_x[:,i+1], Nix[:,i+1])
+        flow_east = ht.zeros(shape2D, dtype=ht.float64, split=self.Split)
+        flow_east[:, :-1] = -1 * ht.diff(overland_flow_x, axis=1)  # alternative: overland_flow_x[:, :-1] - overland_flow_x[:, 1:]
 
         #Calc flow west
         #ParFlow:kw_[io] = pfmax(qx_[io - 1], 0.0) - pfmax(-qx_[io], 0.0);
-        flow_west = ht.zeros(shape2D, split=self.Split)
-        for i in range (1,self.Nx):
-            flow_west[:,i]  = ht.maximum(overland_flow_x[:,i-1], Nix[:,i-1])
-            flow_west[:,i] -= ht.maximum((-1)*overland_flow_x[:,i], Nix[:,i])
+        flow_west = ht.zeros(shape2D, dtype=ht.float64, split=self.Split)
+        flow_west[:, 1:] = ht.diff(overland_flow_x, axis=1)
 
         #Calc flow north
         #ParFlow:kn_[io] = pfmax(qy_[io], 0.0) - pfmax(-qy_[io + sy_p], 0.0);
-        flow_north = ht.zeros(shape2D, split=self.Split)
-        for j in range (self.Ny-1):
-            flow_north[j,:]  = ht.maximum(overland_flow_y[j,:], Nix[j,:])
-            flow_north[j,:] -= ht.maximum((-1)*overland_flow_y[j+1,:], Nix[j+1,:])
+        flow_north = ht.zeros(shape2D, dtype=ht.float64, split=self.Split)
+        flow_north[:-1, :] = -1 * ht.diff(overland_flow_y, axis=0)
 
         #Calc flow south
         #ParFlow:ks_[io] = pfmax(qy_[io - sy_p], 0.0) - pfmax(-qy_[io], 0.0);
-        flow_south = ht.zeros(shape2D, split=self.Split)
-        for i in range (1,self.Ny):
-            flow_south[j,:]  = ht.maximum(overland_flow_x[j-1,:], Nix[j-1,:])
-            flow_south[j,:] -= ht.maximum((-1)*overland_flow_x[j,:], Nix[j,:])
+        flow_south = ht.zeros(shape2D, dtype=ht.float64, split=self.Split)
+        flow_south[1:, :] = ht.diff(overland_flow_y, axis=0)
 
         #Calc net lateral overland flow for each grid cell, (L/T)
         #ParFlow: ((ke_[io] - kw_[io]) / dx + (kn_[io] - ks_[io]) / dy
@@ -114,50 +101,53 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         return(net_lateral_overlandflow)
 
-    def SubsurfaceFlow(self,Press,Krel):
-        shape3D     = (self.Nz,self.Ny,self.Nx)
-        Kmean=ht.full(shape3D,1.0,dtype=ht.float64,split=self.Split)
-        
+    def SubsurfaceFlow(self, Press, Krel):
+        shape3D = (self.Nz,self.Ny,self.Nx)
+        Dzmult3D = ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
+        inv_perm = 1.0 / ht.float64(self.Perm)
+        Press = ht.float64(Press)
+        # Kmean=ht.full(shape3D,1.0,dtype=ht.float64,split=self.Split)
+
         #Calculate the flux across the right and left face
-        grad      = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
+        # Left and Right
         flowright = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
         flowleft  = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
-        for i in range(self.Nx-1):
-            #Right and left face
-            grad[:,:,i] = (Press[:,:,i+1] - Press[:,:,i])/self.Dx
-            Kmean[:,:,i]= 2./(1.0/self.Perm[:,:,i] + 1.0/self.Perm[:,:,i+1])
-            flowright[:,:,i] = ( ht.float(-1.0) *  Kmean[:,:,i] * ht.where(grad[:,:,i]>0.0,Krel[:,:,i+1],Krel[:,:,i]) * grad[:,:,i] )
-            flowright[:,:,i] = flowright[:,:,i] * self.Mask[:,:,i]
-            flowleft[:,:,i+1] = flowright[:,:,i]
-        for k in range(self.Nz):
-            flowright[k,:,:] = self.Dy * self.Dz * self.Dzmult[k] * flowright[k,:,:]
-            flowleft[k,:,:]  = self.Dy * self.Dz * self.Dzmult[k] * flowleft[k,:,:]
 
+        Kmean = 2. / (inv_perm[:, :, :-1] + inv_perm[:, :, 1:])
+        grad = ht.diff(Press, axis=2)/self.Dx
+
+        flowright[:, :, :-1] = -1 * Kmean * grad * ht.where(grad > 0.0, Krel[:, :, 1:], Krel[:, :, :-1]) * self.Mask[:, :, :-1]
+        flowleft[:,:,1:] = flowright[:,:,:-1]
+
+        flowright *= self.Dy * self.Dz * Dzmult3D
+        flowleft  *= self.Dy * self.Dz * Dzmult3D  # save this by setting flowleft after multiplication
+
+        # Front and Back
         flowback = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
-        flowfront  = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
-        for j in range(self.Ny-1):
-            #Back and front face
-            grad[:,j,:] = (Press[:,j+1,:] - Press[:,j,:])/self.Dy 
-            Kmean[:,j,:]= 2./(1.0/self.Perm[:,j,:] + 1.0/self.Perm[:,j+1,:])
-            flowback[:,j,:] = ( ht.float64(-1.0) *  Kmean[:,j,:] * ht.where(grad[:,j,:]>0.0,Krel[:,j+1,:],Krel[:,j,:]) * grad[:,j,:] )
-            flowback[:,j,:] = flowback[:,j,:] * self.Mask[:,j,:]
-            flowfront[:,j+1,:] = flowback[:,j,:]
-        for k in range(self.Nz):
-            flowback[k,:,:] = self.Dx * self.Dz * self.Dzmult[k] * flowback[k,:,:]
-            flowfront[k,:,:]  = self.Dx * self.Dz * self.Dzmult[k] * flowfront[k,:,:]
+        flowfront = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
 
+        Kmean = 2. / (inv_perm[:, :-1, :] + inv_perm[:, 1:, :])
+        grad = ht.diff(Press, axis=1)/self.Dy
+
+        flowback[:, :-1, :] = -1 * Kmean * grad * ht.where(grad > 0.0, Krel[:, 1:, :], Krel[:, :-1, :]) * self.Mask[:, :-1, :]
+        flowfront[:, 1:, :] = flowback[:, :-1, :]
+
+        flowright *= self.Dx * self.Dz * Dzmult3D
+        flowleft  *= self.Dx * self.Dz * Dzmult3D
+
+        #  Top and Bottom
         flowtop = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
-        flowbottom  = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
-        for k in range(self.Nz-1):
-            #Top and bottom face
-            grad[k,:,:] = (Press[k+1,:,:] - Press[k,:,:])/(self.Dz * (self.Dzmult[k]/2.0 + self.Dzmult[k+1]/2.0)) + 1.0
-            Kmean[k,:,:]= ( (self.Dz * (self.Dzmult[k]+self.Dzmult[k+1])) / 
-                            (self.Dz*self.Dzmult[k]/self.Perm[k,:,:] + self.Dz*self.Dzmult[k+1]/self.Perm[k+1,:,:]) )
-            flowtop[k,:,:] = ( ht.float64(-1.0) *  Kmean[k,:,:] * ht.where(grad[k,:,:]>0.0,Krel[k+1,:,:],Krel[k,:,:]) * grad[k,:,:] )
-            flowtop[k,:,:] = flowtop[k,:,:] * self.Mask[k,:,:]
-            flowbottom[k+1,:,:] = flowtop[k,:,:]
-        flowtop = self.Dx * self.Dy * flowtop
-        flowbottom = self.Dx * self.Dy * flowbottom
+        flowbottom = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
+
+        Kmean = ( (Dzmult3D[:-1] + Dzmult3D[1:]) /
+                  (Dzmult3D[:-1]/self.Perm[:-1] + Dzmult3D[1:]/self.Perm[1:]) )
+        grad = 1. + ht.diff(Press, axis=0) * 2. / (self.Dz * (Dzmult3D[:-1] + Dzmult3D[1:]))
+
+        flowtop[:-1, :, :] = -1 * Kmean * grad * ht.where(grad > 0.0, Krel[1:, :, :], Krel[:-1, :, :]) * self.Mask[:-1, :, :]
+        flowbottom[1:, :, :] = flowback[:-1, :, :]
+
+        flowtop *= self.Dx * self.Dy
+        flowbottom *= self.Dx * self.Dy
 
         return(flowleft,flowright,flowfront,flowback,flowbottom,flowtop)
 
