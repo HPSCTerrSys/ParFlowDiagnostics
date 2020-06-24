@@ -320,17 +320,6 @@ pfset Solver.PrintMask                                  True
 pfset Solver.PrintSlopes                                True
 pfset Solver.PrintMannings                              True
  
-pfset Solver.WriteSiloSubsurfData True
-pfset Solver.WriteSiloPressure True
-pfset Solver.WriteSiloSaturation True
-
-pfset Solver.WriteSiloSlopes                            True
-pfset Solver.WriteSiloMask                              True
-pfset Solver.WriteSiloEvapTrans                         True
-pfset Solver.WriteSiloEvapTransSum                      True
-pfset Solver.WriteSiloOverlandSum                       True
-pfset Solver.WriteSiloMannings                          True
-pfset Solver.WriteSiloSpecificStorage                   True
 #---------------------------------------------------------
 # Initial conditions: water pressure
 #---------------------------------------------------------
@@ -346,4 +335,4 @@ pfset Geom.domain.ICPressure.RefPatch                   z-lower
 #-----------------------------------------------------------------------------
 # Run and Unload the ParFlow output files
 #-----------------------------------------------------------------------------
-pfrun slab3.1m
+pfwritedb slab3.1m

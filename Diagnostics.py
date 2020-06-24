@@ -38,9 +38,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         shape3D = (self.Nz, self.Ny, self.Nx)
         subsurface_storage = ht.zeros(shape3D, dtype=ht.float64, split=self.Split)
         for k in range(self.Nz):
-            subsurface_storage = Satur * self.Poro * self.Dx * self.Dy * self.Dz * self.Dzmult[k]  # subsurface_storage is overwritten in every iteration
-            #print(self.Poro)
-            subsurface_storage += Press * self.Sstorage * Satur * self.Dx * self.Dy * self.Dz * self.Dzmult[k]
+            subsurface_storage[k,:,:] = Satur[k,:,:] * self.Poro[k,:,:] * self.Dx * self.Dy * self.Dz * self.Dzmult[k] 
+            subsurface_storage[k,:,:] += Press[k,:,:] * self.Sstorage[k,:,:] * Satur[k,:,:] * self.Dx * self.Dy * self.Dz * self.Dzmult[k]
         return(subsurface_storage)
 
     def VolumetricMoisture(self, Satur):
@@ -64,8 +63,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #We need only the positive pressure values and set the rest to zero, which results in zero overland flow
         Toplayerpress = Toplayerpress.clip(a_min=0.0)
 
-        flowx = dirx * (ht.absolute(self.Slopex[0,:,:]))**(1/2)/self.Mannings[0,:,:] * Toplayerpress**(5/3)
-        flowy = diry * (ht.absolute(self.Slopey[0,:,:]))**(1/2)/self.Mannings[0,:,:] * Toplayerpress**(5/3)
+        flowx = dirx * (ht.absolute(self.Slopex[0,:,:]))**(1./2.)/self.Mannings[0,:,:] * Toplayerpress**(5./3.)
+        flowy = diry * (ht.absolute(self.Slopey[0,:,:]))**(1./2.)/self.Mannings[0,:,:] * Toplayerpress**(5./3.)
 
         return(flowx, flowy)
 
@@ -78,7 +77,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #Calc flow east
         #ParFlow:ke_[io] = pfmax(qx_[io], 0.0) - pfmax(-qx_[io + 1], 0.0);
         flow_east = ht.zeros(shape2D, dtype=ht.float64, split=self.Split)
-        flow_east[:, :-1] = -1 * ht.diff(overland_flow_x, axis=1)  # alternative: overland_flow_x[:, :-1] - overland_flow_x[:, 1:]
+        flow_east[:, :-1] = -1. * ht.diff(overland_flow_x, axis=1)  # alternative: overland_flow_x[:, :-1] - overland_flow_x[:, 1:]
 
         #Calc flow west
         #ParFlow:kw_[io] = pfmax(qx_[io - 1], 0.0) - pfmax(-qx_[io], 0.0);
@@ -88,7 +87,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #Calc flow north
         #ParFlow:kn_[io] = pfmax(qy_[io], 0.0) - pfmax(-qy_[io + sy_p], 0.0);
         flow_north = ht.zeros(shape2D, dtype=ht.float64, split=self.Split)
-        flow_north[:-1, :] = -1 * ht.diff(overland_flow_y, axis=0)
+        flow_north[:-1, :] = -1. * ht.diff(overland_flow_y, axis=0)
 
         #Calc flow south
         #ParFlow:ks_[io] = pfmax(qy_[io - sy_p], 0.0) - pfmax(-qy_[io], 0.0);
@@ -104,9 +103,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
     def SubsurfaceFlow(self, Press, Krel):
         shape3D = (self.Nz,self.Ny,self.Nx)
         Dzmult3D = ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
-        inv_perm = 1.0 / ht.float64(self.Perm)
-        Press = ht.float64(Press)
-        # Kmean=ht.full(shape3D,1.0,dtype=ht.float64,split=self.Split)
+        inv_perm = 1.0 / self.Perm
 
         #Calculate the flux across the right and left face
         # Left and Right
@@ -116,7 +113,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         Kmean = 2. / (inv_perm[:, :, :-1] + inv_perm[:, :, 1:])
         grad = ht.diff(Press, axis=2)/self.Dx
 
-        flowright[:, :, :-1] = -1 * Kmean * grad * ht.where(grad > 0.0, Krel[:, :, 1:], Krel[:, :, :-1]) * self.Mask[:, :, :-1]
+        flowright[:, :, :-1] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[:, :, 1:], Krel[:, :, :-1]) * self.Mask[:, :, :-1]
         flowleft[:,:,1:] = flowright[:,:,:-1]
 
         flowright *= self.Dy * self.Dz * Dzmult3D
@@ -129,7 +126,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         Kmean = 2. / (inv_perm[:, :-1, :] + inv_perm[:, 1:, :])
         grad = ht.diff(Press, axis=1)/self.Dy
 
-        flowback[:, :-1, :] = -1 * Kmean * grad * ht.where(grad > 0.0, Krel[:, 1:, :], Krel[:, :-1, :]) * self.Mask[:, :-1, :]
+        flowback[:, :-1, :] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[:, 1:, :], Krel[:, :-1, :]) * self.Mask[:, :-1, :]
         flowfront[:, 1:, :] = flowback[:, :-1, :]
 
         flowright *= self.Dx * self.Dz * Dzmult3D
@@ -140,11 +137,11 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flowbottom = ht.zeros(shape3D,dtype=ht.float64,split=self.Split)
 
         Kmean = ( (Dzmult3D[:-1] + Dzmult3D[1:]) /
-                  (Dzmult3D[:-1]/self.Perm[:-1] + Dzmult3D[1:]/self.Perm[1:]) )
-        grad = 1. + ht.diff(Press, axis=0) * 2. / (self.Dz * (Dzmult3D[:-1] + Dzmult3D[1:]))
+                (Dzmult3D[:-1]/self.Perm[:-1,:,:] + Dzmult3D[1:]/self.Perm[1:,:,:]) )
+        grad = ht.float64(1.) + ht.diff(Press, axis=0) * 2. / (self.Dz * (Dzmult3D[:-1] + Dzmult3D[1:]))
 
-        flowtop[:-1, :, :] = -1 * Kmean * grad * ht.where(grad > 0.0, Krel[1:, :, :], Krel[:-1, :, :]) * self.Mask[:-1, :, :]
-        flowbottom[1:, :, :] = flowback[:-1, :, :]
+        flowtop[:-1, :, :] = ht.float64(-1.) * Kmean * grad * ht.where(grad > 0.0, Krel[1:, :, :], Krel[:-1, :, :]) * self.Mask[:-1, :, :]
+        flowbottom[1:, :, :] = flowtop[:-1, :, :]
 
         flowtop *= self.Dx * self.Dy
         flowbottom *= self.Dx * self.Dy
@@ -166,17 +163,17 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #     head = fabs(ppdat[ipp]) / (pddat[ipd] * gravity);
         #     psdat[ips] = s_dif / pow(1.0 + pow((alpha * head), n), m)
         #                  + s_res;
-        m = 1.0 - 1.0/self.Nvg
-        Satur = ht.where(Press<0.0, (self.Ssat - self.Sres)/((1.0+ (self.Alpha*ht.absolute(Press))**self.Nvg)**m) + self.Sres, 1.0)
+        m = ht.float64(1.0) - ht.float64(1.0)/self.Nvg
+        Satur = ht.where(Press<0.0, (self.Ssat - self.Sres)/((ht.float64(1.0)+ (self.Alpha*ht.absolute(Press))**self.Nvg)**m) + self.Sres, ht.float64(1.0))
 
         #ParFlow:
         #opahn = 1.0 + pow(alpha * head, n);
         #ahnm1 = pow(alpha * head, n - 1);
         #prdat[ipr] = pow(1.0 - ahnm1 / (pow(opahn, m)), 2)
         #             / pow(opahn, (m / 2));
-        opahn = 1.0 + (self.Alpha * ht.absolute(Press))**self.Nvg
-        ahnm1 = (self.Alpha * ht.absolute(Press))**(self.Nvg-1)
-        Krel  = ht.where(Press<0.0, (1.0-ahnm1 / (opahn)**m)**2.0 / opahn**(m/2.0), 1.0)
+        opahn = ht.float64(1.0) + (self.Alpha * ht.abs(Press))**self.Nvg
+        ahnm1 = (self.Alpha * ht.abs(Press))**(self.Nvg-ht.float64(1.))
+        Krel  = ht.where(Press<ht.float64(0.0), (ht.float64(1.0)-ahnm1 / (opahn)**m)**ht.float64(2.0) / opahn**(m/ht.float64(2.0)), ht.float64(1.0))
         return(Satur,Krel)
 
 if __name__ == '__main__':

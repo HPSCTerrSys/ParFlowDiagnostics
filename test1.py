@@ -46,7 +46,7 @@ shape4D=(nt, nz, ny, nx)
 #Set the mask to one in active and zero in inactive regions
 mask  = ht.where(mask>0.0, 1.0, mask)
 #Some other constant values
-perm  = ht.full(shape3D,0.01,dtype=ht.float64,split=None)
+perm  = ht.full(shape3D,100.0,dtype=ht.float64,split=None)
 ssat  = ht.full(shape3D,1.0,dtype=ht.float64,split=None)
 sres  = ht.full(shape3D,0.2,dtype=ht.float64,split=None)
 alpha = ht.full(shape3D,1.0,dtype=ht.float64,split=None)
@@ -74,13 +74,14 @@ for t in range (nt):
 
     #Column balance
     if t > 0:
-      column_balance  = ht.zeros(shape2D,dtype=ht.float64,split=split)
-      #Change in storage for each column
-      column_balance  = (ht.sum(subsurface_storage_old - subsurface_storage,axis=0))
-      #Add divergence of the flux for each column
-      column_balance += dt * ht.sum(flowleft-flowright+flowfront-flowback+flowbottom-flowtop, axis=0)
+      #Change in storage for cell
+      cell_balance = subsurface_storage_old - subsurface_storage
+      #Divergene over a cell
+      cell_balance += dt * (flowleft-flowright+flowfront-flowback+flowbottom-flowtop)
+      #Balance over columns
+      column_balance = ht.sum(cell_balance,axis=0)
       #Mass balance over full domain without flux at the top boundary
-      print('Time step:',t, ', Increment:',ht.sum(column_balance)/(nx*ny))
+      print('Time step:',t, ', Increment:',ht.sum(cell_balance)/(nx*ny))
 
 print()
 print('At each time step, the increment should be equal to the flux at the top boundary: 0.0001 (L/T)')

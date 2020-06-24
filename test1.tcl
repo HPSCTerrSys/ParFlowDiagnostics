@@ -78,7 +78,8 @@ pfset Geom.background.Upper.Z  99999999.0
 pfset Geom.Perm.Names "background"
 
 pfset Geom.background.Perm.Type     Constant
-pfset Geom.background.Perm.Value    0.01
+#pfset Geom.background.Perm.Value    0.01
+pfset Geom.background.Perm.Value    100.0
 
 pfset Perm.TensorType               TensorByGeom
 
