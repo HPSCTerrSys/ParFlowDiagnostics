@@ -5,7 +5,7 @@ import os
 from Diagnostics import Diagnostics 
 import IO as io
 
-path = '/p/scratch/cesmtst/esmtst00/cordex3km/'
+path = '/p/home/jusers/naz1/jureca/SCRATCH_jibg3103/parflow_3km/heat_analysis_1/output_27/'
 Indi3D    = io.read_pfb(path + 'ParFlow_SOIL_INDICATOR3_x1592y1544z15.pfb',None)
 Dx = Dy = 3000.0
 Dz = 2.0

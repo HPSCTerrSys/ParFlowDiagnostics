@@ -4,7 +4,8 @@ import sys
 import os
 from Diagnostics import Diagnostics
 import IO as io
-
+import glob
+#import io_nc as nc
 def _print(*args):
     """ Printing method for parallel environments. Only root prints """
     if ht.MPI_WORLD.rank is 0:
@@ -22,10 +23,30 @@ def _print(*args):
 #os.system(cmd)
 #cmd='$PARFLOW_DIR/bin/parflow testOne'
 #os.system(cmd)
-path='/p/home/jusers/naz1/jureca/SCRATCH_jibg3103/parflow_3km/heat_analysis_1/output_27/'
-outpath='/p/home/jusers/naz1/jureca/SCRATCH_jibg3103/parflow_3km/heat_analysis_1/ana_parflow-diagnostics_pythonheat/output/'
 name = 'cordexIHME'
+path='/p/home/jusers/naz1/jureca/SCRATCH_jibg3103/parflow_3km/heat_analysis_1/output_27/'
+hr_files = sorted(glob.glob(os.path.join(path, name +'.out.press.*.pfb')))
+outpath='/p/home/jusers/naz1/jureca/SCRATCH_jibg3103/parflow_3km/heat_analysis_1/ana_parflow-diagnostics_pythonheat/output/'
+
 split=None
+
+dx = dy = 3000.0
+dz = 2.0
+#dz = 1.0
+dzmult = [0.01,0.015,0.025,0.035,0.065,0.10,0.15,0.25,0.35,0.50,2.0,5.0,5.0,7.50,9.0] #List of dzScales
+nx = 1592
+ny = 1544
+nz = 15
+dt = ht.float64(1.0)
+
+nt = len(hr_files)
+_print(nt)
+shape2D=(ny, nx)
+shape3D=(nz, ny, nx)
+shape4D=(nt, nz, ny, nx)
+
+
+
 #Read static information
 saturPF  = io.read_pfb(path + name + '.out.satur.00000.pfb',split)
 sstorage = io.read_pfb(path + name + '.out.specific_storage.pfb',split)
@@ -41,6 +62,7 @@ alpha = io.read_pfb(path + 'Alpha3D.pfb',split)
 nvg   = io.read_pfb(path + 'Nvg3D.pfb',split)
 sres  = io.read_pfb(path + 'Sres3D.pfb',split)
 
+
 _print(saturPF.shape)
 _print(sstorage.shape)
 _print(mask.shape)
@@ -53,20 +75,6 @@ _print(nvg.shape)
 _print(sres.shape)
 
 
-dx = dy = 3000.0
-dz = 2.0
-#dz = 1.0
-dzmult = [0.01,0.015,0.025,0.035,0.065,0.10,0.15,0.25,0.35,0.50,2.0,5.0,5.0,7.50,9.0] #List of dzScales
-nx = 1592
-ny = 1544
-nz = 15
-dt = ht.float64(1.0)
-
-nt = 168
-
-shape2D=(ny, nx)
-shape3D=(nz, ny, nx)
-shape4D=(nt, nz, ny, nx)
 split=2
 #Set the mask to one in active and zero in inactive regions
 
@@ -79,40 +87,52 @@ ssat  = ht.full(shape3D,1.0,dtype=ht.float64,split=None)
 #alpha = ht.full(shape3D,1.0,dtype=ht.float64,split=None)
 #nvg   = ht.full(shape3D,2.0,dtype=ht.float64,split=None)
 weekly_sm = ht.zeros(shape4D,split=split)
+sub_storage = ht.zeros(shape4D,split=split)
+lat_overlandflow = ht.zeros(shape3D,split=split)
 #Initialize Diagnostics class
 #Diagnostics(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Split):
 diag = Diagnostics(mask, perm, poro, sstorage, ssat, sres, nvg, alpha, mannings, slopex, slopey, dx, dy, dz, dzmult, nx, ny, nz, split)
 
-for t in range (nt):
-    _print(path+name + '.out.press.'+('{:05d}'.format(t))+'.pfb')
-    press    = io.read_pfb(path+name + '.out.press.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
 
-    if t>0:
-        subsurface_storage_old = subsurface_storage
-    #Calculate relative saturation and relative hydraulic conductivity
-    satur,krel = diag.VanGenuchten(press)
-    _print(satur.shape)
-    _print(krel)	
-    #Returns an unmasked 3D field of subsurface storage, (L^3)
-    #subsurface_storage=diag.SubsurfaceStorage(press,satur)
+for t, file in enumerate(hr_files):
+	press = io.read_pfb(file, split=None)
+	_print('processed file no:', t, '\tpath:', file)
+	_print(press.shape)
+	#if t>0:
+	#   subsurface_storage_old = subsurface_storage
 
-    #Returns an unmasked 3D field of volumetric soil moisture, (L^3/L^3)
-    volumetric_moisture = diag.VolumetricMoisture(satur)
-    _print(volumetric_moisture.shape)
-    weekly_sm[t] = volumetric_moisture
-    #Calculate total subsurface storage, (L^3)
-    #subsurface_storage = subsurface_storage * mask
-    #total_subsurface_storage = ht.sum(subsurface_storage)
+	#Calculate relative saturation and relative hydraulic conductivity
+	satur,krel = diag.VanGenuchten(press)
+	_print(satur.shape)
 
-    #Calculate overland flow, (L^2/T)
-    #overland_flow_x,overland_flow_y = diag.OverlandFlow(press,top_layer) 
+	#Returns an unmasked 3D field of subsurface storage, (L^3)
+	subsurface_storage=diag.SubsurfaceStorage(press,satur)
 
-    #Calculate net lateral overland flow
-    #net_later_overland_flow = diag.NetLateralOverlandFlow(overland_flow_x,overland_flow_y)
+	#Returns an unmasked 3D field of volumetric soil moisture, (L^3/L^3)
+	volumetric_moisture = diag.VolumetricMoisture(satur)
+	_print(volumetric_moisture.shape)
+	weekly_sm[t] = volumetric_moisture
 
+	#Calculate total subsurface storage, (L^3)
+	subsurface_storage = subsurface_storage * mask
+	#total_subsurface_storage = ht.sum(subsurface_storage)
+	_print(subsurface_storage.shape)
+	sub_storage[t] = subsurface_storage		
 
+	#Return the top layer pressure 
+	#top_layer = diag.TopLayerPressure(press) 
+	#Calculate overland flow, (L^2/T)
+	#overland_flow_x,overland_flow_y = diag.OverlandFlow(press,top_layer) 
 
+	#Calculate net lateral overland flow
+	#net_later_overland_flow = diag.NetLateralOverlandFlow(overland_flow_x,overland_flow_y)
+	#_print(net_later_overland_flow.shape)
+	#lat_overlandflow[t] = net_later_overland_flow
+	
 
+ht.save_netcdf(weekly_sm,outpath+name + '.out_soilmoisture_w01.nc','SM')
+ht.save_netcdf(sub_storage,outpath+name + '.out_sub_storage_w01.nc','substor')
+#ht.save_netcdf(lat_overlandflow,outpath+name + '.out_lateral_overlandflow_w01.nc','overflow')
 
 
     #Calculate subsurface flow in all 6 directions for each grid cell (L^3/T)
@@ -134,6 +154,5 @@ for t in range (nt):
 
 #cmd='rm -r testOne*'
 #os.system(cmd)
-
-write_nc4(weekly_sm, outpath+name + '.out_soilmoisture_01.nc', var)
-
+#my_dict = {'Sm': weekly_sm}
+#io.write_nc4(my_dict, outpath+name + '.out_soilmoisture_01.nc') # not working error in ht.save_netcdf
