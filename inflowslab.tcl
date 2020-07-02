@@ -250,7 +250,7 @@ pfset Patch.z-lower.BCPressure.alltime.Value	      0.0
 
 pfset Patch.x-upper.BCPressure.Type		      FluxConst
 pfset Patch.x-upper.BCPressure.Cycle		      "constant"
-pfset Patch.x-upper.BCPressure.alltime.Value	      0.0
+pfset Patch.x-upper.BCPressure.alltime.Value	      -0.001
 
 pfset Patch.y-upper.BCPressure.Type		      FluxConst
 pfset Patch.y-upper.BCPressure.Cycle		      "constant"
@@ -364,4 +364,4 @@ pfset Geom.domain.ICPressure.RefPatch                   z-lower
 #-----------------------------------------------------------------------------
 # Run and Unload the ParFlow output files
 #-----------------------------------------------------------------------------
-pfwritedb slab1
+pfwritedb inflowslab1

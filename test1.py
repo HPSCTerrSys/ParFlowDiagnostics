@@ -24,6 +24,9 @@ name = 'testOne'
 #Read static information
 saturPF  = io.read_pfb(name + '.out.satur.00000.pfb', split=split)
 sstorage = io.read_pfb(name + '.out.specific_storage.pfb', split=split)
+permx    = io.read_pfb(name + '.out.perm_x.pfb', split=split)
+permy    = io.read_pfb(name + '.out.perm_y.pfb', split=split)
+permz    = io.read_pfb(name + '.out.perm_z.pfb', split=split)
 mask     = io.read_pfb(name + '.out.mask.pfb', split=split)
 poro     = io.read_pfb(name + '.out.porosity.pfb', split=split)
 mannings = None
@@ -39,6 +42,11 @@ dzmult = ht.full(nz,1.0,dtype=ht.float64,split=None)
 dt = ht.float64(1.0)
 nt = 10
 
+perm = ht.zeros((3,nz,ny,nx),split=split)
+perm[0]=permz
+perm[1]=permy
+perm[2]=permx
+
 shape2D=(ny, nx)
 shape3D=(nz, ny, nx)
 shape4D=(nt, nz, ny, nx)
@@ -46,7 +54,6 @@ shape4D=(nt, nz, ny, nx)
 #Set the mask to one in active and zero in inactive regions
 mask  = ht.where(mask>0.0, 1.0, mask)
 #Some other constant values
-perm  = ht.full(shape3D,100.0,dtype=ht.float64,split=None)
 ssat  = ht.full(shape3D,1.0,dtype=ht.float64,split=None)
 sres  = ht.full(shape3D,0.2,dtype=ht.float64,split=None)
 alpha = ht.full(shape3D,1.0,dtype=ht.float64,split=None)
