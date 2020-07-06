@@ -9,16 +9,14 @@ import IO as io
 #Export ParFlow install directory; needs to be changed by the user
 #cmd='export PARFLOW_DIR=/home/s.kollet/restore/migrated/Programs/parflow/'
 #os.system(cmd)
-#cmd='tclsh slab.tcl'
+#cmd='tclsh terrainfollowing.tcl'
 #os.system(cmd)
-#cmd='$PARFLOW_DIR/bin/parflow slab1'
+#cmd='$PARFLOW_DIR/bin/parflow terrainfollowing1'
 #os.system(cmd)
 
 
-#Define slab test case
-name = 'slab1'
-#name = 'drainageslab1'
-#name = 'inflowslab1'
+#Define terrain following test case
+name = 'terrainfollowing1'
 
 split=None
 #Read static information
@@ -34,12 +32,12 @@ permy    = io.read_pfb(name + '.out.perm_y.pfb',split=split)
 permz    = io.read_pfb(name + '.out.perm_y.pfb',split=split)
 
 dx = dy = 1. 
-dz = 0.05
-nx = 100
+dz = 0.1
+nx = 10
 ny = 1
-nz = 300
+nz = 10
 dzmult = ht.full(nz,1.0,split=split)
-terrainfollowing = False
+terrainfollowing = True
 
 dt = 0.1
 nt = 120
@@ -136,7 +134,7 @@ for t in range (nt+1):
 
 
 print()
-print('In the first 2 hours, the balance increment due to rain is -0.45.')
+print('In the first 2 hours, the balance increment due to rain is -0.5.')
 
 
 

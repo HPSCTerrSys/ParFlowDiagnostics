@@ -3,7 +3,7 @@ import heat as ht
 import numpy as np
 import sys
 import os
-#from . import IO
+import math
 
 def printroot(*args, **kwargs):
     """ Only Root Process prints """
@@ -13,26 +13,27 @@ def printroot(*args, **kwargs):
 
 
 class Diagnostics:  # Make this a subclass of ht.DNDarray?
-    def __init__(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Split):
-        self.Mask       = Mask
-        self.Perm       = Perm
-        self.Poro       = Poro
-        self.Sstorage   = Sstorage
-        self.Ssat       = Ssat
-        self.Sres       = Sres
-        self.Nvg        = Nvg
-        self.Alpha      = Alpha
-        self.Mannings   = Mannings
-        self.Slopex     = Slopex
-        self.Slopey     = Slopey
-        self.Dx         = Dx
-        self.Dy         = Dy
-        self.Dz         = Dz
-        self.Dzmult     = Dzmult
-        self.Nx         = Nx
-        self.Ny         = Ny
-        self.Nz         = Nz
-        self.Split      = Split
+    def __init__(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split):
+        self.Mask             = Mask
+        self.Perm             = Perm
+        self.Poro             = Poro
+        self.Sstorage         = Sstorage
+        self.Ssat             = Ssat
+        self.Sres             = Sres
+        self.Nvg              = Nvg
+        self.Alpha            = Alpha
+        self.Mannings         = Mannings
+        self.Slopex           = Slopex
+        self.Slopey           = Slopey
+        self.Dx               = Dx
+        self.Dy               = Dy
+        self.Dz               = Dz
+        self.Dzmult           = Dzmult
+        self.Nx               = Nx
+        self.Ny               = Ny
+        self.Nz               = Nz
+        self.Terrainfollowing = Terrainfollowing
+        self.Split            = Split
 
     def SubsurfaceStorage(self, Press, Satur):
         shape3D = (self.Nz, self.Ny, self.Nx)
@@ -118,7 +119,28 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         return(net_lateral_overlandflow)
 
     def SubsurfaceFlow(self, Press, Krel):
-        shape3D = (self.Nz,self.Ny,self.Nx)
+        #ParFlow
+        #x_dir_g = Mean(gravity * sin(atan(x_ssl_dat[io])), gravity * sin(atan(x_ssl_dat[io + 1])));
+        #x_dir_g_c = Mean(gravity * cos(atan(x_ssl_dat[io])), gravity * cos(atan(x_ssl_dat[io + 1])));
+        #y_dir_g = Mean(gravity * sin(atan(y_ssl_dat[io])), gravity * sin(atan(y_ssl_dat[io + sy_p])));
+        #y_dir_g_c = Mean(gravity * cos(atan(y_ssl_dat[io])), gravity * cos(atan(y_ssl_dat[io + sy_p])));
+        shape3D   = (self.Nz,self.Ny,self.Nx)
+        x_dir_g   = ht.zeros(shape3D, split=self.Split)
+        x_dir_g_c = ht.zeros(shape3D, split=self.Split)
+        y_dir_g   = ht.zeros(shape3D, split=self.Split)
+        y_dir_g_c = ht.zeros(shape3D, split=self.Split)
+        if self.Terrainfollowing:
+            print('Terrain following')
+            for k in range (self.Nz):
+                #Expression for sin(atan(x)), because atan(x) does not exist in heat
+                x_dir_g[k,:,:-1]   = ( self.Slopex[0,:,:-1]/ht.sqrt(self.Slopex[0,:,:-1]**2.0+1.0) + self.Slopex[0,:,1:]/ht.sqrt(self.Slopex[0,:,1:]**2.0+1.0) )/2.0
+                #Expression for cos(atan(x)), because atan(x) does not exist in heat
+                x_dir_g_c[k,:,:-1] = ( 1./ht.sqrt(self.Slopex[0,:,:-1] + 1.0) + 1./ht.sqrt(self.Slopex[:,:,1:] + 1.0) )/2.0 
+                #Expression for sin(atan(x)), because atan(x) does not exist in heat
+                y_dir_g[k,:-1,:]   = ( self.Slopey[0,:-1,:]/ht.sqrt(self.Slopey[0,:-1,:]**2.0+1.0) + self.Slopey[0,1:,:]/ht.sqrt(self.Slopey[0,1:,:]**2.0+1.0) )/2.0
+                #Expression for cos(atan(x)), because atan(x) does not exist in heat
+                y_dir_g_c[k,:-1,:] = ( 1./ht.sqrt(self.Slopey[0,:-1,:] + 1.0) + 1./ht.sqrt(self.Slopey[:,1:,:] + 1.0) )/2.0 
+
         Dzmult3D = ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
         inv_perm = 1.0 / self.Perm
 
@@ -129,7 +151,10 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         #Note, in the inactive cells, Perm is zero, thus, 1/Perm results in inf, which then results in Kmean = 0!
         Kmean = 2. / (inv_perm[2,:, :, :-1] + inv_perm[2,:, :, 1:])
+        #diff = pp[ip] - pp[ip + 1];
+        #updir = (diff / dx) * x_dir_g_c - x_dir_g;
         grad = ht.diff(Press, axis=2)/self.Dx
+        grad = grad * x_dir_g_c[:,:,:-1] - x_dir_g[:,:,:-1]
 
         flowright[:, :, :-1] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[:, :, 1:], Krel[:, :, :-1]) 
         flowleft[:,:,1:] = flowright[:,:,:-1]
@@ -143,7 +168,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         #Note, in the inactive cells, Perm is zero, thus, 1/Perm results in inf, which then results in Kmean = 0!
         Kmean = 2. / (inv_perm[1,:, :-1, :] + inv_perm[1,:, 1:, :])
-        grad = ht.diff(Press, axis=1)/self.Dy
+        grad = ht.diff(Press, axis=1)/self.Dy 
+        grad = grad * y_dir_g_c[:,:-1,:] - y_dir_g[:,:-1,:]
 
         flowback[:, :-1, :] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[:, 1:, :], Krel[:, :-1, :]) 
         flowfront[:, 1:, :] = flowback[:, :-1, :]
