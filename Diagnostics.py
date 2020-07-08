@@ -44,7 +44,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         return(subsurface_storage)
 
     def VolumetricMoisture(self, Satur):
-        volumetric_moisture = Satur * self.Poro
+        volumetric_moisture = ht.mul(Satur,self.Poro)
         return(volumetric_moisture)
 
     def TopLayerPressure(self, Press):
@@ -126,20 +126,16 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #y_dir_g_c = Mean(gravity * cos(atan(y_ssl_dat[io])), gravity * cos(atan(y_ssl_dat[io + sy_p])));
         shape3D   = (self.Nz,self.Ny,self.Nx)
         x_dir_g   = ht.zeros(shape3D, split=self.Split)
-        x_dir_g_c = ht.zeros(shape3D, split=self.Split)
+        x_dir_g_c = ht.full(shape3D, 1.0, split=self.Split)
         y_dir_g   = ht.zeros(shape3D, split=self.Split)
-        y_dir_g_c = ht.zeros(shape3D, split=self.Split)
+        y_dir_g_c = ht.full(shape3D, 1.0, split=self.Split)
         if self.Terrainfollowing:
             print('Terrain following')
             for k in range (self.Nz):
-                #Expression for sin(atan(x)), because atan(x) does not exist in heat
-                x_dir_g[k,:,:-1]   = ( self.Slopex[0,:,:-1]/ht.sqrt(self.Slopex[0,:,:-1]**2.0+1.0) + self.Slopex[0,:,1:]/ht.sqrt(self.Slopex[0,:,1:]**2.0+1.0) )/2.0
-                #Expression for cos(atan(x)), because atan(x) does not exist in heat
-                x_dir_g_c[k,:,:-1] = ( 1./ht.sqrt(self.Slopex[0,:,:-1] + 1.0) + 1./ht.sqrt(self.Slopex[:,:,1:] + 1.0) )/2.0 
-                #Expression for sin(atan(x)), because atan(x) does not exist in heat
-                y_dir_g[k,:-1,:]   = ( self.Slopey[0,:-1,:]/ht.sqrt(self.Slopey[0,:-1,:]**2.0+1.0) + self.Slopey[0,1:,:]/ht.sqrt(self.Slopey[0,1:,:]**2.0+1.0) )/2.0
-                #Expression for cos(atan(x)), because atan(x) does not exist in heat
-                y_dir_g_c[k,:-1,:] = ( 1./ht.sqrt(self.Slopey[0,:-1,:] + 1.0) + 1./ht.sqrt(self.Slopey[:,1:,:] + 1.0) )/2.0 
+                x_dir_g[k,:,:-1]   = ( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0
+                x_dir_g_c[k,:,:-1] = ( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0 
+                y_dir_g[k,:-1,:]   = ( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0
+                y_dir_g_c[k,:-1,:] = ( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0 
 
         Dzmult3D = ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
         inv_perm = 1.0 / self.Perm
@@ -154,7 +150,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #diff = pp[ip] - pp[ip + 1];
         #updir = (diff / dx) * x_dir_g_c - x_dir_g;
         grad = ht.diff(Press, axis=2)/self.Dx
-        grad = grad * x_dir_g_c[:,:,:-1] - x_dir_g[:,:,:-1]
+        # + sign, because we later multiply by (-1.0)
+        grad = grad * x_dir_g_c[:,:,:-1] + x_dir_g[:,:,:-1]
 
         flowright[:, :, :-1] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[:, :, 1:], Krel[:, :, :-1]) 
         flowleft[:,:,1:] = flowright[:,:,:-1]
@@ -169,7 +166,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #Note, in the inactive cells, Perm is zero, thus, 1/Perm results in inf, which then results in Kmean = 0!
         Kmean = 2. / (inv_perm[1,:, :-1, :] + inv_perm[1,:, 1:, :])
         grad = ht.diff(Press, axis=1)/self.Dy 
-        grad = grad * y_dir_g_c[:,:-1,:] - y_dir_g[:,:-1,:]
+        # + sign, because we later multiply by (-1.0)
+        grad = grad * y_dir_g_c[:,:-1,:] + y_dir_g[:,:-1,:]
 
         flowback[:, :-1, :] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[:, 1:, :], Krel[:, :-1, :]) 
         flowfront[:, 1:, :] = flowback[:, :-1, :]
