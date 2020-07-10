@@ -119,8 +119,6 @@ for t in range (nt+1):
       balance_column  = ht.sum(balance_cell*mask,axis=0)
       balance_column += balance_surface 
 
-      #Discharge out of the domain at left column
-
       #Mass balance over full domain without flux at the top boundary
       print('Time step:',t, ', dstorage:',ht.sum(dstorage_column))
       print('Time step:',t, ', divergence:',ht.sum(divergence_column))

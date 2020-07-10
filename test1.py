@@ -59,9 +59,11 @@ sres  = ht.full(shape3D,0.2,dtype=ht.float64,split=None)
 alpha = ht.full(shape3D,1.0,dtype=ht.float64,split=None)
 nvg   = ht.full(shape3D,2.0,dtype=ht.float64,split=None)
 
+terrainfollowing = False
+
 #Initialize Diagnostics class
-#Diagnostics(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Split):
-diag = Diagnostics(mask, perm, poro, sstorage, ssat, sres, nvg, alpha, mannings, slopex, slopey, dx, dy, dz, dzmult, nx, ny, nz, split)
+#Diagnostics(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split):
+diag = Diagnostics(mask, perm, poro, sstorage, ssat, sres, nvg, alpha, mannings, slopex, slopey, dx, dy, dz, dzmult, nx, ny, nz, terrainfollowing, split)
 
 for t in range (nt):
     print(name + '.out.press.'+('{:05d}'.format(t))+'.pfb')

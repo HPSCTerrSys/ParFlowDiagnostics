@@ -5,7 +5,7 @@ import os
 from Diagnostics import Diagnostics 
 import IO as io
 
-path = '/p/scratch/cesmtst/esmtst00/cordex3km/'
+path = '/p/scratch/cjibg31/jibg3103/parflow_3km/heat_analysis_1/output_27/'
 Indi3D    = io.read_pfb(path + 'ParFlow_SOIL_INDICATOR3_x1592y1544z15.pfb',None)
 Dx = Dy = 3000.0
 Dz = 2.0
@@ -14,7 +14,7 @@ Dzmult = [0.01,0.015,0.025,0.035,0.065,0.10,0.15,0.25,0.35,0.50,2.0,5.0,5.0,7.50
 Nx = 1592
 Ny = 1544
 Nz = 15
-shape3D = (Ny,Nx)
+shape3D = (Nz,Ny,Nx)
 Alpha3D = ht.full(shape3D,2.0,split=None)
 Nvg3D   = ht.full(shape3D,3.0,split=None)
 Sres3D  = ht.full(shape3D,0.1,split=None)
@@ -31,7 +31,7 @@ for k in range(len(IndicatorInput)):
     Nvg3D    = ht.where(Indi3D == IndicatorInput[k], Nvg[k],   Nvg3D)
     Sres3D   = ht.where(Indi3D == IndicatorInput[k], Sres[k],  Sres3D)
 
-
+print(Alpha3D[0,:,:])
 io.create_pfb(path + 'Alpha3D.pfb',Alpha3D)
 io.create_pfb(path + 'Nvg3D.pfb',Nvg3D)
 io.create_pfb(path + 'Sres3D.pfb',Sres3D)
