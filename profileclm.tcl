@@ -276,7 +276,7 @@ pfset Solver.BinaryOutDir                                ./binout
 pfset Solver.CLM.CLMDumpInterval                         8760
 
 pfset Solver.CLM.MetForcing                              1D
-pfset Solver.CLM.MetFileName                             test.txt
+pfset Solver.CLM.MetFileName                             atmforcing.txt
 pfset Solver.CLM.MetFilePath                             ./
 pfset Solver.CLM.IstepStart                              1
 
