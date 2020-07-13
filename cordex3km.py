@@ -114,7 +114,7 @@ for t in range (nt):
       sink = io.read_pfb(path + name + '.out.et.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
       sink = ht.where(mask==1.0,sink,0.0)
       for k in range (nz):
-         sink *= dz * dzmult[k]
+          sink[k,:,:] *= dz * dzmult[k]
 
       #Read CLM sink/source files (mm/s)
       qflx_tran_veg = io.read_pfb(path + name + '.out.qflx_tran_veg.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
