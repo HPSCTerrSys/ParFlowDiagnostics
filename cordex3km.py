@@ -6,15 +6,19 @@ from Diagnostics import Diagnostics
 import IO as io
 
 split=None
-path = '/p/scratch/cjibg31/jibg3103/parflow_3km/heat_analysis_1/output_27/'
+#path = '/p/scratch/cjibg31/jibg3103/parflow_3km/heat_analysis_1/output_27/'
+path = '/p/scratch/cjibg31/jibg3103/parflow_3km/runs_2007_2017/parFlow_EoCoE/ParFlow_ProductionRuns/eucordex_2007/000001/000001_setup_submit_run/work/output_27/'
 name = 'cordexIHME'
 #Read static information
 sstorage = io.read_pfb(path + name + '.out.specific_storage.pfb', split=split)
-permx    = io.read_pfb(path + name + '.out.perm_x.pfb', split=split)
-permy    = io.read_pfb(path + name + '.out.perm_y.pfb', split=split)
-permz    = io.read_pfb(path + name + '.out.perm_z.pfb', split=split)
 mask     = io.read_pfb(path + name + '.out.mask.pfb', split=split)
-mask     = ht.where(mask>0.0, 1.0, mask)
+mask     = ht.where(mask==99999., 1.0, mask)
+permx    = io.read_pfb(path + name + '.out.perm_x.pfb', split=split)
+permx    = ht.where(mask==1.0, permx, 0.0)
+permy    = io.read_pfb(path + name + '.out.perm_y.pfb', split=split)
+permy    = ht.where(mask==1.0, permy, 0.0)
+permz    = io.read_pfb(path + name + '.out.perm_z.pfb', split=split)
+permz    = ht.where(mask==1.0, permz, 0.0)
 poro     = io.read_pfb(path + name + '.out.porosity.pfb', split=split)
 mannings = io.read_pfb(path + name + '.out.mannings.pfb', split=split)
 slopex   = io.read_pfb(path + 'ParFlow_MB3km_SLPX_x1592y1544.pfb', split=split)
@@ -33,7 +37,7 @@ nx = 1592
 ny = 1544
 nz = 15
 dt = ht.float64(1.0)
-nt = 10
+nt = 100
 
 perm = ht.zeros((3,nz,ny,nx),split=split)
 perm[0]=permz
@@ -47,8 +51,8 @@ shape4D=(nt, nz, ny, nx)
 ssat     = ht.full(shape3D,1.0,dtype=ht.float64,split=None)
 terrainfollowing = True
 
-# Generate van Genuchten fields ################################################################################################################################################
-path = '/p/scratch/cjibg31/jibg3103/parflow_3km/heat_analysis_1/output_27/'
+# Generate van Genuchten fields ###################################################################################################################
+#path = '/p/scratch/cjibg31/jibg3103/parflow_3km/heat_analysis_1/output_27/'
 Indi3D    = io.read_pfb(path + 'ParFlow_SOIL_INDICATOR3_x1592y1544z15.pfb',None)
 Alpha3D = ht.full(shape3D,2.0,split=None)
 Nvg3D   = ht.full(shape3D,3.0,split=None)
@@ -65,7 +69,7 @@ for k in range(len(IndicatorInput)):
     alpha    = ht.where(Indi3D == IndicatorInput[k], Alpha[k], Alpha3D)
     nvg      = ht.where(Indi3D == IndicatorInput[k], Nvg[k],   Nvg3D)
     sres     = ht.where(Indi3D == IndicatorInput[k], Sres[k],  Sres3D)
-################################################################################################################################################################################
+###################################################################################################################################################
 
 #Initialize Diagnostics class
 #Diagnostics(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split):
@@ -78,13 +82,13 @@ for t in range (nt):
     press = ht.where(mask>0.0,press,99999.0)
 
     #Calculate relative saturation and relative hydraulic conductivity
-    satur_,krel = diag.VanGenuchten(press)
+    dummy,krel = diag.VanGenuchten(press)
 
     #Work with the ParFlow output for now, ...
-    satur = io.read_pfb(path + name + '.out.press.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
-    satur = ht.where(mask>0.0,press,0.0)
+    satur = io.read_pfb(path + name + '.out.satur.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
+    satur = ht.where(mask==1.0,satur,0.0)
     #..., because something is wrong with the generated van Genuchten fields
-    print(ht.sum((satur-satur_)*mask))
+    #print(ht.sum((satur-satur_)*mask))
 
     #Obtain pressure at the land surface
     top_layer_press = diag.TopLayerPressure(press)
@@ -98,31 +102,38 @@ for t in range (nt):
     #Calculate subsurface flow in all 6 directions for each grid cell (L^3/T)
     flowleft,flowright,flowfront,flowback,flowbottom,flowtop = diag.SubsurfaceFlow(press,krel)
 
-    #Calculate overland flow (L^3/T)
+    #Calculate overland flow (L^2/T)
     oflowx,oflowy = diag.OverlandFlow(top_layer_press)
 
-    #Calculate net overland flow for each top layer cell (L/T)
+    #Calculate net overland flow for each top layer cell (L^3/T)
     net_overland_flow = diag.NetLateralOverlandFlow(oflowx,oflowy)
 
     #Column balance
     if t > 0:
+      #Read source/sink values coming from CLM
+      sink = io.read_pfb(path + name + '.out.et.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
+      sink = ht.where(mask==1.0,sink,0.0)
+      for k in range (nz):
+         sink *= dz * dzmult[k]
+
       #Read CLM sink/source files (mm/s)
       qflx_tran_veg = io.read_pfb(path + name + '.out.qflx_tran_veg.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
       qflx_infl     = io.read_pfb(path + name + '.out.qflx_infl.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
-      #Convert to correct units, here m^3/h
-      qflx_tran_veg = qflx_tran_veg * 3600.0 * 3000.0 * 3000.0 * 0.001
-      qflx_infl     = qflx_infl     * 3600.0 * 3000.0 * 3000.0 * 0.001
+      #Convert to correct units, here m^3
+      qflx_tran_veg *= (-1.0) * dt * 3600.0 * dy * dx * 0.001
+      qflx_infl     *= dt * 3600.0 * dy * dx * 0.001
 
-      #Source/sink
-      sourcesink = (qflx_tran_veg + qflx_infl) * mask[nz-1,:,:]
+      #Source/sink (L^3)
+      sourcesink_ = (qflx_tran_veg + qflx_infl) * mask[nz-1,:,:]
+      sourcesink = ht.sum(sink, axis=0) * dt * dy * dx 
 
-      #Change in subsurface storage for each cell
+      #Change in subsurface storage for each cell (L^3)
       dstorage_cell = old_subsurface_storage - subsurface_storage
 
-      #Change in surface storage for each surface cell
+      #Change in surface storage for each surface cell (L^3)
       dsurface_storage_cell = old_surface_storage - surface_storage
 
-      #Surface balanc
+      #Surface balanc (L^3)
       balance_surface = dsurface_storage_cell - dt * net_overland_flow
 
       #Divergence of the flux for each cell
@@ -143,14 +154,25 @@ for t in range (nt):
       balance_column += sourcesink
 
       #Mass balance over full domain without flux at the top boundary
-      print('Time step:',t, ', dstorage:',ht.sum(dstorage_column))
-      print('Time step:',t, ', divergence:',ht.sum(divergence_column))
-      print('Time step:',t, ', dsurface_storage:',ht.sum(dsurface_storage_cell))
-      print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow))
-      print('Time step:',t, ', surface_balance:',ht.sum(balance_surface))
-      print('Time step:',t, ', source/sink:',ht.sum(sourcesink))
-      print('Time step:',t, ', total balance:',ht.sum(balance_column))
-
+      #print('Time step:',t, ', dstorage:',ht.sum(dstorage_column)/(ht.sum(mask[0,:,:])*dy*dx))
+      #print('Time step:',t, ', divergence:',ht.sum(divergence_column))
+      #print('Time step:',t, ', dsurface_storage:',ht.sum(dsurface_storage_cell))
+      #print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow))
+      #print('Time step:',t, ', surface_balance:',ht.sum(balance_surface)/(ht.sum(mask[0,:,:])*dy*dx))
+      #print('Time step:',t, ', source/sink:',ht.sum(sourcesink)/(ht.sum(mask[0,:,:])*dy*dx), ht.sum(sourcesink_)/(ht.sum(mask[0,:,:])*dy*dx))
+      #print('Time step:',t, ', total balance:',ht.sum(balance_column))
+     
+      ii=jj=100
+      print('Time step:',t, ', mask:',(mask[:,jj,ii]))
+      print('Time step:',t, ', satur:',(satur[:,jj,ii]))
+      print('Time step:',t, ', press:',(press[:,jj,ii]))
+      print('Time step:',t, ', dstorage:',(dstorage_column[jj,ii])/(dx*dy))
+      print('Time step:',t, ', divergence:',(divergence_column[jj,ii]))
+      print('Time step:',t, ', dsurface_storage:',(dsurface_storage_cell[jj,ii]))
+      print('Time step:',t, ', netoverlandflow:',net_overland_flow[jj,ii])
+      print('Time step:',t, ', surface_balance:',(balance_surface[jj,ii]))
+      print('Time step:',t, ', source/sink:',(sourcesink[jj,ii]/(dy*dx)), (sourcesink_[0,jj,ii])/(dy*dx))
+      print('Time step:',t, ', total balance:',(balance_column[jj,ii]))
 
     #New becomes old in the ensuing time step
     old_subsurface_storage = subsurface_storage

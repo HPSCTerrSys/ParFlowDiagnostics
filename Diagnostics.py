@@ -72,8 +72,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         Ponding = ht.where(Toplayerpress>0,Toplayerpress,0.0)
         #We need only the positive pressure values and set the rest to zero, which results in zero overland flow
-        flowx[:,:] = self.Dy * dirx * (ht.absolute(self.Slopex[0,:,:]))**(1./2.)/self.Mannings[0,:,:] * Ponding**(5./3.)
-        flowy[:,:] = self.Dx * diry * (ht.absolute(self.Slopey[0,:,:]))**(1./2.)/self.Mannings[0,:,:] * Ponding**(5./3.)
+        flowx[:,:] = dirx * (ht.absolute(self.Slopex[0,:,:]))**(1./2.)/self.Mannings[0,:,:] * Ponding**(5./3.)
+        flowy[:,:] = diry * (ht.absolute(self.Slopey[0,:,:]))**(1./2.)/self.Mannings[0,:,:] * Ponding**(5./3.)
         return(flowx, flowy)
 
     def NetLateralOverlandFlow(self, overland_flow_x, overland_flow_y):
@@ -112,9 +112,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
             flow_south[j,:]  = ht.maximum(overland_flow_x[j-1,:], Nix[j-1,:])
             flow_south[j,:] -= ht.maximum((-1.0)*overland_flow_x[j,:], Nix[j,:])
 
-        #Calc net lateral overland flow for each grid cell, (L/T)
+        #Calc net lateral overland flow for each grid cell, (L^3/T)
         #ParFlow: ((ke_[io] - kw_[io]) / dx + (kn_[io] - ks_[io]) / dy
-        net_lateral_overlandflow = (flow_east - flow_west)/self.Dx + (flow_north - flow_south)/self.Dy
+        net_lateral_overlandflow = self.Dy * (flow_east - flow_west) + self.Dx * (flow_north - flow_south)
 
         return(net_lateral_overlandflow)
 
