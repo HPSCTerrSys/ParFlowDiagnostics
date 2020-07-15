@@ -12,7 +12,7 @@ name = 'cordexIHME'
 #Read static information
 sstorage = io.read_pfb(path + name + '.out.specific_storage.pfb', split=split)
 mask     = io.read_pfb(path + name + '.out.mask.pfb', split=split)
-mask     = ht.where(mask==99999., 1.0, mask)
+mask     = ht.where(mask>0.0, 1.0, mask)
 permx    = io.read_pfb(path + name + '.out.perm_x.pfb', split=split)
 permx    = ht.where(mask==1.0, permx, 0.0)
 permy    = io.read_pfb(path + name + '.out.perm_y.pfb', split=split)
@@ -113,8 +113,9 @@ for t in range (nt):
       #Read source/sink values coming from CLM
       sink = io.read_pfb(path + name + '.out.et.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
       sink = ht.where(mask==1.0,sink,0.0)
+      #Convert into (L^3)
       for k in range (nz):
-          sink[k,:,:] *= dz * dzmult[k]
+          sink[k,:,:] *= dz * dzmult[k] * dy * dx * dt
 
       #Read CLM sink/source files (mm/s)
       qflx_tran_veg = io.read_pfb(path + name + '.out.qflx_tran_veg.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
@@ -154,25 +155,13 @@ for t in range (nt):
       balance_column += sourcesink
 
       #Mass balance over full domain without flux at the top boundary
-      #print('Time step:',t, ', dstorage:',ht.sum(dstorage_column)/(ht.sum(mask[0,:,:])*dy*dx))
-      #print('Time step:',t, ', divergence:',ht.sum(divergence_column))
-      #print('Time step:',t, ', dsurface_storage:',ht.sum(dsurface_storage_cell))
-      #print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow))
-      #print('Time step:',t, ', surface_balance:',ht.sum(balance_surface)/(ht.sum(mask[0,:,:])*dy*dx))
-      #print('Time step:',t, ', source/sink:',ht.sum(sourcesink)/(ht.sum(mask[0,:,:])*dy*dx), ht.sum(sourcesink_)/(ht.sum(mask[0,:,:])*dy*dx))
-      #print('Time step:',t, ', total balance:',ht.sum(balance_column))
-     
-      ii=jj=100
-      print('Time step:',t, ', mask:',(mask[:,jj,ii]))
-      print('Time step:',t, ', satur:',(satur[:,jj,ii]))
-      print('Time step:',t, ', press:',(press[:,jj,ii]))
-      print('Time step:',t, ', dstorage:',(dstorage_column[jj,ii])/(dx*dy))
-      print('Time step:',t, ', divergence:',(divergence_column[jj,ii]))
-      print('Time step:',t, ', dsurface_storage:',(dsurface_storage_cell[jj,ii]))
-      print('Time step:',t, ', netoverlandflow:',net_overland_flow[jj,ii])
-      print('Time step:',t, ', surface_balance:',(balance_surface[jj,ii]))
-      print('Time step:',t, ', source/sink:',(sourcesink[jj,ii]/(dy*dx)), (sourcesink_[0,jj,ii])/(dy*dx))
-      print('Time step:',t, ', total balance:',(balance_column[jj,ii]))
+      print('Time step:',t, ', dstorage:',ht.sum(dstorage_column))
+      print('Time step:',t, ', divergence:',ht.sum(divergence_column))
+      print('Time step:',t, ', dsurface_storage:',ht.sum(dsurface_storage_cell))
+      print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow))
+      print('Time step:',t, ', surface_balance:',ht.sum(balance_surface))
+      print('Time step:',t, ', source/sink:',ht.sum(sourcesink))
+      print('Time step:',t, ', total balance:',ht.sum(balance_column))
 
     #New becomes old in the ensuing time step
     old_subsurface_storage = subsurface_storage
