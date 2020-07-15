@@ -46,7 +46,8 @@ alpha  = ht.full(shape3D,1.0,split=split)
 nvg    = ht.full(shape3D,2.0,split=split)
 sres   = ht.full(shape3D,0.11,split=split)
 ssat   = ht.full(shape3D,1.0,dtype=ht.float64,split=split)
-terrainfollowing = False
+#Set to False in case of profileclm and to True in case of tfgprofileclm
+terrainfollowing = False 
 
 #Initialize Diagnostics class
 #Diagnostics(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split):
@@ -136,6 +137,7 @@ for t in range (nt):
       print('Time step:',t, ', surface_balance:',ht.sum(balance_surface))
       print('Time step:',t, ', source/sink:',ht.sum(sourcesink))
       print('Time step:',t, ', total balance:',ht.sum(balance_column))
+      print('Time step:',t, ', total balance:',ht.sum(divergence_column[:,0:49]), ht.sum(divergence_column[:,50:100]))
 
     #New becomes old in the ensuing time step
     old_subsurface_storage = subsurface_storage
