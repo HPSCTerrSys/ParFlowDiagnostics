@@ -137,7 +137,6 @@ for t in range (nt):
       print('Time step:',t, ', surface_balance:',ht.sum(balance_surface))
       print('Time step:',t, ', source/sink:',ht.sum(sourcesink))
       print('Time step:',t, ', total balance:',ht.sum(balance_column))
-      print('Time step:',t, ', total balance:',ht.sum(divergence_column[:,0:49]), ht.sum(divergence_column[:,50:100]))
 
     #New becomes old in the ensuing time step
     old_subsurface_storage = subsurface_storage

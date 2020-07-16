@@ -54,19 +54,6 @@ pfset Geom.Perm.Names                 domain
 pfset Geom.domain.Perm.Type            Constant
 pfset Geom.domain.Perm.Value           1.0
 
-#pfset Geom.domain.Perm.Type                 "ParGauss"
-pfset Geom.domain.Perm.LogNormal            Log
-pfset Geom.domain.Perm.StratType            Bottom
-pfset Geom.domain.Perm.LambdaX              0.0
-pfset Geom.domain.Perm.LambdaY              0.0
-pfset Geom.domain.Perm.LambdaZ              0.0
-pfset Geom.domain.Perm.Seed                 1111
-pfset Geom.domain.Perm.MaxNPts              200
-pfset Geom.domain.Perm.MaxCpts              20
-pfset Geom.domain.Perm.GeomMean             1.0
-pfset Geom.domain.Perm.Sigma                1.0
-pfset Geom.domain.Perm.MaxSearchRad         5
-
 #-----------------------------------------------------------------------------
 # Perm Tensors
 #-----------------------------------------------------------------------------
@@ -203,7 +190,7 @@ pfset Patch.top.BCPressure.alltime.Value              0.0
 
 pfset TopoSlopesX.Type "Constant"
 pfset TopoSlopesX.GeomNames "domain"
-pfset TopoSlopesX.Geom.domain.Value 0.001
+pfset TopoSlopesX.Geom.domain.Value 0.01
 
 #---------------------------------------------------------
 # Topo slopes in y-direction
@@ -211,7 +198,7 @@ pfset TopoSlopesX.Geom.domain.Value 0.001
 
 pfset TopoSlopesY.Type "Constant"
 pfset TopoSlopesY.GeomNames "domain"
-pfset TopoSlopesY.Geom.domain.Value 0.001
+pfset TopoSlopesY.Geom.domain.Value 0.01
 
 #---------------------------------------------------------
 # Mannings coefficient 
