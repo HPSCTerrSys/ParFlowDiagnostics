@@ -83,7 +83,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #Calc flow east
         #ParFlow:ke_[io] = pfmax(qx_[io], 0.0) - pfmax(-qx_[io + 1], 0.0);
         flow_east = ht.zeros(shape2D, split=self.Split)
-        #flow_east[:,self.Nx-1] = ht.where(overland_flow_x[:,self.Nx-1]>0.0,overland_flow_x[:,self.Nx-1],Nix[:,self.Nx-1])
+        flow_east[:,self.Nx-1] = ht.where(overland_flow_x[:,self.Nx-1]>0.0,overland_flow_x[:,self.Nx-1],Nix[:,self.Nx-1])
         for i in range (self.Nx-1):
             flow_east[:,i]  = ht.maximum(overland_flow_x[:,i], Nix[:,i])
             flow_east[:,i] -= ht.maximum((-1.0)*overland_flow_x[:,i+1], Nix[:,i+1])
@@ -91,7 +91,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #Calc flow west
         #ParFlow:kw_[io] = pfmax(qx_[io - 1], 0.0) - pfmax(-qx_[io], 0.0);
         flow_west = ht.zeros(shape2D, split=self.Split)
-        #flow_west[:,0] = ht.where(overland_flow_x[:,0]<0.0, overland_flow_x[:,0],Nix[:,0]) 
+        flow_west[:,0] = ht.where(overland_flow_x[:,0]<0.0, overland_flow_x[:,0],Nix[:,0]) 
         for i in range (1,self.Nx):
             flow_west[:,i]  = ht.maximum(overland_flow_x[:,i-1], Nix[:,i-1])
             flow_west[:,i] -= ht.maximum((-1.0)*overland_flow_x[:,i], Nix[:,i])
