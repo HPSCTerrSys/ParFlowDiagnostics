@@ -110,7 +110,7 @@ for t in range (nt):
 
     #Column balance
     if t > 0:
-      #Read source/sink values coming from CLM
+      #Read source/sink values coming from CLM (m/h)
       sink = io.read_pfb(path + name + '.out.et.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
       sink = ht.where(mask==1.0,sink,0.0)
       #Convert into (L^3)
@@ -124,9 +124,8 @@ for t in range (nt):
       qflx_tran_veg *= (-1.0) * dt * 3600.0 * dy * dx * 0.001
       qflx_infl     *= dt * 3600.0 * dy * dx * 0.001
 
-      #Source/sink (L^3)
-      sourcesink_ = (qflx_tran_veg + qflx_infl) * mask[nz-1,:,:]
-      sourcesink = ht.sum(sink, axis=0) * dt * dy * dx 
+      #Source/sink integrated over column (L^3)
+      sourcesink = ht.sum(sink, axis=0) 
 
       #Change in subsurface storage for each cell (L^3)
       dstorage_cell = old_subsurface_storage - subsurface_storage

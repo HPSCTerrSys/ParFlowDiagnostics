@@ -300,4 +300,5 @@ pfset Solver.Linear.Preconditioner                       MGSemi
 #-----------------------------------------------------------------------------
 # Run and Unload the ParFlow output files
 #-----------------------------------------------------------------------------
-pfwritedb testOne
+#pfwritedb testOne
+pfrun testOne
