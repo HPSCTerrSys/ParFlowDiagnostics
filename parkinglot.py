@@ -9,9 +9,9 @@ import IO as io
 #Export ParFlow install directory; needs to be changed by the user
 #cmd='export PARFLOW_DIR=/home/s.kollet/restore/migrated/Programs/parflow/'
 #os.system(cmd)
-#cmd='tclsh slab.tcl'
+#cmd='tclsh parkinglot.tcl'
 #os.system(cmd)
-#cmd='$PARFLOW_DIR/bin/parflow slab1'
+#cmd='$PARFLOW_DIR/bin/parflow parkinglot1'
 #os.system(cmd)
 
 
@@ -62,6 +62,11 @@ nvg   = ht.full(shape3D,2.0,split=split)
 #The following fields are special; while they are 2D, we need to define them in 3D,
 #because they are often read from pfb, which is always 3D (with 1 in z-direction)
 
+#Initialize hydrograph information
+hydrograph = ht.zeros(nt+1, split = None)
+#Gauge is located at pixel (0,0)
+gaugex = gaugey = 0  
+
 #Initialize Diagnostics class
 #Diagnostics(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split):
 diag = Diagnostics(mask, perm, poro, sstorage, ssat, sres, nvg, alpha, mannings, slopex, slopey, dx, dy, dz, dzmult, nx, ny, nz, terrainfollowing, split)
@@ -88,6 +93,9 @@ for t in range (nt+1):
 
     #Calculate overland flow (L^3/T)
     oflowx,oflowy = diag.OverlandFlow(top_layer_press)
+    
+    #Extract overland flow at the gauge and calculate absolute discharge (L^3/T)
+    hydrograph[t] = dy * ht.abs(oflowx[gaugey,gaugex]) + dx * ht.abs(oflowy[gaugey,gaugex])
 
     #Calculate net overland flow for each top layer cell (L/T)
     net_overland_flow = diag.NetLateralOverlandFlow(oflowx,oflowy)
@@ -126,15 +134,11 @@ for t in range (nt+1):
       print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow))
       print('Time step:',t, ', surface_balance:',ht.sum(balance_surface))
       print('Time step:',t, ', total balance:',ht.sum(balance_column))
-      print(oflowy[:,0])
       
     
     #New becomes old in the ensuing time step
     old_subsurface_storage = subsurface_storage
     old_surface_storage = surface_storage
 
-
-
-
-#cmd='rm -r *slab1.*'
-#os.system(cmd)
+print()
+print('Discharge at gauge:',hydrograph)

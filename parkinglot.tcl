@@ -231,7 +231,7 @@ pfset Patch.top.BCPressure.alltime.Value		-0.0001
 pfset TopoSlopesX.Type "Constant"
 pfset TopoSlopesX.GeomNames "domain"
 
-pfset TopoSlopesX.Geom.domain.Value 0.00
+pfset TopoSlopesX.Geom.domain.Value 0.01
 
 #---------------------------------------------------------
 # Topo slopes in y-direction
