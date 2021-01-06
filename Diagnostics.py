@@ -50,7 +50,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
     def TopLayerPressure(self, Press):
         shape2D = (self.Ny, self.Nx)
         fill_val = 99999.0
-        Toplayerpress = ht.full(shape2D, fill_val, split=self.Split)
+        Toplayerpress = ht.full(shape2D, fill_val, dtype=ht.float64, split=self.Split)
+#         Toplayerpress = ht.full_like(Press[0], fill_val)
         check = ht.full(shape2D, -1, split=self.Split)
         for k in reversed(range(self.Nz)):
             Toplayerpress[:,:] = ht.where((self.Mask[k,:,:]>0.0) & (check[:,:]<0), Press[k,:,:], Toplayerpress[:,:])
@@ -233,14 +234,13 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         return(subsurface_storage)
 
     def _TopLayerPressure(self, Press, fill_val=99999.0):
-        toplayer = ((self.Mask > 0) * (1+ht.arange(self.Nz, dtype=ht.int32))[:, None, None]).max(0) -1
+        toplayer = ((self.Mask > 0) * (1+ht.arange(self.Nz, dtype=ht.long))[:, None, None]).max(0) -1
         # toplayer contains the index of the highest layer and -1 if there is no highest layer
-        toplayer = toplayer.astype(ht.int32, copy=False)  # make sure ints are used as indices
         y, x = np.indices((self.Ny, self.Nx), sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
         # do these need to be converted to heat tensors? -> No
-
+        
         Toplayerpress = Press[toplayer, y, x]
-        Toplayerpress[toplayer < 0] = fill_val  # is this guaranteed to be balanced?
+        Toplayerpress.larray[toplayer.larray < 0] = fill_val  # is this guaranteed to be balanced?
         # alternative:
         # Toplayerpress = ht.full(shape2D, fill_val, split=self.Split)
         # Toplayerpress[toplayer >= 0] = Press[toplayer, y, x][toplayer >= 0]
