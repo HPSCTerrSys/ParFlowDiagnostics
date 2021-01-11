@@ -45,16 +45,22 @@ diag = Diagnostics(mask, perm, poro, sstorage, ssat, sres, nvg, alpha, mannings,
 
 #TIME_BEGIN#
 a = diag.SubsurfaceStorage(press, satur)
-b = diag._SubsurfaceStorage(press, satur)
-printroot('SubsurfaceStorage', ht.allclose(a, b))
 #TIME_END#
+#TIME_BEGIN#
+b = diag._SubsurfaceStorage(press, satur)
+#TIME_END#
+printroot('SubsurfaceStorage', ht.allclose(a, b))
+
 
 #TIME_BEGIN#
 a = diag.TopLayerPressure(press)
+#TIME_END#
+#TIME_BEGIN#
 b = diag._TopLayerPressure(press)
+#TIME_END#
 printroot('TopLayerPressure', ht.allclose(a, b))
 toplayerpress = a
-#TIME_END#
+
 
 #TIME_BEGIN#
 surf_storage = diag.SurfaceStorage(toplayerpress)
@@ -70,9 +76,11 @@ overland_flow_x, overland_flow_y = diag.OverlandFlow(toplayerpress)
 
 #TIME_BEGIN#
 a = diag.NetLateralOverlandFlow(overland_flow_x, overland_flow_y)
-b = diag._NetLateralOverlandFlow(overland_flow_x, overland_flow_y)
-printroot('NetLateralOverlandFlow', ht.allclose(a, b))
 #TIME_END#
+#TIME_BEGIN#
+b = diag._NetLateralOverlandFlow(overland_flow_x, overland_flow_y)
+#TIME_END#
+printroot('NetLateralOverlandFlow', ht.allclose(a, b))
 
 #TIME_BEGIN#
 _, krel = diag.VanGenuchten(press)
@@ -80,8 +88,10 @@ _, krel = diag.VanGenuchten(press)
 
 #TIME_BEGIN#
 a = diag.SubsurfaceFlow(press, krel)
-b = diag._SubsurfaceFlow(press, krel)
-printroot('SubsurfaceFlow', ht.allclose(a, b))
 #TIME_END#
+#TIME_BEGIN#
+b = diag._SubsurfaceFlow(press, krel)
+#TIME_END#
+printroot('SubsurfaceFlow', ht.allclose(a, b))
 
 #TIME_FINAL#
