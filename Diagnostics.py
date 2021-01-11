@@ -240,7 +240,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         layers = (self.Mask > 0) * ht.arange(1, 1+self.Nz, dtype=ht.long)[:, None, None]
         toplayer = layers.max(0) - 1
         printroot('toplayer-index', toplayer.shape, toplayer.split,flush=True)
-        toplayer.resplit(-1)
+        toplayer.resplit_(-1)
         # toplayer contains the index of the highest layer and -1 if there is no highest layer
         y, x = np.indices((self.Ny, self.Nx), sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
         # do these need to be converted to heat tensors? -> No
