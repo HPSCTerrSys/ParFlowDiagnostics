@@ -244,7 +244,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         printroot('toplayer-index', toplayer.shape, toplayer.split,flush=True)
         printroot('press', Press.shape, Press.split,flush=True)
         # toplayer contains the index of the highest layer and -1 if there is no highest layer
-        y, x = np.indices((self.Ny, self.Nx), sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
+        y, x = np.indices(toplayer.larray.shape, sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
         # do these need to be converted to heat tensors? -> No
 
         Toplayerpress = ht.array(Press.larray[toplayer.larray, y, x], copy=False, is_split=self.Split)
