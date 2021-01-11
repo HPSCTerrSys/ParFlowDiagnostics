@@ -240,16 +240,15 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         layers = (self.Mask > 0) * ht.arange(1, 1+self.Nz, dtype=ht.long)[:, None, None]
         toplayer = layers.max(0) - 1
         # toplayer.resplit_(-1)
-        toplayer = ht.array(toplayer.larray, copy=False, is_split=-1).resplit_()
+        toplayer = ht.array(toplayer.larray, copy=False, is_split=self.Split)
         printroot('toplayer-index', toplayer.shape, toplayer.split,flush=True)
         printroot('press', Press.shape, Press.split,flush=True)
         # toplayer contains the index of the highest layer and -1 if there is no highest layer
         y, x = np.indices((self.Ny, self.Nx), sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
         # do these need to be converted to heat tensors? -> No
 
-        Toplayerpress = Press[toplayer, y, x]
+        Toplayerpress = ht.array(Press.larray[toplayer.larray, y, x], copy=False, is_split=self.Split)
         printroot('toplayer-press',Toplayerpress.shape, Toplayerpress.split,flush=True)
-        Toplayerpress.balance_()
         Toplayerpress.larray[toplayer.larray < 0] = fill_val  # is this guaranteed to be balanced?
 #         Toplayerpress = ht.where(toplayer.larray < 0, fill_val, Toplayerpress)
 #         Toplayerpress[ht.nonzero(toplayer < 0)] = fill_val
