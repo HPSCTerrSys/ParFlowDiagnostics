@@ -180,7 +180,8 @@ def read_pfb(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):
             ht.array(data, is_split=0, comm=comm).resplit_(split).squeeze(0)
         )  # reduce by empty dimension and split data
     except ValueError:  # If byteorder is non native because HeAt needs native byteorder
-        print("changing byteorder, this should not affect performance or data values")
+        if comm.rank == 0:
+            print("changing byteorder, this should not affect performance or data values", flush=True)
         data = data.astype(data.dtype.newbyteorder("="))
         return (
             ht.array(data, is_split=0, comm=comm).resplit_(split).squeeze(0)
