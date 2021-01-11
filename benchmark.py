@@ -1,0 +1,87 @@
+#TIME_INIT#
+import os
+import numpy as np
+import heat as ht
+from Diagnostics import Diagnostics, printroot
+import IO
+
+path = '/p/scratch/cesmtst/kollet1/global/'
+name = 'Global1km'
+split = #SPLIT#
+
+#TIME_BEGIN#
+mask = IO.read_pfb(path + 'Global1km.out.mask.pfb', split=split)
+press = IO.read_pfb(path + 'Global1km.out.press.00000.pfb', split=split)
+satur = IO.read_pfb(path + 'Global1km.out.satur.00000.pfb', split=split)
+#TIME_END#
+
+# Use multiple Layers
+layers = 10
+mask = mask * ht.ones((layers,1,1))
+press = press * (1. + 0.1 * press.std() * ht.random.randn(layers,1,1)).clip(a_min=0., a_max=None)
+satur = satur * (1. + 0.1 * satur.std() * ht.random.randn(layers,1,1)).clip(a_min=0., a_max=None)
+
+nz, ny, nx = mask.shape
+shape2D=(ny, nx)
+shape3D=(nz, ny, nx)
+dz, dy, dx = 0.1, 1000., 1000.
+dzmult = ht.full(nz,1.0)
+
+#Set the mask to one in active and zero in inactive regions
+mask  = ht.where(mask>0.0, 1.0, mask)
+#Default values
+perm  = ht.full((3,*shape3D),1.0,split=split)  # perm needs to be 4D ?!
+ssat  = ht.full(shape3D,1.0,split=split)
+sres  = ht.full(shape3D,0.2,split=split)
+alpha = ht.full(shape3D,0.005,split=split)
+nvg   = ht.full(shape3D,2.0,split=split)
+slopex   = IO.read_pfb(path + 'global_1km_XSLOPE_MERIT_sea_corr.pfb',split=split)
+mannings = ht.ones_like(slopex)
+slopey   = IO.read_pfb(path + 'global_1km_YSLOPE_MERIT_sea_corr.pfb',split=split)
+#missing data
+poro = ht.full(shape3D,1.0,split=split)
+sstorage = ht.full(shape3D,1.0,split=split)
+diag = Diagnostics(mask, perm, poro, sstorage, ssat, sres, nvg, alpha, mannings, slopex, slopey, dx, dy, dz, dzmult, nx, ny, nz, None, Split=split)
+
+#TIME_BEGIN#
+a = diag.SubsurfaceStorage(press, satur)
+b = diag._SubsurfaceStorage(press, satur)
+printroot('SubsurfaceStorage', ht.allclose(a, b))
+#TIME_END#
+
+#TIME_BEGIN#
+a = diag.TopLayerPressure(press)
+b = diag._TopLayerPressure(press)
+printroot('TopLayerPressure', ht.allclose(a, b))
+toplayerpress = a
+#TIME_END#
+
+#TIME_BEGIN#
+surf_storage = diag.SurfaceStorage(toplayerpress)
+#TIME_END#
+
+#TIME_BEGIN#
+vol_moisture = diag.VolumetricMoisture(satur)
+#TIME_END#
+
+#TIME_BEGIN#
+overland_flow_x, overland_flow_y = diag.OverlandFlow(toplayerpress)
+#TIME_END#
+
+#TIME_BEGIN#
+a = diag.NetLateralOverlandFlow(overland_flow_x, overland_flow_y)
+b = diag._NetLateralOverlandFlow(overland_flow_x, overland_flow_y)
+printroot('NetLateralOverlandFlow', ht.allclose(a, b))
+#TIME_END#
+
+#TIME_BEGIN#
+_, krel = diag.VanGenuchten(press)
+#TIME_END#
+
+#TIME_BEGIN#
+a = diag.SubsurfaceFlow(press, krel)
+b = diag._SubsurfaceFlow(press, krel)
+printroot('SubsurfaceFlow', ht.allclose(a, b))
+#TIME_END#
+
+#TIME_FINAL#
