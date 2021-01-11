@@ -268,8 +268,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #Calc flow east
         #ParFlow:ke_[io] = pfmax(qx_[io], 0.0) - pfmax(-qx_[io + 1], 0.0);
         flow_east = ht.zeros_like(overland_flow_x)
-        flow_east[:, :-1]  = ht.clip(overland_flow_x[:, :-1], a_min=0, a_max=None).balance_()
-        flow_east[:, :-1] -= ht.clip(-1 * overland_flow_x[:, 1:], a_min=0, a_max=None).balance_()
+        flow_east[:, :-1]  = ht.clip(overland_flow_x[:, :-1], a_min=0, a_max=None)
+        flow_east[:, :-1] -= ht.clip(-1 * overland_flow_x[:, 1:], a_min=0, a_max=None)
         flow_east[:, self.Nx-1] = ht.where(overland_flow_x[:,self.Nx-1]>0.0,overland_flow_x[:,self.Nx-1],Nix[:,self.Nx-1])
         printroot('flow_east', flush=True)
 
