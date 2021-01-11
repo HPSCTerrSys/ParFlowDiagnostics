@@ -244,8 +244,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         # do these need to be converted to heat tensors? -> No
 
         Toplayerpress = Press[toplayer, y, x]
-        Toplayerpress.balance_()
         printroot(Toplayerpress.shape, Toplayerpress.split, toplayer.shape, toplayer.split, flush=True)
+        Toplayerpress.balance_()
         Toplayerpress.larray[toplayer.larray < 0] = fill_val  # is this guaranteed to be balanced?
 #         Toplayerpress = ht.where(toplayer.larray < 0, fill_val, Toplayerpress)
 #         Toplayerpress[ht.nonzero(toplayer < 0)] = fill_val
