@@ -68,8 +68,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         shape2D = (self.Ny, self.Nx)
         flowx= ht.zeros(shape2D, split=self.Split)
         flowy= ht.zeros(shape2D, split=self.Split)
-        dirx = ht.where(self.Slopex > 0.0, -1.0, 1.0)
-        diry = ht.where(self.Slopey > 0.0, -1.0, 1.0)
+        dirx = ht.where(self.Slopex[0] > 0.0, -1.0, 1.0)
+        diry = ht.where(self.Slopey[0] > 0.0, -1.0, 1.0)
 
         Ponding = ht.where(Toplayerpress>0,Toplayerpress,0.0)
         #We need only the positive pressure values and set the rest to zero, which results in zero overland flow
@@ -234,13 +234,16 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         return(subsurface_storage)
 
     def _TopLayerPressure(self, Press, fill_val=99999.0):
-        toplayer = ((self.Mask > 0) * (1+ht.arange(self.Nz, dtype=ht.long))[:, None, None]).max(0) -1
+        toplayer = ( (self.Mask > 0) * ht.arange(1, 1+self.Nz, dtype=ht.long)[:, None, None] ).max(0) -1
         # toplayer contains the index of the highest layer and -1 if there is no highest layer
         y, x = np.indices((self.Ny, self.Nx), sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
         # do these need to be converted to heat tensors? -> No
         
         Toplayerpress = Press[toplayer, y, x]
         Toplayerpress.larray[toplayer.larray < 0] = fill_val  # is this guaranteed to be balanced?
+#         Toplayerpress = ht.where(toplayer.larray < 0, fill_val, Toplayerpress)
+#         Toplayerpress[ht.nonzero(toplayer < 0)] = fill_val
+        
         # alternative:
         # Toplayerpress = ht.full(shape2D, fill_val, split=self.Split)
         # Toplayerpress[toplayer >= 0] = Press[toplayer, y, x][toplayer >= 0]
