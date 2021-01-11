@@ -239,16 +239,12 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
     def _TopLayerPressure(self, Press, fill_val=99999.0):
         layers = (self.Mask > 0) * ht.arange(1, 1+self.Nz, dtype=ht.long)[:, None, None]
         toplayer = layers.max(0) - 1
-        # toplayer.resplit_(-1)
         toplayer = ht.array(toplayer.larray, copy=False, is_split=self.Split)
-        printroot('toplayer-index', toplayer.shape, toplayer.split,flush=True)
-        printroot('press', Press.shape, Press.split,flush=True)
         # toplayer contains the index of the highest layer and -1 if there is no highest layer
         y, x = np.indices(toplayer.larray.shape, sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
         # do these need to be converted to heat tensors? -> No
 
         Toplayerpress = ht.array(Press.larray[toplayer.larray, y, x], copy=False, is_split=self.Split)
-        printroot('toplayer-press',Toplayerpress.shape, Toplayerpress.split,flush=True)
         Toplayerpress.larray[toplayer.larray < 0] = fill_val  # is this guaranteed to be balanced?
 #         Toplayerpress = ht.where(toplayer.larray < 0, fill_val, Toplayerpress)
 #         Toplayerpress[ht.nonzero(toplayer < 0)] = fill_val
@@ -271,9 +267,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         #Calc flow east
         #ParFlow:ke_[io] = pfmax(qx_[io], 0.0) - pfmax(-qx_[io + 1], 0.0);
-        flow_east = ht.zeros(shape2D, split=self.Split)
-        flow_east[:, :-1]  = ht.clip(overland_flow_x[:, :-1], a_min=0, a_max=None)
-        flow_east[:, :-1] -= ht.clip(-1 * overland_flow_x[:, 1:], a_min=0, a_max=None)
+        flow_east = ht.zeros_like(overland_flow_x)
+        flow_east[:, :-1]  = ht.clip(overland_flow_x[:, :-1], a_min=0, a_max=None).balance_()
+        flow_east[:, :-1] -= ht.clip(-1 * overland_flow_x[:, 1:], a_min=0, a_max=None).balance_()
         flow_east[:, self.Nx-1] = ht.where(overland_flow_x[:,self.Nx-1]>0.0,overland_flow_x[:,self.Nx-1],Nix[:,self.Nx-1])
         printroot('flow_east', flush=True)
 
