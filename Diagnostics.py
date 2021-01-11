@@ -239,9 +239,10 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
     def _TopLayerPressure(self, Press, fill_val=99999.0):
         layers = (self.Mask > 0) * ht.arange(1, 1+self.Nz, dtype=ht.long)[:, None, None]
         toplayer = layers.max(0) - 1
-        printroot('toplayer-index', toplayer.shape, toplayer.split,flush=True)
         # toplayer.resplit_(-1)
         toplayer = ht.array(toplayer.larray, copy=False, is_split=-1)
+        printroot('toplayer-index', toplayer.shape, toplayer.split,flush=True)
+        printroot('press', Press.shape, Press.split,flush=True)
         # toplayer contains the index of the highest layer and -1 if there is no highest layer
         y, x = np.indices((self.Ny, self.Nx), sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
         # do these need to be converted to heat tensors? -> No
