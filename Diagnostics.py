@@ -237,15 +237,15 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         return(subsurface_storage)
 
     def _TopLayerPressure(self, Press, fill_val=99999.0):
-        toplayer = ( (self.Mask > 0) * ht.arange(1, 1+self.Nz, dtype=ht.long)[:, None, None] ).max(0, keepdim=True) -1
-        toplayer = toplayer[0]
+        toplayer = ( (self.Mask > 0) * ht.arange(1, 1+self.Nz, dtype=ht.long)[:, None, None] ).max(0) -1
+        printroot('toplayer-index', toplayer.shape, toplayer.split,flush=True)
         toplayer.balance_()
         # toplayer contains the index of the highest layer and -1 if there is no highest layer
         y, x = np.indices((self.Ny, self.Nx), sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
         # do these need to be converted to heat tensors? -> No
 
         Toplayerpress = Press[toplayer, y, x]
-        printroot(Toplayerpress.shape, Toplayerpress.split, toplayer.shape, toplayer.split, flush=True)
+        printroot('toplayer-press',Toplayerpress.shape, Toplayerpress.split,flush=True)
         Toplayerpress.balance_()
         Toplayerpress.larray[toplayer.larray < 0] = fill_val  # is this guaranteed to be balanced?
 #         Toplayerpress = ht.where(toplayer.larray < 0, fill_val, Toplayerpress)
