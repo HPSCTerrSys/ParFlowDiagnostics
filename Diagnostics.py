@@ -230,7 +230,10 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         # for k in range(self.Nz):
         #     subsurface_storage[k,:,:] = Satur[k,:,:] * self.Poro[k,:,:] * self.Dx * self.Dy * self.Dz * self.Dzmult[k]
         #     subsurface_storage[k,:,:] += Press[k,:,:] * self.Sstorage[k,:,:] * Satur[k,:,:] * self.Dx * self.Dy * self.Dz * self.Dzmult[k]
-        subsurface_storage[:] = (self.Poro + Press * self.Sstorage) * Satur * self.Dx * self.Dy * self.Dz * self.Dzmult[:,None, None]
+        subsurface_storage[:] = (self.Poro + Press * self.Sstorage)
+        subsurface_storage[:] *= Satur
+        subsurface_storage[:] *= self.Dx * self.Dy * self.Dz
+        subsurface_storage[:] *= self.Dzmult[:, None, None]
         return(subsurface_storage)
 
     def _TopLayerPressure(self, Press, fill_val=99999.0):
@@ -238,12 +241,12 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         # toplayer contains the index of the highest layer and -1 if there is no highest layer
         y, x = np.indices((self.Ny, self.Nx), sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
         # do these need to be converted to heat tensors? -> No
-        
+
         Toplayerpress = Press[toplayer, y, x]
         Toplayerpress.larray[toplayer.larray < 0] = fill_val  # is this guaranteed to be balanced?
 #         Toplayerpress = ht.where(toplayer.larray < 0, fill_val, Toplayerpress)
 #         Toplayerpress[ht.nonzero(toplayer < 0)] = fill_val
-        
+
         # alternative:
         # Toplayerpress = ht.full(shape2D, fill_val, split=self.Split)
         # Toplayerpress[toplayer >= 0] = Press[toplayer, y, x][toplayer >= 0]
