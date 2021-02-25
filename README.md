@@ -50,6 +50,8 @@ The Diagnostics class is based on HeAT and requires methods to read ParFlow outp
 Any operations on results obtain by applying the Diagnostics functions, such filtering of active/inactive regions, spatial/temporal averaging must be implemented by the user.
 Example applications are provided in the accompanying test cases, which require to run ParFlow via the tcl scripts to produce output.
 
+Only use the Diagnostics in serial, ie using only one process. Parallelization is currently NOT supported and still in development.
+
 **Test cases:**  
 * test1.tcl; test.py: Simply 3D box domain, infiltration at the top patch, no-flow over all other patches  
 * slab.tcl, drainageslab.tcl, inflowslab.tcl, slab.pfsol, domain.pfsol; slap.py: Slab benchmark + variations including drainage at the bottom and inflow over the righ patch, variations can be analyzed with slab.py by changing the 'name'  
