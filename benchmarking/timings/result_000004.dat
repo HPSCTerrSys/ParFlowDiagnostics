@@ -1,0 +1,5 @@
+nodes;total_cores;mpi_num_procs;omp_num_threads;split;read_pfb[sec];SubsurfaceStorage[sec];SubsurfaceStorage_vectorized[sec];TopLayerPressure[sec];TopLayerPressure_vectorized[sec];SurfaceStorage[sec];VolumetricMoisture[sec];OverlandFlow[sec];NetLateralOverlandFlow[sec];NetLateralOverlandFlow_vectorized[sec];SubsurfaceFlow[sec];SubsurfaceFlow_vectorized[sec]
+1;48;1;48;-1;34.399962425231934;1.1788403987884521;0.8697943687438965;1.3090853691101074;0.31798577308654785;0.173140287399292;0.1423969268798828;0.8630626201629639;2.384185791015625e-07;2.384185791015625e-07;5.468369007110596;4.76837158203125e-07
+1;48;2;24;-1;29.861289978027344;0.6184663772583008;0.4351627826690674;0.6654460430145264;0.1541585922241211;0.08762288093566895;0.0723118782043457;0.46559810638427734;2.384185791015625e-07;2.384185791015625e-07;2.281123638153076;2.384185791015625e-07
+1;48;12;4;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+1;48;24;2;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan

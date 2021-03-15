@@ -1,0 +1,17 @@
+nodes;total_cores;mpi_num_procs;omp_num_threads;split;read_pfb[sec];SubsurfaceStorage[sec];SubsurfaceStorage_vectorized[sec];TopLayerPressure[sec];TopLayerPressure_vectorized[sec];SurfaceStorage[sec];VolumetricMoisture[sec];OverlandFlow[sec];NetLateralOverlandFlow[sec];NetLateralOverlandFlow_vectorized[sec];SubsurfaceFlow[sec];SubsurfaceFlow_vectorized[sec]
+1;48;1;48;-1;14.77375602722168;1.2267498970031738;1.063000202178955;1.3200509548187256;0.37338948249816895;0.17283368110656738;0.1296405792236328;1.0364272594451904;2.384185791015625e-07;0.7031879425048828;6.340388298034668;2.384185791015625e-07
+1;48;2;24;-1;15.045126914978027;0.6344609260559082;0.4533371925354004;0.6717326641082764;0.15503597259521484;0.08810877799987793;0.07233405113220215;0.5049805641174316;2.384185791015625e-07;0.42963433265686035;2.2086093425750732;2.384185791015625e-07
+1;48;12;4;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+1;48;24;2;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+2;96;2;48;-1;26.547850131988525;0.6191208362579346;0.46566033363342285;0.6633219718933105;0.15632939338684082;0.08668708801269531;0.0722651481628418;0.4623856544494629;2.384185791015625e-07;0.4300875663757324;1.988767385482788;2.384185791015625e-07
+2;96;4;24;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+2;96;24;4;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+2;96;48;2;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+4;192;4;48;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+4;192;8;24;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+4;192;48;4;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+4;192;96;2;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+8;384;8;48;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+8;384;16;24;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+8;384;96;4;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
+8;384;192;2;-1;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan;nan
