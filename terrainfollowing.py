@@ -7,18 +7,17 @@ import IO as io
 
 #Run ParFlow test case
 #Export ParFlow install directory; needs to be changed by the user
-#cmd='export PARFLOW_DIR=/home/s.kollet/restore/migrated/Programs/parflow/'
-#os.system(cmd)
-#cmd='tclsh terrainfollowing.tcl'
-#os.system(cmd)
-#cmd='$PARFLOW_DIR/bin/parflow terrainfollowing1'
-#os.system(cmd)
+# os.environ['PARFLOW_DIR'] = '/p/project/cslts/slts31/parflow_ben_original/run'
+# cmd='tclsh terrainfollowing.tcl'
+# os.system(cmd)
+# cmd='$PARFLOW_DIR/bin/parflow terrainfollowing1'
+# os.system(cmd)
 
 
 #Define terrain following test case
 name = 'terrainfollowing1'
 
-split=None
+split=0
 #Read static information
 sstorage = io.read_pfb(name + '.out.specific_storage.pfb',split=split)
 mask     = io.read_pfb(name + '.out.mask.pfb',split=split)

@@ -1,5 +1,6 @@
 import heat as ht
 import numpy as np
+from mpi4py import MPI
 from struct import pack, unpack
 import os
 
@@ -10,7 +11,7 @@ def write_packed(f, fmt, val):
 
 def create_pfb(filename, dndarray, delta=(1, 1, 1), subgrids=(1, 1, 1)):
     # dndarray = dndarray.astype(ht.float32)
-    var = dndarray.numpy()
+    var = dndarray.numpy().astype(np.float64)
     if dndarray.comm.rank == 0:
         print(var.shape)
         nz, ny, nx = var.shape
@@ -79,7 +80,320 @@ def read_packed(f, fmt, size):
     return unpack(fmt, f.read(size))
 
 
+
 def read_pfb(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):
+        #printroot('loading', filename, flush=True)
+        with open(filename, "rb") as f:
+            # read meta informations of datafile
+            meta_inf = np.fromfile(f, dtype=">f8", count=3)
+            x1 = meta_inf[0]
+            y1 = meta_inf[1]
+            z1 = meta_inf[2]
+
+            meta_inf = np.fromfile(f, dtype=">i4", count=3)
+            nx = meta_inf[0]
+            ny = meta_inf[1]
+            nz = meta_inf[2]
+            nn = int(nx) * int(ny) * int(nz)
+
+            meta_inf = np.fromfile(f, dtype=">f8", count=3)
+            dx = meta_inf[0]
+            dy = meta_inf[1]
+            dz = meta_inf[2]
+
+            meta_inf = np.fromfile(f, dtype=">i4", count=1)
+            nsubgrid = meta_inf[0]
+
+            # data = np.ndarray(shape=(nz, ny, nx), dtype='>f8')
+            #data = np.ndarray(shape=(nz, ny, nx), dtype=dtype)
+            #data.dtype = data.dtype.newbyteorder("=")
+            data = ht.empty((nz, ny, nx), dtype=ht.float64, split=split, comm=comm)
+            for s in range(nsubgrid):
+                meta_inf = np.fromfile(f, dtype=">i4", count=9)
+                ix = meta_inf[0]
+                iy = meta_inf[1]
+                iz = meta_inf[2]
+                # print("---{0} Start Index (X,Y,Z):".format(s+1), ix, iy, iz)
+
+                nx = meta_inf[3]
+                ny = meta_inf[4]
+                nz = meta_inf[5]
+                nn = nx * ny * nz
+                # print("---{0} Dimensions (X,Y,Z):".format(s+1), nx, ny, nz)
+
+                rx = meta_inf[6]
+                ry = meta_inf[7]
+                rz = meta_inf[8]
+                # print("---{0} Offsets (X,Y,Z):".format(s+1), rx, ry, rz)
+
+                target = data[iz : iz + nz, iy : iy + ny, ix : ix + nx]
+                tmp = np.fromfile(f, dtype=dtype, count=nn).reshape((nz, ny, nx)).astype(np.float64)
+
+                if target.split is not None:
+                    slices = [slice(None)] * target.ndim
+                    target_map = target.create_lshape_map()
+                    start = target_map[:target.comm.rank, target.split].sum()
+                    stop = target_map[:target.comm.rank +1, target.split].sum()
+                    slices[target.split] = slice(start, stop)
+                    tmp = tmp[tuple(slices)]
+
+                tmp_torch = ht.torch.as_tensor(tmp, dtype=target.larray.dtype, device=target.larray.device)
+                target.larray[:] = tmp_torch
+                del tmp, tmp_torch, target
+                #tmp_heat = ht.array(tmp, split=None)
+                #tmp_heat = ht.array(tmp, split=split)
+                #tmp_heat.redistribute_(target_map=target.create_lshape_map())
+                #data[iz : iz + nz, iy : iy + ny, ix : ix + nx] = tmp_heat
+                #target.larray[None] = tmp_heat.larray
+                #del tmp, tmp_heat, target
+                
+        #data = data[::2,::4,::8]
+        return data
+
+def read_pfb_heat(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):
+    #printroot('loading', filename, flush=True)
+    f = MPI.File.Open(comm.handle, filename, MPI.MODE_RDONLY)
+
+    # read meta informations of datafile
+    meta_inf = np.empty(3, dtype=np.float64) #">f8"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder()
+    x1 = meta_inf[0]
+    y1 = meta_inf[1]
+    z1 = meta_inf[2]
+
+    meta_inf = np.empty(3, dtype=np.int32) # ">i4"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder()
+    nx = meta_inf[0]
+    ny = meta_inf[1]
+    nz = meta_inf[2]
+    nn = nx * ny * nz
+
+    meta_inf = np.empty(3, dtype=np.float64) # ">f8"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder()
+    dx = meta_inf[0]
+    dy = meta_inf[1]
+    dz = meta_inf[2]
+
+    meta_inf = np.empty(1, dtype=np.int32) # ">f8"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder()
+    nsubgrid = meta_inf[0]
+
+    # data = np.ndarray(shape=(nz, ny, nx), dtype='>f8')
+    #data = np.ndarray(shape=(nz, ny, nx), dtype=np.float64)
+    #data.dtype = data.dtype.newbyteorder("=")
+    data = ht.empty((nz, ny, nx), dtype=ht.float64, split=split)
+    for s in range(int(nsubgrid)):
+        meta_inf = np.empty(9, dtype=np.int32) # ">i4"
+        f.Read(meta_inf)
+        meta_inf = meta_inf.newbyteorder()
+
+        ix = meta_inf[0]
+        iy = meta_inf[1]
+        iz = meta_inf[2]
+        # print("---{0} Start Index (X,Y,Z):".format(s+1), ix, iy, iz)
+
+        nx = meta_inf[3]
+        ny = meta_inf[4]
+        nz = meta_inf[5]
+        nn = nx * ny * nz
+        # print("---{0} Dimensions (X,Y,Z):".format(s+1), nx, ny, nz)
+
+        rx = meta_inf[6]
+        ry = meta_inf[7]
+        rz = meta_inf[8]
+        # print("---{0} Offsets (X,Y,Z):".format(s+1), rx, ry, rz)
+
+        tmp = np.empty(nn, dtype=np.float64)
+        f.Read(tmp)
+        tmp = tmp.newbyteorder()
+        tmp = tmp.reshape((nz, ny, nx)).astype(np.float64)
+        tmp_heat = ht.array(tmp, split=split)
+        target = data[iz : iz + nz, iy : iy + ny, ix : ix + nx]
+        tmp_heat.redistribute_(target_map=target.create_lshape_map())
+        data[iz : iz + nz, iy : iy + ny, ix : ix + nx] = tmp_heat
+        del tmp, tmp_heat, target
+    f.Close()
+    data = data[:,:,::2]
+    return data    
+    
+def read_pfb_mpi_self(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):
+    f = MPI.File.Open(comm.handle, filename, MPI.MODE_RDONLY)
+    meta_inf = np.empty(3, dtype=np.float64) #">f8"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder()
+    x1 = meta_inf[0]
+    y1 = meta_inf[1]
+    z1 = meta_inf[2]
+
+    meta_inf = np.empty(3, dtype=np.int32) # ">i4"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder()
+    nx = meta_inf[0]
+    ny = meta_inf[1]
+    nz = meta_inf[2]
+    meta_inf = np.empty(3, dtype=np.float64) # ">f8"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder().astype(np.float64)
+    dx = meta_inf[0]
+    dy = meta_inf[1]
+    dz = meta_inf[2]
+
+    meta_inf = np.empty(1, dtype=np.int32) # ">f8"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder()
+    nsubgrid = meta_inf[0]
+
+    data = ht.zeros((nz, ny, nx), dtype=ht.float64, split=split)
+    starts = [0] * data.ndim
+    if data.split is not None:
+        prevs = data.create_lshape_map()[:data.comm.rank, data.split].sum().item()
+        starts[data.split] = prevs
+        mpi_type = MPI.DOUBLE.Create_subarray(
+                    sizes = data.shape,
+                    subsizes = data.lshape,
+                    starts = tuple(starts),
+                    order=MPI.ORDER_C,
+        )
+        mpi_type.Commit()
+        local_file = MPI.File.Open(comm.handle, filename, MPI.MODE_RDONLY)
+        local_file.Set_view(filetype=mpi_type, etype=MPI.DOUBLE, disp=f.Get_position())
+    
+    for s in range(nsubgrid):
+        meta_inf = np.empty(9, dtype=np.int32) # ">i4"
+        #print(f.Get_position())
+        f.Read(meta_inf)
+        meta_inf = meta_inf.newbyteorder()
+
+        ix = meta_inf[0]
+        iy = meta_inf[1]
+        iz = meta_inf[2]
+        # print("---{0} Start Index (X,Y,Z):".format(s+1), ix, iy, iz)
+
+        nx = meta_inf[3]
+        ny = meta_inf[4]
+        nz = meta_inf[5]
+        nn = nx * ny * nz
+        # print("---{0} Dimensions (X,Y,Z):".format(s+1), nx, ny, nz)
+
+        rx = meta_inf[6]
+        ry = meta_inf[7]
+        rz = meta_inf[8]
+
+        position, view = f.Get_position(), f.Get_view()
+        target = data[iz : iz + nz, iy : iy + ny, ix : ix + nx]
+        buf = np.zeros(target.lshape, dtype=np.float64)
+        starts = [0] * target.ndim
+        if target.split is not None:
+            if True:#target.lnumel:  # read local array
+                local_file.Read_at(position, buf)
+                buf = buf.newbyteorder()
+                buf = buf.astype(np.float64)
+                target.larray[:] = ht.torch.as_tensor(buf, device=target.larray.device)
+        else:  # read everything
+            f.Read_all(buf)
+            buf = buf.newbyteorder()
+            buf = buf.astype(np.float64)
+            target.larray[:] = ht.torch.as_tensor(buf, device=target.larray.device)
+        #f.Set_view(*view)
+        f.Seek(position + MPI.DOUBLE.Get_size() * nn, MPI.SEEK_SET)
+    f.Close()
+    if data.split is not None:
+        local_file.Close()
+    return data
+
+
+
+def read_pfb_mpi(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):
+    #printroot('loading', filename, flush=True)
+    f = MPI.File.Open(comm.handle, filename, MPI.MODE_RDONLY)
+    meta_inf = np.empty(3, dtype=np.float64) #">f8"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder()
+    x1 = meta_inf[0]
+    y1 = meta_inf[1]
+    z1 = meta_inf[2]
+
+    meta_inf = np.empty(3, dtype=np.int32) # ">i4"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder()
+    nx = meta_inf[0]
+    ny = meta_inf[1]
+    nz = meta_inf[2]
+    # nn = nx * ny * nz
+
+    meta_inf = np.empty(3, dtype=np.float64) # ">f8"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder().astype(np.float64)
+    dx = meta_inf[0]
+    dy = meta_inf[1]
+    dz = meta_inf[2]
+
+    meta_inf = np.empty(1, dtype=np.int32) # ">f8"
+    f.Read(meta_inf)
+    meta_inf = meta_inf.newbyteorder()
+    nsubgrid = meta_inf[0]
+
+    data = ht.zeros((nz, ny, nx), dtype=ht.float64, split=split) 
+    for s in range(nsubgrid):
+        meta_inf = np.empty(9, dtype=np.int32) # ">i4"
+        #print(f.Get_position())
+        f.Read(meta_inf)
+        meta_inf = meta_inf.newbyteorder()
+
+        ix = meta_inf[0]
+        iy = meta_inf[1]
+        iz = meta_inf[2]
+        # print("---{0} Start Index (X,Y,Z):".format(s+1), ix, iy, iz)
+
+        nx = meta_inf[3]
+        ny = meta_inf[4]
+        nz = meta_inf[5]
+        nn = nx * ny * nz
+        # print("---{0} Dimensions (X,Y,Z):".format(s+1), nx, ny, nz)
+
+        rx = meta_inf[6]
+        ry = meta_inf[7]
+        rz = meta_inf[8]
+
+        position, view = f.Get_position(), f.Get_view()
+        target = data[iz : iz + nz, iy : iy + ny, ix : ix + nx]
+        lshapes = target.create_lshape_map()
+        buf = np.zeros(target.lshape, dtype=np.float64)
+        starts = [0] * target.ndim
+        if target.split is not None:
+            starts[target.split] = lshapes[:target.comm.rank, target.split].sum().item()
+            if target.lnumel:  # read local array
+                mpi_type = MPI.DOUBLE.Create_subarray(
+                    sizes = target.shape,
+                    subsizes = target.lshape,
+                    starts = tuple(starts),
+                    order=MPI.ORDER_C,
+                )
+                mpi_type.Commit()
+                f.Set_view(filetype=mpi_type, etype=MPI.DOUBLE, disp=position)
+                f.Read(buf)
+                buf = buf.newbyteorder()
+                buf = buf.astype(np.float64)
+                target.larray[:] = ht.torch.as_tensor(buf, device=target.larray.device)
+                mpi_type.Free()
+            else:  # read nothing; local array is empty
+                f.Set_view(filetype=MPI.DOUBLE, etype=MPI.DOUBLE, disp=position)
+        else:  # read everything
+            f.Read_all(buf)
+            buf = buf.newbyteorder()
+            buf = buf.astype(np.float64)
+            target.larray[:] = ht.torch.as_tensor(buf, device=target.larray.device)
+        f.Set_view(*view)
+        f.Seek(position + MPI.DOUBLE.Get_size() * nn, MPI.SEEK_SET)
+    f.Close()
+    return data
+
+
+def read_pfb2(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):
     """Reads .pfb file into a dndarray. Reading is only done by the
     root process and the data gets distributed afterwards.
     If needed, the byteorder is changed to correspond to the system-native.
@@ -156,8 +470,7 @@ def read_pfb(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):
                     f, dtype=dtype, count=nn
                 ).reshape((nz, ny, nx))
 
-            data = data[None, :]  # expand by empty dimension
-
+            data = data[None, :, ::2, ::4]  # expand by empty dimension
             size = ht.torch.tensor(len(data.shape), dtype=ht.torch.int32)
             comm.Bcast(size)
             shape = ht.torch.tensor(data.shape, dtype=ht.torch.int32)

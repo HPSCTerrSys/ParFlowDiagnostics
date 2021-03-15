@@ -7,12 +7,11 @@ import IO as io
 
 #Run ParFlow test case
 #Export ParFlow install directory; needs to be changed by the user
-#cmd='export PARFLOW_DIR=/home/s.kollet/restore/migrated/Programs/parflow/'
-#os.system(cmd)
-#cmd='tclsh parkinglot.tcl'
-#os.system(cmd)
-#cmd='$PARFLOW_DIR/bin/parflow parkinglot1'
-#os.system(cmd)
+# os.environ['PARFLOW_DIR'] = '/p/project/cslts/slts31/parflow_ben_original/run'
+# cmd='tclsh parkinglot.tcl'
+# os.system(cmd)
+# cmd='$PARFLOW_DIR/bin/parflow parkinglot1'
+# os.system(cmd)
 
 
 #Define slab test case
@@ -20,7 +19,7 @@ name = 'parkinglot1'
 #name = 'drainageslab1'
 #name = 'inflowslab1'
 
-split=None
+split=-1
 #Read static information
 sstorage = io.read_pfb(name + '.out.specific_storage.pfb',split=split)
 mask     = io.read_pfb(name + '.out.mask.pfb',split=split)
@@ -125,6 +124,7 @@ for t in range (nt+1):
 
       #Balance for each column
       balance_column  = ht.sum(balance_cell*mask,axis=0)
+      print(balance_column.shape, balance_column.split, balance_surface.shape, balance_surface.split)
       balance_column += balance_surface 
 
       #Mass balance over full domain without flux at the top boundary
