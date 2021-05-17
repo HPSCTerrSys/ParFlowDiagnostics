@@ -92,10 +92,23 @@ for t in range (nt+1):
 
     #Calculate overland flow (L^3/T)
     oflowx,oflowy = diag.OverlandFlow(top_layer_press)
+    print(ht.MPI_WORLD.rank, 'oflowx calculated', 'gshape:',oflowx.shape, 'lshape:',oflowx.lshape, 'split',oflowx.split, flush=True)
     
     #Extract overland flow at the gauge and calculate absolute discharge (L^3/T)
+    ht.MPI_WORLD.Barrier()
+    for i in range(0,10): # broadcast from rank 1 to 0
+        try:
+            oflowx[i,i]
+        except:
+            print('failed', i, flush=True)
+    ht.MPI_WORLD.Barrier()
+    
+    ht.MPI_WORLD.Barrier()
+    print(oflowx[0,0])
+    ht.MPI_WORLD.Barrier()
+    
     hydrograph[t] = dy * ht.abs(oflowx[gaugey,gaugex]) + dx * ht.abs(oflowy[gaugey,gaugex])
-
+    
     #Calculate net overland flow for each top layer cell (L/T)
     net_overland_flow = diag.NetLateralOverlandFlow(oflowx,oflowy)
 

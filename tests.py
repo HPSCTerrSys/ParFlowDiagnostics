@@ -1,3 +1,6 @@
+"""
+This script is run interactively on a compute node. The used parflow is configured to always use srun.
+"""
 import os
 
 os.environ['PARFLOW_DIR'] = '/p/project/cslts/slts31/parflow_ben_original/run'
