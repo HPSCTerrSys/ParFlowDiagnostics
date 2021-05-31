@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import heat as ht
 import numpy as np
 import sys
@@ -37,7 +38,7 @@ dz = 1.0
 nx = 10
 ny = 10
 nz = 1
-dzmult = ht.full(nz,1.0,split=split)
+dzmult = ht.full(nz,1.0,split=None)
 terrainfollowing = False
 
 dt = 1.0
@@ -76,6 +77,7 @@ for t in range (nt+1):
     press = ht.where(mask==0.0,99999.0,press)
 
     #Calculate relative saturation and relative hydraulic conductivity
+    print('begin VANGENUCHTEN', flush=True); ht.MPI_WORLD.Barrier()
     satur,krel = diag.VanGenuchten(press)
 
     #Obtain pressure at the land surface
@@ -92,10 +94,10 @@ for t in range (nt+1):
 
     #Calculate overland flow (L^3/T)
     oflowx,oflowy = diag.OverlandFlow(top_layer_press)
-    print(ht.MPI_WORLD.rank, 'oflowx calculated', 'gshape:',oflowx.shape, 'lshape:',oflowx.lshape, 'split',oflowx.split, flush=True)
+    print(ht.MPI_WORLD.rank, 'oflowx calculated', 'gshape:',oflowx.shape, 'lshape:',oflowx.lshape, 'split',oflowx.split, 'bcasts:', ht.MPI_WORLD.bcast_counter, flush=True)
     
     #Extract overland flow at the gauge and calculate absolute discharge (L^3/T)
-    ht.MPI_WORLD.Barrier()
+    """ht.MPI_WORLD.Barrier()
     for i in range(0,10): # broadcast from rank 1 to 0
         try:
             oflowx[i,i]
@@ -106,7 +108,7 @@ for t in range (nt+1):
     ht.MPI_WORLD.Barrier()
     print(oflowx[0,0])
     ht.MPI_WORLD.Barrier()
-    
+    """
     hydrograph[t] = dy * ht.abs(oflowx[gaugey,gaugex]) + dx * ht.abs(oflowy[gaugey,gaugex])
     
     #Calculate net overland flow for each top layer cell (L/T)

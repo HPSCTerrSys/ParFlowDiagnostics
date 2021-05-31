@@ -194,7 +194,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         #Note, in the inactive cells, Perm is zero, thus, 1/Perm results in inf, which then results in Kmean = 0!
         Kmean = 2. / (inv_perm[1,:, :-1, :] + inv_perm[1,:, 1:, :])
-        print('before diff Press.shape=', Press.gshape, 'Press.lshape', Press.lshape, flush=True)
+        #print('before diff Press.shape=', Press.gshape, 'Press.lshape', Press.lshape, flush=True)
         grad = ht.diff(Press, axis=1)/self.Dy
         # + sign, because we later multiply by (-1.0)
         grad = grad * y_dir_g_c[:,:-1,:] + y_dir_g[:,:-1,:]
@@ -202,8 +202,10 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flowback[:, :-1, :] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[:, 1:, :], Krel[:, :-1, :])
         flowfront[:, 1:, :] = flowback[:, :-1, :]
 
-        flowback *= self.Dx * self.Dz * Dzmult3D
-        flowfront  *= self.Dx * self.Dz * Dzmult3D
+        print('before mul', (self.Dx * self.Dz * Dzmult3D).lshape, flowback.lshape, flush=True)
+        flowback = flowback * self.Dx * self.Dz * Dzmult3D
+        flowfront  = flowfront * self.Dx * self.Dz * Dzmult3D
+        print('after flows', flush=True)
 
         #  Top and Bottom
         flowtop = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
@@ -221,6 +223,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         flowtop *= self.Dx * self.Dy
         flowbottom *= self.Dx * self.Dy
+        print('subsurfaceflow finished', flush=True)
 
         return(flowleft,flowright,flowfront,flowback,flowbottom,flowtop)
 
@@ -239,8 +242,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #     head = fabs(ppdat[ipp]) / (pddat[ipd] * gravity);
         #     psdat[ips] = s_dif / pow(1.0 + pow((alpha * head), n), m)
         #                  + s_res;
-        m = ht.float64(1.0) - ht.float64(1.0)/self.Nvg
-        Satur = ht.where(Press<0.0, (self.Ssat - self.Sres)/((ht.float64(1.0)+ (self.Alpha*ht.absolute(Press))**self.Nvg)**m) + self.Sres, ht.float64(1.0))
+        m = 1.0 - 1.0/self.Nvg
+        Satur = ht.where(Press<0.0, (self.Ssat - self.Sres)/((1.0+ (self.Alpha*ht.absolute(Press))**self.Nvg)**m) + self.Sres, 1.0)
 
         #ParFlow:
         #opahn = 1.0 + pow(alpha * head, n);
