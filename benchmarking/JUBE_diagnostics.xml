@@ -4,11 +4,11 @@
     <comment>combining JUBE2, SBatch and HeAT (mpi4py)</comment>
     <parameterset name="job_config">
       <!-- SLURM parameters  -->
-      <parameter  name="nodes" type="int">1,2,4,8</parameter>
+      <parameter  name="nodes" type="int">1</parameter>
       <parameter  name="num_procs_per_node" mode="python" type="int">&quot;,&quot;.join(str(a) for a in [1,2])</parameter>
       <parameter  name="omp_num_threads" mode="python" type="int">&quot;,&quot;.join(str(a) for a in [1,2,4,12,24,32,48] if a == 48//$num_procs_per_node)</parameter>
       <parameter  name="job_file"  type="string">jobscript.ll</parameter>
-      <parameter  name="walltime"  type="string">00:12:00</parameter>
+      <parameter  name="walltime"  type="string">00:30:00</parameter>
       <parameter  name="account"  type="string">slts</parameter>
       <parameter  name="partition"  type="string">batch</parameter>
       <parameter  name="err_file"  type="string">stderr</parameter>
@@ -22,7 +22,7 @@
 
     <parameterset name="source_config">
       <!-- Source code parameters -->
-      <parameter name="split" separator="," type="int">0,-1</parameter>
+      <parameter name="split" separator="," type="int">-1,-2</parameter>
       <!-- additional source code parameters -->
     </parameterset>
 
