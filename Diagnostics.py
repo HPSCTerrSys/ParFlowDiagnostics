@@ -365,7 +365,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         y_dir_g   = ht.zeros(shape3D, split=self.Split3D)
         y_dir_g_c = ht.ones(shape3D, split=self.Split3D)
         if self.Terrainfollowing:
-            print('Terrain following', flush=True)
+            printroot('Terrain following', flush=True)
             x_dir_g[:,:,:-1]   = (( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0).expand_dims(0)
             x_dir_g_c[:,:,:-1] = (( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0).expand_dims(0)
             y_dir_g[:,:-1,:]   = (( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0).expand_dims(0)

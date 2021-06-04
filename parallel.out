@@ -1133,11 +1133,9 @@ In the first 2 hours, the balance increment due to rain is -0.45.
 terrainfollwing
 terrainfollowing1.out.press.00000.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 terrainfollowing1.out.press.00001.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1149,7 +1147,6 @@ Time step: 1 , surface_balance: -0.1237921580005435
 Time step: 1 , total balance: -0.05000003244095487
 terrainfollowing1.out.press.00002.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 2 , dstorage: 0.038302117892280343
@@ -1159,7 +1156,6 @@ Time step: 2 , netoverlandflow: 0.8836592435836792
 Time step: 2 , surface_balance: -0.08830215673461048
 Time step: 2 , total balance: -0.05000003884233031
 terrainfollowing1.out.press.00003.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1171,7 +1167,6 @@ Time step: 3 , surface_balance: -0.06552136469669433
 Time step: 3 , total balance: -0.05000006356664409
 terrainfollowing1.out.press.00004.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 4 , dstorage: 0.006950034384837081
@@ -1181,7 +1176,6 @@ Time step: 4 , netoverlandflow: 0.5696947574615479
 Time step: 4 , surface_balance: -0.056950056775955216
 Time step: 4 , total balance: -0.05000002239111845
 terrainfollowing1.out.press.00005.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1193,7 +1187,6 @@ Time step: 5 , surface_balance: -0.053276262936957565
 Time step: 5 , total balance: -0.050000034170984864
 terrainfollowing1.out.press.00006.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 6 , dstorage: 0.0015824560267988178
@@ -1203,7 +1196,6 @@ Time step: 6 , netoverlandflow: 0.5158654451370239
 Time step: 6 , surface_balance: -0.05158246602425449
 Time step: 6 , total balance: -0.050000009997455665
 terrainfollowing1.out.press.00007.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1215,7 +1207,6 @@ Time step: 7 , surface_balance: -0.050772720507924446
 Time step: 7 , total balance: -0.05000001965010556
 terrainfollowing1.out.press.00008.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 8 , dstorage: 0.0003789962908368229
@@ -1225,7 +1216,6 @@ Time step: 8 , netoverlandflow: 0.5037997364997864
 Time step: 8 , surface_balance: -0.05037901094570771
 Time step: 8 , total balance: -0.050000014654870806
 terrainfollowing1.out.press.00009.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1237,7 +1227,6 @@ Time step: 9 , surface_balance: -0.050186199100067004
 Time step: 9 , total balance: -0.050000021365158506
 terrainfollowing1.out.press.00010.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 10 , dstorage: 9.139406586928644e-05
@@ -1247,7 +1236,6 @@ Time step: 10 , netoverlandflow: 0.5009174942970276
 Time step: 10 , surface_balance: -0.05009151879302088
 Time step: 10 , total balance: -0.050000124727151554
 terrainfollowing1.out.press.00011.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1259,7 +1247,6 @@ Time step: 11 , surface_balance: -0.05004501481423261
 Time step: 11 , total balance: -0.05000005735762242
 terrainfollowing1.out.press.00012.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 12 , dstorage: 2.2100292760526483e-05
@@ -1269,7 +1256,6 @@ Time step: 12 , netoverlandflow: 0.500221848487854
 Time step: 12 , surface_balance: -0.050022128704638
 Time step: 12 , total balance: -0.050000028411877596
 terrainfollowing1.out.press.00013.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1281,7 +1267,6 @@ Time step: 13 , surface_balance: -0.0500108807844497
 Time step: 13 , total balance: -0.05000002279480425
 terrainfollowing1.out.press.00014.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 14 , dstorage: 5.3325230976271e-06
@@ -1291,7 +1276,6 @@ Time step: 14 , netoverlandflow: 0.5000536441802979
 Time step: 14 , surface_balance: -0.05000535159370927
 Time step: 14 , total balance: -0.050000019070611766
 terrainfollowing1.out.press.00015.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1303,7 +1287,6 @@ Time step: 15 , surface_balance: -0.050002635310348625
 Time step: 15 , total balance: -0.05000001708773588
 terrainfollowing1.out.press.00016.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 16 , dstorage: 1.2848812590724942e-06
@@ -1313,7 +1296,6 @@ Time step: 16 , netoverlandflow: 0.5000130534172058
 Time step: 16 , surface_balance: -0.05000130132527918
 Time step: 16 , total balance: -0.05000001644402036
 terrainfollowing1.out.press.00017.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1325,7 +1307,6 @@ Time step: 17 , surface_balance: -0.05000064733774088
 Time step: 17 , total balance: -0.05000001664028554
 terrainfollowing1.out.press.00018.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 18 , dstorage: 3.09542654668149e-07
@@ -1335,7 +1316,6 @@ Time step: 18 , netoverlandflow: 0.5000032782554626
 Time step: 18 , surface_balance: -0.050000327782249776
 Time step: 18 , total balance: -0.0500000182395951
 terrainfollowing1.out.press.00019.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1347,7 +1327,6 @@ Time step: 19 , surface_balance: -0.050000167995467054
 Time step: 19 , total balance: -0.050000015923013605
 terrainfollowing1.out.press.00020.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 20 , dstorage: 7.483252673946839e-08
@@ -1357,7 +1336,6 @@ Time step: 20 , netoverlandflow: 0.5000009536743164
 Time step: 20 , surface_balance: -0.0500000974134944
 Time step: 20 , total balance: -0.05000002258096757
 terrainfollowing1.out.press.00021.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1369,7 +1347,6 @@ Time step: 21 , surface_balance: -0.020833350285106956
 Time step: 21 , total balance: -4.6617082565675316e-08
 terrainfollowing1.out.press.00022.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 22 , dstorage: 0.013028942433761851
@@ -1379,7 +1356,6 @@ Time step: 22 , netoverlandflow: 0.1305873543024063
 Time step: 22 , surface_balance: -0.013028956720226529
 Time step: 22 , total balance: -1.428646503225453e-08
 terrainfollowing1.out.press.00023.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1391,7 +1367,6 @@ Time step: 23 , surface_balance: -0.009074812360204632
 Time step: 23 , total balance: -3.8091415659712025e-09
 terrainfollowing1.out.press.00024.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 24 , dstorage: 0.006742703791136685
@@ -1401,7 +1376,6 @@ Time step: 24 , netoverlandflow: 0.06754690408706665
 Time step: 24 , surface_balance: -0.006742706115494961
 Time step: 24 , total balance: -2.3243581274111358e-09
 terrainfollowing1.out.press.00025.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1413,7 +1387,6 @@ Time step: 25 , surface_balance: -0.005238383216977556
 Time step: 25 , total balance: -5.256662892303039e-07
 terrainfollowing1.out.press.00026.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 26 , dstorage: 0.004205361459823476
@@ -1423,7 +1396,6 @@ Time step: 26 , netoverlandflow: 0.042121127247810364
 Time step: 26 , surface_balance: -0.0042055975713891905
 Time step: 26 , total balance: -2.3611156557841982e-07
 terrainfollowing1.out.press.00027.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1435,7 +1407,6 @@ Time step: 27 , surface_balance: -0.003462495663880445
 Time step: 27 , total balance: -1.898303486447088e-07
 terrainfollowing1.out.press.00028.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 28 , dstorage: 0.0029078068282205444
@@ -1445,7 +1416,6 @@ Time step: 28 , netoverlandflow: 0.029119953513145447
 Time step: 28 , surface_balance: -0.002907902596068938
 Time step: 28 , total balance: -9.576784848800389e-08
 terrainfollowing1.out.press.00029.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1457,7 +1427,6 @@ Time step: 29 , surface_balance: -0.0024817136442024774
 Time step: 29 , total balance: -5.167423784181724e-08
 terrainfollowing1.out.press.00030.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 30 , dstorage: 0.002146223737919936
@@ -1467,7 +1436,6 @@ Time step: 30 , netoverlandflow: 0.021490657702088356
 Time step: 30 , surface_balance: -0.0021462534976981326
 Time step: 30 , total balance: -2.9759778365570644e-08
 terrainfollowing1.out.press.00031.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1479,7 +1447,6 @@ Time step: 31 , surface_balance: -0.0018768755855312184
 Time step: 31 , total balance: -1.7393855631644625e-08
 terrainfollowing1.out.press.00032.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 32 , dstorage: 0.0016568624405613802
@@ -1489,7 +1456,6 @@ Time step: 32 , netoverlandflow: 0.016589276492595673
 Time step: 32 , surface_balance: -0.0016568736391333685
 Time step: 32 , total balance: -1.1198571835038112e-08
 terrainfollowing1.out.press.00033.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1501,7 +1467,6 @@ Time step: 33 , surface_balance: -0.0014745763197326306
 Time step: 33 , total balance: -7.485000329179176e-09
 terrainfollowing1.out.press.00034.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 34 , dstorage: 0.001321611364597305
@@ -1511,7 +1476,6 @@ Time step: 34 , netoverlandflow: 0.013231845572590828
 Time step: 34 , surface_balance: -0.0013216165500316247
 Time step: 34 , total balance: -5.185434446414172e-09
 terrainfollowing1.out.press.00035.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1523,7 +1487,6 @@ Time step: 35 , surface_balance: -0.001191860058142803
 Time step: 35 , total balance: -3.855693278325897e-09
 terrainfollowing1.out.press.00036.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 36 , dstorage: 0.001080717094413374
@@ -1533,7 +1496,6 @@ Time step: 36 , netoverlandflow: 0.010819575749337673
 Time step: 36 , surface_balance: -0.0010807198889451963
 Time step: 36 , total balance: -2.7945319417896353e-09
 terrainfollowing1.out.press.00037.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1545,7 +1507,6 @@ Time step: 37 , surface_balance: -0.0009847072374815796
 Time step: 37 , total balance: -2.1422121312085485e-09
 terrainfollowing1.out.press.00038.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 38 , dstorage: 0.0009011249386637011
@@ -1555,7 +1516,6 @@ Time step: 38 , netoverlandflow: 0.009021294303238392
 Time step: 38 , surface_balance: -0.0009011266346318776
 Time step: 38 , total balance: -1.6959681150771622e-09
 terrainfollowing1.out.press.00039.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1567,7 +1527,6 @@ Time step: 39 , surface_balance: -0.0008278669566347426
 Time step: 39 , total balance: -1.2642299787330585e-09
 terrainfollowing1.out.press.00040.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 40 , dstorage: 0.0007632535273226883
@@ -1577,7 +1536,6 @@ Time step: 40 , netoverlandflow: 0.007640842813998461
 Time step: 40 , surface_balance: -0.0007632545771434619
 Time step: 40 , total balance: -1.0498208166502543e-09
 terrainfollowing1.out.press.00041.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1589,7 +1547,6 @@ Time step: 41 , surface_balance: -0.0007059471733375335
 Time step: 41 , total balance: -8.679238237396109e-10
 terrainfollowing1.out.press.00042.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 42 , dstorage: 0.0006548568812824278
@@ -1599,7 +1556,6 @@ Time step: 42 , netoverlandflow: 0.006555559579282999
 Time step: 42 , surface_balance: -0.0006548576226138113
 Time step: 42 , total balance: -7.413315024785289e-10
 terrainfollowing1.out.press.00043.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1611,7 +1567,6 @@ Time step: 43 , surface_balance: -0.000609097066179929
 Time step: 43 , total balance: -6.016677863394937e-10
 terrainfollowing1.out.press.00044.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 44 , dstorage: 0.0005679314407112104
@@ -1621,7 +1576,6 @@ Time step: 44 , netoverlandflow: 0.005685284733772278
 Time step: 44 , surface_balance: -0.0005679321965902981
 Time step: 44 , total balance: -7.558792409264464e-10
 terrainfollowing1.out.press.00045.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1633,7 +1587,6 @@ Time step: 45 , surface_balance: -0.000530755560120989
 Time step: 45 , total balance: -6.406183480824751e-10
 terrainfollowing1.out.press.00046.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 46 , dstorage: 0.0004970559135959395
@@ -1643,7 +1596,6 @@ Time step: 46 , netoverlandflow: 0.004975717514753342
 Time step: 46 , surface_balance: -0.0004970564506650268
 Time step: 46 , total balance: -5.37068999516277e-10
 terrainfollowing1.out.press.00047.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1655,7 +1607,6 @@ Time step: 47 , surface_balance: -0.0004664056061807036
 Time step: 47 , total balance: -4.459078883044254e-10
 terrainfollowing1.out.press.00048.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 48 , dstorage: 0.0004384387253708083
@@ -1665,7 +1616,6 @@ Time step: 48 , netoverlandflow: 0.004388891160488129
 Time step: 48 , surface_balance: -0.00043843910107550945
 Time step: 48 , total balance: -3.7570464404487747e-10
 terrainfollowing1.out.press.00049.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1677,7 +1627,6 @@ Time step: 49 , surface_balance: -0.0004128466532903611
 Time step: 49 , total balance: -3.4933158254112084e-10
 terrainfollowing1.out.press.00050.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 50 , dstorage: 0.00038936190551409075
@@ -1687,7 +1636,6 @@ Time step: 50 , netoverlandflow: 0.003897587303072214
 Time step: 50 , surface_balance: -0.000389362210031876
 Time step: 50 , total balance: -3.045179022137523e-10
 terrainfollowing1.out.press.00051.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1699,7 +1647,6 @@ Time step: 51 , surface_balance: -0.00036775668385104616
 Time step: 51 , total balance: -2.982020667723073e-10
 terrainfollowing1.out.press.00052.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 52 , dstorage: 0.0003478314167485886
@@ -1709,7 +1656,6 @@ Time step: 52 , netoverlandflow: 0.0034818381536751986
 Time step: 52 , surface_balance: -0.00034783167581258373
 Time step: 52 , total balance: -2.5906354405441645e-10
 terrainfollowing1.out.press.00053.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1721,7 +1667,6 @@ Time step: 53 , surface_balance: -0.0003294147974738632
 Time step: 53 , total balance: -2.0955554912854835e-10
 terrainfollowing1.out.press.00054.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 54 , dstorage: 0.0003123553976506245
@@ -1731,7 +1676,6 @@ Time step: 54 , netoverlandflow: 0.003126705065369606
 Time step: 54 , surface_balance: -0.00031235560255778313
 Time step: 54 , total balance: -2.0490696422612031e-10
 terrainfollowing1.out.press.00055.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1743,7 +1687,6 @@ Time step: 55 , surface_balance: -0.00029652322561538454
 Time step: 55 , total balance: -3.5998969699288508e-09
 terrainfollowing1.out.press.00056.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 56 , dstorage: 0.00028179687273617755
@@ -1753,7 +1696,6 @@ Time step: 56 , netoverlandflow: 0.002820833120495081
 Time step: 56 , surface_balance: -0.0002817999792462169
 Time step: 56 , total balance: -3.1065099828468667e-09
 terrainfollowing1.out.press.00057.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1765,7 +1707,6 @@ Time step: 57 , surface_balance: -0.0002680837864834928
 Time step: 57 , total balance: -2.6610632790184663e-09
 terrainfollowing1.out.press.00058.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 58 , dstorage: 0.00025528187483511884
@@ -1775,7 +1716,6 @@ Time step: 58 , netoverlandflow: 0.002555405255407095
 Time step: 58 , surface_balance: -0.00025528418550215193
 Time step: 58 , total balance: -2.3106668507830858e-09
 terrainfollowing1.out.press.00059.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1787,7 +1727,6 @@ Time step: 59 , surface_balance: -0.0002433206558386359
 Time step: 59 , total balance: -2.004231076891891e-09
 terrainfollowing1.out.press.00060.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 60 , dstorage: 0.00023211974228003543
@@ -1797,7 +1736,6 @@ Time step: 60 , netoverlandflow: 0.002323545515537262
 Time step: 60 , surface_balance: -0.00023212147036513
 Time step: 60 , total balance: -1.7280852690655657e-09
 terrainfollowing1.out.press.00061.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1809,7 +1747,6 @@ Time step: 61 , surface_balance: -0.00022169097512087044
 Time step: 61 , total balance: -7.620229501663616e-07
 terrainfollowing1.out.press.00062.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 62 , dstorage: 0.0002111229579707533
@@ -1819,7 +1756,6 @@ Time step: 62 , netoverlandflow: 0.0021203975193202496
 Time step: 62 , surface_balance: -0.00021182677439611473
 Time step: 62 , total balance: -7.038164251699924e-07
 terrainfollowing1.out.press.00063.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1831,7 +1767,6 @@ Time step: 63 , surface_balance: -0.00020256201742001206
 Time step: 63 , total balance: -6.496365101036575e-07
 terrainfollowing1.out.press.00064.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 64 , dstorage: 0.0001932469457935973
@@ -1841,7 +1776,6 @@ Time step: 64 , netoverlandflow: 0.0019404242048040032
 Time step: 64 , surface_balance: -0.00019384737827822583
 Time step: 64 , total balance: -6.004324847395503e-07
 terrainfollowing1.out.press.00065.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1853,7 +1787,6 @@ Time step: 65 , surface_balance: -0.00018563846425669566
 Time step: 65 , total balance: -5.556412080497206e-07
 terrainfollowing1.out.press.00066.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 66 , dstorage: 0.00017738112581530902
@@ -1863,7 +1796,6 @@ Time step: 66 , netoverlandflow: 0.0017807531403377652
 Time step: 66 , surface_balance: -0.00017789593002605228
 Time step: 66 , total balance: -5.148042107265115e-07
 terrainfollowing1.out.press.00067.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1875,7 +1807,6 @@ Time step: 67 , surface_balance: -0.0001705845232497969
 Time step: 67 , total balance: -4.774950841804956e-07
 terrainfollowing1.out.press.00068.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 68 , dstorage: 0.00016322914764156475
@@ -1885,7 +1816,6 @@ Time step: 68 , netoverlandflow: 0.0016383813926950097
 Time step: 68 , surface_balance: -0.00016367251933387437
 Time step: 68 , total balance: -4.4337169211798415e-07
 terrainfollowing1.out.press.00069.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1897,7 +1827,6 @@ Time step: 69 , surface_balance: -0.0001571311854055929
 Time step: 69 , total balance: -4.121062321502285e-07
 terrainfollowing1.out.press.00070.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 70 , dstorage: 0.00015055102414162974
@@ -1907,7 +1836,6 @@ Time step: 70 , netoverlandflow: 0.001510878442786634
 Time step: 70 , surface_balance: -0.00015093444705841335
 Time step: 70 , total balance: -3.8342291707165604e-07
 terrainfollowing1.out.press.00071.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1919,7 +1847,6 @@ Time step: 71 , surface_balance: -0.0001450585400151727
 Time step: 71 , total balance: -3.570553869286421e-07
 terrainfollowing1.out.press.00072.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 72 , dstorage: 0.00013914900566335464
@@ -1929,7 +1856,6 @@ Time step: 72 , netoverlandflow: 0.001396243111230433
 Time step: 72 , surface_balance: -0.00013948180702425385
 Time step: 72 , total balance: -3.328013607308347e-07
 terrainfollowing1.out.press.00073.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1941,7 +1867,6 @@ Time step: 73 , surface_balance: -0.00013418440727854664
 Time step: 73 , total balance: -3.1045259728744966e-07
 terrainfollowing1.out.press.00074.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 74 , dstorage: 0.00012885833087689352
@@ -1951,7 +1876,6 @@ Time step: 74 , netoverlandflow: 0.0012928091455250978
 Time step: 74 , surface_balance: -0.00012914817124960886
 Time step: 74 , total balance: -2.8984037253078354e-07
 terrainfollowing1.out.press.00075.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1963,7 +1887,6 @@ Time step: 75 , surface_balance: -0.00012435641179584975
 Time step: 75 , total balance: -2.708126352925222e-07
 terrainfollowing1.out.press.00076.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 76 , dstorage: 0.00011954054469061467
@@ -1973,7 +1896,6 @@ Time step: 76 , netoverlandflow: 0.0011991772335022688
 Time step: 76 , surface_balance: -0.00011979377160006906
 Time step: 76 , total balance: -2.5322690921881705e-07
 terrainfollowing1.out.press.00077.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -1985,7 +1907,6 @@ Time step: 77 , surface_balance: -0.00011544609239693524
 Time step: 77 , total balance: -2.3694756507070848e-07
 terrainfollowing1.out.press.00078.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 78 , dstorage: 0.00011107845598257041
@@ -1995,7 +1916,6 @@ Time step: 78 , netoverlandflow: 0.001114163431338966
 Time step: 78 , surface_balance: -0.00011130033510261896
 Time step: 78 , total balance: -2.2187912015721525e-07
 terrainfollowing1.out.press.00079.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2007,7 +1927,6 @@ Time step: 79 , surface_balance: -0.00010734441260935713
 Time step: 79 , total balance: -2.078993980834682e-07
 terrainfollowing1.out.press.00080.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 80 , dstorage: 0.00010337224096233256
@@ -2017,7 +1936,6 @@ Time step: 80 , netoverlandflow: 0.0010367598151788116
 Time step: 80 , surface_balance: -0.0001035671826318582
 Time step: 80 , total balance: -1.949416696853893e-07
 terrainfollowing1.out.press.00081.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2029,7 +1947,6 @@ Time step: 81 , surface_balance: -9.995825863890202e-05
 Time step: 81 , total balance: -1.8288524160229094e-07
 terrainfollowing1.out.press.00082.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 82 , dstorage: 9.633638314450509e-05
@@ -2039,7 +1956,6 @@ Time step: 82 , netoverlandflow: 0.000966103165410459
 Time step: 82 , surface_balance: -9.650807543016837e-05
 Time step: 82 , total balance: -1.7169228578445273e-07
 terrainfollowing1.out.press.00083.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2051,7 +1967,6 @@ Time step: 83 , surface_balance: -9.320769276737456e-05
 Time step: 83 , total balance: -1.6127534270744294e-07
 terrainfollowing1.out.press.00084.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 84 , dstorage: 8.98972406598161e-05
@@ -2061,7 +1976,6 @@ Time step: 84 , netoverlandflow: 0.0009014506940729916
 Time step: 84 , surface_balance: -9.004881727457999e-05
 Time step: 84 , total balance: -1.5157661477165595e-07
 terrainfollowing1.out.press.00085.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2073,7 +1987,6 @@ Time step: 85 , surface_balance: -8.702371519092967e-05
 Time step: 85 , total balance: -1.4253238316734931e-07
 terrainfollowing1.out.press.00086.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 86 , dstorage: 8.399109275585839e-05
@@ -2083,7 +1996,6 @@ Time step: 86 , netoverlandflow: 0.0008421596721746027
 Time step: 86 , surface_balance: -8.412520515184755e-05
 Time step: 86 , total balance: -1.3411239578619595e-07
 terrainfollowing1.out.press.00087.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2095,7 +2007,6 @@ Time step: 87 , surface_balance: -8.134653454876925e-05
 Time step: 87 , total balance: -1.2623834182569175e-07
 terrainfollowing1.out.press.00088.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 88 , dstorage: 7.856255755858644e-05
@@ -2105,7 +2016,6 @@ Time step: 88 , netoverlandflow: 0.0007876718300394714
 Time step: 88 , surface_balance: -7.868145233436769e-05
 Time step: 88 , total balance: -1.1889477572412342e-07
 terrainfollowing1.out.press.00089.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2117,7 +2027,6 @@ Time step: 89 , surface_balance: -7.612407809627808e-05
 Time step: 89 , total balance: -1.1203275849364612e-07
 terrainfollowing1.out.press.00090.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 90 , dstorage: 7.356330081490338e-05
@@ -2127,7 +2036,6 @@ Time step: 90 , netoverlandflow: 0.0007375000277534127
 Time step: 90 , surface_balance: -7.366890936988892e-05
 Time step: 90 , total balance: -1.0560855479360698e-07
 terrainfollowing1.out.press.00091.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2139,7 +2047,6 @@ Time step: 91 , surface_balance: -7.131081439558277e-05
 Time step: 91 , total balance: -9.960493781114785e-08
 terrainfollowing1.out.press.00092.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 92 , dstorage: 6.895097493531989e-05
@@ -2149,7 +2056,6 @@ Time step: 92 , netoverlandflow: 0.0006912177195772529
 Time step: 92 , surface_balance: -6.904495938914102e-05
 Time step: 92 , total balance: -9.398445363390136e-08
 terrainfollowing1.out.press.00093.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2161,7 +2067,6 @@ Time step: 93 , surface_balance: -6.686681584482008e-05
 Time step: 93 , total balance: -8.872043858344086e-08
 terrainfollowing1.out.press.00094.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 94 , dstorage: 6.468834186622308e-05
@@ -2171,7 +2076,6 @@ Time step: 94 , netoverlandflow: 0.0006484497571364045
 Time step: 94 , surface_balance: -6.477212418015158e-05
 Time step: 94 , total balance: -8.378231377854234e-08
 terrainfollowing1.out.press.00095.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2183,7 +2087,6 @@ Time step: 95 , surface_balance: -6.275688648229865e-05
 Time step: 95 , total balance: -7.914813003650004e-08
 terrainfollowing1.out.press.00096.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 96 , dstorage: 6.074254381177027e-05
@@ -2193,7 +2096,6 @@ Time step: 96 , netoverlandflow: 0.0006088653462938964
 Time step: 96 , surface_balance: -6.081734833845523e-05
 Time step: 96 , total balance: -7.480452665371146e-08
 terrainfollowing1.out.press.00097.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2205,7 +2107,6 @@ Time step: 97 , surface_balance: -5.894996247453949e-05
 Time step: 97 , total balance: -7.072698423151239e-08
 terrainfollowing1.out.press.00098.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 98 , dstorage: 5.708449368251392e-05
@@ -2215,7 +2116,6 @@ Time step: 98 , netoverlandflow: 0.000572171644307673
 Time step: 98 , surface_balance: -5.7151388772043755e-05
 Time step: 98 , total balance: -6.689508942332549e-08
 terrainfollowing1.out.press.00099.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2227,7 +2127,6 @@ Time step: 99 , surface_balance: -5.5418483369491836e-05
 Time step: 99 , total balance: -6.329564541658443e-08
 terrainfollowing1.out.press.00100.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 100 , dstorage: 5.3688363105990674e-05
@@ -2237,7 +2136,6 @@ Time step: 100 , netoverlandflow: 0.0005381087539717555
 Time step: 100 , surface_balance: -5.374826957267763e-05
 Time step: 100 , total balance: -5.990646631602418e-08
 terrainfollowing1.out.press.00101.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2249,7 +2147,6 @@ Time step: 101 , surface_balance: -5.213795241946601e-05
 Time step: 101 , total balance: -5.672280444543425e-08
 terrainfollowing1.out.press.00102.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 102 , dstorage: 5.0531150396874135e-05
@@ -2259,7 +2156,6 @@ Time step: 102 , netoverlandflow: 0.0005064452416263521
 Time step: 102 , surface_balance: -5.0584875035863906e-05
 Time step: 102 , total balance: -5.372463930566722e-08
 terrainfollowing1.out.press.00103.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2271,7 +2167,6 @@ Time step: 103 , surface_balance: -4.9086536836743554e-05
 Time step: 103 , total balance: -5.090496588600231e-08
 terrainfollowing1.out.press.00104.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 104 , dstorage: 4.759231441458806e-05
@@ -2281,7 +2176,6 @@ Time step: 104 , netoverlandflow: 0.00047697447007521987
 Time step: 104 , surface_balance: -4.764056079400469e-05
 Time step: 104 , total balance: -4.824637947400262e-08
 terrainfollowing1.out.press.00105.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2293,7 +2187,6 @@ Time step: 105 , surface_balance: -4.62447043596643e-05
 Time step: 105 , total balance: -4.5740608035135105e-08
 terrainfollowing1.out.press.00106.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 106 , dstorage: 4.485346298576786e-05
@@ -2303,7 +2196,6 @@ Time step: 106 , netoverlandflow: 0.00044951148447580636
 Time step: 106 , surface_balance: -4.489684492238128e-05
 Time step: 106 , total balance: -4.3381936761866316e-08
 terrainfollowing1.out.press.00107.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2315,7 +2207,6 @@ Time step: 107 , surface_balance: -4.3594957987357576e-05
 Time step: 107 , total balance: -4.115276518233506e-08
 terrainfollowing1.out.press.00108.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 108 , dstorage: 4.229808672896957e-05
@@ -2325,7 +2216,6 @@ Time step: 108 , netoverlandflow: 0.00042389024747535586
 Time step: 108 , surface_balance: -4.233714264936632e-05
 Time step: 108 , total balance: -3.905592048988188e-08
 terrainfollowing1.out.press.00109.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2337,7 +2227,6 @@ Time step: 109 , surface_balance: -4.1121570667672014e-05
 Time step: 109 , total balance: -3.707007536091905e-08
 terrainfollowing1.out.press.00110.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 110 , dstorage: 3.9911330827053365e-05
@@ -2347,7 +2236,6 @@ Time step: 110 , netoverlandflow: 0.0003999614273197949
 Time step: 110 , surface_balance: -3.9946530127904153e-05
 Time step: 110 , total balance: -3.519930094880025e-08
 terrainfollowing1.out.press.00111.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2359,7 +2247,6 @@ Time step: 111 , surface_balance: -3.881037815400041e-05
 Time step: 111 , total balance: -3.343125223333708e-08
 terrainfollowing1.out.press.00112.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 112 , dstorage: 3.767979865027882e-05
@@ -2369,7 +2256,6 @@ Time step: 112 , netoverlandflow: 0.00037759036058560014
 Time step: 112 , surface_balance: -3.77115591033489e-05
 Time step: 112 , total balance: -3.176045304791736e-08
 terrainfollowing1.out.press.00113.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2381,7 +2267,6 @@ Time step: 113 , surface_balance: -3.664859365772112e-05
 Time step: 113 , total balance: -3.0182126179627636e-08
 terrainfollowing1.out.press.00114.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 114 , dstorage: 3.5591382220779514e-05
@@ -2391,7 +2276,6 @@ Time step: 114 , netoverlandflow: 0.00035665539326146245
 Time step: 114 , surface_balance: -3.562007155182399e-05
 Time step: 114 , total balance: -2.868933127436052e-08
 terrainfollowing1.out.press.00115.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2403,7 +2287,6 @@ Time step: 115 , surface_balance: -3.462465157749496e-05
 Time step: 115 , total balance: -2.727708599574094e-08
 terrainfollowing1.out.press.00116.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 116 , dstorage: 3.363511538260339e-05
@@ -2413,7 +2296,6 @@ Time step: 116 , netoverlandflow: 0.0003370463091414422
 Time step: 116 , surface_balance: -3.366105794961873e-05
 Time step: 116 , total balance: -2.594256723591898e-08
 terrainfollowing1.out.press.00117.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
@@ -2425,7 +2307,6 @@ Time step: 117 , surface_balance: -3.272806939581021e-05
 Time step: 117 , total balance: -2.4677780166570962e-08
 terrainfollowing1.out.press.00118.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 118 , dstorage: 3.18010462495512e-05
@@ -2436,7 +2317,6 @@ Time step: 118 , surface_balance: -3.182453007372717e-05
 Time step: 118 , total balance: -2.3483824217055208e-08
 terrainfollowing1.out.press.00119.pfb
 Terrain following
-Terrain following
 subsurfaceflow
 overlandflow
 Time step: 119 , dstorage: 3.0926975552165656e-05
@@ -2446,7 +2326,6 @@ Time step: 119 , netoverlandflow: 0.0003099025634583086
 Time step: 119 , surface_balance: -3.0949324108354004e-05
 Time step: 119 , total balance: -2.2348556187731447e-08
 terrainfollowing1.out.press.00120.pfb
-Terrain following
 Terrain following
 subsurfaceflow
 overlandflow
