@@ -1,0 +1,2339 @@
+test1
+testOne.out.press.00000.pfb
+testOne.out.press.00001.pfb
+Time step: 1 , Increment: DNDarray([-1.0000e-04], dtype=ht.float64, device=cpu:0, split=None)
+testOne.out.press.00002.pfb
+Time step: 2 , Increment: DNDarray([-1.0000e-04], dtype=ht.float64, device=cpu:0, split=None)
+testOne.out.press.00003.pfb
+Time step: 3 , Increment: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+testOne.out.press.00004.pfb
+Time step: 4 , Increment: DNDarray([-1.0000e-04], dtype=ht.float64, device=cpu:0, split=None)
+testOne.out.press.00005.pfb
+Time step: 5 , Increment: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+testOne.out.press.00006.pfb
+Time step: 6 , Increment: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+testOne.out.press.00007.pfb
+Time step: 7 , Increment: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+testOne.out.press.00008.pfb
+Time step: 8 , Increment: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+testOne.out.press.00009.pfb
+Time step: 9 , Increment: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+
+
+At each time step, the increment should be equal to the flux at the top boundary: 0.0001 (L/T) [array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001])]
+
+parkinglot
+parkinglot1.out.press.00000.pfb
+parkinglot1.out.press.00001.pfb
+Time step: 1 , dstorage: DNDarray([-0.0200], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 1 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , total balance: DNDarray([-0.0200], dtype=ht.float64, device=cpu:0, split=None)
+parkinglot1.out.press.00002.pfb
+Time step: 2 , dstorage: DNDarray([-0.0120], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , dsurface_storage: DNDarray([-0.0017], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , netoverlandflow: DNDarray([0.0005], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 2 , surface_balance: DNDarray([-0.0023], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , total balance: DNDarray([-0.0143], dtype=ht.float64, device=cpu:0, split=None)
+parkinglot1.out.press.00003.pfb
+Time step: 3 , dstorage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , dsurface_storage: DNDarray([-0.0045], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , netoverlandflow: DNDarray([0.0055], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 3 , surface_balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , total balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+parkinglot1.out.press.00004.pfb
+Time step: 4 , dstorage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , dsurface_storage: DNDarray([-0.0015], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , netoverlandflow: DNDarray([0.0085], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 4 , surface_balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , total balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+parkinglot1.out.press.00005.pfb
+Time step: 5 , dstorage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , dsurface_storage: DNDarray([-0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , netoverlandflow: DNDarray([0.0096], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 5 , surface_balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , total balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+parkinglot1.out.press.00006.pfb
+Time step: 6 , dstorage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , dsurface_storage: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , netoverlandflow: DNDarray([0.0099], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 6 , surface_balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , total balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+parkinglot1.out.press.00007.pfb
+Time step: 7 , dstorage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , dsurface_storage: DNDarray([-2.4320e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , netoverlandflow: DNDarray([0.0100], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 7 , surface_balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , total balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+parkinglot1.out.press.00008.pfb
+Time step: 8 , dstorage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , dsurface_storage: DNDarray([-5.3231e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , netoverlandflow: DNDarray([0.0100], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 8 , surface_balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , total balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+parkinglot1.out.press.00009.pfb
+Time step: 9 , dstorage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , dsurface_storage: DNDarray([-1.1105e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , netoverlandflow: DNDarray([0.0100], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 9 , surface_balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , total balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+parkinglot1.out.press.00010.pfb
+Time step: 10 , dstorage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , dsurface_storage: DNDarray([-2.2474e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , netoverlandflow: DNDarray([0.0100], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 10 , surface_balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , total balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+
+Discharge at gauge: DNDarray([0.0000e+00, 0.0000e+00, 5.8813e-05, 7.8430e-04, 1.3306e-03, 1.5526e-03, 1.6224e-03, 1.6414e-03, 1.6462e-03,
+          1.6473e-03, 1.6475e-03], dtype=ht.float32, device=cpu:0, split=None)
+
+profileclm
+./profileclm1.out.press.00000.pfb
+./profileclm1.out.press.00001.pfb
+Time step: 1 , dstorage: DNDarray([0.0179], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , divergence: DNDarray([1.6263e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 1 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , source/sink: DNDarray([-0.0179], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , total balance: DNDarray([2.3812e-09], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00002.pfb
+Time step: 2 , dstorage: DNDarray([0.0180], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , divergence: DNDarray([4.0658e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 2 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , source/sink: DNDarray([-0.0180], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , total balance: DNDarray([4.6893e-08], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00003.pfb
+Time step: 3 , dstorage: DNDarray([0.0159], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , divergence: DNDarray([9.4868e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 3 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , source/sink: DNDarray([-0.0159], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , total balance: DNDarray([7.9265e-11], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00004.pfb
+Time step: 4 , dstorage: DNDarray([0.0130], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , divergence: DNDarray([2.7105e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 4 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , source/sink: DNDarray([-0.0130], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , total balance: DNDarray([-1.3763e-10], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00005.pfb
+Time step: 5 , dstorage: DNDarray([0.0120], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , divergence: DNDarray([-2.0329e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 5 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , source/sink: DNDarray([-0.0120], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , total balance: DNDarray([-2.6747e-10], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00006.pfb
+Time step: 6 , dstorage: DNDarray([0.0109], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , divergence: DNDarray([1.3553e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 6 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , source/sink: DNDarray([-0.0109], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , total balance: DNDarray([6.4676e-07], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00007.pfb
+Time step: 7 , dstorage: DNDarray([0.0075], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , divergence: DNDarray([-3.3881e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 7 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , source/sink: DNDarray([-0.0075], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , total balance: DNDarray([1.2115e-07], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00008.pfb
+Time step: 8 , dstorage: DNDarray([0.0069], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , divergence: DNDarray([5.4210e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 8 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , source/sink: DNDarray([-0.0069], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , total balance: DNDarray([6.2368e-08], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00009.pfb
+Time step: 9 , dstorage: DNDarray([0.0063], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , divergence: DNDarray([-7.4539e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 9 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , source/sink: DNDarray([-0.0063], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , total balance: DNDarray([3.7292e-08], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00010.pfb
+Time step: 10 , dstorage: DNDarray([0.0033], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , divergence: DNDarray([-3.0493e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 10 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , source/sink: DNDarray([-0.0033], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , total balance: DNDarray([4.3339e-09], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00011.pfb
+Time step: 11 , dstorage: DNDarray([0.0030], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , divergence: DNDarray([-4.7434e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 11 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , source/sink: DNDarray([-0.0029], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , total balance: DNDarray([2.2819e-05], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00012.pfb
+Time step: 12 , dstorage: DNDarray([0.0026], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , divergence: DNDarray([-2.3717e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 12 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , source/sink: DNDarray([-0.0026], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , total balance: DNDarray([1.7262e-05], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00013.pfb
+Time step: 13 , dstorage: DNDarray([0.0067], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , divergence: DNDarray([3.3881e-21], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 13 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , source/sink: DNDarray([-0.0067], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , total balance: DNDarray([1.4942e-08], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00014.pfb
+Time step: 14 , dstorage: DNDarray([0.0150], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , divergence: DNDarray([2.7105e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 14 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , source/sink: DNDarray([-0.0150], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , total balance: DNDarray([8.0610e-07], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00015.pfb
+Time step: 15 , dstorage: DNDarray([0.0091], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , divergence: DNDarray([8.1315e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 15 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , source/sink: DNDarray([-0.0091], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , total balance: DNDarray([7.6505e-08], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00016.pfb
+Time step: 16 , dstorage: DNDarray([0.0109], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , divergence: DNDarray([-2.3717e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 16 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , source/sink: DNDarray([-0.0109], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , total balance: DNDarray([1.3099e-07], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00017.pfb
+Time step: 17 , dstorage: DNDarray([0.0727], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , divergence: DNDarray([-9.4868e-20], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 17 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , source/sink: DNDarray([-0.0727], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , total balance: DNDarray([4.3505e-08], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00018.pfb
+Time step: 18 , dstorage: DNDarray([0.0525], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , divergence: DNDarray([2.9816e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 18 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , source/sink: DNDarray([-0.0525], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , total balance: DNDarray([-2.6523e-10], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00019.pfb
+Time step: 19 , dstorage: DNDarray([0.1001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , divergence: DNDarray([-5.4210e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 19 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , source/sink: DNDarray([-0.1001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , total balance: DNDarray([8.9796e-09], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00020.pfb
+Time step: 20 , dstorage: DNDarray([0.0700], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , divergence: DNDarray([-7.4539e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 20 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , source/sink: DNDarray([-0.0700], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , total balance: DNDarray([-3.8596e-09], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00021.pfb
+Time step: 21 , dstorage: DNDarray([0.1102], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , divergence: DNDarray([5.1500e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 21 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , source/sink: DNDarray([-0.1102], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , total balance: DNDarray([-2.3400e-09], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00022.pfb
+Time step: 22 , dstorage: DNDarray([0.0775], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , divergence: DNDarray([3.6592e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 22 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , source/sink: DNDarray([-0.0775], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , total balance: DNDarray([-5.6155e-09], dtype=ht.float64, device=cpu:0, split=None)
+./profileclm1.out.press.00023.pfb
+Time step: 23 , dstorage: DNDarray([0.0625], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , divergence: DNDarray([-3.6592e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 23 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , source/sink: DNDarray([-0.0625], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , total balance: DNDarray([-6.3588e-10], dtype=ht.float64, device=cpu:0, split=None)
+
+slab
+slab1.out.press.00000.pfb
+slab1.out.press.00001.pfb
+Time step: 1 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , divergence: DNDarray([-2.0817e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 1 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , total balance: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00002.pfb
+Time step: 2 , dstorage: DNDarray([-0.4455], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , divergence: DNDarray([-2.0817e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , dsurface_storage: DNDarray([-0.0048], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , netoverlandflow: DNDarray([5.9605e-08], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 2 , surface_balance: DNDarray([-0.0048], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00003.pfb
+Time step: 3 , dstorage: DNDarray([-0.4496], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , divergence: DNDarray([-9.7145e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , dsurface_storage: DNDarray([-0.0006], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , netoverlandflow: DNDarray([-5.9605e-08], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 3 , surface_balance: DNDarray([-0.0006], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , total balance: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00004.pfb
+Time step: 4 , dstorage: DNDarray([-0.4501], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , divergence: DNDarray([-9.7145e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , dsurface_storage: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 4 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , total balance: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00005.pfb
+Time step: 5 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , divergence: DNDarray([-1.3878e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , dsurface_storage: DNDarray([-9.4053e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 5 , surface_balance: DNDarray([-9.4056e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , total balance: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00006.pfb
+Time step: 6 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , divergence: DNDarray([-5.5511e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , dsurface_storage: DNDarray([-7.6417e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , netoverlandflow: DNDarray([1.1921e-07], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 6 , surface_balance: DNDarray([-7.6418e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , total balance: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00007.pfb
+Time step: 7 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , divergence: DNDarray([4.1633e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , dsurface_storage: DNDarray([-4.6389e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 7 , surface_balance: DNDarray([-4.6386e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , total balance: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00008.pfb
+Time step: 8 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , divergence: DNDarray([-2.7756e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , dsurface_storage: DNDarray([-3.1986e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , netoverlandflow: DNDarray([-5.9605e-08], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 8 , surface_balance: DNDarray([-3.1984e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00009.pfb
+Time step: 9 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , dsurface_storage: DNDarray([-2.8720e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 9 , surface_balance: DNDarray([-2.8718e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00010.pfb
+Time step: 10 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , divergence: DNDarray([2.7756e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , dsurface_storage: DNDarray([-2.0853e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , netoverlandflow: DNDarray([5.9605e-08], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 10 , surface_balance: DNDarray([-2.0851e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00011.pfb
+Time step: 11 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , divergence: DNDarray([-2.7756e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , dsurface_storage: DNDarray([-1.6589e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 11 , surface_balance: DNDarray([-1.6590e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00012.pfb
+Time step: 12 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , divergence: DNDarray([-1.3878e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , dsurface_storage: DNDarray([-1.3822e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 12 , surface_balance: DNDarray([-1.3822e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00013.pfb
+Time step: 13 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , dsurface_storage: DNDarray([-1.1797e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , netoverlandflow: DNDarray([-5.9605e-08], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 13 , surface_balance: DNDarray([-1.1799e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , total balance: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00014.pfb
+Time step: 14 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , divergence: DNDarray([-2.7756e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , dsurface_storage: DNDarray([-1.0225e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 14 , surface_balance: DNDarray([-1.0224e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00015.pfb
+Time step: 15 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , divergence: DNDarray([-6.9389e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , dsurface_storage: DNDarray([-8.6173e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 15 , surface_balance: DNDarray([-8.6173e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00016.pfb
+Time step: 16 , dstorage: DNDarray([-0.4501], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , divergence: DNDarray([4.1633e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , dsurface_storage: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , netoverlandflow: DNDarray([5.9605e-08], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 16 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00017.pfb
+Time step: 17 , dstorage: DNDarray([-0.4501], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , divergence: DNDarray([9.7145e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , dsurface_storage: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , netoverlandflow: DNDarray([5.9605e-08], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 17 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00018.pfb
+Time step: 18 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , divergence: DNDarray([5.5511e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , dsurface_storage: DNDarray([-6.7308e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 18 , surface_balance: DNDarray([-6.7308e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00019.pfb
+Time step: 19 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , divergence: DNDarray([-4.1633e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , dsurface_storage: DNDarray([-4.3435e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , netoverlandflow: DNDarray([5.9605e-08], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 19 , surface_balance: DNDarray([-4.3437e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00020.pfb
+Time step: 20 , dstorage: DNDarray([-0.4502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , divergence: DNDarray([-8.3267e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , dsurface_storage: DNDarray([-3.0683e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 20 , surface_balance: DNDarray([-3.0684e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , total balance: DNDarray([-0.4503], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00021.pfb
+Time step: 21 , dstorage: DNDarray([-0.0063], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , divergence: DNDarray([6.9389e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , dsurface_storage: DNDarray([0.0063], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 21 , surface_balance: DNDarray([0.0063], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , total balance: DNDarray([6.9009e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00022.pfb
+Time step: 22 , dstorage: DNDarray([-5.7186e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , divergence: DNDarray([4.0766e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , dsurface_storage: DNDarray([5.6796e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 22 , surface_balance: DNDarray([5.6796e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , total balance: DNDarray([-3.8940e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00023.pfb
+Time step: 23 , dstorage: DNDarray([-1.2035e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , divergence: DNDarray([-6.3751e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 23 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , total balance: DNDarray([-1.2035e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00024.pfb
+Time step: 24 , dstorage: DNDarray([-1.2458e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 24 , divergence: DNDarray([1.0842e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 24 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 24 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 24 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 24 , total balance: DNDarray([-1.2458e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00025.pfb
+Time step: 25 , dstorage: DNDarray([-2.6257e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 25 , divergence: DNDarray([-1.3444e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 25 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 25 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 25 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 25 , total balance: DNDarray([-2.6257e-06], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00026.pfb
+Time step: 26 , dstorage: DNDarray([-1.4354e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 26 , divergence: DNDarray([-7.3726e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 26 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 26 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 26 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 26 , total balance: DNDarray([-1.4354e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00027.pfb
+Time step: 27 , dstorage: DNDarray([1.7801e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 27 , divergence: DNDarray([-1.6914e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 27 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 27 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 27 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 27 , total balance: DNDarray([1.7801e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00028.pfb
+Time step: 28 , dstorage: DNDarray([2.6948e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 28 , divergence: DNDarray([3.0791e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 28 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 28 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 28 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 28 , total balance: DNDarray([2.6948e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00029.pfb
+Time step: 29 , dstorage: DNDarray([6.5036e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 29 , divergence: DNDarray([8.8905e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 29 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 29 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 29 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 29 , total balance: DNDarray([6.5036e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00030.pfb
+Time step: 30 , dstorage: DNDarray([3.7078e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 30 , divergence: DNDarray([-2.5587e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 30 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 30 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 30 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 30 , total balance: DNDarray([3.7078e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00031.pfb
+Time step: 31 , dstorage: DNDarray([2.7891e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 31 , divergence: DNDarray([1.0408e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 31 , dsurface_storage: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 31 , netoverlandflow: DNDarray([0.], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 31 , surface_balance: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 31 , total balance: DNDarray([2.7891e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00032.pfb
+Time step: 32 , dstorage: DNDarray([0.0170], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 32 , divergence: DNDarray([2.2551e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 32 , dsurface_storage: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 32 , netoverlandflow: DNDarray([0.1683], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 32 , surface_balance: DNDarray([-0.0170], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 32 , total balance: DNDarray([-3.7316e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00033.pfb
+Time step: 33 , dstorage: DNDarray([0.0556], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 33 , divergence: DNDarray([3.4694e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 33 , dsurface_storage: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 33 , netoverlandflow: DNDarray([0.5542], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 33 , surface_balance: DNDarray([-0.0556], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 33 , total balance: DNDarray([-6.4995e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00034.pfb
+Time step: 34 , dstorage: DNDarray([0.0693], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 34 , divergence: DNDarray([-6.9389e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 34 , dsurface_storage: DNDarray([-5.0305e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 34 , netoverlandflow: DNDarray([0.6925], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 34 , surface_balance: DNDarray([-0.0693], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 34 , total balance: DNDarray([-2.4186e-10], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00035.pfb
+Time step: 35 , dstorage: DNDarray([0.0742], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 35 , divergence: DNDarray([-1.0408e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 35 , dsurface_storage: DNDarray([-1.6810e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 35 , netoverlandflow: DNDarray([0.7414], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 35 , surface_balance: DNDarray([-0.0742], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 35 , total balance: DNDarray([-7.7047e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00036.pfb
+Time step: 36 , dstorage: DNDarray([0.0749], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 36 , divergence: DNDarray([-4.1633e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 36 , dsurface_storage: DNDarray([-2.6365e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 36 , netoverlandflow: DNDarray([0.7492], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 36 , surface_balance: DNDarray([-0.0749], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 36 , total balance: DNDarray([-9.2062e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00037.pfb
+Time step: 37 , dstorage: DNDarray([0.0736], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 37 , divergence: DNDarray([-1.0408e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 37 , dsurface_storage: DNDarray([4.3045e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 37 , netoverlandflow: DNDarray([0.7365], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 37 , surface_balance: DNDarray([-0.0736], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 37 , total balance: DNDarray([-8.3481e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00038.pfb
+Time step: 38 , dstorage: DNDarray([0.0713], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 38 , divergence: DNDarray([-6.9389e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 38 , dsurface_storage: DNDarray([7.8661e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 38 , netoverlandflow: DNDarray([0.7135], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 38 , surface_balance: DNDarray([-0.0713], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 38 , total balance: DNDarray([-1.8034e-06], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00039.pfb
+Time step: 39 , dstorage: DNDarray([0.0686], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 39 , divergence: DNDarray([-3.1225e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 39 , dsurface_storage: DNDarray([9.6610e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 39 , netoverlandflow: DNDarray([0.6856], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 39 , surface_balance: DNDarray([-0.0686], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 39 , total balance: DNDarray([-3.3163e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00040.pfb
+Time step: 40 , dstorage: DNDarray([0.0656], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 40 , divergence: DNDarray([-2.0817e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 40 , dsurface_storage: DNDarray([1.0475e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 40 , netoverlandflow: DNDarray([0.6560], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 40 , surface_balance: DNDarray([-0.0656], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 40 , total balance: DNDarray([4.8304e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00041.pfb
+Time step: 41 , dstorage: DNDarray([0.0626], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 41 , divergence: DNDarray([-1.3878e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 41 , dsurface_storage: DNDarray([1.0730e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 41 , netoverlandflow: DNDarray([0.6261], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 41 , surface_balance: DNDarray([-0.0626], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 41 , total balance: DNDarray([8.8401e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00042.pfb
+Time step: 42 , dstorage: DNDarray([0.0597], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 42 , divergence: DNDarray([1.3878e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 42 , dsurface_storage: DNDarray([1.0658e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 42 , netoverlandflow: DNDarray([0.5970], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 42 , surface_balance: DNDarray([-0.0597], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 42 , total balance: DNDarray([8.2048e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00043.pfb
+Time step: 43 , dstorage: DNDarray([0.0569], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 43 , divergence: DNDarray([1.5613e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 43 , dsurface_storage: DNDarray([1.0413e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 43 , netoverlandflow: DNDarray([0.5691], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 43 , surface_balance: DNDarray([-0.0569], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 43 , total balance: DNDarray([5.1474e-06], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00044.pfb
+Time step: 44 , dstorage: DNDarray([0.0543], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 44 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 44 , dsurface_storage: DNDarray([1.0047e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 44 , netoverlandflow: DNDarray([0.5427], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 44 , surface_balance: DNDarray([-0.0543], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 44 , total balance: DNDarray([9.4914e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00045.pfb
+Time step: 45 , dstorage: DNDarray([0.0518], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 45 , divergence: DNDarray([-1.7347e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 45 , dsurface_storage: DNDarray([9.6420e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 45 , netoverlandflow: DNDarray([0.5178], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 45 , surface_balance: DNDarray([-0.0518], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 45 , total balance: DNDarray([1.3317e-06], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00046.pfb
+Time step: 46 , dstorage: DNDarray([0.0494], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 46 , divergence: DNDarray([-1.9082e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 46 , dsurface_storage: DNDarray([9.2165e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 46 , netoverlandflow: DNDarray([0.4944], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 46 , surface_balance: DNDarray([-0.0494], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 46 , total balance: DNDarray([4.9123e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00047.pfb
+Time step: 47 , dstorage: DNDarray([0.0473], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 47 , divergence: DNDarray([1.3878e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 47 , dsurface_storage: DNDarray([8.7853e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 47 , netoverlandflow: DNDarray([0.4726], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 47 , surface_balance: DNDarray([-0.0473], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 47 , total balance: DNDarray([1.2554e-06], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00048.pfb
+Time step: 48 , dstorage: DNDarray([0.0452], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 48 , divergence: DNDarray([1.5613e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 48 , dsurface_storage: DNDarray([8.3559e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 48 , netoverlandflow: DNDarray([0.4522], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 48 , surface_balance: DNDarray([-0.0452], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 48 , total balance: DNDarray([5.7103e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00049.pfb
+Time step: 49 , dstorage: DNDarray([0.0433], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 49 , divergence: DNDarray([8.6736e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 49 , dsurface_storage: DNDarray([7.9447e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 49 , netoverlandflow: DNDarray([0.4331], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 49 , surface_balance: DNDarray([-0.0433], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 49 , total balance: DNDarray([2.5438e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00050.pfb
+Time step: 50 , dstorage: DNDarray([0.0415], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 50 , divergence: DNDarray([-1.0408e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 50 , dsurface_storage: DNDarray([7.5517e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 50 , netoverlandflow: DNDarray([0.4153], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 50 , surface_balance: DNDarray([-0.0415], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 50 , total balance: DNDarray([3.6535e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00051.pfb
+Time step: 51 , dstorage: DNDarray([0.0399], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 51 , divergence: DNDarray([1.0408e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 51 , dsurface_storage: DNDarray([7.1825e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 51 , netoverlandflow: DNDarray([0.3986], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 51 , surface_balance: DNDarray([-0.0399], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 51 , total balance: DNDarray([2.9085e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00052.pfb
+Time step: 52 , dstorage: DNDarray([0.0383], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 52 , divergence: DNDarray([8.6736e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 52 , dsurface_storage: DNDarray([6.8327e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 52 , netoverlandflow: DNDarray([0.3830], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 52 , surface_balance: DNDarray([-0.0383], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 52 , total balance: DNDarray([2.6770e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00053.pfb
+Time step: 53 , dstorage: DNDarray([0.0368], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 53 , divergence: DNDarray([3.4694e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 53 , dsurface_storage: DNDarray([6.5060e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 53 , netoverlandflow: DNDarray([0.3684], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 53 , surface_balance: DNDarray([-0.0368], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 53 , total balance: DNDarray([8.6192e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00054.pfb
+Time step: 54 , dstorage: DNDarray([0.0355], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 54 , divergence: DNDarray([1.7347e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 54 , dsurface_storage: DNDarray([6.1998e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 54 , netoverlandflow: DNDarray([0.3547], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 54 , surface_balance: DNDarray([-0.0355], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 54 , total balance: DNDarray([2.9200e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00055.pfb
+Time step: 55 , dstorage: DNDarray([0.0342], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 55 , divergence: DNDarray([-5.2042e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 55 , dsurface_storage: DNDarray([5.9115e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 55 , netoverlandflow: DNDarray([0.3418], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 55 , surface_balance: DNDarray([-0.0342], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 55 , total balance: DNDarray([2.5714e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00056.pfb
+Time step: 56 , dstorage: DNDarray([0.0330], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 56 , divergence: DNDarray([1.2143e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 56 , dsurface_storage: DNDarray([5.6403e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 56 , netoverlandflow: DNDarray([0.3297], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 56 , surface_balance: DNDarray([-0.0330], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 56 , total balance: DNDarray([1.2483e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00057.pfb
+Time step: 57 , dstorage: DNDarray([0.0318], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 57 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 57 , dsurface_storage: DNDarray([5.3862e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 57 , netoverlandflow: DNDarray([0.3183], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 57 , surface_balance: DNDarray([-0.0318], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 57 , total balance: DNDarray([9.5959e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00058.pfb
+Time step: 58 , dstorage: DNDarray([0.0307], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 58 , divergence: DNDarray([-1.0408e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 58 , dsurface_storage: DNDarray([5.1486e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 58 , netoverlandflow: DNDarray([0.3075], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 58 , surface_balance: DNDarray([-0.0307], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 58 , total balance: DNDarray([7.0664e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00059.pfb
+Time step: 59 , dstorage: DNDarray([0.0297], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 59 , divergence: DNDarray([-5.2042e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 59 , dsurface_storage: DNDarray([4.9261e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 59 , netoverlandflow: DNDarray([0.2973], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 59 , surface_balance: DNDarray([-0.0297], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 59 , total balance: DNDarray([1.3143e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00060.pfb
+Time step: 60 , dstorage: DNDarray([0.0288], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 60 , divergence: DNDarray([2.6021e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 60 , dsurface_storage: DNDarray([4.7175e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 60 , netoverlandflow: DNDarray([0.2877], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 60 , surface_balance: DNDarray([-0.0288], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 60 , total balance: DNDarray([4.9416e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00061.pfb
+Time step: 61 , dstorage: DNDarray([0.0279], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 61 , divergence: DNDarray([-6.0715e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 61 , dsurface_storage: DNDarray([4.5221e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 61 , netoverlandflow: DNDarray([0.2787], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 61 , surface_balance: DNDarray([-0.0279], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 61 , total balance: DNDarray([1.6053e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00062.pfb
+Time step: 62 , dstorage: DNDarray([0.0270], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 62 , divergence: DNDarray([1.7347e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 62 , dsurface_storage: DNDarray([4.3383e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 62 , netoverlandflow: DNDarray([0.2701], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 62 , surface_balance: DNDarray([-0.0270], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 62 , total balance: DNDarray([7.0767e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00063.pfb
+Time step: 63 , dstorage: DNDarray([0.0262], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 63 , divergence: DNDarray([-1.7347e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 63 , dsurface_storage: DNDarray([4.1658e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 63 , netoverlandflow: DNDarray([0.2619], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 63 , surface_balance: DNDarray([-0.0262], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 63 , total balance: DNDarray([3.4580e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00064.pfb
+Time step: 64 , dstorage: DNDarray([0.0254], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 64 , divergence: DNDarray([-1.0408e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 64 , dsurface_storage: DNDarray([4.0031e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 64 , netoverlandflow: DNDarray([0.2542], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 64 , surface_balance: DNDarray([-0.0254], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 64 , total balance: DNDarray([5.7168e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00065.pfb
+Time step: 65 , dstorage: DNDarray([0.0247], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 65 , divergence: DNDarray([1.7347e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 65 , dsurface_storage: DNDarray([3.8503e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 65 , netoverlandflow: DNDarray([0.2468], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 65 , surface_balance: DNDarray([-0.0247], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 65 , total balance: DNDarray([5.0905e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00066.pfb
+Time step: 66 , dstorage: DNDarray([0.0240], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 66 , divergence: DNDarray([4.3368e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 66 , dsurface_storage: DNDarray([3.7059e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 66 , netoverlandflow: DNDarray([0.2398], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 66 , surface_balance: DNDarray([-0.0240], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 66 , total balance: DNDarray([3.8384e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00067.pfb
+Time step: 67 , dstorage: DNDarray([0.0233], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 67 , divergence: DNDarray([8.6736e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 67 , dsurface_storage: DNDarray([3.5698e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 67 , netoverlandflow: DNDarray([0.2331], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 67 , surface_balance: DNDarray([-0.0233], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 67 , total balance: DNDarray([1.6183e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00068.pfb
+Time step: 68 , dstorage: DNDarray([0.0227], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 68 , divergence: DNDarray([1.7347e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 68 , dsurface_storage: DNDarray([3.4410e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 68 , netoverlandflow: DNDarray([0.2268], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 68 , surface_balance: DNDarray([-0.0227], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 68 , total balance: DNDarray([2.2180e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00069.pfb
+Time step: 69 , dstorage: DNDarray([0.0221], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 69 , divergence: DNDarray([-8.6736e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 69 , dsurface_storage: DNDarray([3.3190e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 69 , netoverlandflow: DNDarray([0.2207], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 69 , surface_balance: DNDarray([-0.0221], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 69 , total balance: DNDarray([2.9013e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00070.pfb
+Time step: 70 , dstorage: DNDarray([0.0215], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 70 , divergence: DNDarray([6.0715e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 70 , dsurface_storage: DNDarray([3.2043e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 70 , netoverlandflow: DNDarray([0.2149], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 70 , surface_balance: DNDarray([-0.0215], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 70 , total balance: DNDarray([2.3491e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00071.pfb
+Time step: 71 , dstorage: DNDarray([0.0209], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 71 , divergence: DNDarray([-4.3368e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 71 , dsurface_storage: DNDarray([3.0947e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 71 , netoverlandflow: DNDarray([0.2094], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 71 , surface_balance: DNDarray([-0.0209], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 71 , total balance: DNDarray([1.7785e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00072.pfb
+Time step: 72 , dstorage: DNDarray([0.0204], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 72 , divergence: DNDarray([-1.1276e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 72 , dsurface_storage: DNDarray([2.9908e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 72 , netoverlandflow: DNDarray([0.2041], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 72 , surface_balance: DNDarray([-0.0204], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 72 , total balance: DNDarray([1.2574e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00073.pfb
+Time step: 73 , dstorage: DNDarray([0.0199], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 73 , divergence: DNDarray([-8.6736e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 73 , dsurface_storage: DNDarray([2.8922e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 73 , netoverlandflow: DNDarray([0.1990], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 73 , surface_balance: DNDarray([-0.0199], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 73 , total balance: DNDarray([7.8449e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00074.pfb
+Time step: 74 , dstorage: DNDarray([0.0194], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 74 , divergence: DNDarray([-3.4694e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 74 , dsurface_storage: DNDarray([2.7993e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 74 , netoverlandflow: DNDarray([0.1942], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 74 , surface_balance: DNDarray([-0.0194], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 74 , total balance: DNDarray([7.6203e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00075.pfb
+Time step: 75 , dstorage: DNDarray([0.0189], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 75 , divergence: DNDarray([-3.4694e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 75 , dsurface_storage: DNDarray([2.7105e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 75 , netoverlandflow: DNDarray([0.1895], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 75 , surface_balance: DNDarray([-0.0189], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 75 , total balance: DNDarray([3.7183e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00076.pfb
+Time step: 76 , dstorage: DNDarray([0.0185], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 76 , divergence: DNDarray([-5.2042e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 76 , dsurface_storage: DNDarray([2.6256e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 76 , netoverlandflow: DNDarray([0.1851], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 76 , surface_balance: DNDarray([-0.0185], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 76 , total balance: DNDarray([2.3843e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00077.pfb
+Time step: 77 , dstorage: DNDarray([0.0181], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 77 , divergence: DNDarray([-7.8063e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 77 , dsurface_storage: DNDarray([2.5446e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 77 , netoverlandflow: DNDarray([0.1808], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 77 , surface_balance: DNDarray([-0.0181], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 77 , total balance: DNDarray([1.2686e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00078.pfb
+Time step: 78 , dstorage: DNDarray([0.0177], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 78 , divergence: DNDarray([-2.6021e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 78 , dsurface_storage: DNDarray([2.4675e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 78 , netoverlandflow: DNDarray([0.1766], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 78 , surface_balance: DNDarray([-0.0177], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 78 , total balance: DNDarray([2.6963e-10], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00079.pfb
+Time step: 79 , dstorage: DNDarray([0.0173], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 79 , divergence: DNDarray([-1.7347e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 79 , dsurface_storage: DNDarray([2.3954e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 79 , netoverlandflow: DNDarray([0.1727], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 79 , surface_balance: DNDarray([-0.0173], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 79 , total balance: DNDarray([1.3838e-07], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00080.pfb
+Time step: 80 , dstorage: DNDarray([0.0169], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 80 , divergence: DNDarray([-6.0715e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 80 , dsurface_storage: DNDarray([2.3252e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 80 , netoverlandflow: DNDarray([0.1689], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 80 , surface_balance: DNDarray([-0.0169], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 80 , total balance: DNDarray([2.3088e-11], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00081.pfb
+Time step: 81 , dstorage: DNDarray([0.0165], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 81 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 81 , dsurface_storage: DNDarray([2.2583e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 81 , netoverlandflow: DNDarray([0.1652], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 81 , surface_balance: DNDarray([-0.0165], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 81 , total balance: DNDarray([2.1234e-10], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00082.pfb
+Time step: 82 , dstorage: DNDarray([0.0162], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 82 , divergence: DNDarray([-1.7347e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 82 , dsurface_storage: DNDarray([2.1940e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 82 , netoverlandflow: DNDarray([0.1617], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 82 , surface_balance: DNDarray([-0.0162], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 82 , total balance: DNDarray([-2.9717e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00083.pfb
+Time step: 83 , dstorage: DNDarray([0.0158], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 83 , divergence: DNDarray([1.7347e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 83 , dsurface_storage: DNDarray([2.1324e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 83 , netoverlandflow: DNDarray([0.1583], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 83 , surface_balance: DNDarray([-0.0158], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 83 , total balance: DNDarray([-4.5328e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00084.pfb
+Time step: 84 , dstorage: DNDarray([0.0155], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 84 , divergence: DNDarray([-2.6021e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 84 , dsurface_storage: DNDarray([2.0736e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 84 , netoverlandflow: DNDarray([0.1550], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 84 , surface_balance: DNDarray([-0.0155], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 84 , total balance: DNDarray([-5.9914e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00085.pfb
+Time step: 85 , dstorage: DNDarray([0.0152], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 85 , divergence: DNDarray([1.3010e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 85 , dsurface_storage: DNDarray([2.0172e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 85 , netoverlandflow: DNDarray([0.1518], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 85 , surface_balance: DNDarray([-0.0152], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 85 , total balance: DNDarray([-6.2691e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00086.pfb
+Time step: 86 , dstorage: DNDarray([0.0149], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 86 , divergence: DNDarray([-4.3368e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 86 , dsurface_storage: DNDarray([1.9633e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 86 , netoverlandflow: DNDarray([0.1487], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 86 , surface_balance: DNDarray([-0.0149], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 86 , total balance: DNDarray([-5.7208e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00087.pfb
+Time step: 87 , dstorage: DNDarray([0.0146], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 87 , divergence: DNDarray([-4.3368e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 87 , dsurface_storage: DNDarray([1.9115e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 87 , netoverlandflow: DNDarray([0.1458], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 87 , surface_balance: DNDarray([-0.0146], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 87 , total balance: DNDarray([-7.3575e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00088.pfb
+Time step: 88 , dstorage: DNDarray([0.0143], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 88 , divergence: DNDarray([-6.5052e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 88 , dsurface_storage: DNDarray([1.8619e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 88 , netoverlandflow: DNDarray([0.1429], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 88 , surface_balance: DNDarray([-0.0143], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 88 , total balance: DNDarray([-6.4195e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00089.pfb
+Time step: 89 , dstorage: DNDarray([0.0140], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 89 , divergence: DNDarray([-4.7705e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 89 , dsurface_storage: DNDarray([1.8143e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 89 , netoverlandflow: DNDarray([0.1402], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 89 , surface_balance: DNDarray([-0.0140], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 89 , total balance: DNDarray([-7.1376e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00090.pfb
+Time step: 90 , dstorage: DNDarray([0.0137], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 90 , divergence: DNDarray([8.2399e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 90 , dsurface_storage: DNDarray([1.7685e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 90 , netoverlandflow: DNDarray([0.1375], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 90 , surface_balance: DNDarray([-0.0137], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 90 , total balance: DNDarray([-6.6956e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00091.pfb
+Time step: 91 , dstorage: DNDarray([0.0135], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 91 , divergence: DNDarray([-4.3368e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 91 , dsurface_storage: DNDarray([1.7246e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 91 , netoverlandflow: DNDarray([0.1349], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 91 , surface_balance: DNDarray([-0.0135], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 91 , total balance: DNDarray([-7.8111e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00092.pfb
+Time step: 92 , dstorage: DNDarray([0.0132], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 92 , divergence: DNDarray([2.6021e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 92 , dsurface_storage: DNDarray([1.6823e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 92 , netoverlandflow: DNDarray([0.1324], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 92 , surface_balance: DNDarray([-0.0132], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 92 , total balance: DNDarray([-6.8629e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00093.pfb
+Time step: 93 , dstorage: DNDarray([0.0130], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 93 , divergence: DNDarray([-1.3010e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 93 , dsurface_storage: DNDarray([1.6416e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 93 , netoverlandflow: DNDarray([0.1300], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 93 , surface_balance: DNDarray([-0.0130], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 93 , total balance: DNDarray([-6.9525e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00094.pfb
+Time step: 94 , dstorage: DNDarray([0.0128], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 94 , divergence: DNDarray([2.6021e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 94 , dsurface_storage: DNDarray([1.6025e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 94 , netoverlandflow: DNDarray([0.1276], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 94 , surface_balance: DNDarray([-0.0128], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 94 , total balance: DNDarray([-6.5668e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00095.pfb
+Time step: 95 , dstorage: DNDarray([0.0125], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 95 , divergence: DNDarray([3.9031e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 95 , dsurface_storage: DNDarray([1.5647e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 95 , netoverlandflow: DNDarray([0.1254], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 95 , surface_balance: DNDarray([-0.0125], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 95 , total balance: DNDarray([-6.5958e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00096.pfb
+Time step: 96 , dstorage: DNDarray([0.0123], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 96 , divergence: DNDarray([-8.6736e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 96 , dsurface_storage: DNDarray([1.5284e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 96 , netoverlandflow: DNDarray([0.1232], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 96 , surface_balance: DNDarray([-0.0123], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 96 , total balance: DNDarray([-7.0987e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00097.pfb
+Time step: 97 , dstorage: DNDarray([0.0121], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 97 , divergence: DNDarray([-3.0358e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 97 , dsurface_storage: DNDarray([1.4933e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 97 , netoverlandflow: DNDarray([0.1210], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 97 , surface_balance: DNDarray([-0.0121], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 97 , total balance: DNDarray([-6.7737e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00098.pfb
+Time step: 98 , dstorage: DNDarray([0.0119], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 98 , divergence: DNDarray([-3.4694e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 98 , dsurface_storage: DNDarray([1.4595e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 98 , netoverlandflow: DNDarray([0.1189], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 98 , surface_balance: DNDarray([-0.0119], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 98 , total balance: DNDarray([1.0738e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00099.pfb
+Time step: 99 , dstorage: DNDarray([0.0117], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 99 , divergence: DNDarray([2.1684e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 99 , dsurface_storage: DNDarray([1.4269e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 99 , netoverlandflow: DNDarray([0.1169], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 99 , surface_balance: DNDarray([-0.0117], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 99 , total balance: DNDarray([1.0118e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00100.pfb
+Time step: 100 , dstorage: DNDarray([0.0115], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 100 , divergence: DNDarray([4.3368e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 100 , dsurface_storage: DNDarray([1.3954e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 100 , netoverlandflow: DNDarray([0.1150], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 100 , surface_balance: DNDarray([-0.0115], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 100 , total balance: DNDarray([8.8438e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00101.pfb
+Time step: 101 , dstorage: DNDarray([0.0113], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 101 , divergence: DNDarray([-3.4694e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 101 , dsurface_storage: DNDarray([1.3649e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 101 , netoverlandflow: DNDarray([0.1131], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 101 , surface_balance: DNDarray([-0.0113], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 101 , total balance: DNDarray([8.6499e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00102.pfb
+Time step: 102 , dstorage: DNDarray([0.0111], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 102 , divergence: DNDarray([4.3368e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 102 , dsurface_storage: DNDarray([1.3355e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 102 , netoverlandflow: DNDarray([0.1112], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 102 , surface_balance: DNDarray([-0.0111], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 102 , total balance: DNDarray([6.8075e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00103.pfb
+Time step: 103 , dstorage: DNDarray([0.0109], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 103 , divergence: DNDarray([-2.1684e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 103 , dsurface_storage: DNDarray([1.3071e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 103 , netoverlandflow: DNDarray([0.1094], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 103 , surface_balance: DNDarray([-0.0109], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 103 , total balance: DNDarray([6.4819e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00104.pfb
+Time step: 104 , dstorage: DNDarray([0.0108], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 104 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 104 , dsurface_storage: DNDarray([1.2796e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 104 , netoverlandflow: DNDarray([0.1077], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 104 , surface_balance: DNDarray([-0.0108], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 104 , total balance: DNDarray([1.9163e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00105.pfb
+Time step: 105 , dstorage: DNDarray([0.0106], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 105 , divergence: DNDarray([4.3368e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 105 , dsurface_storage: DNDarray([1.2530e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 105 , netoverlandflow: DNDarray([0.1060], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 105 , surface_balance: DNDarray([-0.0106], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 105 , total balance: DNDarray([1.7214e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00106.pfb
+Time step: 106 , dstorage: DNDarray([0.0104], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 106 , divergence: DNDarray([-8.6736e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 106 , dsurface_storage: DNDarray([1.2272e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 106 , netoverlandflow: DNDarray([0.1043], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 106 , surface_balance: DNDarray([-0.0104], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 106 , total balance: DNDarray([1.4666e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00107.pfb
+Time step: 107 , dstorage: DNDarray([0.0103], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 107 , divergence: DNDarray([-1.3010e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 107 , dsurface_storage: DNDarray([1.2023e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 107 , netoverlandflow: DNDarray([0.1027], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 107 , surface_balance: DNDarray([-0.0103], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 107 , total balance: DNDarray([1.3239e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00108.pfb
+Time step: 108 , dstorage: DNDarray([0.0101], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 108 , divergence: DNDarray([5.2042e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 108 , dsurface_storage: DNDarray([1.1781e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 108 , netoverlandflow: DNDarray([0.1011], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 108 , surface_balance: DNDarray([-0.0101], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 108 , total balance: DNDarray([8.3547e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00109.pfb
+Time step: 109 , dstorage: DNDarray([0.0100], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 109 , divergence: DNDarray([1.7347e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 109 , dsurface_storage: DNDarray([1.1547e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 109 , netoverlandflow: DNDarray([0.0996], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 109 , surface_balance: DNDarray([-0.0100], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 109 , total balance: DNDarray([5.8147e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00110.pfb
+Time step: 110 , dstorage: DNDarray([0.0098], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 110 , divergence: DNDarray([8.6736e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 110 , dsurface_storage: DNDarray([1.1320e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 110 , netoverlandflow: DNDarray([0.0981], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 110 , surface_balance: DNDarray([-0.0098], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 110 , total balance: DNDarray([1.1658e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00111.pfb
+Time step: 111 , dstorage: DNDarray([0.0097], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 111 , divergence: DNDarray([-8.6736e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 111 , dsurface_storage: DNDarray([1.1100e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 111 , netoverlandflow: DNDarray([0.0966], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 111 , surface_balance: DNDarray([-0.0097], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 111 , total balance: DNDarray([5.9044e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00112.pfb
+Time step: 112 , dstorage: DNDarray([0.0095], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 112 , divergence: DNDarray([4.3368e-19], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 112 , dsurface_storage: DNDarray([1.0886e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 112 , netoverlandflow: DNDarray([0.0952], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 112 , surface_balance: DNDarray([-0.0095], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 112 , total balance: DNDarray([1.1810e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00113.pfb
+Time step: 113 , dstorage: DNDarray([0.0094], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 113 , divergence: DNDarray([-3.0358e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 113 , dsurface_storage: DNDarray([1.0679e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 113 , netoverlandflow: DNDarray([0.0938], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 113 , surface_balance: DNDarray([-0.0094], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 113 , total balance: DNDarray([-3.0378e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00114.pfb
+Time step: 114 , dstorage: DNDarray([0.0092], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 114 , divergence: DNDarray([-2.6021e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 114 , dsurface_storage: DNDarray([1.0478e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 114 , netoverlandflow: DNDarray([0.0925], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 114 , surface_balance: DNDarray([-0.0092], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 114 , total balance: DNDarray([-7.7486e-09], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00115.pfb
+Time step: 115 , dstorage: DNDarray([0.0091], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 115 , divergence: DNDarray([-4.3368e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 115 , dsurface_storage: DNDarray([1.0283e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 115 , netoverlandflow: DNDarray([0.0912], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 115 , surface_balance: DNDarray([-0.0091], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 115 , total balance: DNDarray([-1.1117e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00116.pfb
+Time step: 116 , dstorage: DNDarray([0.0090], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 116 , divergence: DNDarray([-2.1684e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 116 , dsurface_storage: DNDarray([1.0094e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 116 , netoverlandflow: DNDarray([0.0899], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 116 , surface_balance: DNDarray([-0.0090], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 116 , total balance: DNDarray([-1.4425e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00117.pfb
+Time step: 117 , dstorage: DNDarray([0.0089], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 117 , divergence: DNDarray([-1.3010e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 117 , dsurface_storage: DNDarray([9.9099e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 117 , netoverlandflow: DNDarray([0.0886], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 117 , surface_balance: DNDarray([-0.0089], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 117 , total balance: DNDarray([-1.6783e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00118.pfb
+Time step: 118 , dstorage: DNDarray([0.0087], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 118 , divergence: DNDarray([2.6021e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 118 , dsurface_storage: DNDarray([9.7310e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 118 , netoverlandflow: DNDarray([0.0874], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 118 , surface_balance: DNDarray([-0.0087], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 118 , total balance: DNDarray([-1.9141e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00119.pfb
+Time step: 119 , dstorage: DNDarray([0.0086], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 119 , divergence: DNDarray([-1.3010e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 119 , dsurface_storage: DNDarray([9.5571e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 119 , netoverlandflow: DNDarray([0.0862], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 119 , surface_balance: DNDarray([-0.0086], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 119 , total balance: DNDarray([-2.0810e-08], dtype=ht.float64, device=cpu:0, split=None)
+slab1.out.press.00120.pfb
+Time step: 120 , dstorage: DNDarray([0.0085], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 120 , divergence: DNDarray([2.1684e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 120 , dsurface_storage: DNDarray([9.3881e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 120 , netoverlandflow: DNDarray([0.0850], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 120 , surface_balance: DNDarray([-0.0085], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 120 , total balance: DNDarray([-2.2493e-08], dtype=ht.float64, device=cpu:0, split=None)
+
+In the first 2 hours, the balance increment due to rain is -0.45.
+
+terrainfollwing
+terrainfollowing1.out.press.00000.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+terrainfollowing1.out.press.00001.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 1 , dstorage: DNDarray([0.0738], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , divergence: DNDarray([-1.2490e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , dsurface_storage: DNDarray([-0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , netoverlandflow: DNDarray([1.2344], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 1 , surface_balance: DNDarray([-0.1238], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 1 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00002.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 2 , dstorage: DNDarray([0.0383], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , divergence: DNDarray([-3.3307e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , dsurface_storage: DNDarray([6.3771e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , netoverlandflow: DNDarray([0.8837], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 2 , surface_balance: DNDarray([-0.0883], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 2 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00003.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 3 , dstorage: DNDarray([0.0155], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , divergence: DNDarray([3.4694e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , dsurface_storage: DNDarray([4.7068e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , netoverlandflow: DNDarray([0.6557], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 3 , surface_balance: DNDarray([-0.0655], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 3 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00004.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 4 , dstorage: DNDarray([0.0070], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , divergence: DNDarray([2.0817e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , dsurface_storage: DNDarray([1.9418e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , netoverlandflow: DNDarray([0.5697], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 4 , surface_balance: DNDarray([-0.0570], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 4 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00005.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 5 , dstorage: DNDarray([0.0033], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , divergence: DNDarray([9.7145e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , dsurface_storage: DNDarray([8.6764e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , netoverlandflow: DNDarray([0.5328], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 5 , surface_balance: DNDarray([-0.0533], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 5 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00006.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 6 , dstorage: DNDarray([0.0016], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , divergence: DNDarray([2.1511e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , dsurface_storage: DNDarray([4.0800e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , netoverlandflow: DNDarray([0.5159], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 6 , surface_balance: DNDarray([-0.0516], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 6 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00007.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 7 , dstorage: DNDarray([0.0008], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , divergence: DNDarray([2.4980e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , dsurface_storage: DNDarray([1.9693e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , netoverlandflow: DNDarray([0.5077], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 7 , surface_balance: DNDarray([-0.0508], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 7 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00008.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 8 , dstorage: DNDarray([0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , divergence: DNDarray([4.1633e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , dsurface_storage: DNDarray([9.6196e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , netoverlandflow: DNDarray([0.5038], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 8 , surface_balance: DNDarray([-0.0504], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 8 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00009.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 9 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , divergence: DNDarray([2.4980e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , dsurface_storage: DNDarray([4.7222e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , netoverlandflow: DNDarray([0.5019], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 9 , surface_balance: DNDarray([-0.0502], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 9 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00010.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 10 , dstorage: DNDarray([9.1394e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , divergence: DNDarray([-1.3878e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , dsurface_storage: DNDarray([2.3213e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , netoverlandflow: DNDarray([0.5009], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 10 , surface_balance: DNDarray([-0.0501], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 10 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00011.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 11 , dstorage: DNDarray([4.4957e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , divergence: DNDarray([1.5266e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , dsurface_storage: DNDarray([1.1410e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , netoverlandflow: DNDarray([0.5005], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 11 , surface_balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 11 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00012.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 12 , dstorage: DNDarray([2.2100e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , divergence: DNDarray([1.2490e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , dsurface_storage: DNDarray([5.6144e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , netoverlandflow: DNDarray([0.5002], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 12 , surface_balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 12 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00013.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 13 , dstorage: DNDarray([1.0858e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , divergence: DNDarray([-3.5388e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , dsurface_storage: DNDarray([2.7611e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , netoverlandflow: DNDarray([0.5001], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 13 , surface_balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 13 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00014.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 14 , dstorage: DNDarray([5.3325e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , divergence: DNDarray([-4.8572e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , dsurface_storage: DNDarray([1.3569e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , netoverlandflow: DNDarray([0.5001], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 14 , surface_balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 14 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00015.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 15 , dstorage: DNDarray([2.6182e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , divergence: DNDarray([-2.7756e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , dsurface_storage: DNDarray([6.6655e-09], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , netoverlandflow: DNDarray([0.5000], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 15 , surface_balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 15 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00016.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 16 , dstorage: DNDarray([1.2849e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , divergence: DNDarray([-1.8735e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , dsurface_storage: DNDarray([3.2714e-09], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , netoverlandflow: DNDarray([0.5000], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 16 , surface_balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 16 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00017.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 17 , dstorage: DNDarray([6.3070e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , divergence: DNDarray([1.1102e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , dsurface_storage: DNDarray([1.6078e-09], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , netoverlandflow: DNDarray([0.5000], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 17 , surface_balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 17 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00018.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 18 , dstorage: DNDarray([3.0954e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , divergence: DNDarray([1.3878e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , dsurface_storage: DNDarray([7.8835e-10], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , netoverlandflow: DNDarray([0.5000], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 18 , surface_balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 18 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00019.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 19 , dstorage: DNDarray([1.5207e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , divergence: DNDarray([2.7756e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , dsurface_storage: DNDarray([3.8765e-10], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , netoverlandflow: DNDarray([0.5000], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 19 , surface_balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 19 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00020.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 20 , dstorage: DNDarray([7.4833e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , divergence: DNDarray([3.4694e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , dsurface_storage: DNDarray([1.8911e-10], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , netoverlandflow: DNDarray([0.5000], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 20 , surface_balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 20 , total balance: DNDarray([-0.0500], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00021.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 21 , dstorage: DNDarray([0.0208], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , divergence: DNDarray([-1.6653e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , dsurface_storage: DNDarray([8.3080e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , netoverlandflow: DNDarray([0.2092], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 21 , surface_balance: DNDarray([-0.0208], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 21 , total balance: DNDarray([-4.6617e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00022.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 22 , dstorage: DNDarray([0.0130], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , divergence: DNDarray([-9.7145e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , dsurface_storage: DNDarray([2.9779e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , netoverlandflow: DNDarray([0.1306], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 22 , surface_balance: DNDarray([-0.0130], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 22 , total balance: DNDarray([-1.4286e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00023.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 23 , dstorage: DNDarray([0.0091], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , divergence: DNDarray([-2.3245e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , dsurface_storage: DNDarray([1.7799e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , netoverlandflow: DNDarray([0.0909], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 23 , surface_balance: DNDarray([-0.0091], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 23 , total balance: DNDarray([-3.8091e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00024.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 24 , dstorage: DNDarray([0.0067], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 24 , divergence: DNDarray([2.1511e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 24 , dsurface_storage: DNDarray([1.1984e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 24 , netoverlandflow: DNDarray([0.0675], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 24 , surface_balance: DNDarray([-0.0067], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 24 , total balance: DNDarray([-2.3244e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00025.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 25 , dstorage: DNDarray([0.0052], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 25 , divergence: DNDarray([6.9389e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 25 , dsurface_storage: DNDarray([8.6323e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 25 , netoverlandflow: DNDarray([0.0525], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 25 , surface_balance: DNDarray([-0.0052], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 25 , total balance: DNDarray([-5.2567e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00026.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 26 , dstorage: DNDarray([0.0042], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 26 , divergence: DNDarray([1.0408e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 26 , dsurface_storage: DNDarray([6.5151e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 26 , netoverlandflow: DNDarray([0.0421], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 26 , surface_balance: DNDarray([-0.0042], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 26 , total balance: DNDarray([-2.3611e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00027.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 27 , dstorage: DNDarray([0.0035], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 27 , divergence: DNDarray([2.2898e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 27 , dsurface_storage: DNDarray([5.0933e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 27 , netoverlandflow: DNDarray([0.0347], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 27 , surface_balance: DNDarray([-0.0035], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 27 , total balance: DNDarray([-1.8983e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00028.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 28 , dstorage: DNDarray([0.0029], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 28 , divergence: DNDarray([2.5327e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 28 , dsurface_storage: DNDarray([4.0928e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 28 , netoverlandflow: DNDarray([0.0291], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 28 , surface_balance: DNDarray([-0.0029], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 28 , total balance: DNDarray([-9.5768e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00029.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 29 , dstorage: DNDarray([0.0025], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 29 , divergence: DNDarray([1.4225e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 29 , dsurface_storage: DNDarray([3.3621e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 29 , netoverlandflow: DNDarray([0.0249], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 29 , surface_balance: DNDarray([-0.0025], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 29 , total balance: DNDarray([-5.1674e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00030.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 30 , dstorage: DNDarray([0.0021], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 30 , divergence: DNDarray([-8.3267e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 30 , dsurface_storage: DNDarray([2.8122e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 30 , netoverlandflow: DNDarray([0.0215], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 30 , surface_balance: DNDarray([-0.0021], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 30 , total balance: DNDarray([-2.9760e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00031.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 31 , dstorage: DNDarray([0.0019], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 31 , divergence: DNDarray([-1.3531e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 31 , dsurface_storage: DNDarray([2.3881e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 31 , netoverlandflow: DNDarray([0.0188], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 31 , surface_balance: DNDarray([-0.0019], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 31 , total balance: DNDarray([-1.7394e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00032.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 32 , dstorage: DNDarray([0.0017], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 32 , divergence: DNDarray([6.9389e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 32 , dsurface_storage: DNDarray([2.0540e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 32 , netoverlandflow: DNDarray([0.0166], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 32 , surface_balance: DNDarray([-0.0017], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 32 , total balance: DNDarray([-1.1199e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00033.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 33 , dstorage: DNDarray([0.0015], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 33 , divergence: DNDarray([-1.7694e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 33 , dsurface_storage: DNDarray([1.7861e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 33 , netoverlandflow: DNDarray([0.0148], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 33 , surface_balance: DNDarray([-0.0015], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 33 , total balance: DNDarray([-7.4850e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00034.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 34 , dstorage: DNDarray([0.0013], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 34 , divergence: DNDarray([1.9429e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 34 , dsurface_storage: DNDarray([1.5680e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 34 , netoverlandflow: DNDarray([0.0132], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 34 , surface_balance: DNDarray([-0.0013], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 34 , total balance: DNDarray([-5.1854e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00035.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 35 , dstorage: DNDarray([0.0012], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 35 , divergence: DNDarray([3.4694e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 35 , dsurface_storage: DNDarray([1.3880e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 35 , netoverlandflow: DNDarray([0.0119], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 35 , surface_balance: DNDarray([-0.0012], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 35 , total balance: DNDarray([-3.8557e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00036.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 36 , dstorage: DNDarray([0.0011], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 36 , divergence: DNDarray([7.9797e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 36 , dsurface_storage: DNDarray([1.2377e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 36 , netoverlandflow: DNDarray([0.0108], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 36 , surface_balance: DNDarray([-0.0011], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 36 , total balance: DNDarray([-2.7945e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00037.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 37 , dstorage: DNDarray([0.0010], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 37 , divergence: DNDarray([4.8572e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 37 , dsurface_storage: DNDarray([1.1109e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 37 , netoverlandflow: DNDarray([0.0099], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 37 , surface_balance: DNDarray([-0.0010], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 37 , total balance: DNDarray([-2.1422e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00038.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 38 , dstorage: DNDarray([0.0009], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 38 , divergence: DNDarray([-1.4225e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 38 , dsurface_storage: DNDarray([1.0028e-06], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 38 , netoverlandflow: DNDarray([0.0090], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 38 , surface_balance: DNDarray([-0.0009], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 38 , total balance: DNDarray([-1.6960e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00039.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 39 , dstorage: DNDarray([0.0008], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 39 , divergence: DNDarray([-2.8796e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 39 , dsurface_storage: DNDarray([9.1002e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 39 , netoverlandflow: DNDarray([0.0083], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 39 , surface_balance: DNDarray([-0.0008], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 39 , total balance: DNDarray([-1.2642e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00040.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 40 , dstorage: DNDarray([0.0008], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 40 , divergence: DNDarray([2.4286e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 40 , dsurface_storage: DNDarray([8.2970e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 40 , netoverlandflow: DNDarray([0.0076], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 40 , surface_balance: DNDarray([-0.0008], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 40 , total balance: DNDarray([-1.0498e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00041.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 41 , dstorage: DNDarray([0.0007], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 41 , divergence: DNDarray([-6.2450e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 41 , dsurface_storage: DNDarray([7.5972e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 41 , netoverlandflow: DNDarray([0.0071], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 41 , surface_balance: DNDarray([-0.0007], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 41 , total balance: DNDarray([-8.6792e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00042.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 42 , dstorage: DNDarray([0.0007], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 42 , divergence: DNDarray([1.8735e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 42 , dsurface_storage: DNDarray([6.9836e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 42 , netoverlandflow: DNDarray([0.0066], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 42 , surface_balance: DNDarray([-0.0007], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 42 , total balance: DNDarray([-7.4133e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00043.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 43 , dstorage: DNDarray([0.0006], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 43 , divergence: DNDarray([1.7347e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 43 , dsurface_storage: DNDarray([6.4425e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 43 , netoverlandflow: DNDarray([0.0061], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 43 , surface_balance: DNDarray([-0.0006], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 43 , total balance: DNDarray([-6.0167e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00044.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 44 , dstorage: DNDarray([0.0006], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 44 , divergence: DNDarray([-1.8388e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 44 , dsurface_storage: DNDarray([5.9629e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 44 , netoverlandflow: DNDarray([0.0057], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 44 , surface_balance: DNDarray([-0.0006], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 44 , total balance: DNDarray([-7.5588e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00045.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 45 , dstorage: DNDarray([0.0005], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 45 , divergence: DNDarray([-5.2736e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 45 , dsurface_storage: DNDarray([5.5355e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 45 , netoverlandflow: DNDarray([0.0053], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 45 , surface_balance: DNDarray([-0.0005], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 45 , total balance: DNDarray([-6.4062e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00046.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 46 , dstorage: DNDarray([0.0005], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 46 , divergence: DNDarray([4.8572e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 46 , dsurface_storage: DNDarray([5.1532e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 46 , netoverlandflow: DNDarray([0.0050], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 46 , surface_balance: DNDarray([-0.0005], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 46 , total balance: DNDarray([-5.3707e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00047.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 47 , dstorage: DNDarray([0.0005], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 47 , divergence: DNDarray([-5.2042e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 47 , dsurface_storage: DNDarray([4.8098e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 47 , netoverlandflow: DNDarray([0.0047], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 47 , surface_balance: DNDarray([-0.0005], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 47 , total balance: DNDarray([-4.4591e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00048.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 48 , dstorage: DNDarray([0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 48 , divergence: DNDarray([1.4572e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 48 , dsurface_storage: DNDarray([4.5001e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 48 , netoverlandflow: DNDarray([0.0044], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 48 , surface_balance: DNDarray([-0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 48 , total balance: DNDarray([-3.7570e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00049.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 49 , dstorage: DNDarray([0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 49 , divergence: DNDarray([-8.3267e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 49 , dsurface_storage: DNDarray([4.2198e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 49 , netoverlandflow: DNDarray([0.0041], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 49 , surface_balance: DNDarray([-0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 49 , total balance: DNDarray([-3.4933e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00050.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 50 , dstorage: DNDarray([0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 50 , divergence: DNDarray([1.7347e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 50 , dsurface_storage: DNDarray([3.9652e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 50 , netoverlandflow: DNDarray([0.0039], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 50 , surface_balance: DNDarray([-0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 50 , total balance: DNDarray([-3.0452e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00051.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 51 , dstorage: DNDarray([0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 51 , divergence: DNDarray([8.6736e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 51 , dsurface_storage: DNDarray([3.7333e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 51 , netoverlandflow: DNDarray([0.0037], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 51 , surface_balance: DNDarray([-0.0004], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 51 , total balance: DNDarray([-2.9820e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00052.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 52 , dstorage: DNDarray([0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 52 , divergence: DNDarray([-1.7347e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 52 , dsurface_storage: DNDarray([3.5215e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 52 , netoverlandflow: DNDarray([0.0035], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 52 , surface_balance: DNDarray([-0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 52 , total balance: DNDarray([-2.5906e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00053.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 53 , dstorage: DNDarray([0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 53 , divergence: DNDarray([-6.9389e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 53 , dsurface_storage: DNDarray([3.3274e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 53 , netoverlandflow: DNDarray([0.0033], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 53 , surface_balance: DNDarray([-0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 53 , total balance: DNDarray([-2.0956e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00054.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 54 , dstorage: DNDarray([0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 54 , divergence: DNDarray([-9.0206e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 54 , dsurface_storage: DNDarray([3.1491e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 54 , netoverlandflow: DNDarray([0.0031], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 54 , surface_balance: DNDarray([-0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 54 , total balance: DNDarray([-2.0491e-10], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00055.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 55 , dstorage: DNDarray([0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 55 , divergence: DNDarray([1.7347e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 55 , dsurface_storage: DNDarray([2.9848e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 55 , netoverlandflow: DNDarray([0.0030], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 55 , surface_balance: DNDarray([-0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 55 , total balance: DNDarray([-3.5999e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00056.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 56 , dstorage: DNDarray([0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 56 , divergence: DNDarray([-4.5103e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 56 , dsurface_storage: DNDarray([2.8334e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 56 , netoverlandflow: DNDarray([0.0028], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 56 , surface_balance: DNDarray([-0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 56 , total balance: DNDarray([-3.1065e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00057.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 57 , dstorage: DNDarray([0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 57 , divergence: DNDarray([-2.8103e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 57 , dsurface_storage: DNDarray([2.6933e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 57 , netoverlandflow: DNDarray([0.0027], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 57 , surface_balance: DNDarray([-0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 57 , total balance: DNDarray([-2.6611e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00058.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 58 , dstorage: DNDarray([0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 58 , divergence: DNDarray([0.], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 58 , dsurface_storage: DNDarray([2.5635e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 58 , netoverlandflow: DNDarray([0.0026], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 58 , surface_balance: DNDarray([-0.0003], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 58 , total balance: DNDarray([-2.3107e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00059.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 59 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 59 , divergence: DNDarray([-1.1102e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 59 , dsurface_storage: DNDarray([2.4430e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 59 , netoverlandflow: DNDarray([0.0024], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 59 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 59 , total balance: DNDarray([-2.0042e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00060.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 60 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 60 , divergence: DNDarray([-2.8449e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 60 , dsurface_storage: DNDarray([2.3308e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 60 , netoverlandflow: DNDarray([0.0023], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 60 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 60 , total balance: DNDarray([-1.7281e-09], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00061.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 61 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 61 , divergence: DNDarray([2.9490e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 61 , dsurface_storage: DNDarray([2.2119e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 61 , netoverlandflow: DNDarray([0.0022], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 61 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 61 , total balance: DNDarray([-7.6202e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00062.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 62 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 62 , divergence: DNDarray([2.2551e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 62 , dsurface_storage: DNDarray([2.1298e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 62 , netoverlandflow: DNDarray([0.0021], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 62 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 62 , total balance: DNDarray([-7.0382e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00063.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 63 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 63 , divergence: DNDarray([8.6736e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 63 , dsurface_storage: DNDarray([2.0371e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 63 , netoverlandflow: DNDarray([0.0020], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 63 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 63 , total balance: DNDarray([-6.4964e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00064.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 64 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 64 , divergence: DNDarray([-2.1164e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 64 , dsurface_storage: DNDarray([1.9505e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 64 , netoverlandflow: DNDarray([0.0019], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 64 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 64 , total balance: DNDarray([-6.0043e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00065.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 65 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 65 , divergence: DNDarray([-5.2042e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 65 , dsurface_storage: DNDarray([1.8696e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 65 , netoverlandflow: DNDarray([0.0019], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 65 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 65 , total balance: DNDarray([-5.5564e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00066.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 66 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 66 , divergence: DNDarray([-2.3245e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 66 , dsurface_storage: DNDarray([1.7939e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 66 , netoverlandflow: DNDarray([0.0018], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 66 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 66 , total balance: DNDarray([-5.1480e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00067.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 67 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 67 , divergence: DNDarray([-5.2042e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 67 , dsurface_storage: DNDarray([1.7229e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 67 , netoverlandflow: DNDarray([0.0017], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 67 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 67 , total balance: DNDarray([-4.7750e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00068.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 68 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 68 , divergence: DNDarray([1.0408e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 68 , dsurface_storage: DNDarray([1.6562e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 68 , netoverlandflow: DNDarray([0.0016], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 68 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 68 , total balance: DNDarray([-4.4337e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00069.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 69 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 69 , divergence: DNDarray([-2.2204e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 69 , dsurface_storage: DNDarray([1.5933e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 69 , netoverlandflow: DNDarray([0.0016], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 69 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 69 , total balance: DNDarray([-4.1211e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00070.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 70 , dstorage: DNDarray([0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 70 , divergence: DNDarray([-3.1919e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 70 , dsurface_storage: DNDarray([1.5340e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 70 , netoverlandflow: DNDarray([0.0015], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 70 , surface_balance: DNDarray([-0.0002], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 70 , total balance: DNDarray([-3.8342e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00071.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 71 , dstorage: DNDarray([0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 71 , divergence: DNDarray([-7.6328e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 71 , dsurface_storage: DNDarray([1.4780e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 71 , netoverlandflow: DNDarray([0.0015], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 71 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 71 , total balance: DNDarray([-3.5706e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00072.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 72 , dstorage: DNDarray([0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 72 , divergence: DNDarray([-4.8572e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 72 , dsurface_storage: DNDarray([1.4251e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 72 , netoverlandflow: DNDarray([0.0014], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 72 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 72 , total balance: DNDarray([-3.3280e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00073.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 73 , dstorage: DNDarray([0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 73 , divergence: DNDarray([-1.7694e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 73 , dsurface_storage: DNDarray([1.3750e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 73 , netoverlandflow: DNDarray([0.0013], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 73 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 73 , total balance: DNDarray([-3.1045e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00074.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 74 , dstorage: DNDarray([0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 74 , divergence: DNDarray([1.7347e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 74 , dsurface_storage: DNDarray([1.3275e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 74 , netoverlandflow: DNDarray([0.0013], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 74 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 74 , total balance: DNDarray([-2.8984e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00075.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 75 , dstorage: DNDarray([0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 75 , divergence: DNDarray([3.7470e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 75 , dsurface_storage: DNDarray([1.2824e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 75 , netoverlandflow: DNDarray([0.0012], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 75 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 75 , total balance: DNDarray([-2.7081e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00076.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 76 , dstorage: DNDarray([0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 76 , divergence: DNDarray([1.9082e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 76 , dsurface_storage: DNDarray([1.2396e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 76 , netoverlandflow: DNDarray([0.0012], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 76 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 76 , total balance: DNDarray([-2.5323e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00077.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 77 , dstorage: DNDarray([0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 77 , divergence: DNDarray([-2.2898e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 77 , dsurface_storage: DNDarray([1.1989e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 77 , netoverlandflow: DNDarray([0.0012], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 77 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 77 , total balance: DNDarray([-2.3695e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00078.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 78 , dstorage: DNDarray([0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 78 , divergence: DNDarray([-2.1511e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 78 , dsurface_storage: DNDarray([1.1601e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 78 , netoverlandflow: DNDarray([0.0011], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 78 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 78 , total balance: DNDarray([-2.2188e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00079.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 79 , dstorage: DNDarray([0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 79 , divergence: DNDarray([1.7000e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 79 , dsurface_storage: DNDarray([1.1232e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 79 , netoverlandflow: DNDarray([0.0011], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 79 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 79 , total balance: DNDarray([-2.0790e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00080.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 80 , dstorage: DNDarray([0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 80 , divergence: DNDarray([3.4694e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 80 , dsurface_storage: DNDarray([1.0880e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 80 , netoverlandflow: DNDarray([0.0010], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 80 , surface_balance: DNDarray([-0.0001], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 80 , total balance: DNDarray([-1.9494e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00081.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 81 , dstorage: DNDarray([9.9775e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 81 , divergence: DNDarray([1.0755e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 81 , dsurface_storage: DNDarray([1.0545e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 81 , netoverlandflow: DNDarray([0.0010], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 81 , surface_balance: DNDarray([-9.9958e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 81 , total balance: DNDarray([-1.8289e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00082.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 82 , dstorage: DNDarray([9.6336e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 82 , divergence: DNDarray([-9.0206e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 82 , dsurface_storage: DNDarray([1.0224e-07], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 82 , netoverlandflow: DNDarray([0.0010], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 82 , surface_balance: DNDarray([-9.6508e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 82 , total balance: DNDarray([-1.7169e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00083.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 83 , dstorage: DNDarray([9.3046e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 83 , divergence: DNDarray([3.0531e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 83 , dsurface_storage: DNDarray([9.9180e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 83 , netoverlandflow: DNDarray([0.0009], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 83 , surface_balance: DNDarray([-9.3208e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 83 , total balance: DNDarray([-1.6128e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00084.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 84 , dstorage: DNDarray([8.9897e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 84 , divergence: DNDarray([-1.7347e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 84 , dsurface_storage: DNDarray([9.6252e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 84 , netoverlandflow: DNDarray([0.0009], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 84 , surface_balance: DNDarray([-9.0049e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 84 , total balance: DNDarray([-1.5158e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00085.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 85 , dstorage: DNDarray([8.6881e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 85 , divergence: DNDarray([1.0755e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 85 , dsurface_storage: DNDarray([9.3450e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 85 , netoverlandflow: DNDarray([0.0009], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 85 , surface_balance: DNDarray([-8.7024e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 85 , total balance: DNDarray([-1.4253e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00086.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 86 , dstorage: DNDarray([8.3991e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 86 , divergence: DNDarray([-3.8858e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 86 , dsurface_storage: DNDarray([9.0766e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 86 , netoverlandflow: DNDarray([0.0008], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 86 , surface_balance: DNDarray([-8.4125e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 86 , total balance: DNDarray([-1.3411e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00087.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 87 , dstorage: DNDarray([8.1220e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 87 , divergence: DNDarray([1.7347e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 87 , dsurface_storage: DNDarray([8.8195e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 87 , netoverlandflow: DNDarray([0.0008], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 87 , surface_balance: DNDarray([-8.1347e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 87 , total balance: DNDarray([-1.2624e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00088.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 88 , dstorage: DNDarray([7.8563e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 88 , divergence: DNDarray([1.7347e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 88 , dsurface_storage: DNDarray([8.5729e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 88 , netoverlandflow: DNDarray([0.0008], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 88 , surface_balance: DNDarray([-7.8681e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 88 , total balance: DNDarray([-1.1889e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00089.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 89 , dstorage: DNDarray([7.6012e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 89 , divergence: DNDarray([-7.2858e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 89 , dsurface_storage: DNDarray([8.3363e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 89 , netoverlandflow: DNDarray([0.0008], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 89 , surface_balance: DNDarray([-7.6124e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 89 , total balance: DNDarray([-1.1203e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00090.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 90 , dstorage: DNDarray([7.3563e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 90 , divergence: DNDarray([3.7817e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 90 , dsurface_storage: DNDarray([8.1092e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 90 , netoverlandflow: DNDarray([0.0007], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 90 , surface_balance: DNDarray([-7.3669e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 90 , total balance: DNDarray([-1.0561e-07], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00091.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 91 , dstorage: DNDarray([7.1211e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 91 , divergence: DNDarray([-6.9389e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 91 , dsurface_storage: DNDarray([7.8910e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 91 , netoverlandflow: DNDarray([0.0007], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 91 , surface_balance: DNDarray([-7.1311e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 91 , total balance: DNDarray([-9.9605e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00092.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 92 , dstorage: DNDarray([6.8951e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 92 , divergence: DNDarray([2.6368e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 92 , dsurface_storage: DNDarray([7.6813e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 92 , netoverlandflow: DNDarray([0.0007], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 92 , surface_balance: DNDarray([-6.9045e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 92 , total balance: DNDarray([-9.3984e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00093.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 93 , dstorage: DNDarray([6.6778e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 93 , divergence: DNDarray([2.5674e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 93 , dsurface_storage: DNDarray([7.4795e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 93 , netoverlandflow: DNDarray([0.0007], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 93 , surface_balance: DNDarray([-6.6867e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 93 , total balance: DNDarray([-8.8720e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00094.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 94 , dstorage: DNDarray([6.4688e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 94 , divergence: DNDarray([5.8981e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 94 , dsurface_storage: DNDarray([7.2854e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 94 , netoverlandflow: DNDarray([0.0006], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 94 , surface_balance: DNDarray([-6.4772e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 94 , total balance: DNDarray([-8.3782e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00095.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 95 , dstorage: DNDarray([6.2678e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 95 , divergence: DNDarray([3.1225e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 95 , dsurface_storage: DNDarray([7.0986e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 95 , netoverlandflow: DNDarray([0.0006], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 95 , surface_balance: DNDarray([-6.2757e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 95 , total balance: DNDarray([-7.9148e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00096.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 96 , dstorage: DNDarray([6.0743e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 96 , divergence: DNDarray([-6.5919e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 96 , dsurface_storage: DNDarray([6.9186e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 96 , netoverlandflow: DNDarray([0.0006], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 96 , surface_balance: DNDarray([-6.0817e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 96 , total balance: DNDarray([-7.4805e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00097.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 97 , dstorage: DNDarray([5.8879e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 97 , divergence: DNDarray([1.7000e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 97 , dsurface_storage: DNDarray([6.7451e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 97 , netoverlandflow: DNDarray([0.0006], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 97 , surface_balance: DNDarray([-5.8950e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 97 , total balance: DNDarray([-7.0727e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00098.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 98 , dstorage: DNDarray([5.7084e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 98 , divergence: DNDarray([-1.7347e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 98 , dsurface_storage: DNDarray([6.5778e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 98 , netoverlandflow: DNDarray([0.0006], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 98 , surface_balance: DNDarray([-5.7151e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 98 , total balance: DNDarray([-6.6895e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00099.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 99 , dstorage: DNDarray([5.5355e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 99 , divergence: DNDarray([1.6306e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 99 , dsurface_storage: DNDarray([6.4164e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 99 , netoverlandflow: DNDarray([0.0006], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 99 , surface_balance: DNDarray([-5.5418e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 99 , total balance: DNDarray([-6.3296e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00100.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 100 , dstorage: DNDarray([5.3688e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 100 , divergence: DNDarray([1.4572e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 100 , dsurface_storage: DNDarray([6.2607e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 100 , netoverlandflow: DNDarray([0.0005], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 100 , surface_balance: DNDarray([-5.3748e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 100 , total balance: DNDarray([-5.9906e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00101.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 101 , dstorage: DNDarray([5.2081e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 101 , divergence: DNDarray([-3.3654e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 101 , dsurface_storage: DNDarray([6.1103e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 101 , netoverlandflow: DNDarray([0.0005], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 101 , surface_balance: DNDarray([-5.2138e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 101 , total balance: DNDarray([-5.6723e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00102.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 102 , dstorage: DNDarray([5.0531e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 102 , divergence: DNDarray([-7.2858e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 102 , dsurface_storage: DNDarray([5.9650e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 102 , netoverlandflow: DNDarray([0.0005], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 102 , surface_balance: DNDarray([-5.0585e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 102 , total balance: DNDarray([-5.3725e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00103.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 103 , dstorage: DNDarray([4.9036e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 103 , divergence: DNDarray([-3.9899e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 103 , dsurface_storage: DNDarray([5.8246e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 103 , netoverlandflow: DNDarray([0.0005], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 103 , surface_balance: DNDarray([-4.9087e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 103 , total balance: DNDarray([-5.0905e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00104.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 104 , dstorage: DNDarray([4.7592e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 104 , divergence: DNDarray([-1.7347e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 104 , dsurface_storage: DNDarray([5.6888e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 104 , netoverlandflow: DNDarray([0.0005], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 104 , surface_balance: DNDarray([-4.7641e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 104 , total balance: DNDarray([-4.8246e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00105.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 105 , dstorage: DNDarray([4.6199e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 105 , divergence: DNDarray([1.0408e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 105 , dsurface_storage: DNDarray([5.5575e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 105 , netoverlandflow: DNDarray([0.0005], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 105 , surface_balance: DNDarray([-4.6245e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 105 , total balance: DNDarray([-4.5741e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00106.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 106 , dstorage: DNDarray([4.4853e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 106 , divergence: DNDarray([8.3267e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 106 , dsurface_storage: DNDarray([5.4305e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 106 , netoverlandflow: DNDarray([0.0004], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 106 , surface_balance: DNDarray([-4.4897e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 106 , total balance: DNDarray([-4.3382e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00107.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 107 , dstorage: DNDarray([4.3554e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 107 , divergence: DNDarray([-1.0408e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 107 , dsurface_storage: DNDarray([5.3075e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 107 , netoverlandflow: DNDarray([0.0004], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 107 , surface_balance: DNDarray([-4.3595e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 107 , total balance: DNDarray([-4.1153e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00108.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 108 , dstorage: DNDarray([4.2298e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 108 , divergence: DNDarray([1.0061e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 108 , dsurface_storage: DNDarray([5.1884e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 108 , netoverlandflow: DNDarray([0.0004], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 108 , surface_balance: DNDarray([-4.2337e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 108 , total balance: DNDarray([-3.9056e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00109.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 109 , dstorage: DNDarray([4.1085e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 109 , divergence: DNDarray([-3.1225e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 109 , dsurface_storage: DNDarray([5.0731e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 109 , netoverlandflow: DNDarray([0.0004], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 109 , surface_balance: DNDarray([-4.1122e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 109 , total balance: DNDarray([-3.7070e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00110.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 110 , dstorage: DNDarray([3.9911e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 110 , divergence: DNDarray([1.2837e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 110 , dsurface_storage: DNDarray([4.9613e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 110 , netoverlandflow: DNDarray([0.0004], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 110 , surface_balance: DNDarray([-3.9947e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 110 , total balance: DNDarray([-3.5199e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00111.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 111 , dstorage: DNDarray([3.8777e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 111 , divergence: DNDarray([-2.0817e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 111 , dsurface_storage: DNDarray([4.8529e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 111 , netoverlandflow: DNDarray([0.0004], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 111 , surface_balance: DNDarray([-3.8810e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 111 , total balance: DNDarray([-3.3431e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00112.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 112 , dstorage: DNDarray([3.7680e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 112 , divergence: DNDarray([-2.1511e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 112 , dsurface_storage: DNDarray([4.7478e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 112 , netoverlandflow: DNDarray([0.0004], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 112 , surface_balance: DNDarray([-3.7712e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 112 , total balance: DNDarray([-3.1760e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00113.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 113 , dstorage: DNDarray([3.6618e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 113 , divergence: DNDarray([-2.0123e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 113 , dsurface_storage: DNDarray([4.6458e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 113 , netoverlandflow: DNDarray([0.0004], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 113 , surface_balance: DNDarray([-3.6649e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 113 , total balance: DNDarray([-3.0182e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00114.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 114 , dstorage: DNDarray([3.5591e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 114 , divergence: DNDarray([-1.5266e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 114 , dsurface_storage: DNDarray([4.5469e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 114 , netoverlandflow: DNDarray([0.0004], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 114 , surface_balance: DNDarray([-3.5620e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 114 , total balance: DNDarray([-2.8689e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00115.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 115 , dstorage: DNDarray([3.4597e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 115 , divergence: DNDarray([1.1449e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 115 , dsurface_storage: DNDarray([4.4508e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 115 , netoverlandflow: DNDarray([0.0003], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 115 , surface_balance: DNDarray([-3.4625e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 115 , total balance: DNDarray([-2.7277e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00116.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 116 , dstorage: DNDarray([3.3635e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 116 , divergence: DNDarray([-6.9389e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 116 , dsurface_storage: DNDarray([4.3575e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 116 , netoverlandflow: DNDarray([0.0003], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 116 , surface_balance: DNDarray([-3.3661e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 116 , total balance: DNDarray([-2.5943e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00117.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 117 , dstorage: DNDarray([3.2703e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 117 , divergence: DNDarray([-3.2960e-16], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 117 , dsurface_storage: DNDarray([4.2669e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 117 , netoverlandflow: DNDarray([0.0003], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 117 , surface_balance: DNDarray([-3.2728e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 117 , total balance: DNDarray([-2.4678e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00118.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 118 , dstorage: DNDarray([3.1801e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 118 , divergence: DNDarray([3.4694e-18], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 118 , dsurface_storage: DNDarray([4.1789e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 118 , netoverlandflow: DNDarray([0.0003], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 118 , surface_balance: DNDarray([-3.1825e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 118 , total balance: DNDarray([-2.3484e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00119.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 119 , dstorage: DNDarray([3.0927e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 119 , divergence: DNDarray([-7.2858e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 119 , dsurface_storage: DNDarray([4.0933e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 119 , netoverlandflow: DNDarray([0.0003], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 119 , surface_balance: DNDarray([-3.0949e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 119 , total balance: DNDarray([-2.2349e-08], dtype=ht.float64, device=cpu:0, split=None)
+terrainfollowing1.out.press.00120.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 120 , dstorage: DNDarray([3.0080e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 120 , divergence: DNDarray([-1.7347e-17], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 120 , dsurface_storage: DNDarray([4.0101e-08], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 120 , netoverlandflow: DNDarray([0.0003], dtype=ht.float32, device=cpu:0, split=None)
+Time step: 120 , surface_balance: DNDarray([-3.0101e-05], dtype=ht.float64, device=cpu:0, split=None)
+Time step: 120 , total balance: DNDarray([-2.1275e-08], dtype=ht.float64, device=cpu:0, split=None)
+
+In the first 2 hours, the balance increment due to rain is -0.5.
