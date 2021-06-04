@@ -1,0 +1,24 @@
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_vx=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/p/software/juwels/lmod/8.4.1/init/bash)
+Shell debugging restarted
++ unset __lmod_vx
++ export OMP_NUM_THREADS=24
++ OMP_NUM_THREADS=24
++ echo test1
++ srun python test1.py
++ echo
++ echo parkinglot
++ srun python parkinglot.py
++ echo
++ echo profileclm
++ srun python profileclm.py
++ echo
++ echo slab
++ srun python slab.py
++ echo
++ echo terrainfollwing
++ srun python terrainfollowing.py
