@@ -40,7 +40,7 @@ dzmult = ht.full(nz,1.0,split=None)
 terrainfollowing = True
 
 dt = 0.1
-nt = 20
+nt = 120
 
 perm =ht.zeros((3,nz,ny,nx),split=split)
 perm[0] = permz
