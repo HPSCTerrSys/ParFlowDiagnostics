@@ -2,7 +2,8 @@ import heat as ht
 import numpy as np
 import sys
 import os
-from Diagnostics import Diagnostics
+from Diagnostics import Diagnostics, printroot
+print=printroot
 import IO as io
 
 #Run ParFlow test case
@@ -91,8 +92,8 @@ for t in range (nt):
       #Balance over columns
       column_balance = ht.sum(cell_balance,axis=0)
       #Mass balance over full domain without flux at the top boundary
-      print('Time step:',t, ', Increment:',ht.sum(cell_balance)/(nx*ny))
-      results.append(np.round(ht.sum(cell_balance).numpy()/(nx*ny), 6))      
+      print('Time step:',t, ', Increment:',(ht.sum(cell_balance)/(nx*ny)).item())
+      results.append(np.round(ht.sum(cell_balance).numpy()/(nx*ny), 6))
 
 print()
 ht.MPI_WORLD.Barrier()

@@ -2,7 +2,8 @@ import heat as ht
 import numpy as np
 import sys
 import os
-from Diagnostics import Diagnostics
+from Diagnostics import Diagnostics, printroot
+print=printroot
 import IO as io
 
 split=None
@@ -47,7 +48,7 @@ nvg    = ht.full(shape3D,2.0,split=split)
 sres   = ht.full(shape3D,0.11,split=split)
 ssat   = ht.full(shape3D,1.0,dtype=ht.float64,split=split)
 #Set to False in case of profileclm and to True in case of tfgprofileclm
-terrainfollowing = False 
+terrainfollowing = False
 
 #Initialize Diagnostics class
 #Diagnostics(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split):
@@ -90,7 +91,7 @@ for t in range (nt):
       sink = io.read_pfb(path + name + '.out.et.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
       sink = ht.where(mask==1.0,sink,0.0)
       for k in range(nz):
-        sink[k,:,:] *= dz * dzmult[k] 
+        sink[k,:,:] *= dz * dzmult[k]
 
       #Read CLM sink/source files (mm/s)
       #qflx_tran_veg = io.read_pfb(path + name + '.out.qflx_tran_veg.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
@@ -101,7 +102,7 @@ for t in range (nt):
 
       #Source/sink (L^3)
       #sourcesink_ = (qflx_tran_veg + qflx_infl) * mask[nz-1,:,:]
-      sourcesink = ht.sum(sink, axis=0) * dt * dy * dx 
+      sourcesink = ht.sum(sink, axis=0) * dt * dy * dx
 
       #Change in subsurface storage for each cell (L^3)
       dstorage_cell = old_subsurface_storage - subsurface_storage
@@ -130,13 +131,13 @@ for t in range (nt):
       balance_column += sourcesink
 
       #Mass balance over full domain without flux at the top boundary
-      print('Time step:',t, ', dstorage:',ht.sum(dstorage_column))
-      print('Time step:',t, ', divergence:',ht.sum(divergence_column))
-      print('Time step:',t, ', dsurface_storage:',ht.sum(dsurface_storage_cell))
-      print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow))
-      print('Time step:',t, ', surface_balance:',ht.sum(balance_surface))
-      print('Time step:',t, ', source/sink:',ht.sum(sourcesink))
-      print('Time step:',t, ', total balance:',ht.sum(balance_column))
+      print('Time step:',t, ', dstorage:',ht.sum(dstorage_column).item())
+      print('Time step:',t, ', divergence:',ht.sum(divergence_column).item())
+      print('Time step:',t, ', dsurface_storage:',ht.sum(dsurface_storage_cell).item())
+      print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow).item())
+      print('Time step:',t, ', surface_balance:',ht.sum(balance_surface).item())
+      print('Time step:',t, ', source/sink:',ht.sum(sourcesink).item())
+      print('Time step:',t, ', total balance:',ht.sum(balance_column).item())
 
     #New becomes old in the ensuing time step
     old_subsurface_storage = subsurface_storage

@@ -3,7 +3,8 @@ import heat as ht
 import numpy as np
 import sys
 import os
-from Diagnostics import Diagnostics 
+from Diagnostics import Diagnostics, printroot
+print=printroot
 import IO as io
 
 #Run ParFlow test case
@@ -33,7 +34,7 @@ permx    = io.read_pfb(name + '.out.perm_x.pfb',split=split)
 permy    = io.read_pfb(name + '.out.perm_y.pfb',split=split)
 permz    = io.read_pfb(name + '.out.perm_y.pfb',split=split)
 
-dx = dy = 1. 
+dx = dy = 1.
 dz = 1.0
 nx = 10
 ny = 10
@@ -65,7 +66,7 @@ nvg   = ht.full(shape3D,2.0,split=split)
 #Initialize hydrograph information
 hydrograph = ht.zeros(nt+1, split = None)
 #Gauge is located at pixel (0,0)
-gaugex = gaugey = 0  
+gaugex = gaugey = 0
 
 #Initialize Diagnostics class
 #Diagnostics(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split):
@@ -77,12 +78,12 @@ for t in range (nt+1):
     press = ht.where(mask==0.0,99999.0,press)
 
     #Calculate relative saturation and relative hydraulic conductivity
-    print('begin VANGENUCHTEN', flush=True); ht.MPI_WORLD.Barrier()
+    #print('begin VANGENUCHTEN', flush=True); ht.MPI_WORLD.Barrier()
     satur,krel = diag.VanGenuchten(press)
 
     #Obtain pressure at the land surface
     top_layer_press = diag.TopLayerPressure(press)
-    
+
     #Returns an unmasked 3D field of subsurface storage, (L^3)
     subsurface_storage=diag.SubsurfaceStorage(press,satur)
 
@@ -94,8 +95,8 @@ for t in range (nt+1):
 
     #Calculate overland flow (L^3/T)
     oflowx,oflowy = diag.OverlandFlow(top_layer_press)
-    print(ht.MPI_WORLD.rank, 'oflowx calculated', 'gshape:',oflowx.shape, 'lshape:',oflowx.lshape, 'split',oflowx.split, 'bcasts:', ht.MPI_WORLD.bcast_counter, flush=True)
-    
+    #print(ht.MPI_WORLD.rank, 'oflowx calculated', 'gshape:',oflowx.shape, 'lshape:',oflowx.lshape, 'split',oflowx.split, 'bcasts:', ht.MPI_WORLD.bcast_counter, flush=True)
+
     #Extract overland flow at the gauge and calculate absolute discharge (L^3/T)
     """ht.MPI_WORLD.Barrier()
     for i in range(0,10): # broadcast from rank 1 to 0
@@ -104,13 +105,13 @@ for t in range (nt+1):
         except:
             print('failed', i, flush=True)
     ht.MPI_WORLD.Barrier()
-    
+
     ht.MPI_WORLD.Barrier()
     print(oflowx[0,0])
     ht.MPI_WORLD.Barrier()
     """
     hydrograph[t] = dy * ht.abs(oflowx[gaugey,gaugex]) + dx * ht.abs(oflowy[gaugey,gaugex])
-    
+
     #Calculate net overland flow for each top layer cell (L/T)
     net_overland_flow = diag.NetLateralOverlandFlow(oflowx,oflowy)
 
@@ -139,18 +140,18 @@ for t in range (nt+1):
 
       #Balance for each column
       balance_column  = ht.sum(balance_cell*mask,axis=0)
-      print(balance_column.shape, balance_column.split, balance_surface.shape, balance_surface.split)
-      balance_column += balance_surface 
+      #print(balance_column.shape, balance_column.split, balance_surface.shape, balance_surface.split)
+      balance_column += balance_surface
 
       #Mass balance over full domain without flux at the top boundary
-      print('Time step:',t, ', dstorage:',ht.sum(dstorage_column))
-      print('Time step:',t, ', divergence:',ht.sum(divergence_column))
-      print('Time step:',t, ', dsurface_storage:',ht.sum(dsurface_storage_cell))
-      print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow))
-      print('Time step:',t, ', surface_balance:',ht.sum(balance_surface))
-      print('Time step:',t, ', total balance:',ht.sum(balance_column))
-      
-    
+      print('Time step:',t, ', dstorage:',ht.sum(dstorage_column).item())
+      print('Time step:',t, ', divergence:',ht.sum(divergence_column).item())
+      print('Time step:',t, ', dsurface_storage:',ht.sum(dsurface_storage_cell).item())
+      print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow).item())
+      print('Time step:',t, ', surface_balance:',ht.sum(balance_surface).item())
+      print('Time step:',t, ', total balance:',ht.sum(balance_column).item())
+
+
     #New becomes old in the ensuing time step
     old_subsurface_storage = subsurface_storage
     old_surface_storage = surface_storage
