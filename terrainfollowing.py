@@ -69,7 +69,6 @@ for t in range (nt+1):
     press = io.read_pfb(name + '.out.press.'+ ('{:05d}'.format(t)) + '.pfb',split=split)
     press = ht.where(mask==0.0,99999.0,press)
 
-    print('press.shape=', press.lshape, 'press.split=',press.split, flush=True)
     #Calculate relative saturation and relative hydraulic conductivity
     satur,krel = diag.VanGenuchten(press)
 
