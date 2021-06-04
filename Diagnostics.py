@@ -202,10 +202,10 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flowback[:, :-1, :] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[:, 1:, :], Krel[:, :-1, :])
         flowfront[:, 1:, :] = flowback[:, :-1, :]
 
-        print('before mul', (self.Dx * self.Dz * Dzmult3D).lshape, flowback.lshape, flush=True)
+        #print('before mul', (self.Dx * self.Dz * Dzmult3D).lshape, flowback.lshape, flush=True)
         flowback = flowback * self.Dx * self.Dz * Dzmult3D
         flowfront  = flowfront * self.Dx * self.Dz * Dzmult3D
-        print('after flows', flush=True)
+        #print('after flows', flush=True)
 
         #  Top and Bottom
         flowtop = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
@@ -223,7 +223,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         flowtop *= self.Dx * self.Dy
         flowbottom *= self.Dx * self.Dy
-        print('subsurfaceflow finished', flush=True)
+        #print('subsurfaceflow finished', flush=True)
 
         return(flowleft,flowright,flowfront,flowback,flowbottom,flowtop)
 
@@ -303,7 +303,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flow_east[:, :-1] -= ht.clip(-1 * overland_flow_x[:, 1:], min=0, max=None)
         index_last = self.Nx-1 #slice(self.Nx-1, self.Nx)
         flow_east[:, index_last] = ht.where(overland_flow_x>0.0, overland_flow_x, Nix)[:,index_last]
-        printroot('flow_east', end='\n\n', flush=True)
+        #printroot('flow_east', end='\n\n', flush=True)
 
         # for i in range (self.Nx-1):
         #     flow_east[:,i]  = ht.maximum(overland_flow_x[:,i], Nix[:,i])
@@ -316,9 +316,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flow_west[:, 1:]  = ht.clip(overland_flow_x[:, :-1], min=0, max=None)
         flow_west[:, 1:] -= ht.clip(-1 * overland_flow_x[:, 1:], min=0, max=None)
         tmp = ht.where(overland_flow_x[:,0]<0.0, overland_flow_x[:,0], Nix[:,0])
-        print(flow_west.gshape, 'flow_west:',flow_west[:, 0].gshape, flow_west[:, 0].lshape, flow_west[:, 0].split, 'tmp:', tmp.gshape, tmp.lshape, tmp.split, flush=True)
+        #print(flow_west.gshape, 'flow_west:',flow_west[:, 0].gshape, flow_west[:, 0].lshape, flow_west[:, 0].split, 'tmp:', tmp.gshape, tmp.lshape, tmp.split, flush=True)
         flow_west[:, 0] = tmp #ht.where(overland_flow_x<0.0, overland_flow_x, Nix)[:,0:1]
-        printroot('flow_west', end='\n\n', flush=True)
+        #printroot('flow_west', end='\n\n', flush=True)
         # for i in range (1,self.Nx):
         #     flow_west[:,i]  = ht.maximum(overland_flow_x[:,i-1], Nix[:,i-1])
         #     flow_west[:,i] -= ht.maximum((-1.0)*overland_flow_x[:,i], Nix[:,i])
@@ -330,7 +330,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flow_north[:-1] -= ht.clip(-1 * overland_flow_y[1:], min=0, max=None)
         index_last = slice(self.Ny-1, self.Ny)
         flow_north[index_last] = ht.where(overland_flow_y>0.0, overland_flow_y, Nix)[index_last,:]
-        printroot('flow_north', end='\n\n', flush=True)
+        #printroot('flow_north', end='\n\n', flush=True)
         # for j in range (self.Ny-1):
         #     flow_north[j,:]  = ht.maximum(overland_flow_y[j,:], Nix[j,:])
         #     flow_north[j,:] -= ht.maximum((-1.0)*overland_flow_y[j+1,:], Nix[j+1,:])
@@ -341,7 +341,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flow_south[1:]  = ht.clip(overland_flow_y[:-1], min=0, max=None)
         flow_south[1:] -= ht.clip(-1 * overland_flow_y[1:], min=0, max=None)
         flow_south[0:1] = ht.where(overland_flow_y<0, overland_flow_y, Nix)[0:1,:]
-        printroot('flow_south', end='\n\n',flush=True)
+        #printroot('flow_south', end='\n\n',flush=True)
         # for j in range (1,self.Ny):
         #     flow_south[j,:]  = ht.maximum(overland_flow_y[j-1,:], Nix[j-1,:])
         #     flow_south[j,:] -= ht.maximum((-1.0)*overland_flow_y[j,:], Nix[j,:])
