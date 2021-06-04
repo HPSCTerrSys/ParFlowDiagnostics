@@ -228,3 +228,1013 @@
 < Time step: 20 , divergence: 3.469446951953614e-17
 ---
 > Time step: 20 , divergence: 7.28583859910259e-17
+1339a1361
+> Terrain following
+1343c1365
+< Time step: 21 , divergence: -1.6653345369377348e-16
+---
+> Time step: 21 , divergence: -2.0122792321330962e-16
+1347c1369
+< Time step: 21 , total balance: -4.6617082714861535e-08
+---
+> Time step: 21 , total balance: -4.6617082565675316e-08
+1349a1372
+> Terrain following
+1352,1353c1375,1376
+< Time step: 22 , dstorage: 0.013028942433761853
+< Time step: 22 , divergence: -9.71445146547012e-17
+---
+> Time step: 22 , dstorage: 0.013028942433761851
+> Time step: 22 , divergence: 5.204170427930421e-18
+1357c1380
+< Time step: 22 , total balance: -1.4286464889573525e-08
+---
+> Time step: 22 , total balance: -1.428646503225453e-08
+1359a1383
+> Terrain following
+1363c1387
+< Time step: 23 , divergence: -2.3245294578089215e-16
+---
+> Time step: 23 , divergence: -2.5673907444456745e-16
+1367c1391
+< Time step: 23 , total balance: -3.809141498750668e-09
+---
+> Time step: 23 , total balance: -3.8091415659712025e-09
+1369a1394
+> Terrain following
+1373c1398
+< Time step: 24 , divergence: 2.1510571102112408e-16
+---
+> Time step: 24 , divergence: 1.7954387976359953e-16
+1377c1402
+< Time step: 24 , total balance: -2.3243579422294047e-09
+---
+> Time step: 24 , total balance: -2.3243581274111358e-09
+1379a1405
+> Terrain following
+1383c1409
+< Time step: 25 , divergence: 6.938893903907228e-17
+---
+> Time step: 25 , divergence: 4.336808689942018e-18
+1387c1413
+< Time step: 25 , total balance: -5.256662892159925e-07
+---
+> Time step: 25 , total balance: -5.256662892303039e-07
+1389a1416
+> Terrain following
+1393c1420
+< Time step: 26 , divergence: 1.0408340855860843e-16
+---
+> Time step: 26 , divergence: 1.6046192152785466e-16
+1397c1424
+< Time step: 26 , total balance: -2.3611156535485733e-07
+---
+> Time step: 26 , total balance: -2.3611156557841982e-07
+1399a1427
+> Terrain following
+1403c1431
+< Time step: 27 , divergence: 2.2898349882893854e-16
+---
+> Time step: 27 , divergence: 3.0357660829594124e-17
+1407c1435
+< Time step: 27 , total balance: -1.8983034877004257e-07
+---
+> Time step: 27 , total balance: -1.898303486447088e-07
+1409a1438
+> Terrain following
+1413c1442
+< Time step: 28 , divergence: 2.5326962749261384e-16
+---
+> Time step: 28 , divergence: 1.5005358067199381e-16
+1417c1446
+< Time step: 28 , total balance: -9.576784846740405e-08
+---
+> Time step: 28 , total balance: -9.576784848800389e-08
+1419a1449
+> Terrain following
+1423c1453
+< Time step: 29 , divergence: 1.4224732503009818e-16
+---
+> Time step: 29 , divergence: 1.7694179454963432e-16
+1427c1457
+< Time step: 29 , total balance: -5.167423789212422e-08
+---
+> Time step: 29 , total balance: -5.167423784181724e-08
+1429a1460
+> Terrain following
+1433c1464
+< Time step: 30 , divergence: -8.326672684688674e-17
+---
+> Time step: 30 , divergence: -1.6046192152785466e-16
+1437c1468
+< Time step: 30 , total balance: -2.9759778346488686e-08
+---
+> Time step: 30 , total balance: -2.9759778365570644e-08
+1439a1471
+> Terrain following
+1443c1475
+< Time step: 31 , divergence: -1.3530843112619095e-16
+---
+> Time step: 31 , divergence: -1.9949319973733282e-16
+1447c1479
+< Time step: 31 , total balance: -1.7393855602371167e-08
+---
+> Time step: 31 , total balance: -1.7393855631644625e-08
+1449a1482
+> Terrain following
+1453c1486
+< Time step: 32 , divergence: 6.938893903907228e-18
+---
+> Time step: 32 , divergence: 1.0148132334464322e-16
+1457c1490
+< Time step: 32 , total balance: -1.1198571920473244e-08
+---
+> Time step: 32 , total balance: -1.1198571835038112e-08
+1459a1493
+> Terrain following
+1463c1497
+< Time step: 33 , divergence: -1.7694179454963432e-16
+---
+> Time step: 33 , divergence: -6.158268339717665e-17
+1467c1501
+< Time step: 33 , total balance: -7.485000310530898e-09
+---
+> Time step: 33 , total balance: -7.485000329179176e-09
+1469a1504
+> Terrain following
+1473c1508
+< Time step: 34 , divergence: 1.942890293094024e-16
+---
+> Time step: 34 , divergence: 5.551115123125783e-17
+1477c1512
+< Time step: 34 , total balance: -5.18543438049468e-09
+---
+> Time step: 34 , total balance: -5.185434446414172e-09
+1479a1515
+> Terrain following
+1483c1519
+< Time step: 35 , divergence: 3.469446951953614e-18
+---
+> Time step: 35 , divergence: -2.1250362580715887e-16
+1487c1523
+< Time step: 35 , total balance: -3.855693132825966e-09
+---
+> Time step: 35 , total balance: -3.855693278325897e-09
+1489a1526
+> Terrain following
+1493c1530
+< Time step: 36 , divergence: 7.979727989493313e-17
+---
+> Time step: 36 , divergence: 6.071532165918825e-18
+1497c1534
+< Time step: 36 , total balance: -2.794531932248656e-09
+---
+> Time step: 36 , total balance: -2.7945319417896353e-09
+1499a1537
+> Terrain following
+1503c1541
+< Time step: 37 , divergence: 4.85722573273506e-17
+---
+> Time step: 37 , divergence: 5.204170427930421e-18
+1507c1545
+< Time step: 37 , total balance: -2.1422121541936345e-09
+---
+> Time step: 37 , total balance: -2.1422121312085485e-09
+1509a1548
+> Terrain following
+1513c1552
+< Time step: 38 , divergence: -1.4224732503009818e-16
+---
+> Time step: 38 , divergence: -4.423544863740858e-17
+1517c1556
+< Time step: 38 , total balance: -1.6959682304362733e-09
+---
+> Time step: 38 , total balance: -1.6959681150771622e-09
+1519a1559
+> Terrain following
+1523c1563
+< Time step: 39 , divergence: -2.8796409701215e-16
+---
+> Time step: 39 , divergence: -2.3245294578089215e-16
+1527c1567
+< Time step: 39 , total balance: -1.2642299568321747e-09
+---
+> Time step: 39 , total balance: -1.2642299787330585e-09
+1529a1570
+> Terrain following
+1533c1574
+< Time step: 40 , divergence: 2.42861286636753e-16
+---
+> Time step: 40 , divergence: 2.419939248987646e-16
+1537c1578
+< Time step: 40 , total balance: -1.0498208691256394e-09
+---
+> Time step: 40 , total balance: -1.0498208166502543e-09
+1539a1581
+> Terrain following
+1543c1585
+< Time step: 41 , divergence: -6.245004513516506e-17
+---
+> Time step: 41 , divergence: -5.616167253474913e-17
+1547c1589
+< Time step: 41 , total balance: -8.679239826836493e-10
+---
+> Time step: 41 , total balance: -8.679238237396109e-10
+1549a1592
+> Terrain following
+1553c1596
+< Time step: 42 , divergence: 1.8735013540549517e-16
+---
+> Time step: 42 , divergence: 1.437652080715779e-16
+1557c1600
+< Time step: 42 , total balance: -7.413315239457319e-10
+---
+> Time step: 42 , total balance: -7.413315024785289e-10
+1559a1603
+> Terrain following
+1563c1607
+< Time step: 43 , divergence: 1.734723475976807e-16
+---
+> Time step: 43 , divergence: 2.736526283353413e-16
+1567c1611
+< Time step: 43 , total balance: -6.01667937694117e-10
+---
+> Time step: 43 , total balance: -6.016677863394937e-10
+1569a1614
+> Terrain following
+1573c1618
+< Time step: 44 , divergence: -1.8388068845354155e-16
+---
+> Time step: 44 , divergence: -1.732555071631836e-16
+1577c1622
+< Time step: 44 , total balance: -7.558793313489076e-10
+---
+> Time step: 44 , total balance: -7.558792409264464e-10
+1579a1625
+> Terrain following
+1583c1629
+< Time step: 45 , divergence: -5.273559366969494e-16
+---
+> Time step: 45 , divergence: -3.3501847129802087e-16
+1587c1633
+< Time step: 45 , total balance: -6.406183430951451e-10
+---
+> Time step: 45 , total balance: -6.406183480824751e-10
+1589a1636
+> Terrain following
+1593c1640
+< Time step: 46 , divergence: 4.85722573273506e-17
+---
+> Time step: 46 , divergence: 8.977193988179977e-17
+1597c1644
+< Time step: 46 , total balance: -5.370690350781082e-10
+---
+> Time step: 46 , total balance: -5.37068999516277e-10
+1599a1647
+> Terrain following
+1603c1651
+< Time step: 47 , divergence: -5.204170427930421e-17
+---
+> Time step: 47 , divergence: -1.0104764247564901e-16
+1607c1655
+< Time step: 47 , total balance: -4.459079078200645e-10
+---
+> Time step: 47 , total balance: -4.459078883044254e-10
+1609a1658
+> Terrain following
+1613c1662
+< Time step: 48 , divergence: 1.457167719820518e-16
+---
+> Time step: 48 , divergence: 1.222980050563649e-16
+1617c1666
+< Time step: 48 , total balance: -3.7570473121473213e-10
+---
+> Time step: 48 , total balance: -3.7570464404487747e-10
+1619a1669
+> Terrain following
+1623c1673
+< Time step: 49 , divergence: -8.326672684688674e-17
+---
+> Time step: 49 , divergence: -2.0599841277224584e-17
+1627c1677
+< Time step: 49 , total balance: -3.493314422453597e-10
+---
+> Time step: 49 , total balance: -3.4933158254112084e-10
+1629a1680
+> Terrain following
+1633c1684
+< Time step: 50 , divergence: 1.734723475976807e-16
+---
+> Time step: 50 , divergence: 2.242130092700023e-16
+1637c1688
+< Time step: 50 , total balance: -3.045179247651575e-10
+---
+> Time step: 50 , total balance: -3.045179022137523e-10
+1639a1691
+> Terrain following
+1643c1695
+< Time step: 51 , divergence: 8.673617379884035e-17
+---
+> Time step: 51 , divergence: 1.739060284666749e-16
+1647c1699
+< Time step: 51 , total balance: -2.9820216435050284e-10
+---
+> Time step: 51 , total balance: -2.982020667723073e-10
+1649a1702
+> Terrain following
+1653c1706
+< Time step: 52 , divergence: -1.734723475976807e-17
+---
+> Time step: 52 , divergence: -6.505213034913027e-19
+1657c1710
+< Time step: 52 , total balance: -2.590633992050062e-10
+---
+> Time step: 52 , total balance: -2.5906354405441645e-10
+1659a1713
+> Terrain following
+1663c1717
+< Time step: 53 , divergence: -6.938893903907228e-18
+---
+> Time step: 53 , divergence: -4.2934406030425976e-17
+1667c1721
+< Time step: 53 , total balance: -2.0955562632374303e-10
+---
+> Time step: 53 , total balance: -2.0955554912854835e-10
+1669a1724
+> Terrain following
+1673c1728
+< Time step: 54 , divergence: -9.020562075079397e-17
+---
+> Time step: 54 , divergence: 9.497611030973019e-17
+1677c1732
+< Time step: 54 , total balance: -2.0490695251673685e-10
+---
+> Time step: 54 , total balance: -2.0490696422612031e-10
+1679a1735
+> Terrain following
+1683c1739
+< Time step: 55 , divergence: 1.734723475976807e-17
+---
+> Time step: 55 , divergence: -4.0332320816460765e-17
+1687c1743
+< Time step: 55 , total balance: -3.5998970263073637e-09
+---
+> Time step: 55 , total balance: -3.5998969699288508e-09
+1689a1746
+> Terrain following
+1693c1750
+< Time step: 56 , divergence: -4.5102810375396984e-17
+---
+> Time step: 56 , divergence: -1.7650811368064012e-16
+1697c1754
+< Time step: 56 , total balance: -3.1065101463445544e-09
+---
+> Time step: 56 , total balance: -3.1065099828468667e-09
+1699a1757
+> Terrain following
+1703c1761
+< Time step: 57 , divergence: -2.8102520310824275e-16
+---
+> Time step: 57 , divergence: -2.3028454143592114e-16
+1707c1765
+< Time step: 57 , total balance: -2.6610632725132533e-09
+---
+> Time step: 57 , total balance: -2.6610632790184663e-09
+1709a1768
+> Terrain following
+1713c1772
+< Time step: 58 , divergence: 0.0
+---
+> Time step: 58 , divergence: -3.5778671692021646e-17
+1717c1776
+< Time step: 58 , total balance: -2.3106669355676956e-09
+---
+> Time step: 58 , total balance: -2.3106668507830858e-09
+1719a1779
+> Terrain following
+1723c1783
+< Time step: 59 , divergence: -1.1102230246251565e-16
+---
+> Time step: 59 , divergence: -1.8800065670898647e-16
+1727c1787
+< Time step: 59 , total balance: -2.0042312393053763e-09
+---
+> Time step: 59 , total balance: -2.004231076891891e-09
+1729a1790
+> Terrain following
+1733c1794
+< Time step: 60 , divergence: -2.8449465006019636e-16
+---
+> Time step: 60 , divergence: -1.1492543028346347e-16
+1737c1798
+< Time step: 60 , total balance: -1.7280853380208239e-09
+---
+> Time step: 60 , total balance: -1.7280852690655657e-09
+1739a1801
+> Terrain following
+1743c1805
+< Time step: 61 , divergence: 2.949029909160572e-16
+---
+> Time step: 61 , divergence: 2.8601253310167607e-16
+1747c1809
+< Time step: 61 , total balance: -7.620229502194875e-07
+---
+> Time step: 61 , total balance: -7.620229501663616e-07
+1749a1812
+> Terrain following
+1753c1816
+< Time step: 62 , divergence: 2.255140518769849e-16
+---
+> Time step: 62 , divergence: 1.5720931501039814e-16
+1757c1820
+< Time step: 62 , total balance: -7.038164249358048e-07
+---
+> Time step: 62 , total balance: -7.038164251699924e-07
+1759a1823
+> Terrain following
+1763c1827
+< Time step: 63 , divergence: 8.673617379884035e-17
+---
+> Time step: 63 , divergence: -1.1058862159352145e-17
+1767c1831
+< Time step: 63 , total balance: -6.496365100479295e-07
+---
+> Time step: 63 , total balance: -6.496365101036575e-07
+1769a1834
+> Terrain following
+1773c1838
+< Time step: 64 , divergence: -2.1163626406917047e-16
+---
+> Time step: 64 , divergence: -1.9147010366094008e-16
+1777c1842
+< Time step: 64 , total balance: -6.004324848360443e-07
+---
+> Time step: 64 , total balance: -6.004324847395503e-07
+1779a1845
+> Terrain following
+1783c1849
+< Time step: 65 , divergence: -5.204170427930421e-17
+---
+> Time step: 65 , divergence: -1.0733601507606494e-16
+1787c1853
+< Time step: 65 , total balance: -5.556412081240969e-07
+---
+> Time step: 65 , total balance: -5.556412080497206e-07
+1789a1856
+> Terrain following
+1793c1860
+< Time step: 66 , divergence: -2.3245294578089215e-16
+---
+> Time step: 66 , divergence: -1.459336124165489e-16
+1797c1864
+< Time step: 66 , total balance: -5.148042107327999e-07
+---
+> Time step: 66 , total balance: -5.148042107265115e-07
+1799a1867
+> Terrain following
+1803c1871
+< Time step: 67 , divergence: -5.204170427930421e-17
+---
+> Time step: 67 , divergence: 4.96564594998361e-17
+1807c1875
+< Time step: 67 , total balance: -4.774950840662207e-07
+---
+> Time step: 67 , total balance: -4.774950841804956e-07
+1809a1878
+> Terrain following
+1813c1882
+< Time step: 68 , divergence: 1.0408340855860843e-16
+---
+> Time step: 68 , divergence: 1.233822072288504e-16
+1817c1886
+< Time step: 68 , total balance: -4.43371692027128e-07
+---
+> Time step: 68 , total balance: -4.4337169211798415e-07
+1819a1889
+> Terrain following
+1823c1893
+< Time step: 69 , divergence: -2.220446049250313e-16
+---
+> Time step: 69 , divergence: -1.487525380650112e-16
+1827c1897
+< Time step: 69 , total balance: -4.121062321948976e-07
+---
+> Time step: 69 , total balance: -4.121062321502285e-07
+1829a1900
+> Terrain following
+1833c1904
+< Time step: 70 , divergence: -3.191891195797325e-16
+---
+> Time step: 70 , divergence: -2.415602440297704e-16
+1837c1908
+< Time step: 70 , total balance: -3.8342291711415677e-07
+---
+> Time step: 70 , total balance: -3.8342291707165604e-07
+1839a1911
+> Terrain following
+1843c1915
+< Time step: 71 , divergence: -7.632783294297951e-17
+---
+> Time step: 71 , divergence: -5.4860629927766524e-17
+1847c1919
+< Time step: 71 , total balance: -3.5705538689936867e-07
+---
+> Time step: 71 , total balance: -3.570553869286421e-07
+1849a1922
+> Terrain following
+1853c1926
+< Time step: 72 , divergence: -4.85722573273506e-17
+---
+> Time step: 72 , divergence: 6.5052130349130266e-18
+1857c1930
+< Time step: 72 , total balance: -3.328013607854785e-07
+---
+> Time step: 72 , total balance: -3.328013607308347e-07
+1859a1933
+> Terrain following
+1863c1937
+< Time step: 73 , divergence: -1.7694179454963432e-16
+---
+> Time step: 73 , divergence: -3.397889608569571e-16
+1867c1941
+< Time step: 73 , total balance: -3.104525973310346e-07
+---
+> Time step: 73 , total balance: -3.1045259728744966e-07
+1869a1944
+> Terrain following
+1873c1948
+< Time step: 74 , divergence: 1.734723475976807e-17
+---
+> Time step: 74 , divergence: -1.214306433183765e-17
+1877c1952
+< Time step: 74 , total balance: -2.8984037244231264e-07
+---
+> Time step: 74 , total balance: -2.8984037253078354e-07
+1879a1955
+> Terrain following
+1883c1959
+< Time step: 75 , divergence: 3.7470027081099033e-16
+---
+> Time step: 75 , divergence: 2.680147770384167e-16
+1887c1963
+< Time step: 75 , total balance: -2.7081263533415556e-07
+---
+> Time step: 75 , total balance: -2.708126352925222e-07
+1889a1966
+> Terrain following
+1893c1970
+< Time step: 76 , divergence: 1.9081958235744878e-16
+---
+> Time step: 76 , divergence: 8.066464163292153e-17
+1897c1974
+< Time step: 76 , total balance: -2.532269092227202e-07
+---
+> Time step: 76 , total balance: -2.5322690921881705e-07
+1899a1977
+> Terrain following
+1903c1981
+< Time step: 77 , divergence: -2.2898349882893854e-16
+---
+> Time step: 77 , divergence: -1.1600963245594897e-16
+1907c1985
+< Time step: 77 , total balance: -2.3694756517284032e-07
+---
+> Time step: 77 , total balance: -2.3694756507070848e-07
+1909a1988
+> Terrain following
+1913c1992
+< Time step: 78 , divergence: -2.1510571102112408e-16
+---
+> Time step: 78 , divergence: -1.8648277366750676e-16
+1917c1996
+< Time step: 78 , total balance: -2.2187912000759535e-07
+---
+> Time step: 78 , total balance: -2.2187912015721525e-07
+1919a1999
+> Terrain following
+1923c2003
+< Time step: 79 , divergence: 1.700029006457271e-16
+---
+> Time step: 79 , divergence: 1.4983674023749671e-16
+1927c2007
+< Time step: 79 , total balance: -2.0789939800258672e-07
+---
+> Time step: 79 , total balance: -2.078993980834682e-07
+1929a2010
+> Terrain following
+1933c2014
+< Time step: 80 , divergence: 3.469446951953614e-17
+---
+> Time step: 80 , divergence: 3.968179951296946e-17
+1937c2018
+< Time step: 80 , total balance: -1.949416697545614e-07
+---
+> Time step: 80 , total balance: -1.949416696853893e-07
+1939a2021
+> Terrain following
+1943c2025
+< Time step: 81 , divergence: 1.0755285551056204e-16
+---
+> Time step: 81 , divergence: 1.0386656812411132e-16
+1947c2029
+< Time step: 81 , total balance: -1.8288524155501973e-07
+---
+> Time step: 81 , total balance: -1.8288524160229094e-07
+1949a2032
+> Terrain following
+1953c2036
+< Time step: 82 , divergence: -9.020562075079397e-17
+---
+> Time step: 82 , divergence: -1.444157293750692e-16
+1957c2040
+< Time step: 82 , total balance: -1.716922858191472e-07
+---
+> Time step: 82 , total balance: -1.7169228578445273e-07
+1959a2043
+> Terrain following
+1963c2047
+< Time step: 83 , divergence: 3.0531133177191805e-16
+---
+> Time step: 83 , divergence: 2.977219165645195e-16
+1967c2051
+< Time step: 83 , total balance: -1.6127534262916354e-07
+---
+> Time step: 83 , total balance: -1.6127534270744294e-07
+1969a2054
+> Terrain following
+1973c2058
+< Time step: 84 , divergence: -1.734723475976807e-17
+---
+> Time step: 84 , divergence: -1.5243882545146192e-16
+1977c2062
+< Time step: 84 , total balance: -1.515766147354436e-07
+---
+> Time step: 84 , total balance: -1.5157661477165595e-07
+1979a2065
+> Terrain following
+1983c2069
+< Time step: 85 , divergence: 1.0755285551056204e-16
+---
+> Time step: 85 , divergence: 6.722053469410127e-17
+1987c2073
+< Time step: 85 , total balance: -1.4253238334732687e-07
+---
+> Time step: 85 , total balance: -1.4253238316734931e-07
+1989a2076
+> Terrain following
+1993c2080
+< Time step: 86 , divergence: -3.885780586188048e-16
+---
+> Time step: 86 , divergence: -2.3830763751231387e-16
+1997c2084
+< Time step: 86 , total balance: -1.3411239566454847e-07
+---
+> Time step: 86 , total balance: -1.3411239578619595e-07
+1999a2087
+> Terrain following
+2003c2091
+< Time step: 87 , divergence: 1.734723475976807e-16
+---
+> Time step: 87 , divergence: 8.651933336434325e-17
+2007c2095
+< Time step: 87 , total balance: -1.262383418007551e-07
+---
+> Time step: 87 , total balance: -1.2623834182569175e-07
+2009a2098
+> Terrain following
+2013c2102
+< Time step: 88 , divergence: 1.734723475976807e-17
+---
+> Time step: 88 , divergence: 8.456776945386935e-18
+2017c2106
+< Time step: 88 , total balance: -1.1889477567750273e-07
+---
+> Time step: 88 , total balance: -1.1889477572412342e-07
+2019a2109
+> Terrain following
+2023c2113
+< Time step: 89 , divergence: -7.28583859910259e-17
+---
+> Time step: 89 , divergence: -1.687018580387445e-16
+2027c2117
+< Time step: 89 , total balance: -1.1203275861876305e-07
+---
+> Time step: 89 , total balance: -1.1203275849364612e-07
+2029a2120
+> Terrain following
+2033c2124
+< Time step: 90 , divergence: 3.7816971776294395e-16
+---
+> Time step: 90 , divergence: 3.959506333917062e-16
+2037c2128
+< Time step: 90 , total balance: -1.0560855469993191e-07
+---
+> Time step: 90 , total balance: -1.0560855479360698e-07
+2039a2131
+> Terrain following
+2043c2135
+< Time step: 91 , divergence: -6.938893903907228e-17
+---
+> Time step: 91 , divergence: -3.9898639947466563e-17
+2047c2139
+< Time step: 91 , total balance: -9.9604937846276e-08
+---
+> Time step: 91 , total balance: -9.960493781114785e-08
+2049a2142
+> Terrain following
+2053c2146
+< Time step: 92 , divergence: 2.636779683484747e-16
+---
+> Time step: 92 , divergence: 2.1141942363467336e-16
+2057c2150
+< Time step: 92 , total balance: -9.398445364669494e-08
+---
+> Time step: 92 , total balance: -9.398445363390136e-08
+2059a2153
+> Terrain following
+2063c2157
+< Time step: 93 , divergence: 2.5673907444456745e-16
+---
+> Time step: 93 , divergence: 1.2880321809127793e-16
+2067c2161
+< Time step: 93 , total balance: -8.872043840216226e-08
+---
+> Time step: 93 , total balance: -8.872043858344086e-08
+2069a2164
+> Terrain following
+2073c2168
+< Time step: 94 , divergence: 5.898059818321144e-17
+---
+> Time step: 94 , divergence: -2.949029909160572e-17
+2077c2172
+< Time step: 94 , total balance: -8.378231384706392e-08
+---
+> Time step: 94 , total balance: -8.378231377854234e-08
+2079a2175
+> Terrain following
+2083c2179
+< Time step: 95 , divergence: 3.122502256758253e-17
+---
+> Time step: 95 , divergence: 3.382710778154774e-17
+2087c2183
+< Time step: 95 , total balance: -7.914813017137479e-08
+---
+> Time step: 95 , total balance: -7.914813003650004e-08
+2089a2186
+> Terrain following
+2093c2190
+< Time step: 96 , divergence: -6.591949208711867e-17
+---
+> Time step: 96 , divergence: 8.370040771588094e-17
+2097c2194
+< Time step: 96 , total balance: -7.48045265938635e-08
+---
+> Time step: 96 , total balance: -7.480452665371146e-08
+2099a2197
+> Terrain following
+2103c2201
+< Time step: 97 , divergence: 1.700029006457271e-16
+---
+> Time step: 97 , divergence: 8.023096076392733e-17
+2107c2205
+< Time step: 97 , total balance: -7.072698425536483e-08
+---
+> Time step: 97 , total balance: -7.072698423151239e-08
+2109a2208
+> Terrain following
+2113c2212
+< Time step: 98 , divergence: -1.734723475976807e-16
+---
+> Time step: 98 , divergence: -9.606031248221569e-17
+2117c2216
+< Time step: 98 , total balance: -6.689508938451105e-08
+---
+> Time step: 98 , total balance: -6.689508942332549e-08
+2119a2219
+> Terrain following
+2123c2223
+< Time step: 99 , divergence: 1.6306400674181987e-16
+---
+> Time step: 99 , divergence: 1.3595895242968226e-16
+2127c2227
+< Time step: 99 , total balance: -6.329564528409493e-08
+---
+> Time step: 99 , total balance: -6.329564541658443e-08
+2129a2230
+> Terrain following
+2133c2234
+< Time step: 100 , divergence: 1.457167719820518e-16
+---
+> Time step: 100 , divergence: 1.958069123508821e-16
+2137c2238
+< Time step: 100 , total balance: -5.990646628414864e-08
+---
+> Time step: 100 , total balance: -5.990646631602418e-08
+2139a2241
+> Terrain following
+2143c2245
+< Time step: 101 , divergence: -3.365363543395006e-16
+---
+> Time step: 101 , divergence: -1.1210650463500116e-16
+2147c2249
+< Time step: 101 , total balance: -5.6722804449987896e-08
+---
+> Time step: 101 , total balance: -5.672280444543425e-08
+2149a2252
+> Terrain following
+2152,2153c2255,2256
+< Time step: 102 , dstorage: 5.0531150396875e-05
+< Time step: 102 , divergence: -7.28583859910259e-17
+---
+> Time step: 102 , dstorage: 5.0531150396874135e-05
+> Time step: 102 , divergence: 6.288372600415926e-18
+2157c2260
+< Time step: 102 , total balance: -5.3724639324098655e-08
+---
+> Time step: 102 , total balance: -5.372463930566722e-08
+2159a2263
+> Terrain following
+2162,2163c2266,2267
+< Time step: 103 , dstorage: 4.903563187100496e-05
+< Time step: 103 , divergence: -3.9898639947466563e-16
+---
+> Time step: 103 , dstorage: 4.903563187100583e-05
+> Time step: 103 , divergence: -2.5218542532012833e-16
+2167c2271
+< Time step: 103 , total balance: -5.0904965898795895e-08
+---
+> Time step: 103 , total balance: -5.090496588600231e-08
+2169a2274
+> Terrain following
+2173c2278
+< Time step: 104 , divergence: -1.734723475976807e-16
+---
+> Time step: 104 , divergence: -7.112366251504909e-17
+2177c2282
+< Time step: 104 , total balance: -4.824637958242284e-08
+---
+> Time step: 104 , total balance: -4.824637947400262e-08
+2179a2285
+> Terrain following
+2183c2289
+< Time step: 105 , divergence: 1.0408340855860843e-17
+---
+> Time step: 105 , divergence: 7.676151381197371e-17
+2187c2293
+< Time step: 105 , total balance: -4.574060807199798e-08
+---
+> Time step: 105 , total balance: -4.5740608035135105e-08
+2189a2296
+> Terrain following
+2193c2300
+< Time step: 106 , divergence: 8.326672684688674e-17
+---
+> Time step: 106 , divergence: 1.6718397499726478e-16
+2197c2304
+< Time step: 106 , total balance: -4.3381936692260537e-08
+---
+> Time step: 106 , total balance: -4.3381936761866316e-08
+2199a2307
+> Terrain following
+2203c2311
+< Time step: 107 , divergence: -1.0408340855860843e-17
+---
+> Time step: 107 , divergence: 3.2526065174565133e-18
+2207c2315
+< Time step: 107 , total balance: -4.115276502902887e-08
+---
+> Time step: 107 , total balance: -4.115276518233506e-08
+2209a2318
+> Terrain following
+2213c2322
+< Time step: 108 , divergence: 1.0061396160665481e-16
+---
+> Time step: 108 , divergence: -4.7704895589362195e-18
+2217c2326
+< Time step: 108 , total balance: -3.905592034503247e-08
+---
+> Time step: 108 , total balance: -3.905592048988188e-08
+2219a2329
+> Terrain following
+2223c2333
+< Time step: 109 , divergence: -3.122502256758253e-17
+---
+> Time step: 109 , divergence: 8.933825901280557e-17
+2227c2337
+< Time step: 109 , total balance: -3.707007528372386e-08
+---
+> Time step: 109 , total balance: -3.707007536091905e-08
+2229a2340
+> Terrain following
+2233c2344
+< Time step: 110 , divergence: 1.2836953722228372e-16
+---
+> Time step: 110 , divergence: 1.3183898417423734e-16
+2237c2348
+< Time step: 110 , total balance: -3.519930082476752e-08
+---
+> Time step: 110 , total balance: -3.519930094880025e-08
+2239a2351
+> Terrain following
+2243c2355
+< Time step: 111 , divergence: -2.0816681711721685e-16
+---
+> Time step: 111 , divergence: -1.2945373939476923e-16
+2247c2359
+< Time step: 111 , total balance: -3.3431252131205236e-08
+---
+> Time step: 111 , total balance: -3.343125223333708e-08
+2249a2362
+> Terrain following
+2252,2253c2365,2366
+< Time step: 112 , dstorage: 3.767979865027969e-05
+< Time step: 112 , divergence: -2.1510571102112408e-16
+---
+> Time step: 112 , dstorage: 3.767979865027882e-05
+> Time step: 112 , divergence: -1.721713049906981e-16
+2257c2370
+< Time step: 112 , total balance: -3.1760453090418084e-08
+---
+> Time step: 112 , total balance: -3.176045304791736e-08
+2259a2373
+> Terrain following
+2262,2263c2376,2377
+< Time step: 113 , dstorage: 3.661841153195606e-05
+< Time step: 113 , divergence: -2.0122792321330962e-16
+---
+> Time step: 113 , dstorage: 3.661841153195693e-05
+> Time step: 113 , divergence: -2.5912431922403556e-16
+2267c2381
+< Time step: 113 , total balance: -3.0182126308647694e-08
+---
+> Time step: 113 , total balance: -3.0182126179627636e-08
+2269a2384
+> Terrain following
+2273c2388
+< Time step: 114 , divergence: -1.5265566588595902e-16
+---
+> Time step: 114 , divergence: -6.548581121812447e-17
+2277c2392
+< Time step: 114 , total balance: -2.8689331407066865e-08
+---
+> Time step: 114 , total balance: -2.868933127436052e-08
+2279a2395
+> Terrain following
+2283c2399
+< Time step: 115 , divergence: 1.1449174941446927e-16
+---
+> Time step: 115 , divergence: 4.7704895589362195e-17
+2287c2403
+< Time step: 115 , total balance: -2.7277085937194023e-08
+---
+> Time step: 115 , total balance: -2.727708599574094e-08
+2289a2406
+> Terrain following
+2293c2410
+< Time step: 116 , divergence: -6.938893903907228e-17
+---
+> Time step: 116 , divergence: -2.229119666630197e-16
+2297c2414
+< Time step: 116 , total balance: -2.5942567264541916e-08
+---
+> Time step: 116 , total balance: -2.594256723591898e-08
+2299a2417
+> Terrain following
+2303c2421
+< Time step: 117 , divergence: -3.2959746043559335e-16
+---
+> Time step: 117 , divergence: -2.5283594662361963e-16
+2307c2425
+< Time step: 117 , total balance: -2.4677780027793084e-08
+---
+> Time step: 117 , total balance: -2.4677780166570962e-08
+2309a2428
+> Terrain following
+2313c2432
+< Time step: 118 , divergence: 3.469446951953614e-18
+---
+> Time step: 118 , divergence: 1.0625181290357943e-17
+2317c2436
+< Time step: 118 , total balance: -2.348382425326756e-08
+---
+> Time step: 118 , total balance: -2.3483824217055208e-08
+2319a2439
+> Terrain following
+2323c2443
+< Time step: 119 , divergence: -7.28583859910259e-17
+---
+> Time step: 119 , divergence: -1.3335686721571705e-16
+2327c2447
+< Time step: 119 , total balance: -2.234855605437458e-08
+---
+> Time step: 119 , total balance: -2.2348556187731447e-08
+2329a2450
+> Terrain following
+2333c2454
+< Time step: 120 , divergence: -1.734723475976807e-17
+---
+> Time step: 120 , divergence: -6.288372600415926e-18
+2337c2458
+< Time step: 120 , total balance: -2.127498440612774e-08
+---
+> Time step: 120 , total balance: -2.1274984288817064e-08
