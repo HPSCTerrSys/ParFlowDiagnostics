@@ -7,7 +7,7 @@ import IO
 
 path = '/p/scratch/cesmtst/kollet1/global/'
 name = 'Global1km'
-split = #SPLIT#
+split = -1#SPLIT#
 
 #TIME_BEGIN#
 mask = IO.read_pfb(path + 'Global1km.out.mask.pfb', split=split)

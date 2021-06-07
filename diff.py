@@ -19,7 +19,7 @@ for a,b in zip(first, second):
     for c,d in zip(a.split(), b.split()):
         try:
             e,f = float(c), float(d)
-            if e != f:
+            if True:#e != f:
                 if printline:
                     print('other line:', b)
                 diffs.append(abs(e-f))
@@ -29,3 +29,5 @@ diffs = np.asarray(diffs)
 plot = sns.scatterplot(data=diffs)
 plot.set_yscale("log")
 plt.show()
+for i, d in enumerate(diffs):
+    print(i, d)
