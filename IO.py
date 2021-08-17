@@ -137,18 +137,20 @@ def read_pfb(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):
                     slices[target.split] = slice(start, stop)
                     tmp = tmp[tuple(slices)]
 
-                tmp_torch = ht.torch.as_tensor(tmp, dtype=target.larray.dtype, device=target.larray.device)
                 if target.lnumel:
+                    tmp_torch = ht.torch.as_tensor(tmp, dtype=target.larray.dtype, device=target.larray.device)
                     target.larray[:] = tmp_torch
-                del tmp, tmp_torch, target
+                    del tmp_torch
+                del tmp, target
                 #tmp_heat = ht.array(tmp, split=None)
                 #tmp_heat = ht.array(tmp, split=split)
                 #tmp_heat.redistribute_(target_map=target.create_lshape_map())
                 #data[iz : iz + nz, iy : iy + ny, ix : ix + nx] = tmp_heat
                 #target.larray[None] = tmp_heat.larray
                 #del tmp, tmp_heat, target
-                
-        #data = data[::2,::4,::8]
+
+        #idx = (slice(None), slice(None,None,4), slice(None,None,4))        
+        #data = data[idx]
         return data
 
 def read_pfb_heat(filename, dtype=">f8", comm=ht.MPI_WORLD, split=None):

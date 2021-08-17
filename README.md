@@ -45,10 +45,30 @@ Calculates volume flux (L³/T) over all six cell faces taking into account activ
 * VanGenuchten(self,Press) -> satur, krel  
 Calculated relative saturation (-) and relative conductivity (-) based on the van Genuchten function. Output is two 3D tensors.
 
+**HeAT**
+HeAT is a Python Array computation library, structured similar to numpy. Additional Features include GPU support and parallel processing capabilities for HPC systems by introducing a split axis. The Array is split to the mutliple processes along this axis. The Documentation as well as tutorials can be found at (https://github.com/helmholtz-analytics/heat).
+On the HPC systems, working HeAT environments can be found at
+'/p/project/cslts/local/juwels/HeAT/'
+or
+'/p/project/cslts/local/jureca/HeAT/'
+
+To use the environment, source the most recent .ini file:
+'source PythonHeAT_Stage2020_20200925_5fa39184_v0.5.0.ini'
+
 **Usage:**  
 The Diagnostics class is based on HeAT and requires methods to read ParFlow output (netCDF, PFB, Silo).
+The Diagnostics class takes as input the split-axis for HeAT. Both splitting in x and y direction is supported (in a zyx coordinate system) as well as None for not splitting at all. In order to use mutliple nodes, the split axis must not be None. The job configuration allows basically arbitrary MPI and OpenMP parallelisation, however it is recommended to use 2 MPI-processes per Node and set the number of OpenMP threads accordingly, i.e. #number_of_CPU_cores_per_node / 2  (24 on JUWELS, 64 on JurecaDC).
+To use the Diagnostics methods, clone the gitlab repository into your working directory:
+'git clone https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_parflow-diagnostics_pythonheat.git <WORKING_DIR>'
+Then, you can use it in Python via
+'from Diagnostics import Diagnostics'
 Any operations on results obtain by applying the Diagnostics functions, such filtering of active/inactive regions, spatial/temporal averaging must be implemented by the user.
 Example applications are provided in the accompanying test cases, which require to run ParFlow via the tcl scripts to produce output.
+
+**Tests**
+* All Methods are tested using both no split and splitting across multiple nodes
+* All Methods iterating over the input array have been vectorized at a significant performance increase and been verified to yield the same result
+* At the beginning of the development, several issues arose with HeAT (especially indexing), those are fixed as of HeAT version 1.1, do not use these Diagnostics with older versions of HeAT.
 
 **Test cases:**  
 * test1.tcl; test.py: Simply 3D box domain, infiltration at the top patch, no-flow over all other patches  
@@ -58,3 +78,13 @@ Example applications are provided in the accompanying test cases, which require 
 * terrainfollowing.tcl, terrainfollowing.py: Terrain following grid test case based in quasi 2D cross-section
 * cordex3km.py: Example of a comprehensive mass balance calculation; requires access to the shared drive
 
+**Big-Data Benchmarking**
+Generic Test for Big-Data capability and Scalability of all Methods provided in the Diagnostics Repository using the Global 1km Dataset by Stefan Kollet ( /p/scratch/cesmtst/kollet1/globaltest/ ).
+Then using 4, 8, 16 nodes on juwels yielded the following performance-scaling plots:
+
+These Scaling experiments are generated using the JUBE2 - Benchmark environment (available via module load JUBE) and the provided JUBE_diagnostics.xml file, which defines the Job configurations and runs the benchmark.py file. In order to run your own benchmarks, you can find more information here: https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_BigDataAnalytics_PythonHeAT/-/tree/jube_benchmarking 
+For visualization of jubes outputs, the jube_result.ipynb is available. It generates multiple plots showing the runtimes and speedups of the different sections. To run it, use the JSC Jupyter system (https://jupyter-jsc.fz-juelich.de/).
+
+To test for the correctness of the parallel computations, a Reference Output was generated using only one MPI-process on JurecaDC ( /p/home/jusers/bourgart1/juwels/cesmtst_bourgart1/reference_output ) 
+and then compared to calculate the difference. 
+The difference introduced by applying parallelization is summarized by the follwing:

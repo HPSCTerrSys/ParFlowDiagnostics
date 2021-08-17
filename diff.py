@@ -4,8 +4,8 @@ import seaborn as sns
 
 file1="serial.out"
 file2="parallel.out"
-printline=False
-thresh = 0.000001
+printline=True
+thresh = 1e-11
 with open(file1, "r") as f:
     first = f.readlines()    
 with open(file2, "r") as f:
@@ -19,15 +19,19 @@ for a,b in zip(first, second):
     for c,d in zip(a.split(), b.split()):
         try:
             e,f = float(c), float(d)
-            if True:#e != f:
+            if abs(e-f) > thresh:
                 if printline:
-                    print('other line:', b)
+                    print('other line:', b, 'diff:', abs(e-f), end='  ')
                 diffs.append(abs(e-f))
         except:
             pass
+    if printline:
+        print()
+"""
 diffs = np.asarray(diffs)
 plot = sns.scatterplot(data=diffs)
 plot.set_yscale("log")
 plt.show()
 for i, d in enumerate(diffs):
     print(i, d)
+"""

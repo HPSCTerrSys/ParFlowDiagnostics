@@ -106,39 +106,54 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
     def NetLateralOverlandFlow(self, overland_flow_x, overland_flow_y):
         shape2D = (self.Ny, self.Nx)
-        Nix = ht.zeros(shape2D, split=self.Split2D)
+        #Nix = ht.zeros(shape2D, split=self.Split2D)
 
         #Calc flow east
         #ParFlow:ke_[io] = pfmax(qx_[io], 0.0) - pfmax(-qx_[io + 1], 0.0);
-        flow_east = ht.zeros(shape2D, split=self.Split2D)
-        flow_east[:,self.Nx-1] = ht.where(overland_flow_x[:,self.Nx-1]>0.0,overland_flow_x[:,self.Nx-1],Nix[:,self.Nx-1])
+        flow_east = ht.zeros(shape2D, split=0)
+        overland_flow_x = ht.resplit(overland_flow_x, 0) if overland_flow_x.split is not None and overland_flow_x.split != 0 else overland_flow_x
+
+        flow_east[:,self.Nx-1] = ht.where(overland_flow_x[:,self.Nx-1]>0.0, overland_flow_x[:,self.Nx-1], 0.0)
         for i in range (self.Nx-1):
-            flow_east[:,i]  = ht.maximum(overland_flow_x[:,i], Nix[:,i])
-            flow_east[:,i] -= ht.maximum((-1.0)*overland_flow_x[:,i+1], Nix[:,i+1])
+            #printroot('.', end='')
+            flow_east[:,i]  = ht.maximum(overland_flow_x[:,i], 0.0)
+            flow_east[:,i] -= ht.maximum((-1.0)*overland_flow_x[:,i+1], 0.0)
+        flow_east.resplit_(self.Split2D)
+        printroot('flow east')
 
         #Calc flow west
         #ParFlow:kw_[io] = pfmax(qx_[io - 1], 0.0) - pfmax(-qx_[io], 0.0);
-        flow_west = ht.zeros(shape2D, split=self.Split2D)
-        flow_west[:,0] = ht.where(overland_flow_x[:,0]<0.0, overland_flow_x[:,0],Nix[:,0])
+        flow_west = ht.zeros(shape2D, split=0)
+        flow_west[:,0] = ht.where(overland_flow_x[:,0]<0.0, overland_flow_x[:,0], 0.0)
         for i in range (1,self.Nx):
-            flow_west[:,i]  = ht.maximum(overland_flow_x[:,i-1], Nix[:,i-1])
-            flow_west[:,i] -= ht.maximum((-1.0)*overland_flow_x[:,i], Nix[:,i])
+            #printroot('.', end='')
+            flow_west[:,i]  = ht.maximum(overland_flow_x[:,i-1], 0.0)
+            flow_west[:,i] -= ht.maximum((-1.0)*overland_flow_x[:,i], 0.0)
+        flow_west.resplit_(self.Split2D)
+        printroot('flow west')
 
         #Calc flow north
         #ParFlow:kn_[io] = pfmax(qy_[io], 0.0) - pfmax(-qy_[io + sy_p], 0.0);
-        flow_north = ht.zeros(shape2D, split=self.Split2D)
-        flow_north[self.Ny-1,:] = ht.where(overland_flow_y[self.Ny-1,:]>0.0, overland_flow_y[self.Ny-1,:],Nix[self.Ny-1,:])
-        for j in range (self.Ny-1):
-            flow_north[j,:]  = ht.maximum(overland_flow_y[j,:], Nix[j,:])
-            flow_north[j,:] -= ht.maximum((-1.0)*overland_flow_y[j+1,:], Nix[j+1,:])
+        overland_flow_y = ht.resplit(overland_flow_y, 1) if overland_flow_y.split is not None and overland_flow_y.split != 1 else overland_flow_y
+        flow_north = ht.zeros(shape2D, split=1)
+        flow_north[self.Ny-1,:] = ht.where(overland_flow_y[self.Ny-1,:]>0.0, overland_flow_y[self.Ny-1,:],0.0)
+        for j in range(self.Ny-1):
+            #printroot('.', end='')
+            flow_north[j,:]  = ht.maximum(overland_flow_y[j,:], 0.0)
+            flow_north[j,:] -= ht.maximum((-1.0)*overland_flow_y[j+1,:], 0.0)
+        flow_north.resplit_(self.Split2D)
+        printroot('flow_north')
 
         #Calc flow south
         #ParFlow:ks_[io] = pfmax(qy_[io - sy_p], 0.0) - pfmax(-qy_[io], 0.0);
-        flow_south = ht.zeros(shape2D, split=self.Split2D)
-        flow_south[0,:] = ht.where(overland_flow_y[0,:]<0, overland_flow_y[0,:], Nix[0,:])
+        flow_south = ht.zeros(shape2D, split=1)
+        flow_south[0,:] = ht.where(overland_flow_y[0,:]<0.0, overland_flow_y[0,:], 0.0)
         for j in range (1,self.Ny):
-            flow_south[j,:]  = ht.maximum(overland_flow_y[j-1,:], Nix[j-1,:])
-            flow_south[j,:] -= ht.maximum((-1.0)*overland_flow_y[j,:], Nix[j,:])
+            #printroot('.', end='')
+            flow_south[j,:]  = ht.maximum(overland_flow_y[j-1,:], 0.0)
+            flow_south[j,:] -= ht.maximum((-1.0)*overland_flow_y[j,:], 0.0)
+        flow_south.resplit_(self.Split2D)
+        printroot('flow south')
 
         #Calc net lateral overland flow for each grid cell, (L^3/T)
         #ParFlow: ((ke_[io] - kw_[io]) / dx + (kn_[io] - ks_[io]) / dy
@@ -158,6 +173,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         x_dir_g_c = ht.full(shape3D, 1.0, split=self.Split3D)
         y_dir_g   = ht.zeros(shape3D, split=self.Split3D)
         y_dir_g_c = ht.full(shape3D, 1.0, split=self.Split3D)
+
         if self.Terrainfollowing:
             printroot('Terrain following')
             for k in range (self.Nz):
@@ -215,10 +231,10 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         Kmean = ( (Dzmult3D[:-1] + Dzmult3D[1:]) /
                 (Dzmult3D[:-1]/self.Perm[0,:-1,:,:] + Dzmult3D[1:]/self.Perm[0,1:,:,:]) )
 
-        grad = ht.float64(1.) + ht.diff(Press, axis=0) * 2. / (self.Dz * (Dzmult3D[:-1] + Dzmult3D[1:]))
+        grad = 1. + ht.diff(Press, axis=0) * 2. / (self.Dz * (Dzmult3D[:-1] + Dzmult3D[1:]))
 
         #Application of mask checks if node k is active
-        flowtop[:-1, :, :] = ht.float64(-1.) * Kmean * grad * ht.where(grad > 0.0, Krel[1:, :, :], Krel[:-1, :, :])
+        flowtop[:-1, :, :] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[1:, :, :], Krel[:-1, :, :])
         flowbottom[1:, :, :] = flowtop[:-1, :, :]
 
         flowtop *= self.Dx * self.Dy
@@ -268,9 +284,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         return(subsurface_storage)
 
     def _TopLayerPressure(self, Press, fill_val=99999.0):
-        layers = (self.Mask > 0) * ht.arange(1, 1+self.Nz, dtype=ht.long)[:, None, None]
+        layers = (self.Mask > 0) * ht.arange(1, 1+self.Nz, dtype=ht.long).expand_dims(-1).expand_dims(-1)
         toplayer = layers.max(0) - 1
-        toplayer = ht.array(toplayer.larray, copy=False, is_split=self.Split2D)
+        #toplayer = ht.array(toplayer.larray, copy=False, is_split=self.Split2D)
         # toplayer contains the index of the highest layer and -1 if there is no highest layer
         y, x = np.indices(toplayer.larray.shape, sparse=True)  # sparse=True is important, otherwise x, y are unsplit(numpy) and of shape2D -> memory
         # do these need to be converted to heat tensors? -> No
@@ -302,8 +318,8 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flow_east[:, :-1]  = ht.clip(overland_flow_x[:, :-1], min=0, max=None)
         flow_east[:, :-1] -= ht.clip(-1 * overland_flow_x[:, 1:], min=0, max=None)
         index_last = self.Nx-1 #slice(self.Nx-1, self.Nx)
-        flow_east[:, index_last] = ht.where(overland_flow_x>0.0, overland_flow_x, Nix)[:,index_last]
-        #printroot('flow_east', end='\n\n', flush=True)
+        flow_east[:, index_last] = ht.where(overland_flow_x[:,index_last]>0.0, overland_flow_x[:,index_last], Nix[:,index_last])
+        printroot('flow_east', flush=True)
 
         # for i in range (self.Nx-1):
         #     flow_east[:,i]  = ht.maximum(overland_flow_x[:,i], Nix[:,i])
@@ -318,7 +334,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         tmp = ht.where(overland_flow_x[:,0]<0.0, overland_flow_x[:,0], Nix[:,0])
         #print(flow_west.gshape, 'flow_west:',flow_west[:, 0].gshape, flow_west[:, 0].lshape, flow_west[:, 0].split, 'tmp:', tmp.gshape, tmp.lshape, tmp.split, flush=True)
         flow_west[:, 0] = tmp #ht.where(overland_flow_x<0.0, overland_flow_x, Nix)[:,0:1]
-        #printroot('flow_west', end='\n\n', flush=True)
+        printroot('flow_west', flush=True)
         # for i in range (1,self.Nx):
         #     flow_west[:,i]  = ht.maximum(overland_flow_x[:,i-1], Nix[:,i-1])
         #     flow_west[:,i] -= ht.maximum((-1.0)*overland_flow_x[:,i], Nix[:,i])
@@ -328,9 +344,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flow_north = ht.zeros(shape2D, split=self.Split2D)
         flow_north[:-1]  = ht.clip(overland_flow_y[:-1], min=0, max=None)
         flow_north[:-1] -= ht.clip(-1 * overland_flow_y[1:], min=0, max=None)
-        index_last = slice(self.Ny-1, self.Ny)
-        flow_north[index_last] = ht.where(overland_flow_y>0.0, overland_flow_y, Nix)[index_last,:]
-        #printroot('flow_north', end='\n\n', flush=True)
+        index_last = self.Ny-1
+        flow_north[index_last] = ht.where(overland_flow_y[index_last,:]>0.0, overland_flow_y[index_last,:], Nix[index_last,:])
+        printroot('flow_north', flush=True)
         # for j in range (self.Ny-1):
         #     flow_north[j,:]  = ht.maximum(overland_flow_y[j,:], Nix[j,:])
         #     flow_north[j,:] -= ht.maximum((-1.0)*overland_flow_y[j+1,:], Nix[j+1,:])
@@ -340,8 +356,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flow_south = ht.zeros(shape2D, split=self.Split2D)
         flow_south[1:]  = ht.clip(overland_flow_y[:-1], min=0, max=None)
         flow_south[1:] -= ht.clip(-1 * overland_flow_y[1:], min=0, max=None)
-        flow_south[0:1] = ht.where(overland_flow_y<0, overland_flow_y, Nix)[0:1,:]
-        #printroot('flow_south', end='\n\n',flush=True)
+        flow_south[0] = ht.where(overland_flow_y[0]<0, overland_flow_y[0], Nix[0])
+        #flow_south[0] = ht.clip(overland_flow_y[0], min=None, max=0)
+        printroot('flow_south', flush=True)
         # for j in range (1,self.Ny):
         #     flow_south[j,:]  = ht.maximum(overland_flow_y[j-1,:], Nix[j-1,:])
         #     flow_south[j,:] -= ht.maximum((-1.0)*overland_flow_y[j,:], Nix[j,:])

@@ -5,7 +5,7 @@
 #SBATCH --partition=batch
 #SBATCH --account=slts
 #SBATCH --exclusive
-#SBATCH --output=serial.out
+#SBATCH --output=serial_compare.out
 #SBATCH --error=serial.err
 export OMP_NUM_THREADS=24
 
