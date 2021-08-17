@@ -60,9 +60,13 @@ To use the environment, source the most recent .ini file:
 The Diagnostics class is based on HeAT and requires methods to read ParFlow output (netCDF, PFB, Silo).
 The Diagnostics class takes as input the split-axis for HeAT. Both splitting in x and y direction is supported (in a zyx coordinate system) as well as None for not splitting at all. In order to use mutliple nodes, the split axis must not be None. The job configuration allows basically arbitrary MPI and OpenMP parallelisation, however it is recommended to use 2 MPI-processes per Node and set the number of OpenMP threads accordingly, i.e. #number_of_CPU_cores_per_node / 2  (24 on JUWELS, 64 on JurecaDC).
 To use the Diagnostics methods, clone the gitlab repository into your working directory:
+
 `git clone https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_parflow-diagnostics_pythonheat.git <WORKING_DIR>`
+
 Then, you can use it in Python via
+
 `from Diagnostics import Diagnostics`
+
 Any operations on results obtain by applying the Diagnostics functions, such filtering of active/inactive regions, spatial/temporal averaging must be implemented by the user.
 Example applications are provided in the accompanying test cases, which require to run ParFlow via the tcl scripts to produce output.
 
