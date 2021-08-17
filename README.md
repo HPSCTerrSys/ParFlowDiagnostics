@@ -46,22 +46,23 @@ Calculates volume flux (L³/T) over all six cell faces taking into account activ
 Calculated relative saturation (-) and relative conductivity (-) based on the van Genuchten function. Output is two 3D tensors.
 
 **HeAT**
+
 HeAT is a Python Array computation library, structured similar to numpy. Additional Features include GPU support and parallel processing capabilities for HPC systems by introducing a split axis. The Array is split to the mutliple processes along this axis. The Documentation as well as tutorials can be found at (https://github.com/helmholtz-analytics/heat).
 On the HPC systems, working HeAT environments can be found at
-'/p/project/cslts/local/juwels/HeAT/'
+`/p/project/cslts/local/juwels/HeAT/`
 or
-'/p/project/cslts/local/jureca/HeAT/'
+`/p/project/cslts/local/jureca/HeAT/`
 
 To use the environment, source the most recent .ini file:
-'source PythonHeAT_Stage2020_20200925_5fa39184_v0.5.0.ini'
+`source PythonHeAT_Stage2020_20200925_5fa39184_v0.5.0.ini`
 
 **Usage:**  
 The Diagnostics class is based on HeAT and requires methods to read ParFlow output (netCDF, PFB, Silo).
 The Diagnostics class takes as input the split-axis for HeAT. Both splitting in x and y direction is supported (in a zyx coordinate system) as well as None for not splitting at all. In order to use mutliple nodes, the split axis must not be None. The job configuration allows basically arbitrary MPI and OpenMP parallelisation, however it is recommended to use 2 MPI-processes per Node and set the number of OpenMP threads accordingly, i.e. #number_of_CPU_cores_per_node / 2  (24 on JUWELS, 64 on JurecaDC).
 To use the Diagnostics methods, clone the gitlab repository into your working directory:
-'git clone https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_parflow-diagnostics_pythonheat.git <WORKING_DIR>'
+`git clone https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_parflow-diagnostics_pythonheat.git <WORKING_DIR>`
 Then, you can use it in Python via
-'from Diagnostics import Diagnostics'
+`from Diagnostics import Diagnostics`
 Any operations on results obtain by applying the Diagnostics functions, such filtering of active/inactive regions, spatial/temporal averaging must be implemented by the user.
 Example applications are provided in the accompanying test cases, which require to run ParFlow via the tcl scripts to produce output.
 
