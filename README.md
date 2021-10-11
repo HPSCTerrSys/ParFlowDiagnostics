@@ -47,14 +47,14 @@ Calculated relative saturation (-) and relative conductivity (-) based on the va
 
 **HeAT**
 
-HeAT is a Python Array computation library, structured similar to numpy. Additional Features include GPU support and parallel processing capabilities for HPC systems by introducing a split axis. The Array is split to the mutliple processes along this axis. The Documentation as well as tutorials can be found at (https://github.com/helmholtz-analytics/heat).
+HeAT is a Python Array computation library, structured similar to numpy. Additional Features include GPU support and parallel processing capabilities for HPC systems by introducing a split axis. The Array is split to the mutliple processes along this axis. The Documentation as well as tutorials can be found at [https://github.com/helmholtz-analytics/heat](https://github.com/helmholtz-analytics/heat).
 On the HPC systems, working HeAT environments can be found at
 `/p/project/cslts/local/juwels/HeAT/`
 or
 `/p/project/cslts/local/jureca/HeAT/`
 
-To use the environment, source the most recent .ini file:
-`source PythonHeAT_Stage2020_20200925_5fa39184_v0.5.0.ini`
+Because this repository relies on experimental features not yet included in the official HeAT environments, please source the experimental HeAT:
+`source experimental_HeAT.ini`
 
 **Usage:**  
 The Diagnostics class is based on HeAT and requires methods to read ParFlow output (netCDF, PFB, Silo).
@@ -82,13 +82,16 @@ Example applications are provided in the accompanying test cases, which require 
 * parkinglot.tcl; parkinglot.py: Simple parking lot runoff test case for overland flow only; extracts a hydrograph at an individual pixel  
 * terrainfollowing.tcl, terrainfollowing.py: Terrain following grid test case based in quasi 2D cross-section
 * cordex3km.py: Example of a comprehensive mass balance calculation; requires access to the shared drive
+To run the tests, a working ParFlow environment is needed. Instructions to build one can be found at [https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts](https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts). Because this ParFlow environment is a separate, independent environment from the HeAT environment, the source code is separated as well: The `tests.sh` runs the ParFlow elements of the test cases and needs to be called from the ParFlow environment. The Python Files run the HeAT diagnostics and need to be called from the HeAT environment. Environments can be switched by `sourcing` their respective `.ini` files.
 
 **Big-Data Benchmarking**
+Note: only relevant for users with HPC expertise.
 Generic Test for Big-Data capability and Scalability of all Methods provided in the Diagnostics Repository using the Global 1km Dataset by Stefan Kollet ( /p/scratch/cesmtst/kollet1/globaltest/ ).
-Then using 4, 8, 16 nodes on juwels yielded the following performance-scaling plots:
+Then using 4, 8, 16 nodes on juwels yielded the performance-scaling plots found at `benchmarking/plots`. Shows HeATs capability to handle datasets too large to fit onto a single node.
 
-These Scaling experiments are generated using the JUBE2 - Benchmark environment (available via module load JUBE) and the provided JUBE_diagnostics.xml file, which defines the Job configurations and runs the benchmark.py file. In order to run your own benchmarks, you can find more information here: https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_BigDataAnalytics_PythonHeAT/-/tree/jube_benchmarking 
-For visualization of jubes outputs, the jube_result.ipynb is available. It generates multiple plots showing the runtimes and speedups of the different sections. To run it, use the JSC Jupyter system (https://jupyter-jsc.fz-juelich.de/).
+All Files for these Experiments can be found in the `benchmarking` directory.
+These Scaling experiments are generated using the JUBE2 - Benchmark environment (available via `module load JUBE`) and the provided `JUBE_diagnostics.xml` file, which defines the Job configurations and runs the `benchmark.py` file. In order to run your own benchmarks, you can find more information here: [https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_BigDataAnalytics_PythonHeAT/-/tree/jube_benchmarking](https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_BigDataAnalytics_PythonHeAT/-/tree/jube_benchmarking)
+For visualization of jubes outputs, the `jube_result.ipynb` is available. It generates multiple plots showing the runtimes and speedups of the different sections. To run it, use the JSC Jupyter system [https://jupyter-jsc.fz-juelich.de/](https://jupyter-jsc.fz-juelich.de/).
 
 To test for the correctness of the parallel computations, a Reference Output was generated using only one MPI-process on JurecaDC ( /p/home/jusers/bourgart1/juwels/cesmtst_bourgart1/reference_output ) 
 and then compared to calculate the difference. 
