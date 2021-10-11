@@ -2,8 +2,10 @@
 
 This Diagnositics class provides functions to calculated a global or local mass balance based on ParFlow output.
 
+```python
 class Diagnostics  
 def __init__(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split)
+```
 * Massk:            3D mask, tensor float (nz, ny, nx)
 * Perm:             4D permeability, tensor float (3, nz, ny ,nx)
 * Poro:             3D porosity, tensor float(nz, ny, nx)
@@ -19,7 +21,7 @@ def __init__(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings,
 * Terrainfollowing: flag (True/False) for terrain following grid, logical
 * Split:            split axis for parallel computations
 
-**Available Functions:**
+**Available Functions**
 
 * SubsurfaceStorage(self, Press, Satur) -> subsurface_storage  
 Calculates water and compressible subsurface storage (L³) for each cell without distinguishing between active/inactive regions. Output is a 3D tensor.
@@ -56,7 +58,8 @@ or
 Because this repository relies on experimental features not yet included in the official HeAT environments, please source the experimental HeAT:
 `source experimental_HeAT.ini`
 
-**Usage:**  
+**Usage**  
+
 The Diagnostics class is based on HeAT and requires methods to read ParFlow output (netCDF, PFB, Silo).
 The Diagnostics class takes as input the split-axis for HeAT. Both splitting in x and y direction is supported (in a zyx coordinate system) as well as None for not splitting at all. In order to use mutliple nodes, the split axis must not be None. The job configuration allows basically arbitrary MPI and OpenMP parallelisation, however it is recommended to use 2 MPI-processes per Node and set the number of OpenMP threads accordingly, i.e. #number_of_CPU_cores_per_node / 2  (24 on JUWELS, 64 on JurecaDC).
 To use the Diagnostics methods, clone the gitlab repository into your working directory:
@@ -82,10 +85,12 @@ Example applications are provided in the accompanying test cases, which require 
 * parkinglot.tcl; parkinglot.py: Simple parking lot runoff test case for overland flow only; extracts a hydrograph at an individual pixel  
 * terrainfollowing.tcl, terrainfollowing.py: Terrain following grid test case based in quasi 2D cross-section
 * cordex3km.py: Example of a comprehensive mass balance calculation; requires access to the shared drive
+
 To run the tests, a working ParFlow environment is needed. Instructions to build one can be found at [https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts](https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts). Because this ParFlow environment is a separate, independent environment from the HeAT environment, the source code is separated as well: The `tests.sh` runs the ParFlow elements of the test cases and needs to be called from the ParFlow environment. The Python Files run the HeAT diagnostics and need to be called from the HeAT environment. Environments can be switched by `sourcing` their respective `.ini` files.
 
 **Big-Data Benchmarking**
 Note: only relevant for users with HPC expertise.
+
 Generic Test for Big-Data capability and Scalability of all Methods provided in the Diagnostics Repository using the Global 1km Dataset by Stefan Kollet ( /p/scratch/cesmtst/kollet1/globaltest/ ).
 Then using 4, 8, 16 nodes on juwels yielded the performance-scaling plots found at `benchmarking/plots`. Shows HeATs capability to handle datasets too large to fit onto a single node.
 
