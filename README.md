@@ -120,7 +120,7 @@ Overview of existing test cases, ParFlow runs and analysis:
 
 1. To run the tests, a working ParFlow environment is needed. Instructions to build one can be found at [https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts](https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts). Because this ParFlow environment is a separate, independent environment from the HeAT environment, the source code is separated as well. The ParFlow software environment initialisation is contained with the ParFlow built scripts. 
 2. The `tests.sh` runs the ParFlow elements of the test cases from above and hence generates data as input to PD; `tests.sh` (see also the `tests.py` in order to run ) needs to be called from the ParFlow environment. 
-3. The Python files run the HeAT diagnostics and need to be called from the HeAT environment: `source /p/project/cslts/local/jureca/HeAT/experimental_HeAT.ini` and then run `sbatch heat_tests_serial.sh` or `sbatch heat_tests_parallel.sh``; please note: depending on which tests you do (the split axis in the Python codes called has to be set accordingly, basically "activating the parallelism" in HeAT).
+3. The Python files run the HeAT diagnostics and need to be called from the HeAT environment: `source /p/project/cslts/local/jureca/HeAT/experimental_HeAT.ini` and then run `sbatch heat_tests_serial.sh` or `sbatch heat_tests_parallel.sh`; please note: depending on which tests you do (the split axis in the Python codes called has to be set accordingly, basically "activating the parallelism" in HeAT).
 
 The ParFlow and the PD software environments can be switched by `sourcing` their respective `.ini` files, `source <inifile>`.
 
