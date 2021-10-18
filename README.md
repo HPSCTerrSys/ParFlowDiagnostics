@@ -1,6 +1,19 @@
 # ParFlow Diagnostics
 
-This Diagnositics class provides functions to calculated a global or local mass balance based on ParFlow output.
+ParFlow Diagnostics (PD) is a Python class that provides functions to calculate all variables needed for a global or local mass balance based on [ParFlow hydrologic model](https://www.parflow.org) output. An essential feature is that PD uses the [Helmholtz Analytics Toolkit (HeAT)](https://github.com/helmholtz-analytics/heat/) Python library. This makes PD big data-capable; PD can be run in parallel on a single HPC node (or any multi-core machine, including notebooks) up many nodes of an HPC system using CPUs as well as GPUs.
+
+For details on HeAT, see the respective information referenced on the [HeAT github repository](https://github.com/helmholtz-analytics/heat/). This is not a HeAT tutorial, but using PD one also learns the basics of using HeAT.
+
+**All information and software tools to get started with the ParFlow Diagnastics are within this repository.** This README.md file contains all information to get started with PD. This repository covers four related asepcts of using and testing PD and nnot every user needs to cover them all:
+
+1. How to use PD based on HeAT, including exemple scripts which can be used as a starting point for own developments (relevant for everyone; for experienced ParFlow users who already have ParFlow output this is the most important information)
+2. How to generate test input for PD (for beginners this is especially interesting as this repository contains ParFlow test cases, i.e., the model configuration to generate such simulation results for testing)
+3. Tests conducted with PD based on HeAT (this is for those who want deeper understanding in how it was made sure, that the HeAT implementation did not break PD); these tests cases can be run by everybody to generate their own test data
+4. Specific performance tests using large datasets giving proof that HeAT in fact makes PD big data capable (this is for developers, who might be expanding PD or use PD based on HeAT for own developments); these test cases cannnot be run by everybody, instead test data, i.e., ParFlow simulation results, are provided centrally for everybodies use
+
+## PD usage
+
+### PD description
 
 ```python
 class Diagnostics  
@@ -47,9 +60,10 @@ Calculates volume flux (L³/T) over all six cell faces taking into account activ
 * VanGenuchten(self,Press) -> satur, krel  
 Calculated relative saturation (-) and relative conductivity (-) based on the van Genuchten function. Output is two 3D tensors.
 
-**HeAT**
+### Additional HeAT information
 
 HeAT is a Python Array computation library, structured similar to numpy. Additional Features include GPU support and parallel processing capabilities for HPC systems by introducing a split axis. The Array is split to the mutliple processes along this axis. The Documentation as well as tutorials can be found at [https://github.com/helmholtz-analytics/heat](https://github.com/helmholtz-analytics/heat).
+
 On the HPC systems, working HeAT environments can be found at
 `/p/project/cslts/local/juwels/HeAT/`
 or
@@ -88,8 +102,9 @@ Example applications are provided in the accompanying test cases, which require 
 
 To run the tests, a working ParFlow environment is needed. Instructions to build one can be found at [https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts](https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts). Because this ParFlow environment is a separate, independent environment from the HeAT environment, the source code is separated as well: The `tests.sh` runs the ParFlow elements of the test cases and needs to be called from the ParFlow environment. The Python Files run the HeAT diagnostics and need to be called from the HeAT environment. Environments can be switched by `sourcing` their respective `.ini` files.
 
-**Big-Data Benchmarking**
-Note: only relevant for users with HPC expertise.
+## Big-Data Benchmarking
+
+Note: Only relevant for users with HPC expertise.
 
 Generic Test for Big-Data capability and Scalability of all Methods provided in the Diagnostics Repository using the Global 1km Dataset by Stefan Kollet ( /p/scratch/cesmtst/kollet1/globaltest/ ).
 Then using 4, 8, 16 nodes on juwels yielded the performance-scaling plots found at `benchmarking/plots`. Shows HeATs capability to handle datasets too large to fit onto a single node.
