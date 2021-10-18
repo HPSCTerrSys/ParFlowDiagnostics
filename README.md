@@ -1,10 +1,12 @@
 # ParFlow Diagnostics
 
-ParFlow Diagnostics (PD) is a Python class that provides functions to calculate all variables needed for a global or local mass balance based on [ParFlow hydrologic model](https://www.parflow.org) output. An essential feature is that PD uses the [Helmholtz Analytics Toolkit (HeAT)](https://github.com/helmholtz-analytics/heat/) Python library. This makes PD big data-capable; PD can be run in parallel on a single HPC node (or any multi-core machine, including notebooks) up many nodes of an HPC system using CPUs as well as GPUs.
+ParFlow Diagnostics (PD) is a Python class that provides functions to calculate all variables needed for a global or local mass balance based on [ParFlow hydrologic model](https://www.parflow.org) output. An essential feature is that PD uses the [Helmholtz Analytics Toolkit (HeAT)](https://github.com/helmholtz-analytics/heat/) Python library. This makes PD big data-capable; with HeAT PD can be run in parallel on a single HPC node (or any multi-core machine, including notebooks) up many nodes of an HPC system using CPUs as well as GPUs.
 
 For details on HeAT, see the respective information referenced on the [HeAT github repository](https://github.com/helmholtz-analytics/heat/). This is not a HeAT tutorial, but using PD one also learns the basics of using HeAT.
 
-**All information and software tools to get started with the ParFlow Diagnastics are within this repository.** This README.md file contains all information to get started with PD. This repository covers four related asepcts of using and testing PD and nnot every user needs to cover them all:
+**All information and software tools to use PD are within this repository. This README.md file contains all information to get started with PD including simple cookbooks.** 
+
+This repository covers four related asepcts of using and testing PD and nnot every user needs to cover them all:
 
 1. How to use PD based on HeAT, including exemple scripts which can be used as a starting point for own developments (relevant for everyone; for experienced ParFlow users who already have ParFlow output this is the most important information)
 2. How to generate test input for PD (for beginners this is especially interesting as this repository contains ParFlow test cases, i.e., the model configuration to generate such simulation results for testing)
