@@ -17,9 +17,9 @@ For details on HeAT, see the respective information referenced on the [HeAT gith
 This repository covers six related aspects of using and testing PD and not every user needs to cover them all:
 
 1. PD description 
-2. How to use PD based on HeAT, including exemple scripts which can be used as a starting point for own developments (relevant for everyone; for experienced ParFlow users who already have ParFlow output this is the most important information)
-3. How to generate test input for PD (for beginners this is especially interesting as this repository contains ParFlow test cases, i.e., the model configuration to generate such simulation results for testing)
-4. Tests conducted with PD based on HeAT (this is for those who want deeper understanding in how it was made sure, that the HeAT implementation did not break PD); these tests cases can be run by everybody to generate their own test data
+2. How to set up PD based on HeAT (relevant for everyone; for experienced ParFlow users, who already have ParFlow output, this is the most important information)
+3. How to generate test input for PD and example scripts on using PD, which can be used as a starting point for own developments (for beginners this is especially interesting as this repository contains ParFlow test cases, i.e., the model configuration to generate such simulation results for testing; also experienced users find the necessary PD examples here)
+4. Tests conducted with PD based on HeAT (this is for those who want deeper understanding in how it was made sure, that the HeAT implementation did not break PD); these test cases can be run by everybody to generate their own test data
 5. Specific performance tests using large datasets giving proof that HeAT in fact makes PD big data capable (this is for developers, who might be expanding PD or use PD based on HeAT for own developments); these test cases cannnot be run by everybody, instead test data, i.e., ParFlow simulation results, are provided centrally for everybodies use
 6. Correctness tests ensure the developments do not break the tools (this is for developers who might want to do their own developments with PD and HeAT)
 
