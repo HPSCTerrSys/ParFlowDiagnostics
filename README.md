@@ -105,7 +105,7 @@ Important notes:
 
 ## Getting-started, part 2: Specific ParFlow test simulations and test applications of PD
 
-**Important prerequisite: These test simulations require an existing ParFlow installation, see below. 
+**Important prerequisite: These test simulations require an existing ParFlow installation, see below.** 
 
 Most of the Python scripts (mentioned last in the list of files) contains system calls to run ParFlow; this means each HeAT analysis test can generate on-the-fly its own test data. BUT: because running ParFlow to generate test data requires a different software environment than doing the analysis with PD and HeAT, this functionality has been deactivated. Hence: (i) first run the short ParFlow tests, (ii) do the analysis. To help in doing this, we created some wrapper scripts to do (i) and (ii) combined, see below.
 
