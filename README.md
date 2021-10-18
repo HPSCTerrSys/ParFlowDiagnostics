@@ -6,16 +6,21 @@ For details on HeAT, see the respective information referenced on the [HeAT gith
 
 **All information and software tools to use PD are within this repository. This README.md file contains all information to get started with PD including simple cookbooks.** 
 
-This repository covers four related asepcts of using and testing PD and nnot every user needs to cover them all:
+**Important prerequisite: The PD assume you use HeAT >v1.1. If you follow this README this is ensured.**
 
-1. How to use PD based on HeAT, including exemple scripts which can be used as a starting point for own developments (relevant for everyone; for experienced ParFlow users who already have ParFlow output this is the most important information)
-2. How to generate test input for PD (for beginners this is especially interesting as this repository contains ParFlow test cases, i.e., the model configuration to generate such simulation results for testing)
-3. Tests conducted with PD based on HeAT (this is for those who want deeper understanding in how it was made sure, that the HeAT implementation did not break PD); these tests cases can be run by everybody to generate their own test data
-4. Specific performance tests using large datasets giving proof that HeAT in fact makes PD big data capable (this is for developers, who might be expanding PD or use PD based on HeAT for own developments); these test cases cannnot be run by everybody, instead test data, i.e., ParFlow simulation results, are provided centrally for everybodies use
+This repository covers five related aspects of using and testing PD and not every user needs to cover them all:
 
-## PD usage
+1. PD description 
+2. How to use PD based on HeAT, including exemple scripts which can be used as a starting point for own developments (relevant for everyone; for experienced ParFlow users who already have ParFlow output this is the most important information)
+3. How to generate test input for PD (for beginners this is especially interesting as this repository contains ParFlow test cases, i.e., the model configuration to generate such simulation results for testing)
+4. Tests conducted with PD based on HeAT (this is for those who want deeper understanding in how it was made sure, that the HeAT implementation did not break PD); these tests cases can be run by everybody to generate their own test data
+5. Specific performance tests using large datasets giving proof that HeAT in fact makes PD big data capable (this is for developers, who might be expanding PD or use PD based on HeAT for own developments); these test cases cannnot be run by everybody, instead test data, i.e., ParFlow simulation results, are provided centrally for everybodies use
 
-### PD description
+ParFlow and PD and HeAT run literally on any Linux system. However the instructions below are meant for the primary HPC systems at the Jülich Supercomputing Centre (JSC); as of autumn 2021 this is [JURECA](https://www.fz-juelich.de/ias/jsc/EN/Expertise/Supercomputers/JURECA/JURECA_node.html) and [JUWELS](https://www.fz-juelich.de/ias/jsc/EN/Expertise/Supercomputers/JUWELS/JUWELS_node.html). 
+
+## PD description
+
+### Calling PD
 
 ```python
 class Diagnostics  
@@ -36,7 +41,7 @@ def __init__(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings,
 * Terrainfollowing: flag (True/False) for terrain following grid, logical
 * Split:            split axis for parallel computations
 
-**Available Functions**
+### Available functions
 
 * SubsurfaceStorage(self, Press, Satur) -> subsurface_storage  
 Calculates water and compressible subsurface storage (L³) for each cell without distinguishing between active/inactive regions. Output is a 3D tensor.
@@ -62,39 +67,35 @@ Calculates volume flux (L³/T) over all six cell faces taking into account activ
 * VanGenuchten(self,Press) -> satur, krel  
 Calculated relative saturation (-) and relative conductivity (-) based on the van Genuchten function. Output is two 3D tensors.
 
-### Additional HeAT information
+### HeAT
 
 HeAT is a Python Array computation library, structured similar to numpy. Additional Features include GPU support and parallel processing capabilities for HPC systems by introducing a split axis. The Array is split to the mutliple processes along this axis. The Documentation as well as tutorials can be found at [https://github.com/helmholtz-analytics/heat](https://github.com/helmholtz-analytics/heat).
 
-On the HPC systems, working HeAT environments can be found at
-`/p/project/cslts/local/juwels/HeAT/`
-or
-`/p/project/cslts/local/jureca/HeAT/`
+## Getting-started cookbook
 
-Because this repository relies on experimental features not yet included in the official HeAT environments, please source the experimental HeAT:
+1. Login to any of the JURECA or JUWELS front nodes, e.g., `ssh -i <secret_ssh_key> <username>@jureca.fz-juelich.de` or `ssh -i <secret_ssh_key> <username>@juwels.fz-juelich.de`
+2. To use the PD tools one needs to have a working HeAT implementation; as HeAT cannot be loaded at the moment at JSC using the ``module` command from a system-wide installation, the PD maintainers provide a working HeAT environment as part of the HPSC TerrSys and SDLTS account on JSC systems. Working HeAT environments are installed and maintained for everybodies use under: `/p/project/cslts/local/juwels/HeAT/` (for JUWELS), and `/p/project/cslts/local/jureca/HeAT/` (for JURECA). In order to use the PD with all its functionalities as of Autumn 2021, one needs to use an experimental installation of HeAT. To load a virtual Python environment which included everythign needed to use PD based on the latest experimental HeAT just do this:
+On JURECA:
+`cd /p/project/cslts/local/jureca/HeAT`
 `source experimental_HeAT.ini`
+On JUWELS:
+`cd /p/project/cslts/local/jureca/HeAT`
+`source experimental_HeAT.ini`
+You can copy these software environment initialisation files everwhere you like on the JSC machines and source them from there. As a normal user, use just use the software environment recommended here.
+3. To use the Diagnostics methods, clone the gitlab repository into your working directory: `git clone https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_parflow-diagnostics_pythonheat.git <WORKING_DIR>`.
+4. Then, you can use it in Python via: `from Diagnostics import Diagnostics`
+5. Example applications are provided in the accompanying test cases, which require to run ParFlow via the tcl scripts to produce output.
 
-**Usage**  
+Notes:
+- There are multiple HeAT installations under `/p/project/cslts/local/{jureca,juwels}/HeAT`; each of these insdtallations comes with its own ini file; these different installations feature different HeAT versions (see HeAT version tag and also HeAT git commit -- in case it is a not a release version) and have been installed at different dates using (potentially) different underlying software environments, i.e., toolchains (see the [JSC information](https://apps.fz-juelich.de/jsc/hps/jureca/software-modules.html) on the toolchains and software environments).
+- The Diagnostics class is based on HeAT and requires methods to read ParFlow output (netCDF, PFB, Silo).
+- The Diagnostics class takes as input the split-axis for HeAT. Both splitting in x and y direction is supported (in a zyx coordinate system) as well as None for not splitting at all. In order to use mutliple nodes, the split axis must not be None. The job configuration allows basically arbitrary MPI and OpenMP parallelisation, however it is recommended to use 2 MPI-processes per compute node and set the number of OpenMP threads accordingly, i.e. #number_of_CPU_cores_per_node / 2  (24 on JUWELS, 64 on JurecaDC). Tests have shown that, if one is using HeAT (and hence also PD tools) in a parallel setup on a single multi-core node or accross multiple nodes, the best performance is reached when running with one MPI task per CPU and mutpiple OpenMP threads on the individual CPU cores.
+- Any operations on results obtain by applying the Diagnostics functions, such filtering of active/inactive regions, spatial/temporal averaging must be implemented by the user.
 
-The Diagnostics class is based on HeAT and requires methods to read ParFlow output (netCDF, PFB, Silo).
-The Diagnostics class takes as input the split-axis for HeAT. Both splitting in x and y direction is supported (in a zyx coordinate system) as well as None for not splitting at all. In order to use mutliple nodes, the split axis must not be None. The job configuration allows basically arbitrary MPI and OpenMP parallelisation, however it is recommended to use 2 MPI-processes per Node and set the number of OpenMP threads accordingly, i.e. #number_of_CPU_cores_per_node / 2  (24 on JUWELS, 64 on JurecaDC).
-To use the Diagnostics methods, clone the gitlab repository into your working directory:
+## Specific ParFlow test simulations
 
-`git clone https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_parflow-diagnostics_pythonheat.git <WORKING_DIR>`
+With the following scripts specific ParFLow tests can be run. These test simulations require an exisitng ParFlow installation.
 
-Then, you can use it in Python via
-
-`from Diagnostics import Diagnostics`
-
-Any operations on results obtain by applying the Diagnostics functions, such filtering of active/inactive regions, spatial/temporal averaging must be implemented by the user.
-Example applications are provided in the accompanying test cases, which require to run ParFlow via the tcl scripts to produce output.
-
-**Tests**
-* All Methods are tested using both no split and splitting across multiple nodes
-* All Methods iterating over the input array have been vectorized at a significant performance increase and been verified to yield the same result
-* At the beginning of the development, several issues arose with HeAT (especially indexing), those are fixed as of HeAT version 1.1, do not use these Diagnostics with older versions of HeAT.
-
-**Test cases:**  
 * test1.tcl; test.py: Simply 3D box domain, infiltration at the top patch, no-flow over all other patches  
 * slab.tcl, drainageslab.tcl, inflowslab.tcl, slab.pfsol, domain.pfsol; slap.py: Slab benchmark + variations including drainage at the bottom and inflow over the righ patch, variations can be analyzed with slab.py by changing the 'name'  
 * profileclm.tcl, geom.pfsol, atmforcing.txt, drv_clmin.dat, drv_vegm.dat, drv_vegp.dat; profileclm.py: A quasi 2D profile including exchange with the landsurface based on coupled CLM  
@@ -104,7 +105,15 @@ Example applications are provided in the accompanying test cases, which require 
 
 To run the tests, a working ParFlow environment is needed. Instructions to build one can be found at [https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts](https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts). Because this ParFlow environment is a separate, independent environment from the HeAT environment, the source code is separated as well: The `tests.sh` runs the ParFlow elements of the test cases and needs to be called from the ParFlow environment. The Python Files run the HeAT diagnostics and need to be called from the HeAT environment. Environments can be switched by `sourcing` their respective `.ini` files.
 
-## Big-Data Benchmarking
+## PD standard tests
+
+During the development phase, a base version of PD was used (non-vectorized and serial) and (i) vectorized and (ii) efficiency-improved using HeAT. Estensive tests were done rto ensure that both performance improvements of (i) and (ii) do not alter the results.
+
+* All Methods have been tested using both no split and splitting across multiple nodes
+* All Methods iterating over the input array have been vectorized at a significant performance increase and been verified to yield the same result
+* At the beginning of the development, several issues arose with HeAT (especially indexing), those are fixed as of HeAT version 1.1.
+
+## PD big-data tests and benchmarking
 
 Note: Only relevant for users with HPC expertise.
 
