@@ -12,13 +12,16 @@ For details on HeAT, see the respective information referenced on the [HeAT gith
 
 **The `parallel_tests` branch is the current git branch of PD.**
 
-This repository covers five related aspects of using and testing PD and not every user needs to cover them all:
+**All tests and scripts of Autumn 2021 refer to the application on CPUs. GPU tests are ongoing.**
+
+This repository covers six related aspects of using and testing PD and not every user needs to cover them all:
 
 1. PD description 
 2. How to use PD based on HeAT, including exemple scripts which can be used as a starting point for own developments (relevant for everyone; for experienced ParFlow users who already have ParFlow output this is the most important information)
 3. How to generate test input for PD (for beginners this is especially interesting as this repository contains ParFlow test cases, i.e., the model configuration to generate such simulation results for testing)
 4. Tests conducted with PD based on HeAT (this is for those who want deeper understanding in how it was made sure, that the HeAT implementation did not break PD); these tests cases can be run by everybody to generate their own test data
 5. Specific performance tests using large datasets giving proof that HeAT in fact makes PD big data capable (this is for developers, who might be expanding PD or use PD based on HeAT for own developments); these test cases cannnot be run by everybody, instead test data, i.e., ParFlow simulation results, are provided centrally for everybodies use
+6. Correctness tests ensure the developments do not break the tools (this is for developers who might want to do their own developments with PD and HeAT)
 
 ParFlow and PD and HeAT run literally on any Linux system. However the instructions below are meant for the primary HPC systems at the Jülich Supercomputing Centre (JSC); as of autumn 2021 this is [JURECA](https://www.fz-juelich.de/ias/jsc/EN/Expertise/Supercomputers/JURECA/JURECA_node.html) and [JUWELS](https://www.fz-juelich.de/ias/jsc/EN/Expertise/Supercomputers/JUWELS/JUWELS_node.html). 
 
@@ -108,33 +111,48 @@ Most of the Python scripts (mentioned last in the list of files) contains system
 Overview of existing test cases, ParFlow runs and analysis:
 
 * `test1.tcl`; `test.py`: Simply 3D box domain, infiltration at the top patch, no-flow over all other patches  
-* slab.tcl, drainageslab.tcl, inflowslab.tcl, slab.pfsol, domain.pfsol; slap.py: Slab benchmark + variations including drainage at the bottom and inflow over the righ patch, variations can be analyzed with slab.py by changing the 'name'  
-* profileclm.tcl, geom.pfsol, atmforcing.txt, drv_clmin.dat, drv_vegm.dat, drv_vegp.dat; profileclm.py: A quasi 2D profile including exchange with the landsurface based on coupled CLM  
+* `slab.tcl`, `drainageslab.tcl`, `inflowslab.tcl`, `slab.pfsol`, `domain.pfsol`; `slap.py`: Slab benchmark + variations including drainage at the bottom and inflow over the righ patch, variations can be analyzed with slab.py by changing the 'name'  
+* `profileclm.tcl`, `geom.pfsol`, `atmforcing.txt`, `drv_clmin.dat`, `drv_vegm.dat`, `drv_vegp.dat`; `profileclm.py`: A quasi 2D profile including exchange with the landsurface based on coupled CLM
 * `parkinglot.tcl`; `parkinglot.py`: Simple parking lot runoff test case for overland flow only; extracts a hydrograph at an individual pixel  
 * `terrainfollowing.tcl`, `terrainfollowing.py`: Terrain following grid test case based in quasi 2D cross-section
-* `cordex3km.py`: Special analysis code example of a comprehensive mass balance calculation for a pan-European 3km model domain; requires access to the shared drive where the model output is located.
+* `cordex3km.py`: Special analysis code example of a comprehensive mass balance calculation for a pan-European 3km model domain; requires access to the shared drive where the model output is located
+* `Driver.py`: Generic test, also demonstrating the use of PD
 
-To run the tests, a working ParFlow environment is needed. Instructions to build one can be found at [https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts](https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts). Because this ParFlow environment is a separate, independent environment from the HeAT environment, the source code is separated as well: The `tests.sh` runs the ParFlow elements of the test cases and needs to be called from the ParFlow environment. The Python Files run the HeAT diagnostics and need to be called from the HeAT environment. Environments can be switched by `sourcing` their respective `.ini` files.
+1. To run the tests, a working ParFlow environment is needed. Instructions to build one can be found at [https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts](https://icg4geo.icg.kfa-juelich.de/ModelSystems/ParFlow_scripts). Because this ParFlow environment is a separate, independent environment from the HeAT environment, the source code is separated as well. The ParFlow software environment initialisation is contained with the ParFlow built scripts. 
+2. The `tests.sh` runs the ParFlow elements of the test cases from above and hence generates data as input to PD; `tests.sh` (see also the `tests.py` in order to run ) needs to be called from the ParFlow environment. 
+3. The Python files run the HeAT diagnostics and need to be called from the HeAT environment: `source /p/project/cslts/local/jureca/HeAT/experimental_HeAT.ini` and then run `sbatch heat_tests_serial.sh` or `sbatch heat_tests_parallel.sh``; please note: depending on which tests you do (the split axis in the Python codes called has to be set accordingly, basically "activating the parallelism" in HeAT).
+
+The ParFlow and the PD software environments can be switched by `sourcing` their respective `.ini` files, `source <inifile>`.
 
 ## Advanced usage: PD standard tests
 
-During the development phase, a base version of PD was used (non-vectorized and serial) and (i) vectorized and (ii) efficiency-improved using HeAT. Estensive tests were done rto ensure that both performance improvements of (i) and (ii) do not alter the results.
+During the development phase, a base version of PD was used (non-vectorized and serial) and (i) vectorized and (ii) efficiency-improved using HeAT. Estensive tests were done to ensure that both performance improvements of (i) and (ii) do not alter the results.
 
-* All Methods have been tested using both no split and splitting across multiple nodes
-* All Methods iterating over the input array have been vectorized at a significant performance increase and been verified to yield the same result
-* At the beginning of the development, several issues arose with HeAT (especially indexing), those are fixed as of HeAT version 1.1.
+* All Methods have been tested using both no split and splitting across multiple nodes; i.e. reference results of serial PD tests are compared as part of testing with parallel test results. 
+* All Methods iterating over the input array have been vectorized at a significant performance increase and been verified to yield the same result.
+* At the beginning of the development, several issues arose with HeAT (especially indexing), those are fixed as of HeAT version 1.1. See the revision of HeAT in the HeAT github for details.
+
+xxx missing: details on the testing, so that users might replicate the tests xxx
 
 ## Advanced usage: PD big-data tests and benchmarking
 
 Note: Only relevant for users with HPC expertise.
 
-Generic Test for Big-Data capability and Scalability of all Methods provided in the Diagnostics Repository using the Global 1km Dataset by Stefan Kollet ( /p/scratch/cesmtst/kollet1/globaltest/ ).
-Then using 4, 8, 16 nodes on juwels yielded the performance-scaling plots found at `benchmarking/plots`. Shows HeATs capability to handle datasets too large to fit onto a single node.
+The big data-capability and the scalability of all PD methods have been tested to make sure that PD can really scale to many compute nodes on the JURECA and JUWELS HPC systems and thereby allow for an efficient use of big data sets in the multi-TB-range.
 
+- The test data set is the existing global 1km ParFlow test by Stefan KOLLET under `/p/scratch/cesmtst/kollet1/globaltest/`. 
+- The scaling tests were done using 4, 8, 16 compute nodes on JUWELS. 
+- The scaling plots are under `benchmarking/plots`. 
+
+Results clearly show HeAT's capability to efficiently handle datasets too large to fit onto a single node.
+
+Further information:
 All Files for these Experiments can be found in the `benchmarking` directory.
-These Scaling experiments are generated using the JUBE2 - Benchmark environment (available via `module load JUBE`) and the provided `JUBE_diagnostics.xml` file, which defines the Job configurations and runs the `benchmark.py` file. In order to run your own benchmarks, you can find more information here: [https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_BigDataAnalytics_PythonHeAT/-/tree/jube_benchmarking](https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_BigDataAnalytics_PythonHeAT/-/tree/jube_benchmarking)
-For visualization of jubes outputs, the `jube_result.ipynb` is available. It generates multiple plots showing the runtimes and speedups of the different sections. To run it, use the JSC Jupyter system [https://jupyter-jsc.fz-juelich.de/](https://jupyter-jsc.fz-juelich.de/).
+These scaling experiments are generated using the JUBE2 - Benchmark environment (available via `module load JUBE` on JSC machines) and the provided `JUBE_diagnostics.xml` file, which defines the job configurations and runs the `benchmark.py` file. In order to run your own benchmarks, you can find more information here: [https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_BigDataAnalytics_PythonHeAT/-/tree/jube_benchmarking](https://icg4geo.icg.kfa-juelich.de/SoftwareTools/ana_BigDataAnalytics_PythonHeAT/-/tree/jube_benchmarking)
+For visualization of JUBE's outputs, the `jube_result.ipynb` is available. It generates multiple plots showing the runtimes and speedups of the different sections. To run it, use the JSC Jupyter system [https://jupyter-jsc.fz-juelich.de/](https://jupyter-jsc.fz-juelich.de/).
 
-To test for the correctness of the parallel computations, a Reference Output was generated using only one MPI-process on JurecaDC ( /p/home/jusers/bourgart1/juwels/cesmtst_bourgart1/reference_output ) 
-and then compared to calculate the difference. 
-The difference introduced by applying parallelization is summarized by the follwing:
+## Correctness tests
+
+To test for the correctness of the parallel computations, a reference output was generated using only one MPI-process on JURECA-DC (`/p/home/jusers/bourgart1/juwels/cesmtst_bourgart1/reference_output`) and then compared to calculate the difference. 
+
+The difference introduced by applying parallelization is summarized by the following files: `diff.py`, `diff.out`, `diffs.png`  
