@@ -8,7 +8,7 @@ For details on HeAT, see the respective information referenced on the [HeAT gith
 
 **All information and software tools to use PD are within this repository. This README.md file contains all information to get started with PD including simple cookbooks.** 
 
-**Important prerequisite: The PD assume you use HeAT >v1.1. If you follow this README this is ensured.**
+**Important prerequisite: The PD assume you use HeAT >v1.1. And, as of Autumn 2021, the experimental HeAT version provided on JUWELS/JURECA. If you follow this README this is ensured.**
 
 **The `parallel_tests` branch is the current git branch of PD.**
 
