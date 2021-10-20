@@ -1,6 +1,6 @@
 Authors: Stefan KOLLET (s.kollet@fz-juelich.de), Ben BOURGART b.bourgart@fz-juelich.de), Klaus GOERGEN (k.goergen@fz-juelich.de)
 
-# ParFlow Diagnostics
+# ParFlow Diagnostics (PD)
 
 ParFlow Diagnostics (PD) is a Python class that provides functions to calculate all variables needed for a global or local mass balance based on [ParFlow hydrologic model](https://www.parflow.org) output. An essential feature is that PD uses the [Helmholtz Analytics Toolkit (HeAT)](https://github.com/helmholtz-analytics/heat/) Python library. This makes PD big data-capable; with HeAT PD can be run in parallel on a single HPC node (or any multi-core machine, including notebooks) up many nodes of an HPC system using CPUs as well as GPUs.
 
