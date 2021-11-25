@@ -190,9 +190,11 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         # Note, in the inactive cells Perm is zero thus 1/Perm results in inf, which then results in Kmean = 0!
         Kmean = 2. / (inv_perm[2,:, :, :-1] + inv_perm[2,:, :, 1:])
+        # missleading and wrong: 'diff = pp[ip] - pp[ip + 1];'?
         #diff = pp[ip] - pp[ip + 1];
         #updir = (diff / dx) * x_dir_g_c - x_dir_g;
         grad = ht.diff(Press, axis=2)/self.Dx
+        # comment below is wrong according to above wrong comment?
         # + sign, because we later multiply by (-1.0)
         grad = grad * x_dir_g_c[:,:,:-1] + x_dir_g[:,:,:-1]
 
