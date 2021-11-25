@@ -124,9 +124,15 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         """ This function does calculate the subsurface flow based Richards EQ
 
         This function does calculate the subsurface flow through all 6 ParFlow 
-        cell faces based on the Richards-Equation. More detailed explaination
-        can be found with the following paper, also including adjustments for
-        a terrain-following grid formulation:
+        cell faces based on the Richards-Equation. The sign is according to 
+        the coordinate system used by ParFlow, with the origin in the lower 
+        left corner and at the model bottom. One example: a positive flowleft 
+        value indicates a positive flow along the x-axis at the left cell face, 
+        meaning water is flowing into the respective cell. In turn a negative 
+        flowright value indicates a negative flow along the x-axis at the right 
+        cell face, meaning water is flowing into the respective cell also.
+        More detailed explaination can be found with the following paper, also 
+        including adjustments for a terrain-following grid formulation:
         https://www.sciencedirect.com/science/article/abs/pii/S0309170812002564
 
         --- Used equations
