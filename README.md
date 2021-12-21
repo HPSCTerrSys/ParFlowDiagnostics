@@ -101,7 +101,7 @@ Important notes:
 - The Diagnostics class is based on HeAT and requires methods to read ParFlow output (netCDF, PFB, Silo).
 - The Diagnostics class takes as input the split-axis for HeAT. Both splitting in x and y direction is supported (in a zyx coordinate system) as well as None for not splitting at all. In order to use mutliple nodes, the split axis must not be None. The job configuration allows basically arbitrary MPI and OpenMP parallelisation, however it is recommended to use 2 MPI-processes per compute node and set the number of OpenMP threads accordingly, i.e. #number_of_CPU_cores_per_node / 2  (24 on JUWELS, 64 on JurecaDC). Tests have shown that, if one is using HeAT (and hence also PD tools) in a parallel setup on a single multi-core node or accross multiple nodes, the best performance is reached when running with one MPI task per CPU and mutpiple OpenMP threads on the individual CPU cores.  The correct way to do this in the SBATCH script is by setting the according SLURM parameters:
 ```
-#SBATCH --tasks-per-node=<2>
+#SBATCH --ntasks-per-node=2
 #SBATCH --cpus-per-task=<#number_of_CPU_cores_per_node / 2>
 export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 ```
