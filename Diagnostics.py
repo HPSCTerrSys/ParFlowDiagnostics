@@ -177,10 +177,18 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         if self.Terrainfollowing:
             printroot('Terrain following')
             for k in range (self.Nz):
-                x_dir_g[k,:,:-1]   = ( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0
-                x_dir_g_c[k,:,:-1] = ( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0
-                y_dir_g[k,:-1,:]   = ( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0
-                y_dir_g_c[k,:-1,:] = ( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0
+                #x_dir_g[k,:,:-1]   = ( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0
+                #x_dir_g_c[k,:,:-1] = ( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0
+                #y_dir_g[k,:-1,:]   = ( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0
+                #y_dir_g_c[k,:-1,:] = ( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0
+                x_dir_g[k,:,:-1]   = ( ht.sin(ht.arctan(self.Slopex[0,:,:-1])) 
+                                     + ht.sin(ht.arctan(self.Slopex[0,:,1:])) )/2.0
+                x_dir_g_c[k,:,:-1] = ( ht.cos(ht.arctan(self.Slopex[0,:,:-1]))
+                                     + ht.cos(ht.arctan(self.Slopex[0,:,1:])) )/2.0
+                y_dir_g[k,:-1,:]   = ( ht.sin(ht.arctan(self.Slopey[0,:-1,:]))
+                                     + ht.sin(ht.arctan(self.Slopey[0,1:,:])) )/2.0
+                y_dir_g_c[k,:-1,:] = ( ht.cos(ht.arctan(self.Slopey[0,:-1,:])) 
+                                     + ht.cos(ht.arctan(self.Slopey[0,1:,:])) )/2.0
 
         Dzmult3D = ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
         inv_perm = 1.0 / self.Perm
@@ -383,10 +391,18 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         y_dir_g_c = ht.ones(shape3D, split=self.Split3D)
         if self.Terrainfollowing:
             printroot('Terrain following', flush=True)
-            x_dir_g[:,:,:-1]   = (( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0).expand_dims(0)
-            x_dir_g_c[:,:,:-1] = (( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0).expand_dims(0)
-            y_dir_g[:,:-1,:]   = (( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0).expand_dims(0)
-            y_dir_g_c[:,:-1,:] = (( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0).expand_dims(0)
+            #x_dir_g[:,:,:-1]   = (( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0).expand_dims(0)
+            #x_dir_g_c[:,:,:-1] = (( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0).expand_dims(0)
+            #y_dir_g[:,:-1,:]   = (( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0).expand_dims(0)
+            #y_dir_g_c[:,:-1,:] = (( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0).expand_dims(0)
+            x_dir_g[:,:,:-1]   = (( ht.sin(ht.arctan(self.Slopex[0,:,:-1]))
+                                  + ht.sin(ht.arctan(self.Slopex[0,:,1:])) )/2.0).expand_dims(0)
+            x_dir_g_c[:,:,:-1] = (( ht.cos(ht.arctan(self.Slopex[0,:,:-1]))
+                                  + ht.cos(ht.arctan(self.Slopex[0,:,1:])) )/2.0).expand_dims(0)
+            y_dir_g[:,:-1,:]   = (( ht.sin(ht.arctan(self.Slopey[0,:-1,:])) 
+                                  + ht.sin(ht.arctan(self.Slopey[0,1:,:])) )/2.0).expand_dims(0)
+            y_dir_g_c[:,:-1,:] = (( ht.cos(ht.arctan(self.Slopey[0,:-1,:]))
+                                  + ht.cos(ht.arctan(self.Slopey[0,1:,:])) )/2.0).expand_dims(0)
 
         Dzmult3D = ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
         inv_perm = 1.0 / self.Perm
