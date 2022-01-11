@@ -163,11 +163,51 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         return(net_lateral_overlandflow)
 
     def SubsurfaceFlow(self, Press, Krel):
+        """ This function does calculate the subsurface flow based Richards EQ
+
+        This function does calculate the subsurface flow through all 6 ParFlow 
+        cell faces based on the Richards-Equation. The sign is according to 
+        the coordinate system used by ParFlow, with the origin in the lower 
+        left corner and at the model bottom. One example: a positive flowleft 
+        value indicates a positive flow along the x-axis at the left cell face, 
+        meaning water is flowing into the respective cell. In turn a negative 
+        flowright value indicates a negative flow along the x-axis at the right 
+        cell face, meaning water is flowing into the respective cell also.
+        More detailed explaination can be found with the following paper, also 
+        including adjustments for a terrain-following grid formulation:
+        https://www.sciencedirect.com/science/article/abs/pii/S0309170812002564
+
+        --- Used equations
+        orig.: q(x) = -K_s(x) * k_rel(h) * grad(h+z)
+        terr.: q(x) = -K_s(x) * k_rel(h) * [grad(h+z) * cos(Theta) + sin(Theta)]
+
+        With:
+          q     = volumetric (Darcy) flux in [L/T]
+          K_s   = saturated hydr. conductivity tensor [L/T]
+          k_rel = relative permeability [-]
+          h     = pressure-head [L]
+          z     = elevation-head [L]
+          Theta = local angle of slope [-]
+
+        INPUT: 
+          Press = 3D (z,y,x) pressure-head [L]
+          Krel  = 3D (z,y,x) rel. permeability [-]
+          Other Parameters are part of class-object (self)
+
+        RETURN:
+          Subsurface flow though all 6 ParFlow cell faces [L^3/T]:
+            flowleft,flowright,flowfront,flowback,flowbottom,flowtop
+          All flows are calculate for the cell faces and not the cell center.
+        """
         #ParFlow
-        #x_dir_g = Mean(gravity * sin(atan(x_ssl_dat[io])), gravity * sin(atan(x_ssl_dat[io + 1])));
+        #x_dir_g   = Mean(gravity * sin(atan(x_ssl_dat[io])), gravity * sin(atan(x_ssl_dat[io + 1])));
         #x_dir_g_c = Mean(gravity * cos(atan(x_ssl_dat[io])), gravity * cos(atan(x_ssl_dat[io + 1])));
-        #y_dir_g = Mean(gravity * sin(atan(y_ssl_dat[io])), gravity * sin(atan(y_ssl_dat[io + sy_p])));
+        #y_dir_g   = Mean(gravity * sin(atan(y_ssl_dat[io])), gravity * sin(atan(y_ssl_dat[io + sy_p])));
         #y_dir_g_c = Mean(gravity * cos(atan(y_ssl_dat[io])), gravity * cos(atan(y_ssl_dat[io + sy_p])));
+
+        # Below lines does belong to the term: 'cos(Theta) + sin(Theta)'
+        # Init values (0 and 1) are choosen to take into account terrain-following 
+        # as well as no-terrai-following grid.
         shape3D   = (self.Nz,self.Ny,self.Nx)
         x_dir_g   = ht.zeros(shape3D, split=self.Split3D)
         x_dir_g_c = ht.full(shape3D, 1.0, split=self.Split3D)
@@ -190,7 +230,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
                 y_dir_g_c[k,:-1,:] = ( ht.cos(ht.arctan(self.Slopey[0,:-1,:])) 
                                      + ht.cos(ht.arctan(self.Slopey[0,1:,:])) )/2.0
 
+        # Expanding 'dzmult' to 3D for easy application to other variables
         Dzmult3D = ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
+        # Needed to calculate harmonic mean of 'Perm'
         inv_perm = 1.0 / self.Perm
 
         #Calculate the flux across the right and left face
@@ -198,11 +240,13 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flowright = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
         flowleft  = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
 
-        #Note, in the inactive cells, Perm is zero, thus, 1/Perm results in inf, which then results in Kmean = 0!
+        # Note, in the inactive cells Perm is zero thus 1/Perm results in inf, which then results in Kmean = 0!
         Kmean = 2. / (inv_perm[2,:, :, :-1] + inv_perm[2,:, :, 1:])
+        # missleading and wrong: 'diff = pp[ip] - pp[ip + 1];'?
         #diff = pp[ip] - pp[ip + 1];
         #updir = (diff / dx) * x_dir_g_c - x_dir_g;
         grad = ht.diff(Press, axis=2)/self.Dx
+        # comment below is wrong according to above wrong comment?
         # + sign, because we later multiply by (-1.0)
         grad = grad * x_dir_g_c[:,:,:-1] + x_dir_g[:,:,:-1]
 
@@ -235,7 +279,11 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flowtop = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
         flowbottom = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
 
-        #Note, in the inactive cells, Perm is zero, thus, 1/Perm results in inf, which then results in Kmean = 0!
+        # NOTE:
+        # In the inactive cells, Perm is zero, thus, 1/Perm results in inf, 
+        # which then results in Kmean = 0!
+        # This is important for non-terrain-following grid only
+        # Calculating harmonic mean of Perm between two layers
         Kmean = ( (Dzmult3D[:-1] + Dzmult3D[1:]) /
                 (Dzmult3D[:-1]/self.Perm[0,:-1,:,:] + Dzmult3D[1:]/self.Perm[0,1:,:,:]) )
 
@@ -245,6 +293,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flowtop[:-1, :, :] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[1:, :, :], Krel[:-1, :, :])
         flowbottom[1:, :, :] = flowtop[:-1, :, :]
 
+        # Multiply with face area to change from [L/T] to [L^3/T]
         flowtop *= self.Dx * self.Dy
         flowbottom *= self.Dx * self.Dy
         #print('subsurfaceflow finished', flush=True)
