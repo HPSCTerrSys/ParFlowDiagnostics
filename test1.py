@@ -2,7 +2,8 @@ import heat as ht
 import numpy as np
 import sys
 import os
-from Diagnostics import Diagnostics
+from Diagnostics import Diagnostics, printroot
+print=printroot
 import IO as io
 
 #Run ParFlow test case
@@ -13,13 +14,13 @@ import IO as io
 # This can be done with os.environ, e.g.:
 # os.environ['PARFLOW_DIR'] = '/home/b.bourgart/parflow/install'
 
-cmd='tclsh test1.tcl'
-os.system(cmd)
-cmd='$PARFLOW_DIR/bin/parflow testOne'
-os.system(cmd)
+# cmd='tclsh test1.tcl'
+# os.system(cmd)
+# cmd='$PARFLOW_DIR/bin/parflow testOne'
+# os.system(cmd)
 
 
-split=None
+split=-1
 name = 'testOne'
 #Read static information
 saturPF  = io.read_pfb(name + '.out.satur.00000.pfb', split=split)
@@ -64,6 +65,7 @@ terrainfollowing = False
 #Initialize Diagnostics class
 #Diagnostics(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split):
 diag = Diagnostics(mask, perm, poro, sstorage, ssat, sres, nvg, alpha, mannings, slopex, slopey, dx, dy, dz, dzmult, nx, ny, nz, terrainfollowing, split)
+results=[]
 
 for t in range (nt):
     print(name + '.out.press.'+('{:05d}'.format(t))+'.pfb')
@@ -90,11 +92,14 @@ for t in range (nt):
       #Balance over columns
       column_balance = ht.sum(cell_balance,axis=0)
       #Mass balance over full domain without flux at the top boundary
-      print('Time step:',t, ', Increment:',ht.sum(cell_balance)/(nx*ny))
+      print('Time step:',t, ', Increment:',(ht.sum(cell_balance)/(nx*ny)).item())
+      results.append(np.round(ht.sum(cell_balance).numpy()/(nx*ny), 6))
 
 print()
-print('At each time step, the increment should be equal to the flux at the top boundary: 0.0001 (L/T)')
+ht.MPI_WORLD.Barrier()
+print()
+print('At each time step, the increment should be equal to the flux at the top boundary: 0.0001 (L/T)', results)
 
 
-cmd='rm -r testOne*'
-os.system(cmd)
+# cmd='rm -r testOne*'
+# os.system(cmd)

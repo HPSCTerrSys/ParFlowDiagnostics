@@ -1,0 +1,13 @@
+#!/bin/bash -x
+#SBATCH --nodes=#NODES#
+#SBATCH --ntasks-per-node=#NUM_PROCS_PER_NODE#
+#SBATCH --output=#OUT_FILEPATH#
+#SBATCH --error=#ERR_FILEPATH#
+#SBATCH --time=#WALLTIME#
+#SBATCH --partition=#PARTITION#
+#SBATCH --account=#ACCOUNT#
+#SBATCH --exclusive
+
+
+#EXEC#
+touch #READY#

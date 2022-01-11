@@ -1,0 +1,2339 @@
+test1
+testOne.out.press.00000.pfb
+testOne.out.press.00001.pfb
+Time step: 1 , Increment: -9.999999999988408e-05
+testOne.out.press.00002.pfb
+Time step: 2 , Increment: -9.999999999636522e-05
+testOne.out.press.00003.pfb
+Time step: 3 , Increment: -0.00010000000006261223
+testOne.out.press.00004.pfb
+Time step: 4 , Increment: -9.999999999180581e-05
+testOne.out.press.00005.pfb
+Time step: 5 , Increment: -0.00010000000003782373
+testOne.out.press.00006.pfb
+Time step: 6 , Increment: -0.00010000000001378406
+testOne.out.press.00007.pfb
+Time step: 7 , Increment: -0.00010000000000586262
+testOne.out.press.00008.pfb
+Time step: 8 , Increment: -0.00010000000000276121
+testOne.out.press.00009.pfb
+Time step: 9 , Increment: -0.0001000000000026513
+
+
+At each time step, the increment should be equal to the flux at the top boundary: 0.0001 (L/T) [array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001]), array([-0.0001])]
+
+parkinglot
+parkinglot1.out.press.00000.pfb
+parkinglot1.out.press.00001.pfb
+Time step: 1 , dstorage: -0.019974754852303267
+Time step: 1 , divergence: 0.0
+Time step: 1 , dsurface_storage: 0.0
+Time step: 1 , netoverlandflow: 0.0
+Time step: 1 , surface_balance: 0.0
+Time step: 1 , total balance: -0.019974754852303267
+parkinglot1.out.press.00002.pfb
+Time step: 2 , dstorage: -0.011986151694332037
+Time step: 2 , divergence: 0.0
+Time step: 2 , dsurface_storage: -0.0017405417538320523
+Time step: 2 , netoverlandflow: 0.0005234780255705118
+Time step: 2 , surface_balance: -0.0022640197721266065
+Time step: 2 , total balance: -0.014250171466458643
+parkinglot1.out.press.00003.pfb
+Time step: 3 , dstorage: 0.0
+Time step: 3 , divergence: 0.0
+Time step: 3 , dsurface_storage: -0.004530813053658902
+Time step: 3 , netoverlandflow: 0.005468245130032301
+Time step: 3 , surface_balance: -0.009999058176415245
+Time step: 3 , total balance: -0.009999058176415245
+parkinglot1.out.press.00004.pfb
+Time step: 4 , dstorage: 0.0
+Time step: 4 , divergence: 0.0
+Time step: 4 , dsurface_storage: -0.0014991232795461998
+Time step: 4 , netoverlandflow: 0.008500880561769009
+Time step: 4 , surface_balance: -0.010000003033683914
+Time step: 4 , total balance: -0.010000003033683914
+parkinglot1.out.press.00005.pfb
+Time step: 5 , dstorage: 0.0
+Time step: 5 , divergence: 0.0
+Time step: 5 , dsurface_storage: -0.000416243357183633
+Time step: 5 , netoverlandflow: 0.009583581238985062
+Time step: 5 , surface_balance: -0.009999824596168693
+Time step: 5 , total balance: -0.009999824596168693
+parkinglot1.out.press.00006.pfb
+Time step: 6 , dstorage: 0.0
+Time step: 6 , divergence: 0.0
+Time step: 6 , dsurface_storage: -0.00010434615401591957
+Time step: 6 , netoverlandflow: 0.009895674884319305
+Time step: 6 , surface_balance: -0.010000021671343538
+Time step: 6 , total balance: -0.010000021671343538
+parkinglot1.out.press.00007.pfb
+Time step: 7 , dstorage: 0.0
+Time step: 7 , divergence: 0.0
+Time step: 7 , dsurface_storage: -2.431965572523619e-05
+Time step: 7 , netoverlandflow: 0.009975824505090714
+Time step: 7 , surface_balance: -0.0100001433968404
+Time step: 7 , total balance: -0.0100001433968404
+parkinglot1.out.press.00008.pfb
+Time step: 8 , dstorage: 0.0
+Time step: 8 , divergence: 0.0
+Time step: 8 , dsurface_storage: -5.32309720525041e-06
+Time step: 8 , netoverlandflow: 0.009994689375162125
+Time step: 8 , surface_balance: -0.01000001279250951
+Time step: 8 , total balance: -0.01000001279250951
+parkinglot1.out.press.00009.pfb
+Time step: 9 , dstorage: 0.0
+Time step: 9 , divergence: 0.0
+Time step: 9 , dsurface_storage: -1.1105372352297165e-06
+Time step: 9 , netoverlandflow: 0.009998888708651066
+Time step: 9 , surface_balance: -0.009999999362301618
+Time step: 9 , total balance: -0.009999999362301618
+parkinglot1.out.press.00010.pfb
+Time step: 10 , dstorage: 0.0
+Time step: 10 , divergence: 0.0
+Time step: 10 , dsurface_storage: -2.2473994894445297e-07
+Time step: 10 , netoverlandflow: 0.009999779053032398
+Time step: 10 , surface_balance: -0.010000003705669853
+Time step: 10 , total balance: -0.010000003705669853
+
+Discharge at gauge: DNDarray([0.0000e+00, 0.0000e+00, 5.8813e-05, 7.8430e-04, 1.3306e-03, 1.5526e-03, 1.6224e-03, 1.6414e-03, 1.6462e-03,
+          1.6473e-03, 1.6475e-03], dtype=ht.float32, device=cpu:0, split=None)
+
+profileclm
+./profileclm1.out.press.00000.pfb
+./profileclm1.out.press.00001.pfb
+Time step: 1 , dstorage: 0.017865108410620174
+Time step: 1 , divergence: 1.6263032587282567e-19
+Time step: 1 , dsurface_storage: 0.0
+Time step: 1 , netoverlandflow: 0.0
+Time step: 1 , surface_balance: 0.0
+Time step: 1 , source/sink: -0.017865106029462122
+Time step: 1 , total balance: 2.381158049327616e-09
+./profileclm1.out.press.00002.pfb
+Time step: 2 , dstorage: 0.017951334331580714
+Time step: 2 , divergence: 4.0657581468206416e-20
+Time step: 2 , dsurface_storage: 0.0
+Time step: 2 , netoverlandflow: 0.0
+Time step: 2 , surface_balance: 0.0
+Time step: 2 , source/sink: -0.017951287438965374
+Time step: 2 , total balance: 4.689261533810879e-08
+./profileclm1.out.press.00003.pfb
+Time step: 3 , dstorage: 0.01585049479662095
+Time step: 3 , divergence: 9.486769009248164e-20
+Time step: 3 , dsurface_storage: 0.0
+Time step: 3 , netoverlandflow: 0.0
+Time step: 3 , surface_balance: 0.0
+Time step: 3 , source/sink: -0.01585049471735613
+Time step: 3 , total balance: 7.926481653929961e-11
+./profileclm1.out.press.00004.pfb
+Time step: 4 , dstorage: 0.013038760883001228
+Time step: 4 , divergence: 2.710505431213761e-20
+Time step: 4 , dsurface_storage: 0.0
+Time step: 4 , netoverlandflow: 0.0
+Time step: 4 , surface_balance: 0.0
+Time step: 4 , source/sink: -0.013038761020631031
+Time step: 4 , total balance: -1.3762980345842436e-10
+./profileclm1.out.press.00005.pfb
+Time step: 5 , dstorage: 0.011961427498141455
+Time step: 5 , divergence: -2.0328790734103208e-19
+Time step: 5 , dsurface_storage: 0.0
+Time step: 5 , netoverlandflow: 0.0
+Time step: 5 , surface_balance: 0.0
+Time step: 5 , source/sink: -0.011961427765609541
+Time step: 5 , total balance: -2.6746808577221256e-10
+./profileclm1.out.press.00006.pfb
+Time step: 6 , dstorage: 0.010933357276431957
+Time step: 6 , divergence: 1.3552527156068805e-20
+Time step: 6 , dsurface_storage: 0.0
+Time step: 6 , netoverlandflow: 0.0
+Time step: 6 , surface_balance: 0.0
+Time step: 6 , source/sink: -0.010932710520673836
+Time step: 6 , total balance: 6.467557581242582e-07
+./profileclm1.out.press.00007.pfb
+Time step: 7 , dstorage: 0.007549017271005332
+Time step: 7 , divergence: -3.3881317890172014e-20
+Time step: 7 , dsurface_storage: 0.0
+Time step: 7 , netoverlandflow: 0.0
+Time step: 7 , surface_balance: 0.0
+Time step: 7 , source/sink: -0.007548896120172707
+Time step: 7 , total balance: 1.2115083262416942e-07
+./profileclm1.out.press.00008.pfb
+Time step: 8 , dstorage: 0.006912151780846761
+Time step: 8 , divergence: 5.421010862427522e-20
+Time step: 8 , dsurface_storage: 0.0
+Time step: 8 , netoverlandflow: 0.0
+Time step: 8 , surface_balance: 0.0
+Time step: 8 , source/sink: -0.006912089412804991
+Time step: 8 , total balance: 6.236804176885862e-08
+./profileclm1.out.press.00009.pfb
+Time step: 9 , dstorage: 0.00626359380493377
+Time step: 9 , divergence: -7.453889935837843e-20
+Time step: 9 , dsurface_storage: 0.0
+Time step: 9 , netoverlandflow: 0.0
+Time step: 9 , surface_balance: 0.0
+Time step: 9 , source/sink: -0.00626355651265508
+Time step: 9 , total balance: 3.729227869123118e-08
+./profileclm1.out.press.00010.pfb
+Time step: 10 , dstorage: 0.003340263926385122
+Time step: 10 , divergence: -3.049318610115481e-20
+Time step: 10 , dsurface_storage: 0.0
+Time step: 10 , netoverlandflow: 0.0
+Time step: 10 , surface_balance: 0.0
+Time step: 10 , source/sink: -0.0033402595924452655
+Time step: 10 , total balance: 4.3339398563482795e-09
+./profileclm1.out.press.00011.pfb
+Time step: 11 , dstorage: 0.0029570639987299575
+Time step: 11 , divergence: -4.743384504624082e-20
+Time step: 11 , dsurface_storage: 0.0
+Time step: 11 , netoverlandflow: 0.0
+Time step: 11 , surface_balance: 0.0
+Time step: 11 , source/sink: -0.002934244932973069
+Time step: 11 , total balance: 2.2819065756888737e-05
+./profileclm1.out.press.00012.pfb
+Time step: 12 , dstorage: 0.002622019340063931
+Time step: 12 , divergence: -2.371692252312041e-20
+Time step: 12 , dsurface_storage: 0.0
+Time step: 12 , netoverlandflow: 0.0
+Time step: 12 , surface_balance: 0.0
+Time step: 12 , source/sink: -0.002604757165979742
+Time step: 12 , total balance: 1.726217408418874e-05
+./profileclm1.out.press.00013.pfb
+Time step: 13 , dstorage: 0.006669045672821268
+Time step: 13 , divergence: 3.3881317890172014e-21
+Time step: 13 , dsurface_storage: 0.0
+Time step: 13 , netoverlandflow: 0.0
+Time step: 13 , surface_balance: 0.0
+Time step: 13 , source/sink: -0.006669030730642915
+Time step: 13 , total balance: 1.4942178351303487e-08
+./profileclm1.out.press.00014.pfb
+Time step: 14 , dstorage: 0.015035273224769946
+Time step: 14 , divergence: 2.710505431213761e-20
+Time step: 14 , dsurface_storage: 0.0
+Time step: 14 , netoverlandflow: 0.0
+Time step: 14 , surface_balance: 0.0
+Time step: 14 , source/sink: -0.015034467123131199
+Time step: 14 , total balance: 8.061016387446809e-07
+./profileclm1.out.press.00015.pfb
+Time step: 15 , dstorage: 0.009083125634117119
+Time step: 15 , divergence: 8.131516293641283e-20
+Time step: 15 , dsurface_storage: 0.0
+Time step: 15 , netoverlandflow: 0.0
+Time step: 15 , surface_balance: 0.0
+Time step: 15 , source/sink: -0.009083049129063528
+Time step: 15 , total balance: 7.650505359154625e-08
+./profileclm1.out.press.00016.pfb
+Time step: 16 , dstorage: 0.010881011267548289
+Time step: 16 , divergence: -2.371692252312041e-20
+Time step: 16 , dsurface_storage: 0.0
+Time step: 16 , netoverlandflow: 0.0
+Time step: 16 , surface_balance: 0.0
+Time step: 16 , source/sink: -0.010880880274234022
+Time step: 16 , total balance: 1.3099331426484284e-07
+./profileclm1.out.press.00017.pfb
+Time step: 17 , dstorage: 0.07274373729332173
+Time step: 17 , divergence: -9.486769009248164e-20
+Time step: 17 , dsurface_storage: 0.0
+Time step: 17 , netoverlandflow: 0.0
+Time step: 17 , surface_balance: 0.0
+Time step: 17 , source/sink: -0.07274369378814591
+Time step: 17 , total balance: 4.35051758190092e-08
+./profileclm1.out.press.00018.pfb
+Time step: 18 , dstorage: 0.05246822451912068
+Time step: 18 , divergence: 2.981555974335137e-19
+Time step: 18 , dsurface_storage: 0.0
+Time step: 18 , netoverlandflow: 0.0
+Time step: 18 , surface_balance: 0.0
+Time step: 18 , source/sink: -0.05246822478435001
+Time step: 18 , total balance: -2.6522932081943923e-10
+./profileclm1.out.press.00019.pfb
+Time step: 19 , dstorage: 0.10012128353130002
+Time step: 19 , divergence: -5.421010862427522e-19
+Time step: 19 , dsurface_storage: 0.0
+Time step: 19 , netoverlandflow: 0.0
+Time step: 19 , surface_balance: 0.0
+Time step: 19 , source/sink: -0.10012127455170373
+Time step: 19 , total balance: 8.97959628317702e-09
+./profileclm1.out.press.00020.pfb
+Time step: 20 , dstorage: 0.06996468519923783
+Time step: 20 , divergence: -7.453889935837843e-19
+Time step: 20 , dsurface_storage: 0.0
+Time step: 20 , netoverlandflow: 0.0
+Time step: 20 , surface_balance: 0.0
+Time step: 20 , source/sink: -0.0699646890588704
+Time step: 20 , total balance: -3.859632573505016e-09
+./profileclm1.out.press.00021.pfb
+Time step: 21 , dstorage: 0.11022263620661335
+Time step: 21 , divergence: 5.149960319306146e-19
+Time step: 21 , dsurface_storage: 0.0
+Time step: 21 , netoverlandflow: 0.0
+Time step: 21 , surface_balance: 0.0
+Time step: 21 , source/sink: -0.11022263854656733
+Time step: 21 , total balance: -2.3399539648039265e-09
+./profileclm1.out.press.00022.pfb
+Time step: 22 , dstorage: 0.07753752301083539
+Time step: 22 , divergence: 3.6591823321385775e-19
+Time step: 22 , dsurface_storage: 0.0
+Time step: 22 , netoverlandflow: 0.0
+Time step: 22 , surface_balance: 0.0
+Time step: 22 , source/sink: -0.07753752862629318
+Time step: 22 , total balance: -5.615457807328335e-09
+./profileclm1.out.press.00023.pfb
+Time step: 23 , dstorage: 0.06246834593500292
+Time step: 23 , divergence: -3.6591823321385775e-19
+Time step: 23 , dsurface_storage: 0.0
+Time step: 23 , netoverlandflow: 0.0
+Time step: 23 , surface_balance: 0.0
+Time step: 23 , source/sink: -0.062468346570882856
+Time step: 23 , total balance: -6.358799304977385e-10
+
+slab
+slab1.out.press.00000.pfb
+slab1.out.press.00001.pfb
+Time step: 1 , dstorage: -0.4502499883193649
+Time step: 1 , divergence: -2.0816681711721685e-17
+Time step: 1 , dsurface_storage: 0.0
+Time step: 1 , netoverlandflow: 0.0
+Time step: 1 , surface_balance: 0.0
+Time step: 1 , total balance: -0.45024998831936497
+slab1.out.press.00002.pfb
+Time step: 2 , dstorage: -0.44547763229260484
+Time step: 2 , divergence: -2.0816681711721685e-17
+Time step: 2 , dsurface_storage: -0.004774220906393128
+Time step: 2 , netoverlandflow: 5.960464477539063e-08
+Time step: 2 , surface_balance: -0.004774219276578617
+Time step: 2 , total balance: -0.45025185156918346
+slab1.out.press.00003.pfb
+Time step: 3 , dstorage: -0.44961434374833875
+Time step: 3 , divergence: -9.71445146547012e-17
+Time step: 3 , dsurface_storage: -0.00063276571186958
+Time step: 3 , netoverlandflow: -5.960464477539063e-08
+Time step: 3 , surface_balance: -0.0006327638492244353
+Time step: 3 , total balance: -0.4502471075975633
+slab1.out.press.00004.pfb
+Time step: 4 , dstorage: -0.45007439862854015
+Time step: 4 , divergence: -9.71445146547012e-17
+Time step: 4 , dsurface_storage: -0.0001744186878090498
+Time step: 4 , netoverlandflow: 0.0
+Time step: 4 , surface_balance: -0.00017441961913161608
+Time step: 4 , total balance: -0.4502488182476718
+slab1.out.press.00005.pfb
+Time step: 5 , dstorage: -0.45015456938595355
+Time step: 5 , divergence: -1.3877787807814457e-17
+Time step: 5 , dsurface_storage: -9.405272088143418e-05
+Time step: 5 , netoverlandflow: 0.0
+Time step: 5 , surface_balance: -9.405551484916591e-05
+Time step: 5 , total balance: -0.4502486249008027
+slab1.out.press.00006.pfb
+Time step: 6 , dstorage: -0.450169621514922
+Time step: 6 , divergence: -5.551115123125783e-17
+Time step: 6 , dsurface_storage: -7.641667227399927e-05
+Time step: 6 , netoverlandflow: 1.1920928955078125e-07
+Time step: 6 , surface_balance: -7.64176035965708e-05
+Time step: 6 , total balance: -0.45024603911851857
+slab1.out.press.00007.pfb
+Time step: 7 , dstorage: -0.45020246276659714
+Time step: 7 , divergence: 4.163336342344337e-17
+Time step: 7 , dsurface_storage: -4.638927392904356e-05
+Time step: 7 , netoverlandflow: 0.0
+Time step: 7 , surface_balance: -4.6386479961309235e-05
+Time step: 7 , total balance: -0.4502488492465584
+slab1.out.press.00008.pfb
+Time step: 8 , dstorage: -0.4502218638937915
+Time step: 8 , divergence: -2.7755575615628914e-17
+Time step: 8 , dsurface_storage: -3.198604908470112e-05
+Time step: 8 , netoverlandflow: -5.960464477539063e-08
+Time step: 8 , surface_balance: -3.198418643953621e-05
+Time step: 8 , total balance: -0.4502538480802311
+slab1.out.press.00009.pfb
+Time step: 9 , dstorage: -0.4502251700517638
+Time step: 9 , divergence: 0.0
+Time step: 9 , dsurface_storage: -2.871980688151209e-05
+Time step: 9 , netoverlandflow: 0.0
+Time step: 9 , surface_balance: -2.8718428087548542e-05
+Time step: 9 , total balance: -0.45025388847985137
+slab1.out.press.00010.pfb
+Time step: 10 , dstorage: -0.45023337895983373
+Time step: 10 , divergence: 2.7755575615628914e-17
+Time step: 10 , dsurface_storage: -2.0852964008534202e-05
+Time step: 10 , netoverlandflow: 5.960464477539063e-08
+Time step: 10 , surface_balance: -2.0850621150182713e-05
+Time step: 10 , total balance: -0.4502542295809838
+slab1.out.press.00011.pfb
+Time step: 11 , dstorage: -0.450235005196196
+Time step: 11 , divergence: -2.7755575615628914e-17
+Time step: 11 , dsurface_storage: -1.658882115026443e-05
+Time step: 11 , netoverlandflow: 0.0
+Time step: 11 , surface_balance: -1.6589788852626464e-05
+Time step: 11 , total balance: -0.45025159498504863
+slab1.out.press.00012.pfb
+Time step: 12 , dstorage: -0.45023768717029977
+Time step: 12 , divergence: -1.3877787807814457e-17
+Time step: 12 , dsurface_storage: -1.3821871359097027e-05
+Time step: 12 , netoverlandflow: 0.0
+Time step: 12 , surface_balance: -1.3821813151432272e-05
+Time step: 12 , total balance: -0.45025150898345123
+slab1.out.press.00013.pfb
+Time step: 13 , dstorage: -0.45023704473610354
+Time step: 13 , divergence: 0.0
+Time step: 13 , dsurface_storage: -1.1797496679687076e-05
+Time step: 13 , netoverlandflow: -5.960464477539063e-08
+Time step: 13 , surface_balance: -1.1799286565250533e-05
+Time step: 13 , total balance: -0.4502488440226688
+slab1.out.press.00014.pfb
+Time step: 14 , dstorage: -0.4502401300843766
+Time step: 14 , divergence: -2.7755575615628914e-17
+Time step: 14 , dsurface_storage: -1.022485963507135e-05
+Time step: 14 , netoverlandflow: 0.0
+Time step: 14 , surface_balance: -1.0223913760598613e-05
+Time step: 14 , total balance: -0.4502503539981372
+slab1.out.press.00015.pfb
+Time step: 15 , dstorage: -0.4501638843077935
+Time step: 15 , divergence: -6.938893903907228e-17
+Time step: 15 , dsurface_storage: -8.617315781345855e-05
+Time step: 15 , netoverlandflow: 0.0
+Time step: 15 , surface_balance: -8.617269215216439e-05
+Time step: 15 , total balance: -0.4502500569999457
+slab1.out.press.00016.pfb
+Time step: 16 , dstorage: -0.45011888185680704
+Time step: 16 , divergence: 4.163336342344337e-17
+Time step: 16 , dsurface_storage: -0.00013338455661389024
+Time step: 16 , netoverlandflow: 5.960464477539063e-08
+Time step: 16 , surface_balance: -0.00013338641925904338
+Time step: 16 , total balance: -0.45025226827606607
+slab1.out.press.00017.pfb
+Time step: 17 , dstorage: -0.45014091556931807
+Time step: 17 , divergence: 9.71445146547012e-17
+Time step: 17 , dsurface_storage: -0.00011118598201550885
+Time step: 17 , netoverlandflow: 5.960464477539063e-08
+Time step: 17 , surface_balance: -0.00011118831032193299
+Time step: 17 , total balance: -0.45025210387964
+slab1.out.press.00018.pfb
+Time step: 18 , dstorage: -0.4501829523230761
+Time step: 18 , divergence: 5.551115123125783e-17
+Time step: 18 , dsurface_storage: -6.730813865306559e-05
+Time step: 18 , netoverlandflow: 0.0
+Time step: 18 , surface_balance: -6.730808044540237e-05
+Time step: 18 , total balance: -0.45025026040352145
+slab1.out.press.00019.pfb
+Time step: 19 , dstorage: -0.4502069703795941
+Time step: 19 , divergence: -4.163336342344337e-17
+Time step: 19 , dsurface_storage: -4.343473242130925e-05
+Time step: 19 , netoverlandflow: 5.960464477539063e-08
+Time step: 19 , surface_balance: -4.343729355837933e-05
+Time step: 19 , total balance: -0.45025040767315255
+slab1.out.press.00020.pfb
+Time step: 20 , dstorage: -0.4502196420291232
+Time step: 20 , divergence: -8.326672684688674e-17
+Time step: 20 , dsurface_storage: -3.068298235039027e-05
+Time step: 20 , netoverlandflow: 0.0
+Time step: 20 , surface_balance: -3.068403008828213e-05
+Time step: 20 , total balance: -0.4502503260592115
+slab1.out.press.00021.pfb
+Time step: 21 , dstorage: -0.006347622025442808
+Time step: 21 , divergence: 6.938893903907228e-18
+Time step: 21 , dsurface_storage: 0.006347628912738951
+Time step: 21 , netoverlandflow: 0.0
+Time step: 21 , surface_balance: 0.006347628926381372
+Time step: 21 , total balance: 6.900938558705543e-09
+slab1.out.press.00022.pfb
+Time step: 22 , dstorage: -5.718588045060778e-05
+Time step: 22 , divergence: 4.0766001685454967e-17
+Time step: 22 , dsurface_storage: 5.679647908377274e-05
+Time step: 22 , netoverlandflow: 0.0
+Time step: 22 , surface_balance: 5.679647908377274e-05
+Time step: 22 , total balance: -3.894013668146715e-07
+slab1.out.press.00023.pfb
+Time step: 23 , dstorage: -1.2035134784593726e-08
+Time step: 23 , divergence: -6.375108774214766e-17
+Time step: 23 , dsurface_storage: 0.0
+Time step: 23 , netoverlandflow: 0.0
+Time step: 23 , surface_balance: 0.0
+Time step: 23 , total balance: -1.2035134852776858e-08
+slab1.out.press.00024.pfb
+Time step: 24 , dstorage: -1.2457623549443422e-07
+Time step: 24 , divergence: 1.0842021724855044e-17
+Time step: 24 , dsurface_storage: 0.0
+Time step: 24 , netoverlandflow: 0.0
+Time step: 24 , surface_balance: 0.0
+Time step: 24 , total balance: -1.2457623548530472e-07
+slab1.out.press.00025.pfb
+Time step: 25 , dstorage: -2.6257323222003e-06
+Time step: 25 , divergence: -1.3444106938820255e-17
+Time step: 25 , dsurface_storage: 0.0
+Time step: 25 , netoverlandflow: 0.0
+Time step: 25 , surface_balance: 0.0
+Time step: 25 , total balance: -2.625732322218296e-06
+slab1.out.press.00026.pfb
+Time step: 26 , dstorage: -1.4354469987870946e-07
+Time step: 26 , divergence: -7.37257477290143e-18
+Time step: 26 , dsurface_storage: 0.0
+Time step: 26 , netoverlandflow: 0.0
+Time step: 26 , surface_balance: 0.0
+Time step: 26 , total balance: -1.4354469987556676e-07
+slab1.out.press.00027.pfb
+Time step: 27 , dstorage: 1.780098250305298e-07
+Time step: 27 , divergence: -1.691355389077387e-17
+Time step: 27 , dsurface_storage: 0.0
+Time step: 27 , netoverlandflow: 0.0
+Time step: 27 , surface_balance: 0.0
+Time step: 27 , total balance: 1.7800982502177033e-07
+slab1.out.press.00028.pfb
+Time step: 28 , dstorage: 2.694786470536399e-07
+Time step: 28 , divergence: 3.0791341698588326e-17
+Time step: 28 , dsurface_storage: 0.0
+Time step: 28 , netoverlandflow: 0.0
+Time step: 28 , surface_balance: 0.0
+Time step: 28 , total balance: 2.6947864708604835e-07
+slab1.out.press.00029.pfb
+Time step: 29 , dstorage: 6.503570292833508e-07
+Time step: 29 , divergence: 8.890457814381136e-18
+Time step: 29 , dsurface_storage: 0.0
+Time step: 29 , netoverlandflow: 0.0
+Time step: 29 , surface_balance: 0.0
+Time step: 29 , total balance: 6.503570292829163e-07
+slab1.out.press.00030.pfb
+Time step: 30 , dstorage: 3.707808465677146e-07
+Time step: 30 , divergence: -2.5587171270657905e-17
+Time step: 30 , dsurface_storage: 0.0
+Time step: 30 , netoverlandflow: 0.0
+Time step: 30 , surface_balance: 0.0
+Time step: 30 , total balance: 3.707808465404335e-07
+slab1.out.press.00031.pfb
+Time step: 31 , dstorage: 2.789089739415121e-08
+Time step: 31 , divergence: 1.0408340855860843e-17
+Time step: 31 , dsurface_storage: 0.0
+Time step: 31 , netoverlandflow: 0.0
+Time step: 31 , surface_balance: 0.0
+Time step: 31 , total balance: 2.7890897403629786e-08
+slab1.out.press.00032.pfb
+Time step: 32 , dstorage: 0.017002077608964453
+Time step: 32 , divergence: 2.2551405187698492e-17
+Time step: 32 , dsurface_storage: -0.00017204870557080952
+Time step: 32 , netoverlandflow: 0.16830065846443176
+Time step: 32 , surface_balance: -0.017002114924543017
+Time step: 32 , total balance: -3.73155785456662e-08
+slab1.out.press.00033.pfb
+Time step: 33 , dstorage: 0.055596549757897795
+Time step: 33 , divergence: 3.469446951953614e-18
+Time step: 33 , dsurface_storage: -0.00017966193434610755
+Time step: 33 , netoverlandflow: 0.5541695356369019
+Time step: 33 , surface_balance: -0.05559661475297823
+Time step: 33 , total balance: -6.49950804328023e-08
+slab1.out.press.00034.pfb
+Time step: 34 , dstorage: 0.0692979304461997
+Time step: 34 , divergence: -6.938893903907228e-18
+Time step: 34 , dsurface_storage: -5.030491987129078e-05
+Time step: 34 , netoverlandflow: 0.6924762725830078
+Time step: 34 , surface_balance: -0.06929793068805595
+Time step: 34 , total balance: -2.4185626023744314e-10
+slab1.out.press.00035.pfb
+Time step: 35 , dstorage: 0.07415665573701075
+Time step: 35 , divergence: -1.0408340855860843e-17
+Time step: 35 , dsurface_storage: -1.681044075947972e-05
+Time step: 35 , netoverlandflow: 0.7414061427116394
+Time step: 35 , surface_balance: -0.07415742620203954
+Time step: 35 , total balance: -7.704650288305265e-07
+slab1.out.press.00036.pfb
+Time step: 36 , dstorage: 0.07492181882707916
+Time step: 36 , divergence: -4.163336342344337e-17
+Time step: 36 , dsurface_storage: -2.6364912719394496e-06
+Time step: 36 , netoverlandflow: 0.7492009997367859
+Time step: 36 , surface_balance: -0.07492273944518277
+Time step: 36 , total balance: -9.206181036315779e-07
+slab1.out.press.00037.pfb
+Time step: 37 , dstorage: 0.07364399886856401
+Time step: 37 , divergence: -1.0408340855860843e-17
+Time step: 37 , dsurface_storage: 4.304535418759084e-06
+Time step: 37 , netoverlandflow: 0.7364913821220398
+Time step: 37 , surface_balance: -0.07364483367678522
+Time step: 37 , total balance: -8.348082212205529e-07
+slab1.out.press.00038.pfb
+Time step: 38 , dstorage: 0.07133946706706161
+Time step: 38 , divergence: -6.938893903907228e-18
+Time step: 38 , dsurface_storage: 7.866076693469753e-06
+Time step: 38 , netoverlandflow: 0.7134913206100464
+Time step: 38 , surface_balance: -0.07134127045465953
+Time step: 38 , total balance: -1.803387597913343e-06
+slab1.out.press.00039.pfb
+Time step: 39 , dstorage: 0.06855439257003146
+Time step: 39 , divergence: -3.122502256758253e-17
+Time step: 39 , dsurface_storage: 9.660971864876484e-06
+Time step: 39 , netoverlandflow: 0.6856438517570496
+Time step: 39 , surface_balance: -0.06855472420384008
+Time step: 39 , total balance: -3.3163380863740067e-07
+slab1.out.press.00040.pfb
+Time step: 40 , dstorage: 0.0655853368803037
+Time step: 40 , divergence: -2.0816681711721685e-17
+Time step: 40 , dsurface_storage: 1.047496509469525e-05
+Time step: 40 , netoverlandflow: 0.6559532880783081
+Time step: 40 , surface_balance: -0.06558485384273612
+Time step: 40 , total balance: 4.830375675486437e-07
+slab1.out.press.00041.pfb
+Time step: 41 , dstorage: 0.06259888026694133
+Time step: 41 , divergence: -1.3877787807814457e-17
+Time step: 41 , dsurface_storage: 1.073006540536724e-05
+Time step: 41 , netoverlandflow: 0.6260872483253479
+Time step: 41 , surface_balance: -0.06259799625724555
+Time step: 41 , total balance: 8.840096957668135e-07
+slab1.out.press.00042.pfb
+Time step: 42 , dstorage: 0.05968767864200943
+Time step: 42 , divergence: 1.3877787807814457e-17
+Time step: 42 , dsurface_storage: 1.0658098771906702e-05
+Time step: 42 , netoverlandflow: 0.5969751477241516
+Time step: 42 , surface_balance: -0.059686858163759376
+Time step: 42 , total balance: 8.204782500764237e-07
+slab1.out.press.00043.pfb
+Time step: 43 , dstorage: 0.05690183329564991
+Time step: 43 , divergence: 1.5612511283791264e-17
+Time step: 43 , dsurface_storage: 1.041284578888257e-05
+Time step: 43 , netoverlandflow: 0.5690709948539734
+Time step: 43 , surface_balance: -0.056896685894550394
+Time step: 43 , total balance: 5.1474010995233155e-06
+slab1.out.press.00044.pfb
+Time step: 44 , dstorage: 0.054256520521742804
+Time step: 44 , divergence: 0.0
+Time step: 44 , dsurface_storage: 1.0046942317533511e-05
+Time step: 44 , netoverlandflow: 0.5426561832427979
+Time step: 44 , surface_balance: -0.05425557138196225
+Time step: 44 , total balance: 9.491397805635054e-07
+slab1.out.press.00045.pfb
+Time step: 45 , dstorage: 0.05176973422579907
+Time step: 45 , divergence: -1.734723475976807e-18
+Time step: 45 , dsurface_storage: 9.642018271425524e-06
+Time step: 45 , netoverlandflow: 0.5177804231643677
+Time step: 45 , surface_balance: -0.05176840253333952
+Time step: 45 , total balance: 1.3316924595553095e-06
+slab1.out.press.00046.pfb
+Time step: 46 , dstorage: 0.04943537276443645
+Time step: 46 , divergence: -1.9081958235744878e-17
+Time step: 46 , dsurface_storage: 9.216490722362147e-06
+Time step: 46 , netoverlandflow: 0.4944409728050232
+Time step: 46 , surface_balance: -0.049434881534838014
+Time step: 46 , total balance: 4.912295984207717e-07
+slab1.out.press.00047.pfb
+Time step: 47 , dstorage: 0.047252069071866964
+Time step: 47 , divergence: 1.3877787807814457e-17
+Time step: 47 , dsurface_storage: 8.78533090815204e-06
+Time step: 47 , netoverlandflow: 0.4725959897041321
+Time step: 47 , surface_balance: -0.047250813639505056
+Time step: 47 , total balance: 1.2554323619239281e-06
+slab1.out.press.00048.pfb
+Time step: 48 , dstorage: 0.04521088396763169
+Time step: 48 , divergence: 1.5612511283791264e-17
+Time step: 48 , dsurface_storage: 8.355942821753324e-06
+Time step: 48 , netoverlandflow: 0.4521866738796234
+Time step: 48 , surface_balance: -0.04521031293525671
+Time step: 48 , total balance: 5.710323749938134e-07
+slab1.out.press.00049.pfb
+Time step: 49 , dstorage: 0.04330405833629107
+Time step: 49 , divergence: 8.673617379884035e-18
+Time step: 49 , dsurface_storage: 7.944694496830667e-06
+Time step: 49 , netoverlandflow: 0.43311747908592224
+Time step: 49 , surface_balance: -0.04330380395915345
+Time step: 49 , total balance: 2.543771376378622e-07
+slab1.out.press.00050.pfb
+Time step: 50 , dstorage: 0.04152255474867905
+Time step: 50 , divergence: -1.0408340855860843e-17
+Time step: 50 , dsurface_storage: 7.551744068604971e-06
+Time step: 50 , netoverlandflow: 0.41529741883277893
+Time step: 50 , surface_balance: -0.04152218939415123
+Time step: 50 , total balance: 3.653545278141418e-07
+slab1.out.press.00051.pfb
+Time step: 51 , dstorage: 0.03985587895871501
+Time step: 51 , divergence: 1.0408340855860843e-17
+Time step: 51 , dsurface_storage: 7.182480468891398e-06
+Time step: 51 , netoverlandflow: 0.39862769842147827
+Time step: 51 , surface_balance: -0.039855588106737
+Time step: 51 , total balance: 2.908519780041729e-07
+slab1.out.press.00052.pfb
+Time step: 52 , dstorage: 0.038295856526995964
+Time step: 52 , divergence: 8.673617379884035e-18
+Time step: 52 , dsurface_storage: 6.832747646976303e-06
+Time step: 52 , netoverlandflow: 0.3830242156982422
+Time step: 52 , surface_balance: -0.03829558882217724
+Time step: 52 , total balance: 2.6770481872458814e-07
+slab1.out.press.00053.pfb
+Time step: 53 , dstorage: 0.036834299292886646
+Time step: 53 , divergence: 3.469446951953614e-18
+Time step: 53 , dsurface_storage: 6.506003993476755e-06
+Time step: 53 , netoverlandflow: 0.368399441242218
+Time step: 53 , surface_balance: -0.036833437375170267
+Time step: 53 , total balance: 8.619177163798808e-07
+slab1.out.press.00054.pfb
+Time step: 54 , dstorage: 0.035461664731011935
+Time step: 54 , divergence: 1.734723475976807e-18
+Time step: 54 , dsurface_storage: 6.199780706230647e-06
+Time step: 54 , netoverlandflow: 0.3546757102012634
+Time step: 54 , surface_balance: -0.035461372729536235
+Time step: 54 , total balance: 2.920014757111036e-07
+slab1.out.press.00055.pfb
+Time step: 55 , dstorage: 0.0341728410635736
+Time step: 55 , divergence: -5.204170427930421e-18
+Time step: 55 , dsurface_storage: 5.91148110992999e-06
+Time step: 55 , netoverlandflow: 0.3417849540710449
+Time step: 55 , surface_balance: -0.034172583925994565
+Time step: 55 , total balance: 2.5713757903559734e-07
+slab1.out.press.00056.pfb
+Time step: 56 , dstorage: 0.03296091207430523
+Time step: 56 , divergence: 1.214306433183765e-17
+Time step: 56 , dsurface_storage: 5.64026197783391e-06
+Time step: 56 , netoverlandflow: 0.3296642601490021
+Time step: 56 , surface_balance: -0.03296078724303849
+Time step: 56 , total balance: 1.24831266746682e-07
+slab1.out.press.00057.pfb
+Time step: 57 , dstorage: 0.031820054752908125
+Time step: 57 , divergence: 0.0
+Time step: 57 , dsurface_storage: 5.38621578057252e-06
+Time step: 57 , netoverlandflow: 0.31825345754623413
+Time step: 57 , surface_balance: -0.03181995879378478
+Time step: 57 , total balance: 9.595912334668938e-08
+slab1.out.press.00058.pfb
+Time step: 58 , dstorage: 0.03074460998899451
+Time step: 58 , divergence: -1.0408340855860843e-17
+Time step: 58 , dsurface_storage: 5.148599820385539e-06
+Time step: 58 , netoverlandflow: 0.3074968755245209
+Time step: 58 , surface_balance: -0.030744539325160733
+Time step: 58 , total balance: 7.066383376997964e-08
+slab1.out.press.00059.pfb
+Time step: 59 , dstorage: 0.02972961381816508
+Time step: 59 , divergence: -5.204170427930421e-18
+Time step: 59 , dsurface_storage: 4.926098100597537e-06
+Time step: 59 , netoverlandflow: 0.2973440885543823
+Time step: 59 , surface_balance: -0.029729482384808607
+Time step: 59 , total balance: 1.3143335646955327e-07
+slab1.out.press.00060.pfb
+Time step: 60 , dstorage: 0.028770282587969674
+Time step: 60 , divergence: 2.6020852139652106e-18
+Time step: 60 , dsurface_storage: 4.717480930568294e-06
+Time step: 60 , netoverlandflow: 0.2877494990825653
+Time step: 60 , surface_balance: -0.028770233172384023
+Time step: 60 , total balance: 4.9415585657359626e-08
+slab1.out.press.00061.pfb
+Time step: 61 , dstorage: 0.02786271718460308
+Time step: 61 , divergence: -6.071532165918825e-18
+Time step: 61 , dsurface_storage: 4.522130481563944e-06
+Time step: 61 , netoverlandflow: 0.2786707878112793
+Time step: 61 , surface_balance: -0.027862556650646367
+Time step: 61 , total balance: 1.605339567114715e-07
+slab1.out.press.00062.pfb
+Time step: 62 , dstorage: 0.027002818653450195
+Time step: 62 , divergence: 1.734723475976807e-18
+Time step: 62 , dsurface_storage: 4.338316243306686e-06
+Time step: 62 , netoverlandflow: 0.2700708508491516
+Time step: 62 , surface_balance: -0.027002747886258945
+Time step: 62 , total balance: 7.076719125308346e-08
+slab1.out.press.00063.pfb
+Time step: 63 , dstorage: 0.026187341811059132
+Time step: 63 , divergence: -1.734723475976807e-18
+Time step: 63 , dsurface_storage: 4.165776164845189e-06
+Time step: 63 , netoverlandflow: 0.2619147300720215
+Time step: 63 , surface_balance: -0.026187307231037304
+Time step: 63 , total balance: 3.4580021825678485e-08
+slab1.out.press.00064.pfb
+Time step: 64 , dstorage: 0.025413212406226824
+Time step: 64 , divergence: -1.0408340855860843e-17
+Time step: 64 , dsurface_storage: 4.003141682579062e-06
+Time step: 64 , netoverlandflow: 0.25417158007621765
+Time step: 64 , surface_balance: -0.025413155238468217
+Time step: 64 , total balance: 5.716775859867159e-08
+slab1.out.press.00065.pfb
+Time step: 65 , dstorage: 0.024677394317671582
+Time step: 65 , divergence: 1.734723475976807e-18
+Time step: 65 , dsurface_storage: 3.850341352174214e-06
+Time step: 65 , netoverlandflow: 0.24681194126605988
+Time step: 65 , surface_balance: -0.024677343412724782
+Time step: 65 , total balance: 5.090494679969863e-08
+slab1.out.press.00066.pfb
+Time step: 66 , dstorage: 0.023977372866614978
+Time step: 66 , divergence: 4.336808689942018e-18
+Time step: 66 , dsurface_storage: 3.705860781919707e-06
+Time step: 66 , netoverlandflow: 0.23981039226055145
+Time step: 66 , surface_balance: -0.023977334482860314
+Time step: 66 , total balance: 3.838375466694295e-08
+slab1.out.press.00067.pfb
+Time step: 67 , dstorage: 0.023310820290431328
+Time step: 67 , divergence: 8.673617379884035e-18
+Time step: 67 , dsurface_storage: 3.5698246006845072e-06
+Time step: 67 , netoverlandflow: 0.23314227163791656
+Time step: 67 , surface_balance: -0.02331065845677806
+Time step: 67 , total balance: 1.618336532729938e-07
+slab1.out.press.00068.pfb
+Time step: 68 , dstorage: 0.02267519293541203
+Time step: 68 , divergence: 1.734723475976807e-18
+Time step: 68 , dsurface_storage: 3.4410441815744923e-06
+Time step: 68 , netoverlandflow: 0.22678610682487488
+Time step: 68 , surface_balance: -0.022675170755893002
+Time step: 68 , total balance: 2.2179519026147827e-08
+slab1.out.press.00069.pfb
+Time step: 69 , dstorage: 0.0220689227788849
+Time step: 69 , divergence: -8.673617379884035e-19
+Time step: 69 , dsurface_storage: 3.3190046937521143e-06
+Time step: 69 , netoverlandflow: 0.22072212398052216
+Time step: 69 , surface_balance: -0.022068893765887495
+Time step: 69 , total balance: 2.9012997398916687e-08
+slab1.out.press.00070.pfb
+Time step: 70 , dstorage: 0.021490061349299247
+Time step: 70 , divergence: 6.071532165918825e-18
+Time step: 70 , dsurface_storage: 3.2042769892971453e-06
+Time step: 70 , netoverlandflow: 0.21493029594421387
+Time step: 70 , surface_balance: -0.02148982643501918
+Time step: 70 , total balance: 2.3491428007032477e-07
+slab1.out.press.00071.pfb
+Time step: 71 , dstorage: 0.02093644460481572
+Time step: 71 , divergence: -4.336808689942018e-18
+Time step: 71 , dsurface_storage: 3.0946713297480663e-06
+Time step: 71 , netoverlandflow: 0.20939521491527557
+Time step: 71 , surface_balance: -0.02093642682019781
+Time step: 71 , total balance: 1.7784617906993897e-08
+slab1.out.press.00072.pfb
+Time step: 72 , dstorage: 0.020407110559663415
+Time step: 72 , divergence: -1.1275702593849246e-17
+Time step: 72 , dsurface_storage: 2.9908364359258353e-06
+Time step: 72 , netoverlandflow: 0.20410087704658508
+Time step: 72 , surface_balance: -0.020407097985809673
+Time step: 72 , total balance: 1.2573853739877853e-08
+slab1.out.press.00073.pfb
+Time step: 73 , dstorage: 0.019900401060643398
+Time step: 73 , divergence: -8.673617379884035e-19
+Time step: 73 , dsurface_storage: 2.8922131570375924e-06
+Time step: 73 , netoverlandflow: 0.19903284311294556
+Time step: 73 , surface_balance: -0.019900393215724607
+Time step: 73 , total balance: 7.844918791569068e-09
+slab1.out.press.00074.pfb
+Time step: 74 , dstorage: 0.019414829485175367
+Time step: 74 , divergence: -3.469446951953614e-18
+Time step: 74 , dsurface_storage: 2.799330425526348e-06
+Time step: 74 , netoverlandflow: 0.19417621195316315
+Time step: 74 , surface_balance: -0.01941482186489079
+Time step: 74 , total balance: 7.620284573291529e-09
+slab1.out.press.00075.pfb
+Time step: 75 , dstorage: 0.018949256895908286
+Time step: 75 , divergence: -3.469446951953614e-18
+Time step: 75 , dsurface_storage: 2.7104557137029724e-06
+Time step: 75 , netoverlandflow: 0.18951962888240814
+Time step: 75 , surface_balance: -0.01894925317758517
+Time step: 75 , total balance: 3.718323111332297e-09
+slab1.out.press.00076.pfb
+Time step: 76 , dstorage: 0.018502588752099966
+Time step: 76 , divergence: -5.204170427930421e-18
+Time step: 76 , dsurface_storage: 2.6255517564176235e-06
+Time step: 76 , netoverlandflow: 0.18505211174488068
+Time step: 76 , surface_balance: -0.01850258636778971
+Time step: 76 , total balance: 2.384310251653582e-09
+slab1.out.press.00077.pfb
+Time step: 77 , dstorage: 0.018073766590474494
+Time step: 77 , divergence: -7.806255641895632e-18
+Time step: 77 , dsurface_storage: 2.5446123775626887e-06
+Time step: 77 , netoverlandflow: 0.1807630956172943
+Time step: 77 , surface_balance: -0.0180737653218809
+Time step: 77 , total balance: 1.2685935965621348e-09
+slab1.out.press.00078.pfb
+Time step: 78 , dstorage: 0.017661792085726193
+Time step: 78 , divergence: -2.6020852139652106e-18
+Time step: 78 , dsurface_storage: 2.467483540981156e-06
+Time step: 78 , netoverlandflow: 0.17664259672164917
+Time step: 78 , surface_balance: -0.017661791816094907
+Time step: 78 , total balance: 2.696312813489605e-10
+slab1.out.press.00079.pfb
+Time step: 79 , dstorage: 0.01726563325653297
+Time step: 79 , divergence: -1.734723475976807e-18
+Time step: 79 , dsurface_storage: 2.395400386223152e-06
+Time step: 79 , netoverlandflow: 0.1726789027452469
+Time step: 79 , surface_balance: -0.017265494874138466
+Time step: 79 , total balance: 1.3838239450354732e-07
+slab1.out.press.00080.pfb
+Time step: 80 , dstorage: 0.016884261141581116
+Time step: 80 , divergence: -6.071532165918825e-18
+Time step: 80 , dsurface_storage: 2.3252048872817713e-06
+Time step: 80 , netoverlandflow: 0.1688658595085144
+Time step: 80 , surface_balance: -0.01688426111849319
+Time step: 80 , total balance: 2.308792361932423e-11
+slab1.out.press.00081.pfb
+Time step: 81 , dstorage: 0.016517264225272645
+Time step: 81 , divergence: 0.0
+Time step: 81 , dsurface_storage: 2.258281467834789e-06
+Time step: 81 , netoverlandflow: 0.16519522666931152
+Time step: 81 , surface_balance: -0.01651726401293429
+Time step: 81 , total balance: 2.1233835131363664e-10
+slab1.out.press.00082.pfb
+Time step: 82 , dstorage: 0.016163810174657078
+Time step: 82 , divergence: -1.734723475976807e-18
+Time step: 82 , dsurface_storage: 2.19399987613848e-06
+Time step: 82 , netoverlandflow: 0.1616600602865219
+Time step: 82 , surface_balance: -0.016163813146363143
+Time step: 82 , total balance: -2.971706066233962e-09
+slab1.out.press.00083.pfb
+Time step: 83 , dstorage: 0.01582320727140287
+Time step: 83 , divergence: 1.734723475976807e-18
+Time step: 83 , dsurface_storage: 2.1324454280304916e-06
+Time step: 83 , netoverlandflow: 0.15825344622135162
+Time step: 83 , surface_balance: -0.015823211804178103
+Time step: 83 , total balance: -4.532775226347128e-09
+slab1.out.press.00084.pfb
+Time step: 84 , dstorage: 0.015494794645198819
+Time step: 84 , divergence: -2.6020852139652106e-18
+Time step: 84 , dsurface_storage: 2.073591552620045e-06
+Time step: 84 , netoverlandflow: 0.1549687385559082
+Time step: 84 , surface_balance: -0.01549480063656723
+Time step: 84 , total balance: -5.9913684152570474e-09
+slab1.out.press.00085.pfb
+Time step: 85 , dstorage: 0.015177956105979497
+Time step: 85 , divergence: 1.3010426069826053e-18
+Time step: 85 , dsurface_storage: 2.017239846173214e-06
+Time step: 85 , netoverlandflow: 0.15179979801177979
+Time step: 85 , surface_balance: -0.015177962375067291
+Time step: 85 , total balance: -6.269087793660135e-09
+slab1.out.press.00086.pfb
+Time step: 86 , dstorage: 0.014872114002501189
+Time step: 86 , divergence: -4.336808689942018e-18
+Time step: 86 , dsurface_storage: 1.963266737673434e-06
+Time step: 86 , netoverlandflow: 0.14874082803726196
+Time step: 86 , surface_balance: -0.014872119723253037
+Time step: 86 , total balance: -5.7207518467947064e-09
+slab1.out.press.00087.pfb
+Time step: 87 , dstorage: 0.014576728087362652
+Time step: 87 , divergence: -4.336808689942018e-18
+Time step: 87 , dsurface_storage: 1.9115353319502394e-06
+Time step: 87 , netoverlandflow: 0.14578646421432495
+Time step: 87 , surface_balance: -0.014576735444894089
+Time step: 87 , total balance: -7.357531440193381e-09
+slab1.out.press.00088.pfb
+Time step: 88 , dstorage: 0.014291292884961889
+Time step: 88 , divergence: -6.5052130349130266e-18
+Time step: 88 , dsurface_storage: 1.8619163766535156e-06
+Time step: 88 , netoverlandflow: 0.14293161034584045
+Time step: 88 , surface_balance: -0.014291299304471906
+Time step: 88 , total balance: -6.419510020894129e-09
+slab1.out.press.00089.pfb
+Time step: 89 , dstorage: 0.014015334897427371
+Time step: 89 , divergence: -4.7704895589362195e-18
+Time step: 89 , dsurface_storage: 1.8142902659661227e-06
+Time step: 89 , netoverlandflow: 0.14017155766487122
+Time step: 89 , surface_balance: -0.0140153420350147
+Time step: 89 , total balance: -7.137587332045167e-09
+slab1.out.press.00090.pfb
+Time step: 90 , dstorage: 0.013748410016498791
+Time step: 90 , divergence: 8.239936510889834e-18
+Time step: 90 , dsurface_storage: 1.7685466101126693e-06
+Time step: 90 , netoverlandflow: 0.13750185072422028
+Time step: 90 , surface_balance: -0.01374841671207643
+Time step: 90 , total balance: -6.695577633213216e-09
+slab1.out.press.00091.pfb
+Time step: 91 , dstorage: 0.013490101188031506
+Time step: 91 , divergence: -4.336808689942018e-19
+Time step: 91 , dsurface_storage: 1.7245833670733292e-06
+Time step: 91 , netoverlandflow: 0.13491833209991455
+Time step: 91 , surface_balance: -0.013490108999153412
+Time step: 91 , total balance: -7.811121908115972e-09
+slab1.out.press.00092.pfb
+Time step: 92 , dstorage: 0.013240016315770322
+Time step: 92 , divergence: 2.6020852139652106e-18
+Time step: 92 , dsurface_storage: 1.6823059748839948e-06
+Time step: 92 , netoverlandflow: 0.13241705298423767
+Time step: 92 , surface_balance: -0.013240023178713398
+Time step: 92 , total balance: -6.862943075244315e-09
+slab1.out.press.00093.pfb
+Time step: 93 , dstorage: 0.012997786376326793
+Time step: 93 , divergence: -1.3010426069826053e-18
+Time step: 93 , dsurface_storage: 1.64162657700486e-06
+Time step: 93 , netoverlandflow: 0.12999434769153595
+Time step: 93 , surface_balance: -0.012997793328841104
+Time step: 93 , total balance: -6.952514313592828e-09
+slab1.out.press.00094.pfb
+Time step: 94 , dstorage: 0.01276306371859609
+Time step: 94 , divergence: 2.6020852139652106e-18
+Time step: 94 , dsurface_storage: 1.6024633513834553e-06
+Time step: 94 , netoverlandflow: 0.12764672935009003
+Time step: 94 , surface_balance: -0.012763070285393105
+Time step: 94 , total balance: -6.566797014211604e-09
+slab1.out.press.00095.pfb
+Time step: 95 , dstorage: 0.012535520635465897
+Time step: 95 , divergence: 3.903127820947816e-18
+Time step: 95 , dsurface_storage: 1.564739132301656e-06
+Time step: 95 , netoverlandflow: 0.12537091970443726
+Time step: 95 , surface_balance: -0.012535527231311424
+Time step: 95 , total balance: -6.595845523862543e-09
+slab1.out.press.00096.pfb
+Time step: 96 , dstorage: 0.012314847940774264
+Time step: 96 , divergence: -8.673617379884035e-19
+Time step: 96 , dsurface_storage: 1.5283819832138208e-06
+Time step: 96 , netoverlandflow: 0.12316383421421051
+Time step: 96 , surface_balance: -0.012314855039437838
+Time step: 96 , total balance: -7.0986635706115375e-09
+slab1.out.press.00097.pfb
+Time step: 97 , dstorage: 0.012100753636738938
+Time step: 97 , divergence: -3.0357660829594124e-18
+Time step: 97 , dsurface_storage: 1.4933246464258793e-06
+Time step: 97 , netoverlandflow: 0.1210225373506546
+Time step: 97 , surface_balance: -0.012100760410419034
+Time step: 97 , total balance: -6.773680098544384e-09
+slab1.out.press.00098.pfb
+Time step: 98 , dstorage: 0.011892976591003359
+Time step: 98 , divergence: -3.469446951953614e-18
+Time step: 98 , dsurface_storage: 1.4595245199414922e-06
+Time step: 98 , netoverlandflow: 0.11894425004720688
+Time step: 98 , surface_balance: -0.011892965852729776
+Time step: 98 , total balance: 1.0738273581117086e-08
+slab1.out.press.00099.pfb
+Time step: 99 , dstorage: 0.0116912226816108
+Time step: 99 , divergence: 2.168404344971009e-18
+Time step: 99 , dsurface_storage: 1.4268767012045084e-06
+Time step: 99 , netoverlandflow: 0.1169263944029808
+Time step: 99 , surface_balance: -0.011691212563596875
+Time step: 99 , total balance: 1.0118013927233161e-08
+slab1.out.press.00100.pfb
+Time step: 100 , dstorage: 0.011495262607222553
+Time step: 100 , divergence: 4.336808689942018e-18
+Time step: 100 , dsurface_storage: 1.3953603238239288e-06
+Time step: 100 , netoverlandflow: 0.1149664893746376
+Time step: 100 , surface_balance: -0.011495253763404451
+Time step: 100 , total balance: 8.843818105744797e-09
+slab1.out.press.00101.pfb
+Time step: 101 , dstorage: 0.011304861602425081
+Time step: 101 , divergence: -3.469446951953614e-18
+Time step: 101 , dsurface_storage: 1.364919034001986e-06
+Time step: 101 , netoverlandflow: 0.11306218057870865
+Time step: 101 , surface_balance: -0.011304852952572348
+Time step: 101 , total balance: 8.6498527317473e-09
+slab1.out.press.00102.pfb
+Time step: 102 , dstorage: 0.011119797196276756
+Time step: 102 , divergence: 4.336808689942018e-19
+Time step: 102 , dsurface_storage: 1.3355030507821418e-06
+Time step: 102 , netoverlandflow: 0.11121125519275665
+Time step: 102 , surface_balance: -0.011119790388753914
+Time step: 102 , total balance: 6.807522845735996e-09
+slab1.out.press.00103.pfb
+Time step: 103 , dstorage: 0.010939858396352456
+Time step: 103 , divergence: -2.168404344971009e-18
+Time step: 103 , dsurface_storage: 1.3070657197385496e-06
+Time step: 103 , netoverlandflow: 0.10941158980131149
+Time step: 103 , surface_balance: -0.010939851914411412
+Time step: 103 , total balance: 6.481941045658973e-09
+slab1.out.press.00104.pfb
+Time step: 104 , dstorage: 0.01076485273554945
+Time step: 104 , divergence: 0.0
+Time step: 104 , dsurface_storage: 1.2796048693763462e-06
+Time step: 104 , netoverlandflow: 0.10766112804412842
+Time step: 104 , surface_balance: -0.010764833572072495
+Time step: 104 , total balance: 1.91634769527984e-08
+slab1.out.press.00105.pfb
+Time step: 105 , dstorage: 0.010594571121035512
+Time step: 105 , divergence: 4.336808689942018e-18
+Time step: 105 , dsurface_storage: 1.2529669566435067e-06
+Time step: 105 , netoverlandflow: 0.10595806688070297
+Time step: 105 , surface_balance: -0.010594553907378169
+Time step: 105 , total balance: 1.721365734509468e-08
+slab1.out.press.00106.pfb
+Time step: 106 , dstorage: 0.010428844995267469
+Time step: 106 , divergence: -8.673617379884035e-19
+Time step: 106 , dsurface_storage: 1.227203660897927e-06
+Time step: 106 , netoverlandflow: 0.10430057346820831
+Time step: 106 , surface_balance: -0.010428830329424448
+Time step: 106 , total balance: 1.4665843019599719e-08
+slab1.out.press.00107.pfb
+Time step: 107 , dstorage: 0.010267501974030044
+Time step: 107 , divergence: -1.3010426069826053e-18
+Time step: 107 , dsurface_storage: 1.2022612530849272e-06
+Time step: 107 , netoverlandflow: 0.10268691182136536
+Time step: 107 , surface_balance: -0.010267488734618935
+Time step: 107 , total balance: 1.3239411106707499e-08
+slab1.out.press.00108.pfb
+Time step: 108 , dstorage: 0.010110373575134928
+Time step: 108 , divergence: 5.204170427930421e-18
+Time step: 108 , dsurface_storage: 1.178129511346615e-06
+Time step: 108 , netoverlandflow: 0.10111542791128159
+Time step: 108 , surface_balance: -0.010110365220410356
+Time step: 108 , total balance: 8.354724575189656e-09
+slab1.out.press.00109.pfb
+Time step: 109 , dstorage: 0.009957312979500619
+Time step: 109 , divergence: 1.734723475976807e-18
+Time step: 109 , dsurface_storage: 1.1546935191764768e-06
+Time step: 109 , netoverlandflow: 0.09958461672067642
+Time step: 109 , surface_balance: -0.009957307164812981
+Time step: 109 , total balance: 5.814687640562978e-09
+slab1.out.press.00110.pfb
+Time step: 110 , dstorage: 0.009808178101600038
+Time step: 110 , divergence: 8.673617379884035e-19
+Time step: 110 , dsurface_storage: 1.1319970615612167e-06
+Time step: 110 , netoverlandflow: 0.09809298068284988
+Time step: 110 , surface_balance: -0.009808166443752457
+Time step: 110 , total balance: 1.1657847579612428e-08
+slab1.out.press.00111.pfb
+Time step: 111 , dstorage: 0.00966280651820365
+Time step: 111 , divergence: -8.673617379884035e-19
+Time step: 111 , dsurface_storage: 1.109991233070592e-06
+Time step: 111 , netoverlandflow: 0.09663910418748856
+Time step: 111 , surface_balance: -0.0096628006137803
+Time step: 111 , total balance: 5.904423346485356e-09
+slab1.out.press.00112.pfb
+Time step: 112 , dstorage: 0.00952107490974279
+Time step: 112 , divergence: 4.336808689942018e-19
+Time step: 112 , dsurface_storage: 1.0886491135982676e-06
+Time step: 112 , netoverlandflow: 0.0952216237783432
+Time step: 112 , surface_balance: -0.009521073728720722
+Time step: 112 , total balance: 1.181022068209922e-09
+slab1.out.press.00113.pfb
+Time step: 113 , dstorage: 0.009382854254694775
+Time step: 113 , divergence: -3.0357660829594124e-18
+Time step: 113 , dsurface_storage: 1.0679442366345415e-06
+Time step: 113 , netoverlandflow: 0.09383925050497055
+Time step: 113 , surface_balance: -0.009382857292524936
+Time step: 113 , total balance: -3.0378301607107292e-09
+slab1.out.press.00114.pfb
+Time step: 114 , dstorage: 0.00924802158015603
+Time step: 114 , divergence: -2.6020852139652106e-18
+Time step: 114 , dsurface_storage: 1.0478497515130293e-06
+Time step: 114 , netoverlandflow: 0.0924907699227333
+Time step: 114 , surface_balance: -0.009248029328786333
+Time step: 114 , total balance: -7.748630305464183e-09
+slab1.out.press.00115.pfb
+Time step: 115 , dstorage: 0.00911645953590727
+Time step: 115 , divergence: -4.336808689942018e-18
+Time step: 115 , dsurface_storage: 1.0283408308503364e-06
+Time step: 115 , netoverlandflow: 0.09117498993873596
+Time step: 115 , surface_balance: -0.009116470653042746
+Time step: 115 , total balance: -1.1117135478700387e-08
+slab1.out.press.00116.pfb
+Time step: 116 , dstorage: 0.008988056036660912
+Time step: 116 , divergence: -2.168404344971009e-18
+Time step: 116 , dsurface_storage: 1.0093942171940482e-06
+Time step: 116 , netoverlandflow: 0.08989079296588898
+Time step: 116 , surface_balance: -0.008988070461165249
+Time step: 116 , total balance: -1.4424504338785329e-08
+slab1.out.press.00117.pfb
+Time step: 117 , dstorage: 0.008862703958309025
+Time step: 117 , divergence: -1.3010426069826053e-18
+Time step: 117 , dsurface_storage: 9.909879623393278e-07
+Time step: 117 , netoverlandflow: 0.08863711357116699
+Time step: 117 , surface_balance: -0.00886272074168339
+Time step: 117 , total balance: -1.6783374363634843e-08
+slab1.out.press.00118.pfb
+Time step: 118 , dstorage: 0.008740300859773193
+Time step: 118 , divergence: 2.6020852139652106e-18
+Time step: 118 , dsurface_storage: 9.731012538737402e-07
+Time step: 118 , netoverlandflow: 0.08741293102502823
+Time step: 118 , surface_balance: -0.00874032000124895
+Time step: 118 , total balance: -1.9141475754213232e-08
+slab1.out.press.00119.pfb
+Time step: 119 , dstorage: 0.008620748729584467
+Time step: 119 , divergence: -1.3010426069826053e-18
+Time step: 119 , dsurface_storage: 9.557143190350002e-07
+Time step: 119 , netoverlandflow: 0.0862172544002533
+Time step: 119 , surface_balance: -0.00862076953944178
+Time step: 119 , total balance: -2.0809857313262638e-08
+slab1.out.press.00120.pfb
+Time step: 120 , dstorage: 0.008503953750009167
+Time step: 120 , divergence: 2.168404344971009e-18
+Time step: 120 , dsurface_storage: 9.388083484583164e-07
+Time step: 120 , netoverlandflow: 0.08504915237426758
+Time step: 120 , surface_balance: -0.008503976242813785
+Time step: 120 , total balance: -2.249280461476707e-08
+
+In the first 2 hours, the balance increment due to rain is -0.45.
+
+terrainfollwing
+terrainfollowing1.out.press.00000.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+terrainfollowing1.out.press.00001.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 1 , dstorage: 0.07379212555958847
+Time step: 1 , divergence: -1.249000902703301e-16
+Time step: 1 , dsurface_storage: -0.00035090141780652937
+Time step: 1 , netoverlandflow: 1.2344125509262085
+Time step: 1 , surface_balance: -0.1237921580005435
+Time step: 1 , total balance: -0.05000003244095477
+terrainfollowing1.out.press.00002.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 2 , dstorage: 0.038302117892280343
+Time step: 2 , divergence: -3.3306690738754696e-16
+Time step: 2 , dsurface_storage: 6.377060398968427e-05
+Time step: 2 , netoverlandflow: 0.8836592435836792
+Time step: 2 , surface_balance: -0.08830215673461048
+Time step: 2 , total balance: -0.0500000388423303
+terrainfollowing1.out.press.00003.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 3 , dstorage: 0.015521301130049951
+Time step: 3 , divergence: 3.469446951953614e-17
+Time step: 3 , dsurface_storage: 4.706751518159549e-05
+Time step: 3 , netoverlandflow: 0.6556842923164368
+Time step: 3 , surface_balance: -0.06552136469669433
+Time step: 3 , total balance: -0.05000006356664396
+terrainfollowing1.out.press.00004.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 4 , dstorage: 0.006950034384837081
+Time step: 4 , divergence: 2.0816681711721685e-17
+Time step: 4 , dsurface_storage: 1.941822514150686e-05
+Time step: 4 , netoverlandflow: 0.5696947574615479
+Time step: 4 , surface_balance: -0.056950056775955216
+Time step: 4 , total balance: -0.050000022391118455
+terrainfollowing1.out.press.00005.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 5 , dstorage: 0.003276228765972949
+Time step: 5 , divergence: 9.71445146547012e-17
+Time step: 5 , dsurface_storage: 8.676441542421979e-06
+Time step: 5 , netoverlandflow: 0.5328493714332581
+Time step: 5 , surface_balance: -0.053276262936957565
+Time step: 5 , total balance: -0.050000034170984864
+terrainfollowing1.out.press.00006.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 6 , dstorage: 0.0015824560267988178
+Time step: 6 , divergence: 2.1510571102112408e-16
+Time step: 6 , dsurface_storage: 4.079979564024363e-06
+Time step: 6 , netoverlandflow: 0.5158654451370239
+Time step: 6 , surface_balance: -0.05158246602425449
+Time step: 6 , total balance: -0.05000000999745566
+terrainfollowing1.out.press.00007.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 7 , dstorage: 0.000772700857818674
+Time step: 7 , divergence: 2.498001805406602e-16
+Time step: 7 , dsurface_storage: 1.9692558599621176e-06
+Time step: 7 , netoverlandflow: 0.5077468752861023
+Time step: 7 , surface_balance: -0.050772720507924446
+Time step: 7 , total balance: -0.05000001965010563
+terrainfollowing1.out.press.00008.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 8 , dstorage: 0.0003789962908368229
+Time step: 8 , divergence: 4.163336342344337e-17
+Time step: 8 , dsurface_storage: 9.619592128694591e-07
+Time step: 8 , netoverlandflow: 0.5037997364997864
+Time step: 8 , surface_balance: -0.05037901094570771
+Time step: 8 , total balance: -0.05000001465487092
+terrainfollowing1.out.press.00009.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 9 , dstorage: 0.0001861777349084527
+Time step: 9 , divergence: 2.498001805406602e-16
+Time step: 9 , dsurface_storage: 4.7221655668440075e-07
+Time step: 9 , netoverlandflow: 0.5018666982650757
+Time step: 9 , surface_balance: -0.050186199100067004
+Time step: 9 , total balance: -0.05000002136515861
+terrainfollowing1.out.press.00010.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 10 , dstorage: 9.139406586928644e-05
+Time step: 10 , divergence: -1.3877787807814457e-17
+Time step: 10 , dsurface_storage: 2.321267980013458e-07
+Time step: 10 , netoverlandflow: 0.5009174942970276
+Time step: 10 , surface_balance: -0.05009151879302088
+Time step: 10 , total balance: -0.050000124727151464
+terrainfollowing1.out.press.00011.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 11 , dstorage: 4.495745661030771e-05
+Time step: 11 , divergence: 1.5265566588595902e-16
+Time step: 11 , dsurface_storage: 1.1409750101383336e-07
+Time step: 11 , netoverlandflow: 0.5004512667655945
+Time step: 11 , surface_balance: -0.05004501481423261
+Time step: 11 , total balance: -0.050000057357622335
+terrainfollowing1.out.press.00012.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 12 , dstorage: 2.2100292760526483e-05
+Time step: 12 , divergence: 1.249000902703301e-16
+Time step: 12 , dsurface_storage: 5.614414740062745e-08
+Time step: 12 , netoverlandflow: 0.500221848487854
+Time step: 12 , surface_balance: -0.050022128704638
+Time step: 12 , total balance: -0.05000002841187765
+terrainfollowing1.out.press.00013.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 13 , dstorage: 1.0857989645790198e-05
+Time step: 13 , divergence: -3.5388358909926865e-16
+Time step: 13 , dsurface_storage: 2.7610602254974368e-08
+Time step: 13 , netoverlandflow: 0.500109076499939
+Time step: 13 , surface_balance: -0.0500108807844497
+Time step: 13 , total balance: -0.05000002279480429
+terrainfollowing1.out.press.00014.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 14 , dstorage: 5.3325230976271e-06
+Time step: 14 , divergence: -4.85722573273506e-16
+Time step: 14 , dsurface_storage: 1.3569378571622569e-08
+Time step: 14 , netoverlandflow: 0.5000536441802979
+Time step: 14 , surface_balance: -0.05000535159370927
+Time step: 14 , total balance: -0.05000001907061168
+terrainfollowing1.out.press.00015.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 15 , dstorage: 2.6182226127418468e-06
+Time step: 15 , divergence: -2.7755575615628914e-17
+Time step: 15 , dsurface_storage: 6.665531045217882e-09
+Time step: 15 , netoverlandflow: 0.5000264048576355
+Time step: 15 , surface_balance: -0.050002635310348625
+Time step: 15 , total balance: -0.05000001708773591
+terrainfollowing1.out.press.00016.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 16 , dstorage: 1.2848812590724942e-06
+Time step: 16 , divergence: -1.8735013540549517e-16
+Time step: 16 , dsurface_storage: 3.271383342982794e-09
+Time step: 16 , netoverlandflow: 0.5000130534172058
+Time step: 16 , surface_balance: -0.05000130132527918
+Time step: 16 , total balance: -0.05000001644402038
+terrainfollowing1.out.press.00017.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 17 , dstorage: 6.306974552026945e-07
+Time step: 17 , divergence: 1.1102230246251565e-16
+Time step: 17 , dsurface_storage: 1.6078291129582346e-09
+Time step: 17 , netoverlandflow: 0.5000064969062805
+Time step: 17 , surface_balance: -0.05000064733774088
+Time step: 17 , total balance: -0.05000001664028547
+terrainfollowing1.out.press.00018.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 18 , dstorage: 3.09542654668149e-07
+Time step: 18 , divergence: 1.3877787807814457e-16
+Time step: 18 , dsurface_storage: 7.883545479836843e-10
+Time step: 18 , netoverlandflow: 0.5000032782554626
+Time step: 18 , surface_balance: -0.050000327782249776
+Time step: 18 , total balance: -0.05000001823959508
+terrainfollowing1.out.press.00019.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 19 , dstorage: 1.5207245367566263e-07
+Time step: 19 , divergence: 2.7755575615628914e-17
+Time step: 19 , dsurface_storage: 3.87654438578763e-10
+Time step: 19 , netoverlandflow: 0.5000016689300537
+Time step: 19 , surface_balance: -0.050000167995467054
+Time step: 19 , total balance: -0.050000015923013535
+terrainfollowing1.out.press.00020.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 20 , dstorage: 7.483252673946839e-08
+Time step: 20 , divergence: 3.469446951953614e-17
+Time step: 20 , dsurface_storage: 1.8911142183469787e-10
+Time step: 20 , netoverlandflow: 0.5000009536743164
+Time step: 20 , surface_balance: -0.0500000974134944
+Time step: 20 , total balance: -0.05000002258096757
+terrainfollowing1.out.press.00021.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 21 , dstorage: 0.02083330366802437
+Time step: 21 , divergence: -1.6653345369377348e-16
+Time step: 21 , dsurface_storage: 8.307999450558564e-05
+Time step: 21 , netoverlandflow: 0.2091643065214157
+Time step: 21 , surface_balance: -0.020833350285106956
+Time step: 21 , total balance: -4.6617082714861535e-08
+terrainfollowing1.out.press.00022.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 22 , dstorage: 0.013028942433761853
+Time step: 22 , divergence: -9.71445146547012e-17
+Time step: 22 , dsurface_storage: 2.9779268807647556e-05
+Time step: 22 , netoverlandflow: 0.1305873543024063
+Time step: 22 , surface_balance: -0.013028956720226529
+Time step: 22 , total balance: -1.4286464889573525e-08
+terrainfollowing1.out.press.00023.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 23 , dstorage: 0.009074808551063384
+Time step: 23 , divergence: -2.3245294578089215e-16
+Time step: 23 , dsurface_storage: 1.7798900507514973e-05
+Time step: 23 , netoverlandflow: 0.09092611074447632
+Time step: 23 , surface_balance: -0.009074812360204632
+Time step: 23 , total balance: -3.809141498750668e-09
+terrainfollowing1.out.press.00024.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 24 , dstorage: 0.006742703791136685
+Time step: 24 , divergence: 2.1510571102112408e-16
+Time step: 24 , dsurface_storage: 1.1984200079446784e-05
+Time step: 24 , netoverlandflow: 0.06754690408706665
+Time step: 24 , surface_balance: -0.006742706115494961
+Time step: 24 , total balance: -2.3243579422294047e-09
+terrainfollowing1.out.press.00025.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 25 , dstorage: 0.0052378575506884404
+Time step: 25 , divergence: 6.938893903907228e-17
+Time step: 25 , dsurface_storage: 8.63228905157364e-06
+Time step: 25 , netoverlandflow: 0.05247015506029129
+Time step: 25 , surface_balance: -0.005238383216977556
+Time step: 25 , total balance: -5.256662892159925e-07
+terrainfollowing1.out.press.00026.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 26 , dstorage: 0.004205361459823476
+Time step: 26 , divergence: 1.0408340855860843e-16
+Time step: 26 , dsurface_storage: 6.5150602595888645e-06
+Time step: 26 , netoverlandflow: 0.042121127247810364
+Time step: 26 , surface_balance: -0.0042055975713891905
+Time step: 26 , total balance: -2.3611156535485733e-07
+terrainfollowing1.out.press.00027.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 27 , dstorage: 0.0034623058335317325
+Time step: 27 , divergence: 2.2898349882893854e-16
+Time step: 27 , dsurface_storage: 5.0932544031367745e-06
+Time step: 27 , netoverlandflow: 0.03467588871717453
+Time step: 27 , surface_balance: -0.003462495663880445
+Time step: 27 , total balance: -1.8983034877004257e-07
+terrainfollowing1.out.press.00028.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 28 , dstorage: 0.0029078068282205444
+Time step: 28 , divergence: 2.5326962749261384e-16
+Time step: 28 , dsurface_storage: 4.092801811735179e-06
+Time step: 28 , netoverlandflow: 0.029119953513145447
+Time step: 28 , surface_balance: -0.002907902596068938
+Time step: 28 , total balance: -9.576784846740405e-08
+terrainfollowing1.out.press.00029.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 29 , dstorage: 0.002481661969964464
+Time step: 29 , divergence: 1.4224732503009818e-16
+Time step: 29 , dsurface_storage: 3.3620884905985693e-06
+Time step: 29 , netoverlandflow: 0.02485075779259205
+Time step: 29 , surface_balance: -0.0024817136442024774
+Time step: 29 , total balance: -5.167423789212422e-08
+terrainfollowing1.out.press.00030.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 30 , dstorage: 0.002146223737919936
+Time step: 30 , divergence: -8.326672684688674e-17
+Time step: 30 , dsurface_storage: 2.812225944574275e-06
+Time step: 30 , netoverlandflow: 0.021490657702088356
+Time step: 30 , surface_balance: -0.0021462534976981326
+Time step: 30 , total balance: -2.9759778346488686e-08
+terrainfollowing1.out.press.00031.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 31 , dstorage: 0.00187685819167534
+Time step: 31 , divergence: -1.3530843112619095e-16
+Time step: 31 , dsurface_storage: 2.38808372117727e-06
+Time step: 31 , netoverlandflow: 0.018792636692523956
+Time step: 31 , surface_balance: -0.0018768755855312184
+Time step: 31 , total balance: -1.7393855602371167e-08
+terrainfollowing1.out.press.00032.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 32 , dstorage: 0.0016568624405613802
+Time step: 32 , divergence: 6.938893903907228e-18
+Time step: 32 , dsurface_storage: 2.054010126198807e-06
+Time step: 32 , netoverlandflow: 0.016589276492595673
+Time step: 32 , surface_balance: -0.0016568736391333685
+Time step: 32 , total balance: -1.1198571920473244e-08
+terrainfollowing1.out.press.00033.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 33 , dstorage: 0.0014745688347322728
+Time step: 33 , divergence: -1.7694179454963432e-16
+Time step: 33 , dsurface_storage: 1.786144285535413e-06
+Time step: 33 , netoverlandflow: 0.014763624407351017
+Time step: 33 , surface_balance: -0.0014745763197326306
+Time step: 33 , total balance: -7.485000310530898e-09
+terrainfollowing1.out.press.00034.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 34 , dstorage: 0.001321611364597305
+Time step: 34 , divergence: 1.942890293094024e-16
+Time step: 34 , dsurface_storage: 1.5680305105224897e-06
+Time step: 34 , netoverlandflow: 0.013231845572590828
+Time step: 34 , surface_balance: -0.0013216165500316247
+Time step: 34 , total balance: -5.18543438049468e-09
+terrainfollowing1.out.press.00035.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 35 , dstorage: 0.001191856202449426
+Time step: 35 , divergence: 3.469446951953614e-18
+Time step: 35 , dsurface_storage: 1.3880266034981868e-06
+Time step: 35 , netoverlandflow: 0.01193248014897108
+Time step: 35 , surface_balance: -0.001191860058142803
+Time step: 35 , total balance: -3.855693132825966e-09
+terrainfollowing1.out.press.00036.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 36 , dstorage: 0.001080717094413374
+Time step: 36 , divergence: 7.979727989493313e-17
+Time step: 36 , dsurface_storage: 1.2377092716355088e-06
+Time step: 36 , netoverlandflow: 0.010819575749337673
+Time step: 36 , surface_balance: -0.0010807198889451963
+Time step: 36 , total balance: -2.794531932248656e-09
+terrainfollowing1.out.press.00037.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 37 , dstorage: 0.0009847050952694835
+Time step: 37 , divergence: 4.85722573273506e-17
+Time step: 37 , dsurface_storage: 1.1108626802708853e-06
+Time step: 37 , netoverlandflow: 0.009858180768787861
+Time step: 37 , surface_balance: -0.0009847072374815796
+Time step: 37 , total balance: -2.1422121541936345e-09
+terrainfollowing1.out.press.00038.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 38 , dstorage: 0.0009011249386637011
+Time step: 38 , divergence: -1.4224732503009818e-16
+Time step: 38 , dsurface_storage: 1.0028189750260182e-06
+Time step: 38 , netoverlandflow: 0.009021294303238392
+Time step: 38 , surface_balance: -0.0009011266346318776
+Time step: 38 , total balance: -1.6959682304362733e-09
+terrainfollowing1.out.press.00039.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 39 , dstorage: 0.0008278656924048593
+Time step: 39 , divergence: -2.8796409701215e-16
+Time step: 39 , dsurface_storage: 9.100175962621851e-07
+Time step: 39 , netoverlandflow: 0.008287769742310047
+Time step: 39 , surface_balance: -0.0008278669566347426
+Time step: 39 , total balance: -1.2642299568321747e-09
+terrainfollowing1.out.press.00040.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 40 , dstorage: 0.0007632535273226883
+Time step: 40 , divergence: 2.42861286636753e-16
+Time step: 40 , dsurface_storage: 8.297042563842023e-07
+Time step: 40 , netoverlandflow: 0.007640842813998461
+Time step: 40 , surface_balance: -0.0007632545771434619
+Time step: 40 , total balance: -1.0498208691256394e-09
+terrainfollowing1.out.press.00041.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 41 , dstorage: 0.000705946305413689
+Time step: 41 , divergence: -6.245004513516506e-17
+Time step: 41 , dsurface_storage: 7.597212241148683e-07
+Time step: 41 , netoverlandflow: 0.007067068945616484
+Time step: 41 , surface_balance: -0.0007059471733375335
+Time step: 41 , total balance: -8.679239826836493e-10
+terrainfollowing1.out.press.00042.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 42 , dstorage: 0.0006548568812824278
+Time step: 42 , divergence: 1.8735013540549517e-16
+Time step: 42 , dsurface_storage: 6.983585975529114e-07
+Time step: 42 , netoverlandflow: 0.006555559579282999
+Time step: 42 , surface_balance: -0.0006548576226138113
+Time step: 42 , total balance: -7.413315239457319e-10
+terrainfollowing1.out.press.00043.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 43 , dstorage: 0.0006090964645119891
+Time step: 43 , divergence: 1.734723475976807e-16
+Time step: 43 , dsurface_storage: 6.442472030542363e-07
+Time step: 43 , netoverlandflow: 0.006097413133829832
+Time step: 43 , surface_balance: -0.000609097066179929
+Time step: 43 , total balance: -6.01667937694117e-10
+terrainfollowing1.out.press.00044.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 44 , dstorage: 0.0005679314407112104
+Time step: 44 , divergence: -1.8388068845354155e-16
+Time step: 44 , dsurface_storage: 5.962884284618791e-07
+Time step: 44 , netoverlandflow: 0.005685284733772278
+Time step: 44 , surface_balance: -0.0005679321965902981
+Time step: 44 , total balance: -7.558793313489076e-10
+terrainfollowing1.out.press.00045.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 45 , dstorage: 0.0005307549195029391
+Time step: 45 , divergence: -5.273559366969494e-16
+Time step: 45 , dsurface_storage: 5.535495258379653e-07
+Time step: 45 , netoverlandflow: 0.005313090980052948
+Time step: 45 , surface_balance: -0.000530755560120989
+Time step: 45 , total balance: -6.406183430951451e-10
+terrainfollowing1.out.press.00046.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 46 , dstorage: 0.0004970559135959395
+Time step: 46 , divergence: 4.85722573273506e-17
+Time step: 46 , dsurface_storage: 5.153240933716882e-07
+Time step: 46 , netoverlandflow: 0.004975717514753342
+Time step: 46 , surface_balance: -0.0004970564506650268
+Time step: 46 , total balance: -5.370690350781082e-10
+terrainfollowing1.out.press.00047.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 47 , dstorage: 0.0004664051602728484
+Time step: 47 , divergence: -5.204170427930421e-17
+Time step: 47 , dsurface_storage: 4.809814930946219e-07
+Time step: 47 , netoverlandflow: 0.004668865818530321
+Time step: 47 , surface_balance: -0.0004664056061807036
+Time step: 47 , total balance: -4.459079078200645e-10
+terrainfollowing1.out.press.00048.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 48 , dstorage: 0.0004384387253708083
+Time step: 48 , divergence: 1.457167719820518e-16
+Time step: 48 , dsurface_storage: 4.5000915253731036e-07
+Time step: 48 , netoverlandflow: 0.004388891160488129
+Time step: 48 , surface_balance: -0.00043843910107550945
+Time step: 48 , total balance: -3.7570473121473213e-10
+terrainfollowing1.out.press.00049.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 49 , dstorage: 0.0004128463039589393
+Time step: 49 , divergence: -8.326672684688674e-17
+Time step: 49 , dsurface_storage: 4.219766368270454e-07
+Time step: 49 , netoverlandflow: 0.00413268618285656
+Time step: 49 , surface_balance: -0.0004128466532903611
+Time step: 49 , total balance: -3.493314422453597e-10
+terrainfollowing1.out.press.00050.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 50 , dstorage: 0.00038936190551409075
+Time step: 50 , divergence: 1.734723475976807e-16
+Time step: 50 , dsurface_storage: 3.9652027534542205e-07
+Time step: 50 , netoverlandflow: 0.003897587303072214
+Time step: 50 , surface_balance: -0.000389362210031876
+Time step: 50 , total balance: -3.045179247651575e-10
+terrainfollowing1.out.press.00051.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 51 , dstorage: 0.000367756385649033
+Time step: 51 , divergence: 8.673617379884035e-17
+Time step: 51 , dsurface_storage: 3.733311254403805e-07
+Time step: 51 , netoverlandflow: 0.003681299975141883
+Time step: 51 , surface_balance: -0.00036775668385104616
+Time step: 51 , total balance: -2.9820216435050284e-10
+terrainfollowing1.out.press.00052.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 52 , dstorage: 0.0003478314167485886
+Time step: 52 , divergence: -1.734723475976807e-17
+Time step: 52 , dsurface_storage: 3.5214537570220846e-07
+Time step: 52 , netoverlandflow: 0.0034818381536751986
+Time step: 52 , surface_balance: -0.00034783167581258373
+Time step: 52 , total balance: -2.590633992050062e-10
+terrainfollowing1.out.press.00053.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 53 , dstorage: 0.0003294145879182658
+Time step: 53 , divergence: -6.938893903907228e-18
+Time step: 53 , dsurface_storage: 3.3273665031745606e-07
+Time step: 53 , netoverlandflow: 0.0032974753994494677
+Time step: 53 , surface_balance: -0.0003294147974738632
+Time step: 53 , total balance: -2.0955562632374303e-10
+terrainfollowing1.out.press.00054.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 54 , dstorage: 0.0003123553976506245
+Time step: 54 , divergence: -9.020562075079397e-17
+Time step: 54 , dsurface_storage: 3.1490979994357926e-07
+Time step: 54 , netoverlandflow: 0.003126705065369606
+Time step: 54 , surface_balance: -0.00031235560255778313
+Time step: 54 , total balance: -2.0490695251673685e-10
+terrainfollowing1.out.press.00055.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 55 , dstorage: 0.00029651962571848383
+Time step: 55 , divergence: 1.734723475976807e-17
+Time step: 55 , dsurface_storage: 2.984757249928033e-07
+Time step: 55 , netoverlandflow: 0.0029682170134037733
+Time step: 55 , surface_balance: -0.00029652322561538454
+Time step: 55 , total balance: -3.5998970263073637e-09
+terrainfollowing1.out.press.00056.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 56 , dstorage: 0.00028179687273617755
+Time step: 56 , divergence: -4.5102810375396984e-17
+Time step: 56 , dsurface_storage: 2.8333862405732447e-07
+Time step: 56 , netoverlandflow: 0.002820833120495081
+Time step: 56 , surface_balance: -0.0002817999792462169
+Time step: 56 , total balance: -3.1065101463445544e-09
+terrainfollowing1.out.press.00057.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 57 , dstorage: 0.00026808112542036494
+Time step: 57 , divergence: -2.8102520310824275e-16
+Time step: 57 , dsurface_storage: 2.6933370752994584e-07
+Time step: 57 , netoverlandflow: 0.0026835312601178885
+Time step: 57 , surface_balance: -0.0002680837864834928
+Time step: 57 , total balance: -2.6610632725132533e-09
+terrainfollowing1.out.press.00058.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 58 , dstorage: 0.00025528187483511884
+Time step: 58 , divergence: 0.0
+Time step: 58 , dsurface_storage: 2.5635168008976246e-07
+Time step: 58 , netoverlandflow: 0.002555405255407095
+Time step: 58 , surface_balance: -0.00025528418550215193
+Time step: 58 , total balance: -2.3106669355676956e-09
+terrainfollowing1.out.press.00059.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 59 , dstorage: 0.00024331865160745394
+Time step: 59 , divergence: -1.1102230246251565e-16
+Time step: 59 , dsurface_storage: 2.4429539492991804e-07
+Time step: 59 , netoverlandflow: 0.002435649512335658
+Time step: 59 , surface_balance: -0.0002433206558386359
+Time step: 59 , total balance: -2.0042312393053763e-09
+terrainfollowing1.out.press.00060.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 60 , dstorage: 0.00023211974228003543
+Time step: 60 , divergence: -2.8449465006019636e-16
+Time step: 60 , dsurface_storage: 2.3307827821314453e-07
+Time step: 60 , netoverlandflow: 0.002323545515537262
+Time step: 60 , surface_balance: -0.00023212147036513
+Time step: 60 , total balance: -1.7280853380208239e-09
+terrainfollowing1.out.press.00061.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 61 , dstorage: 0.00022092895217046661
+Time step: 61 , divergence: 2.949029909160572e-16
+Time step: 61 , dsurface_storage: 2.211919141727945e-07
+Time step: 61 , netoverlandflow: 0.0022191216703504324
+Time step: 61 , surface_balance: -0.00022169097512087044
+Time step: 61 , total balance: -7.620229502194875e-07
+terrainfollowing1.out.press.00062.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 62 , dstorage: 0.0002111229579707533
+Time step: 62 , divergence: 2.255140518769849e-16
+Time step: 62 , dsurface_storage: 2.1298044629328761e-07
+Time step: 62 , netoverlandflow: 0.0021203975193202496
+Time step: 62 , surface_balance: -0.00021182677439611473
+Time step: 62 , total balance: -7.038164249358048e-07
+terrainfollowing1.out.press.00063.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 63 , dstorage: 0.00020191238090992063
+Time step: 63 , divergence: 8.673617379884035e-17
+Time step: 63 , dsurface_storage: 2.0371453586638188e-07
+Time step: 63 , netoverlandflow: 0.002027657348662615
+Time step: 63 , surface_balance: -0.00020256201742001206
+Time step: 63 , total balance: -6.496365100479295e-07
+terrainfollowing1.out.press.00064.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 64 , dstorage: 0.0001932469457935973
+Time step: 64 , divergence: -2.1163626406917047e-16
+Time step: 64 , dsurface_storage: 1.950480229405985e-07
+Time step: 64 , netoverlandflow: 0.0019404242048040032
+Time step: 64 , surface_balance: -0.00019384737827822583
+Time step: 64 , total balance: -6.004324848360443e-07
+terrainfollowing1.out.press.00065.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 65 , dstorage: 0.00018508282304884266
+Time step: 65 , divergence: -5.204170427930421e-17
+Time step: 65 , dsurface_storage: 1.8696117629931334e-07
+Time step: 65 , netoverlandflow: 0.0018582541961222887
+Time step: 65 , surface_balance: -0.00018563846425669566
+Time step: 65 , total balance: -5.556412081240969e-07
+terrainfollowing1.out.press.00066.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 66 , dstorage: 0.00017738112581530902
+Time step: 66 , divergence: -2.3245294578089215e-16
+Time step: 66 , dsurface_storage: 1.7939273887336387e-07
+Time step: 66 , netoverlandflow: 0.0017807531403377652
+Time step: 66 , surface_balance: -0.00017789593002605228
+Time step: 66 , total balance: -5.148042107327999e-07
+terrainfollowing1.out.press.00067.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 67 , dstorage: 0.00017010702816570248
+Time step: 67 , divergence: -5.204170427930421e-17
+Time step: 67 , dsurface_storage: 1.7229210081760338e-07
+Time step: 67 , netoverlandflow: 0.0017075681826099753
+Time step: 67 , surface_balance: -0.0001705845232497969
+Time step: 67 , total balance: -4.774950840662207e-07
+terrainfollowing1.out.press.00068.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 68 , dstorage: 0.00016322914764156475
+Time step: 68 , divergence: 1.0408340855860843e-16
+Time step: 68 , dsurface_storage: 1.6561702524355244e-07
+Time step: 68 , netoverlandflow: 0.0016383813926950097
+Time step: 68 , surface_balance: -0.00016367251933387437
+Time step: 68 , total balance: -4.43371692027128e-07
+terrainfollowing1.out.press.00069.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 69 , dstorage: 0.0001567190791735432
+Time step: 69 , divergence: -2.220446049250313e-16
+Time step: 69 , dsurface_storage: 1.5933124843659399e-07
+Time step: 69 , netoverlandflow: 0.001572905108332634
+Time step: 69 , surface_balance: -0.0001571311854055929
+Time step: 69 , total balance: -4.121062321948976e-07
+terrainfollowing1.out.press.00070.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 70 , dstorage: 0.00015055102414162974
+Time step: 70 , divergence: -3.191891195797325e-16
+Time step: 70 , dsurface_storage: 1.5340304101614742e-07
+Time step: 70 , netoverlandflow: 0.001510878442786634
+Time step: 70 , surface_balance: -0.00015093444705841335
+Time step: 70 , total balance: -3.8342291711415677e-07
+terrainfollowing1.out.press.00071.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 71 , dstorage: 0.00014470148462828207
+Time step: 71 , divergence: -7.632783294297951e-17
+Time step: 71 , dsurface_storage: 1.478042987468423e-07
+Time step: 71 , netoverlandflow: 0.0014520634431391954
+Time step: 71 , surface_balance: -0.0001450585400151727
+Time step: 71 , total balance: -3.5705538689936867e-07
+terrainfollowing1.out.press.00072.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 72 , dstorage: 0.00013914900566335464
+Time step: 72 , divergence: -4.85722573273506e-17
+Time step: 72 , dsurface_storage: 1.425099195555528e-07
+Time step: 72 , netoverlandflow: 0.001396243111230433
+Time step: 72 , surface_balance: -0.00013948180702425385
+Time step: 72 , total balance: -3.328013607854785e-07
+terrainfollowing1.out.press.00073.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 73 , dstorage: 0.0001338739546813874
+Time step: 73 , divergence: -1.7694179454963432e-16
+Time step: 73 , dsurface_storage: 1.3749734626567386e-07
+Time step: 73 , netoverlandflow: 0.0013432190753519535
+Time step: 73 , surface_balance: -0.00013418440727854664
+Time step: 73 , total balance: -3.104525973310346e-07
+terrainfollowing1.out.press.00074.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 74 , dstorage: 0.00012885833087689352
+Time step: 74 , divergence: 1.734723475976807e-17
+Time step: 74 , dsurface_storage: 1.3274621328396043e-07
+Time step: 74 , netoverlandflow: 0.0012928091455250978
+Time step: 74 , surface_balance: -0.00012914817124960886
+Time step: 74 , total balance: -2.8984037244231264e-07
+terrainfollowing1.out.press.00075.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 75 , dstorage: 0.00012408559916008213
+Time step: 75 , divergence: 3.7470027081099033e-16
+Time step: 75 , dsurface_storage: 1.2823806351904528e-07
+Time step: 75 , netoverlandflow: 0.001244846498593688
+Time step: 75 , surface_balance: -0.00012435641179584975
+Time step: 75 , total balance: -2.7081263533415556e-07
+terrainfollowing1.out.press.00076.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 76 , dstorage: 0.00011954054469061467
+Time step: 76 , divergence: 1.9081958235744878e-16
+Time step: 76 , dsurface_storage: 1.2395611573239058e-07
+Time step: 76 , netoverlandflow: 0.0011991772335022688
+Time step: 76 , surface_balance: -0.00011979377160006906
+Time step: 76 , total balance: -2.532269092227202e-07
+terrainfollowing1.out.press.00077.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 77 , dstorage: 0.00011520914483169852
+Time step: 77 , divergence: -2.2898349882893854e-16
+Time step: 77 , dsurface_storage: 1.198850698231003e-07
+Time step: 77 , netoverlandflow: 0.0011556597892194986
+Time step: 77 , surface_balance: -0.00011544609239693524
+Time step: 77 , total balance: -2.3694756517284032e-07
+terrainfollowing1.out.press.00078.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 78 , dstorage: 0.00011107845598257041
+Time step: 78 , divergence: -2.1510571102112408e-16
+Time step: 78 , dsurface_storage: 1.1601094166067047e-07
+Time step: 78 , netoverlandflow: 0.001114163431338966
+Time step: 78 , surface_balance: -0.00011130033510261896
+Time step: 78 , total balance: -2.2187912000759535e-07
+terrainfollowing1.out.press.00079.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 79 , dstorage: 0.00010713651321116787
+Time step: 79 , divergence: 1.700029006457271e-16
+Time step: 79 , dsurface_storage: 1.1232092149581385e-07
+Time step: 79 , netoverlandflow: 0.0010745673207566142
+Time step: 79 , surface_balance: -0.00010734441260935713
+Time step: 79 , total balance: -2.0789939800258672e-07
+terrainfollowing1.out.press.00080.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 80 , dstorage: 0.00010337224096233256
+Time step: 80 , divergence: 3.469446951953614e-17
+Time step: 80 , dsurface_storage: 1.0880325159753067e-07
+Time step: 80 , netoverlandflow: 0.0010367598151788116
+Time step: 80 , surface_balance: -0.0001035671826318582
+Time step: 80 , total balance: -1.949416697545614e-07
+terrainfollowing1.out.press.00081.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 81 , dstorage: 9.977537339723574e-05
+Time step: 81 , divergence: 1.0755285551056204e-16
+Time step: 81 , dsurface_storage: 1.0544711975528256e-07
+Time step: 81 , netoverlandflow: 0.0010006370721384883
+Time step: 81 , surface_balance: -9.995825863890202e-05
+Time step: 81 , total balance: -1.8288524155501973e-07
+terrainfollowing1.out.press.00082.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 82 , dstorage: 9.633638314450509e-05
+Time step: 82 , divergence: -9.020562075079397e-17
+Time step: 82 , dsurface_storage: 1.0224256606906292e-07
+Time step: 82 , netoverlandflow: 0.000966103165410459
+Time step: 82 , surface_balance: -9.650807543016837e-05
+Time step: 82 , total balance: -1.716922858191472e-07
+terrainfollowing1.out.press.00083.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 83 , dstorage: 9.30464174245132e-05
+Time step: 83 , divergence: 3.0531133177191805e-16
+Time step: 83 , dsurface_storage: 9.9180400956079e-08
+Time step: 83 , netoverlandflow: 0.0009330687462352216
+Time step: 83 , surface_balance: -9.320769276737456e-05
+Time step: 83 , total balance: -1.6127534262916354e-07
+terrainfollowing1.out.press.00084.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 84 , dstorage: 8.98972406598161e-05
+Time step: 84 , divergence: -1.734723475976807e-17
+Time step: 84 , dsurface_storage: 9.625213271917315e-08
+Time step: 84 , netoverlandflow: 0.0009014506940729916
+Time step: 84 , surface_balance: -9.004881727457999e-05
+Time step: 84 , total balance: -1.515766147354436e-07
+terrainfollowing1.out.press.00085.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 85 , dstorage: 8.688118280783443e-05
+Time step: 85 , divergence: 1.0755285551056204e-16
+Time step: 85 , dsurface_storage: 9.344990331183698e-08
+Time step: 85 , netoverlandflow: 0.000871171650942415
+Time step: 85 , surface_balance: -8.702371519092967e-05
+Time step: 85 , total balance: -1.4253238334732687e-07
+terrainfollowing1.out.press.00086.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 86 , dstorage: 8.399109275585839e-05
+Time step: 86 , divergence: -3.885780586188048e-16
+Time step: 86 , dsurface_storage: 9.076643118730178e-08
+Time step: 86 , netoverlandflow: 0.0008421596721746027
+Time step: 86 , surface_balance: -8.412520515184755e-05
+Time step: 86 , total balance: -1.3411239566454847e-07
+terrainfollowing1.out.press.00087.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 87 , dstorage: 8.122029620704707e-05
+Time step: 87 , divergence: 1.734723475976807e-16
+Time step: 87 , dsurface_storage: 8.819496028636468e-08
+Time step: 87 , netoverlandflow: 0.0008143472950905561
+Time step: 87 , surface_balance: -8.134653454876925e-05
+Time step: 87 , total balance: -1.262383418007551e-07
+terrainfollowing1.out.press.00088.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 88 , dstorage: 7.856255755858644e-05
+Time step: 88 , divergence: 1.734723475976807e-17
+Time step: 88 , dsurface_storage: 8.572921438792772e-08
+Time step: 88 , netoverlandflow: 0.0007876718300394714
+Time step: 88 , surface_balance: -7.868145233436769e-05
+Time step: 88 , total balance: -1.1889477567750273e-07
+terrainfollowing1.out.press.00089.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 89 , dstorage: 7.601204533779805e-05
+Time step: 89 , divergence: -7.28583859910259e-17
+Time step: 89 , dsurface_storage: 8.336335614689454e-08
+Time step: 89 , netoverlandflow: 0.000762074370868504
+Time step: 89 , surface_balance: -7.612407809627808e-05
+Time step: 89 , total balance: -1.1203275861876305e-07
+terrainfollowing1.out.press.00090.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 90 , dstorage: 7.356330081490338e-05
+Time step: 90 , divergence: 3.7816971776294395e-16
+Time step: 90 , dsurface_storage: 8.109195026083339e-08
+Time step: 90 , netoverlandflow: 0.0007375000277534127
+Time step: 90 , surface_balance: -7.366890936988892e-05
+Time step: 90 , total balance: -1.0560855469993191e-07
+terrainfollowing1.out.press.00091.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 91 , dstorage: 7.121120945792177e-05
+Time step: 91 , divergence: -6.938893903907228e-17
+Time step: 91 , dsurface_storage: 7.890993027156683e-08
+Time step: 91 , netoverlandflow: 0.0007138972287066281
+Time step: 91 , surface_balance: -7.131081439558277e-05
+Time step: 91 , total balance: -9.9604937846276e-08
+terrainfollowing1.out.press.00092.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 92 , dstorage: 6.895097493531989e-05
+Time step: 92 , divergence: 2.636779683484747e-16
+Time step: 92 , dsurface_storage: 7.681256858426692e-08
+Time step: 92 , netoverlandflow: 0.0006912177195772529
+Time step: 92 , surface_balance: -6.904495938914102e-05
+Time step: 92 , total balance: -9.398445364669494e-08
+terrainfollowing1.out.press.00093.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 93 , dstorage: 6.677809540585203e-05
+Time step: 93 , divergence: 2.5673907444456745e-16
+Time step: 93 , dsurface_storage: 7.479544934890178e-08
+Time step: 93 , netoverlandflow: 0.0006694160983897746
+Time step: 93 , surface_balance: -6.686681584482008e-05
+Time step: 93 , total balance: -8.872043840216226e-08
+terrainfollowing1.out.press.00094.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 94 , dstorage: 6.468834186622308e-05
+Time step: 94 , divergence: 5.898059818321144e-17
+Time step: 94 , dsurface_storage: 7.285444387192025e-08
+Time step: 94 , netoverlandflow: 0.0006484497571364045
+Time step: 94 , surface_balance: -6.477212418015158e-05
+Time step: 94 , total balance: -8.378231384706392e-08
+terrainfollowing1.out.press.00095.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 95 , dstorage: 6.267773835215299e-05
+Time step: 95 , divergence: 3.122502256758253e-17
+Time step: 95 , dsurface_storage: 7.098568830238145e-08
+Time step: 95 , netoverlandflow: 0.0006282787071540952
+Time step: 95 , surface_balance: -6.275688648229865e-05
+Time step: 95 , total balance: -7.914813017137479e-08
+terrainfollowing1.out.press.00096.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 96 , dstorage: 6.074254381177027e-05
+Time step: 96 , divergence: -6.591949208711867e-17
+Time step: 96 , dsurface_storage: 6.918556333865007e-08
+Time step: 96 , netoverlandflow: 0.0006088653462938964
+Time step: 96 , surface_balance: -6.081734833845523e-05
+Time step: 96 , total balance: -7.48045265938635e-08
+terrainfollowing1.out.press.00097.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 97 , dstorage: 5.8879235490324686e-05
+Time step: 97 , divergence: 1.700029006457271e-16
+Time step: 97 , dsurface_storage: 6.745067574681296e-08
+Time step: 97 , netoverlandflow: 0.0005901741096749902
+Time step: 97 , surface_balance: -5.894996247453949e-05
+Time step: 97 , total balance: -7.072698425536483e-08
+terrainfollowing1.out.press.00098.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 98 , dstorage: 5.708449368251392e-05
+Time step: 98 , divergence: -1.734723475976807e-16
+Time step: 98 , dsurface_storage: 6.577784151083017e-08
+Time step: 98 , netoverlandflow: 0.000572171644307673
+Time step: 98 , surface_balance: -5.7151388772043755e-05
+Time step: 98 , total balance: -6.689508938451105e-08
+terrainfollowing1.out.press.00099.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 99 , dstorage: 5.535518772375623e-05
+Time step: 99 , divergence: 1.6306400674181987e-16
+Time step: 99 , dsurface_storage: 6.416407043875423e-08
+Time step: 99 , netoverlandflow: 0.0005548264598473907
+Time step: 99 , surface_balance: -5.5418483369491836e-05
+Time step: 99 , total balance: -6.329564528409493e-08
+terrainfollowing1.out.press.00100.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 100 , dstorage: 5.3688363105990674e-05
+Time step: 100 , divergence: 1.457167719820518e-16
+Time step: 100 , dsurface_storage: 6.260655209368109e-08
+Time step: 100 , netoverlandflow: 0.0005381087539717555
+Time step: 100 , surface_balance: -5.374826957267763e-05
+Time step: 100 , total balance: -5.990646628414864e-08
+terrainfollowing1.out.press.00101.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 101 , dstorage: 5.208122961498007e-05
+Time step: 101 , divergence: -3.365363543395006e-16
+Time step: 101 , dsurface_storage: 6.110264290808813e-08
+Time step: 101 , netoverlandflow: 0.0005219905287958682
+Time step: 101 , surface_balance: -5.213795241946601e-05
+Time step: 101 , total balance: -5.6722804449987896e-08
+terrainfollowing1.out.press.00102.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 102 , dstorage: 5.0531150396875e-05
+Time step: 102 , divergence: -7.28583859910259e-17
+Time step: 102 , dsurface_storage: 5.964985436706049e-08
+Time step: 102 , netoverlandflow: 0.0005064452416263521
+Time step: 102 , surface_balance: -5.0584875035863906e-05
+Time step: 102 , total balance: -5.3724639324098655e-08
+terrainfollowing1.out.press.00103.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 103 , dstorage: 4.903563187100496e-05
+Time step: 103 , divergence: -3.9898639947466563e-16
+Time step: 103 , dsurface_storage: 5.824584217908541e-08
+Time step: 103 , netoverlandflow: 0.0004914478049613535
+Time step: 103 , surface_balance: -4.9086536836743554e-05
+Time step: 103 , total balance: -5.0904965898795895e-08
+terrainfollowing1.out.press.00104.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 104 , dstorage: 4.759231441458806e-05
+Time step: 104 , divergence: -1.734723475976807e-16
+Time step: 104 , dsurface_storage: 5.688839630458085e-08
+Time step: 104 , netoverlandflow: 0.00047697447007521987
+Time step: 104 , surface_balance: -4.764056079400469e-05
+Time step: 104 , total balance: -4.824637958242284e-08
+terrainfollowing1.out.press.00105.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 105 , dstorage: 4.619896375161487e-05
+Time step: 105 , divergence: 1.0408340855860843e-17
+Time step: 105 , dsurface_storage: 5.5575431802590685e-08
+Time step: 105 , netoverlandflow: 0.0004630027979146689
+Time step: 105 , surface_balance: -4.62447043596643e-05
+Time step: 105 , total balance: -4.574060807199798e-08
+terrainfollowing1.out.press.00106.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 106 , dstorage: 4.485346298576786e-05
+Time step: 106 , divergence: 8.326672684688674e-17
+Time step: 106 , dsurface_storage: 5.430498039087724e-08
+Time step: 106 , netoverlandflow: 0.00044951148447580636
+Time step: 106 , surface_balance: -4.489684492238128e-05
+Time step: 106 , total balance: -4.3381936692260537e-08
+terrainfollowing1.out.press.00107.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 107 , dstorage: 4.3553805222244345e-05
+Time step: 107 , divergence: -1.0408340855860843e-17
+Time step: 107 , dsurface_storage: 5.3075182671943973e-08
+Time step: 107 , netoverlandflow: 0.0004364803317002952
+Time step: 107 , surface_balance: -4.3594957987357576e-05
+Time step: 107 , total balance: -4.115276502902887e-08
+terrainfollowing1.out.press.00108.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 108 , dstorage: 4.229808672896957e-05
+Time step: 108 , divergence: 1.0061396160665481e-16
+Time step: 108 , dsurface_storage: 5.1884280956548404e-08
+Time step: 108 , netoverlandflow: 0.00042389024747535586
+Time step: 108 , surface_balance: -4.233714264936632e-05
+Time step: 108 , total balance: -3.905592034503247e-08
+terrainfollowing1.out.press.00109.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 109 , dstorage: 4.108450059238898e-05
+Time step: 109 , divergence: -3.122502256758253e-17
+Time step: 109 , dsurface_storage: 5.0730612640224217e-08
+Time step: 109 , netoverlandflow: 0.0004117230128031224
+Time step: 109 , surface_balance: -4.1121570667672014e-05
+Time step: 109 , total balance: -3.707007528372386e-08
+terrainfollowing1.out.press.00110.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 110 , dstorage: 3.9911330827053365e-05
+Time step: 110 , divergence: 1.2836953722228372e-16
+Time step: 110 , dsurface_storage: 4.961260407533797e-08
+Time step: 110 , netoverlandflow: 0.0003999614273197949
+Time step: 110 , surface_balance: -3.9946530127904153e-05
+Time step: 110 , total balance: -3.519930082476752e-08
+terrainfollowing1.out.press.00111.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 111 , dstorage: 3.877694690192267e-05
+Time step: 111 , divergence: -2.0816681711721685e-16
+Time step: 111 , dsurface_storage: 4.852876490340319e-08
+Time step: 111 , netoverlandflow: 0.0003885890473611653
+Time step: 111 , surface_balance: -3.881037815400041e-05
+Time step: 111 , total balance: -3.3431252131205236e-08
+terrainfollowing1.out.press.00112.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 112 , dstorage: 3.767979865027969e-05
+Time step: 112 , divergence: -2.1510571102112408e-16
+Time step: 112 , dsurface_storage: 4.747768280687311e-08
+Time step: 112 , netoverlandflow: 0.00037759036058560014
+Time step: 112 , surface_balance: -3.77115591033489e-05
+Time step: 112 , total balance: -3.1760453090418084e-08
+terrainfollowing1.out.press.00113.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 113 , dstorage: 3.661841153195606e-05
+Time step: 113 , divergence: -2.0122792321330962e-16
+Time step: 113 , dsurface_storage: 4.645801863977401e-08
+Time step: 113 , netoverlandflow: 0.00036695049493573606
+Time step: 113 , surface_balance: -3.664859365772112e-05
+Time step: 113 , total balance: -3.0182126308647694e-08
+terrainfollowing1.out.press.00114.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 114 , dstorage: 3.5591382220779514e-05
+Time step: 114 , divergence: -1.5265566588595902e-16
+Time step: 114 , dsurface_storage: 4.546850191801665e-08
+Time step: 114 , netoverlandflow: 0.00035665539326146245
+Time step: 114 , surface_balance: -3.562007155182399e-05
+Time step: 114 , total balance: -2.8689331407066865e-08
+terrainfollowing1.out.press.00115.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 115 , dstorage: 3.459737449139485e-05
+Time step: 115 , divergence: 1.1449174941446927e-16
+Time step: 115 , dsurface_storage: 4.450792662434747e-08
+Time step: 115 , netoverlandflow: 0.00034669158048927784
+Time step: 115 , surface_balance: -3.462465157749496e-05
+Time step: 115 , total balance: -2.7277085937194023e-08
+terrainfollowing1.out.press.00116.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 116 , dstorage: 3.363511538260339e-05
+Time step: 116 , divergence: -6.938893903907228e-17
+Time step: 116 , dsurface_storage: 4.3575147312770776e-08
+Time step: 116 , netoverlandflow: 0.0003370463091414422
+Time step: 116 , surface_balance: -3.366105794961873e-05
+Time step: 116 , total balance: -2.5942567264541916e-08
+terrainfollowing1.out.press.00117.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 117 , dstorage: 3.270339161580383e-05
+Time step: 117 , divergence: -3.2959746043559335e-16
+Time step: 117 , dsurface_storage: 4.2669075489202374e-08
+Time step: 117 , netoverlandflow: 0.0003277073847129941
+Time step: 117 , surface_balance: -3.272806939581021e-05
+Time step: 117 , total balance: -2.4677780027793084e-08
+terrainfollowing1.out.press.00118.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 118 , dstorage: 3.18010462495512e-05
+Time step: 118 , divergence: 3.469446951953614e-18
+Time step: 118 , dsurface_storage: 4.1788676235200476e-08
+Time step: 118 , netoverlandflow: 0.0003186631656717509
+Time step: 118 , surface_balance: -3.182453007372717e-05
+Time step: 118 , total balance: -2.348382425326756e-08
+terrainfollowing1.out.press.00119.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 119 , dstorage: 3.0926975552165656e-05
+Time step: 119 , divergence: -7.28583859910259e-17
+Time step: 119 , dsurface_storage: 4.0932965072612686e-08
+Time step: 119 , netoverlandflow: 0.0003099025634583086
+Time step: 119 , surface_balance: -3.0949324108354004e-05
+Time step: 119 , total balance: -2.234855605437458e-08
+terrainfollowing1.out.press.00120.pfb
+Terrain following
+subsurfaceflow
+overlandflow
+Time step: 120 , dstorage: 3.0080126076555917e-05
+Time step: 120 , divergence: -1.734723475976807e-17
+Time step: 120 , dsurface_storage: 4.0101005030962854e-08
+Time step: 120 , netoverlandflow: 0.00030141501338221133
+Time step: 120 , surface_balance: -3.0101401060785933e-05
+Time step: 120 , total balance: -2.127498440612774e-08
+
+In the first 2 hours, the balance increment due to rain is -0.5.

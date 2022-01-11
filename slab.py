@@ -2,7 +2,8 @@ import heat as ht
 import numpy as np
 import sys
 import os
-from Diagnostics import Diagnostics 
+from Diagnostics import Diagnostics, printroot
+print=printroot
 import IO as io
 
 #Run ParFlow test case
@@ -33,7 +34,7 @@ permx    = io.read_pfb(name + '.out.perm_x.pfb',split=split)
 permy    = io.read_pfb(name + '.out.perm_y.pfb',split=split)
 permz    = io.read_pfb(name + '.out.perm_y.pfb',split=split)
 
-dx = dy = 1. 
+dx = dy = 1.
 dz = 0.05
 nx = 100
 ny = 1
@@ -76,7 +77,7 @@ for t in range (nt+1):
 
     #Obtain pressure at the land surface
     top_layer_press = diag.TopLayerPressure(press)
-    
+
     #Returns an unmasked 3D field of subsurface storage, (L^3)
     subsurface_storage=diag.SubsurfaceStorage(press,satur)
 
@@ -117,17 +118,17 @@ for t in range (nt+1):
 
       #Balance for each column
       balance_column  = ht.sum(balance_cell*mask,axis=0)
-      balance_column += balance_surface 
+      balance_column += balance_surface
 
       #Mass balance over full domain without flux at the top boundary
-      print('Time step:',t, ', dstorage:',ht.sum(dstorage_column))
-      print('Time step:',t, ', divergence:',ht.sum(divergence_column))
-      print('Time step:',t, ', dsurface_storage:',ht.sum(dsurface_storage_cell))
-      print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow))
-      print('Time step:',t, ', surface_balance:',ht.sum(balance_surface))
-      print('Time step:',t, ', total balance:',ht.sum(balance_column))
-      
-    
+      print('Time step:',t, ', dstorage:',ht.sum(dstorage_column).item())
+      print('Time step:',t, ', divergence:',ht.sum(divergence_column).item())
+      print('Time step:',t, ', dsurface_storage:',ht.sum(dsurface_storage_cell).item())
+      print('Time step:',t, ', netoverlandflow:',ht.sum(net_overland_flow).item())
+      print('Time step:',t, ', surface_balance:',ht.sum(balance_surface).item())
+      print('Time step:',t, ', total balance:',ht.sum(balance_column).item())
+
+
     #New becomes old in the ensuing time step
     old_subsurface_storage = subsurface_storage
     old_surface_storage = surface_storage
