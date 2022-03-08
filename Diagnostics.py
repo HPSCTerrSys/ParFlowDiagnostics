@@ -14,7 +14,7 @@ def printroot(*args, **kwargs):
 
 
 class Diagnostics:  # Make this a subclass of ht.DNDarray?
-    def __init__(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split=np.nan, Split3D=np.nan, Split2D=np.nan):
+    def __init__(self, Mask, Perm, Poro, Sstorage, Ssat, Sres, Nvg, Alpha, Mannings, Slopex, Slopey, Dx, Dy, Dz, Dzmult, Nx, Ny, Nz, Terrainfollowing, Split=None):
         self.Mask             = Mask
         self.Perm             = Perm
         self.Poro             = Poro
@@ -34,21 +34,25 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         self.Ny               = Ny
         self.Nz               = Nz
         self.Terrainfollowing = Terrainfollowing
-        if Split is None or not np.isnan(Split):
-            self.Split3D = Split
-            self.Split2D = Split
-            self.Split = Split
-        elif Split3D is None or not np.isnan(Split3D):
-            self.Split3D = Split3D
-            if Split2D is None or not np.isnan(Split2D):
-                self.Split2D = Split2D
-            else:
-                self.Split2D = self.Split3D
-                self.Split = None
-        else:
-            self.Split3D = None
-            self.Split2D = None
-            self.Split = None
+        self.Split = ht.sanitize_axis((Nz, Ny, Nx), Split)
+        self.Split3D = self.Split
+        self.Split2D = self.Split -1 if self.Split is not None and self.Split > 0 else None
+
+        #if Split is None or not np.isnan(Split):
+        #    self.Split3D = Split
+        #    self.Split2D = Split
+        #    self.Split = Split
+        #elif Split3D is None or not np.isnan(Split3D):
+        #    self.Split3D = Split3D
+        #    if Split2D is None or not np.isnan(Split2D):
+        #        self.Split2D = Split2D
+        #    else:
+        #        self.Split2D = self.Split3D
+        #        self.Split = None
+        #else:
+        #    self.Split3D = None
+        #    self.Split2D = None
+        #    self.Split = None
         #self.Split3D          = Split3D if Split is None else Split
         #self.Split2D          = Split2D if Split2D is not None else self.Split3D
 
