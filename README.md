@@ -4,7 +4,7 @@ Authors: Stefan KOLLET (s.kollet@fz-juelich.de), Ben BOURGART b.bourgart@fz-juel
 
 ParFlow Diagnostics (PD) is a Python class that provides functions to calculate all variables needed for a global or local mass balance based on [ParFlow hydrologic model](https://www.parflow.org) output. An essential feature is that PD uses the [Helmholtz Analytics Toolkit (HeAT)](https://github.com/helmholtz-analytics/heat/) Python library. This makes PD big data-capable; with HeAT PD can be run in parallel on a single HPC node (or any multi-core machine, including notebooks) up many nodes of an HPC system using CPUs as well as GPUs.
 
-For details on HeAT, see the respective information referenced on the [HeAT github repository](https://github.com/helmholtz-analytics/heat/). This is not a HeAT tutorial, but using PD one also learns the basics of using HeAT. **HeAT is a totally generic library, it is only used here, similarly to using numpy, to enable our PD calculations to be run in parallel.**
+For details on HeAT, see the respective information referenced on the [HeAT github repository](https://github.com/helmholtz-analytics/heat/). This is not a HeAT tutorial, but using PD one also learns the basics of using HeAT. **HeAT is a totally generic library, it is only used here, similarly to using numpy, to enable our PD calculations to be run in parallel. It is currently recommended to use the PD not in parallel and only use a single process.**
 
 **All information and software tools to use PD are within this repository. This README.md file contains all information to get started with PD including simple cookbooks.**
 
@@ -99,10 +99,12 @@ You can copy these software environment initialisation files everwhere you like 
 Important notes:
 - There are multiple HeAT installations under `/p/project/cslts/local/{jureca,juwels}/HeAT`; each of these insdtallations comes with its own `ini`-file; these different installations feature different HeAT versions (see HeAT version tag and also HeAT git commit -- in case it is a not a release version) and have been installed at different dates using (potentially) different underlying software environments, i.e., toolchains (see the [JSC information](https://apps.fz-juelich.de/jsc/hps/jureca/software-modules.html) on the toolchains and software environments). Just follow advice in this README.md on which HeAT environment to load.
 - The Diagnostics class is based on HeAT and requires methods to read ParFlow output (netCDF, PFB, Silo).
-- The Diagnostics class takes as input the split-axis for HeAT. Both splitting in x and y direction is supported (in a zyx coordinate system) as well as None for not splitting at all. In order to use mutliple nodes, the split axis must not be None. The job configuration allows basically arbitrary MPI and OpenMP parallelisation, however it is recommended to use 2 MPI-processes per compute node and set the number of OpenMP threads accordingly, i.e. #number_of_CPU_cores_per_node / 2  (24 on JUWELS, 64 on JurecaDC). Tests have shown that, if one is using HeAT (and hence also PD tools) in a parallel setup on a single multi-core node or accross multiple nodes, the best performance is reached when running with one MPI task per CPU and mutpiple OpenMP threads on the individual CPU cores.  The correct way to do this in the SBATCH script is by setting the according SLURM parameters:
+- The Diagnostics class takes as input the split-axis for HeAT. Both splitting in x and y direction is supported (in a zyx coordinate system) as well as None for not splitting at all. In order to use mutliple nodes, the split axis must not be None. The job configuration allows basically arbitrary MPI and OpenMP parallelisation, however it is recommended to use <!--- 2 MPI-processes per compute node and set the number of OpenMP threads accordingly, i.e. #number_of_CPU_cores_per_node / 2  (24 on JUWELS, 64 on JurecaDC). Tests have shown that, if one is using HeAT (and hence also PD tools) in a parallel setup on a single multi-core node or accross multiple nodes, the best performance is reached when running with one MPI task per CPU and mutpiple OpenMP threads on the individual CPU cores. --->**only one MPI-process with the PD.**
+ The correct way to do this in the SBATCH script is by setting the according SLURM parameters:
 ```
-#SBATCH --ntasks-per-node=2
-#SBATCH --cpus-per-task=<#number_of_CPU_cores_per_node / 2>
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=<#number_of_CPU_cores_per_node>
 export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 ```
 More Details can be found at [writing-a-batch-script](https://apps.fz-juelich.de/jsc/hps/juwels/batchsystem.html#writing-a-batch-script).
@@ -142,7 +144,7 @@ During the development phase, a base version of PD was used (non-vectorized and 
 
 * All Methods have been tested using both "no split", "splitting on a single node", and "splitting across multiple nodes"; i.e. reference results of serial PD tests are compared as part of testing with parallel test results (see the correctness tests section below).
 * All Methods iterating over an input array have been vectorized at a significant performance increase and been verified to yield the same result.
-As of the merge on 11.03.2022, only the vectorized versions are provided in the `master` branch. If you need to recover the non-vectorized versions, please checkout an earlier commit from the master branch or the `parallel_tests` branch. 
+As of the merge on 11.03.2022, only the vectorized versions are provided in the `master` branch. If you need to recover the non-vectorized versions, please checkout an earlier commit from the master branch or the `parallel_tests` branch.
 * At the beginning of the development, several issues arose with HeAT (especially indexing), those are fixed as of HeAT version 1.1. See the revision of HeAT in the [HeAT github](https://github.com/helmholtz-analytics/heat/) for details.
 
 ## Advanced usage: PD big-data tests and benchmarking
