@@ -56,35 +56,9 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #self.Split3D          = Split3D if Split is None else Split
         #self.Split2D          = Split2D if Split2D is not None else self.Split3D
 
-    def SubsurfaceStorage(self, Press, Satur):
-        shape3D = (self.Nz, self.Ny, self.Nx)
-        subsurface_storage = ht.zeros(shape3D, dtype=ht.float64, split=self.Split3D)
-        for k in range(self.Nz):
-            subsurface_storage[k,:,:] = Satur[k,:,:] * self.Poro[k,:,:] * self.Dx * self.Dy * self.Dz * self.Dzmult[k]
-            subsurface_storage[k,:,:] += Press[k,:,:] * self.Sstorage[k,:,:] * Satur[k,:,:] * self.Dx * self.Dy * self.Dz * self.Dzmult[k]
-        return(subsurface_storage)
-
     def VolumetricMoisture(self, Satur):
         volumetric_moisture = ht.mul(Satur,self.Poro)
         return(volumetric_moisture)
-
-    def TopLayerPressure(self, Press):
-        shape2D = (self.Ny, self.Nx)
-        fill_val = 99999.0
-        #Toplayerpress = ht.full(shape2D, fill_val, dtype=ht.float64, split=self.Split2D)
-#         Toplayerpress = ht.full_like(Press[0], fill_val)
-        check = ht.full(shape2D, -1, split=self.Mask[0].split)
-        Toplayerpress = ht.full_like(check, fill_val, dtype=ht.float64)
-        for k in reversed(range(self.Nz)):
-            mask = self.Mask[k]      #ht.asarray(self.Mask[k].larray, is_split=self.Split2D)
-            press = Press[k]         #ht.asarray(Press[k].larray, is_split=self.Split2D)
-            cond1 = (mask>0).astype(ht.bool)
-            cond2 = (check<0).astype(ht.bool)
-            #print(cond1.lnumel, cond1.dtype, cond2.lnumel, cond2.dtype, flush=True)
-            Toplayerpress[:,:] = ht.where(cond1 & cond2, press, Toplayerpress[:,:])
-            #Check also contains the the layer index k of the top layer
-            check[:,:] = ht.where((mask>0.0) & (check[:,:]<0), k, check[:,:])
-        return(Toplayerpress)
 
     def SurfaceStorage(self,Toplayerpress):
         shape2D = (self.Ny,self.Nx)
@@ -107,202 +81,6 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         flowx[:,:] = dirx * x_slope_mannings * Ponding**(5./3.)
         flowy[:,:] = diry * y_slope_mannings * Ponding**(5./3.)
         return(flowx, flowy)
-
-    def NetLateralOverlandFlow(self, overland_flow_x, overland_flow_y):
-        shape2D = (self.Ny, self.Nx)
-        #Nix = ht.zeros(shape2D, split=self.Split2D)
-
-        #Calc flow east
-        #ParFlow:ke_[io] = pfmax(qx_[io], 0.0) - pfmax(-qx_[io + 1], 0.0);
-        flow_east = ht.zeros(shape2D, split=0)
-        overland_flow_x = ht.resplit(overland_flow_x, 0) if overland_flow_x.split is not None and overland_flow_x.split != 0 else overland_flow_x
-
-        flow_east[:,self.Nx-1] = ht.where(overland_flow_x[:,self.Nx-1]>0.0, overland_flow_x[:,self.Nx-1], 0.0)
-        for i in range (self.Nx-1):
-            #printroot('.', end='')
-            flow_east[:,i]  = ht.maximum(overland_flow_x[:,i], 0.0)
-            flow_east[:,i] -= ht.maximum((-1.0)*overland_flow_x[:,i+1], 0.0)
-        flow_east.resplit_(self.Split2D)
-        printroot('flow east')
-
-        #Calc flow west
-        #ParFlow:kw_[io] = pfmax(qx_[io - 1], 0.0) - pfmax(-qx_[io], 0.0);
-        flow_west = ht.zeros(shape2D, split=0)
-        flow_west[:,0] = ht.where(overland_flow_x[:,0]<0.0, overland_flow_x[:,0], 0.0)
-        for i in range (1,self.Nx):
-            #printroot('.', end='')
-            flow_west[:,i]  = ht.maximum(overland_flow_x[:,i-1], 0.0)
-            flow_west[:,i] -= ht.maximum((-1.0)*overland_flow_x[:,i], 0.0)
-        flow_west.resplit_(self.Split2D)
-        printroot('flow west')
-
-        #Calc flow north
-        #ParFlow:kn_[io] = pfmax(qy_[io], 0.0) - pfmax(-qy_[io + sy_p], 0.0);
-        overland_flow_y = ht.resplit(overland_flow_y, 1) if overland_flow_y.split is not None and overland_flow_y.split != 1 else overland_flow_y
-        flow_north = ht.zeros(shape2D, split=1)
-        flow_north[self.Ny-1,:] = ht.where(overland_flow_y[self.Ny-1,:]>0.0, overland_flow_y[self.Ny-1,:],0.0)
-        for j in range(self.Ny-1):
-            #printroot('.', end='')
-            flow_north[j,:]  = ht.maximum(overland_flow_y[j,:], 0.0)
-            flow_north[j,:] -= ht.maximum((-1.0)*overland_flow_y[j+1,:], 0.0)
-        flow_north.resplit_(self.Split2D)
-        printroot('flow_north')
-
-        #Calc flow south
-        #ParFlow:ks_[io] = pfmax(qy_[io - sy_p], 0.0) - pfmax(-qy_[io], 0.0);
-        flow_south = ht.zeros(shape2D, split=1)
-        flow_south[0,:] = ht.where(overland_flow_y[0,:]<0.0, overland_flow_y[0,:], 0.0)
-        for j in range (1,self.Ny):
-            #printroot('.', end='')
-            flow_south[j,:]  = ht.maximum(overland_flow_y[j-1,:], 0.0)
-            flow_south[j,:] -= ht.maximum((-1.0)*overland_flow_y[j,:], 0.0)
-        flow_south.resplit_(self.Split2D)
-        printroot('flow south')
-
-        #Calc net lateral overland flow for each grid cell, (L^3/T)
-        #ParFlow: ((ke_[io] - kw_[io]) / dx + (kn_[io] - ks_[io]) / dy
-        net_lateral_overlandflow = ht.zeros(shape2D, split=self.Split2D)
-        net_lateral_overlandflow = self.Dy * (flow_east - flow_west) + self.Dx * (flow_north - flow_south)
-
-        return(net_lateral_overlandflow)
-
-    def SubsurfaceFlow(self, Press, Krel):
-        """ This function does calculate the subsurface flow based Richards EQ
-
-        This function does calculate the subsurface flow through all 6 ParFlow 
-        cell faces based on the Richards-Equation. The sign is according to 
-        the coordinate system used by ParFlow, with the origin in the lower 
-        left corner and at the model bottom. One example: a positive flowleft 
-        value indicates a positive flow along the x-axis at the left cell face, 
-        meaning water is flowing into the respective cell. In turn a negative 
-        flowright value indicates a negative flow along the x-axis at the right 
-        cell face, meaning water is flowing into the respective cell also.
-        More detailed explaination can be found with the following paper, also 
-        including adjustments for a terrain-following grid formulation:
-        https://www.sciencedirect.com/science/article/abs/pii/S0309170812002564
-
-        --- Used equations
-        orig.: q(x) = -K_s(x) * k_rel(h) * grad(h+z)
-        terr.: q(x) = -K_s(x) * k_rel(h) * [grad(h+z) * cos(Theta) + sin(Theta)]
-
-        With:
-          q     = volumetric (Darcy) flux in [L/T]
-          K_s   = saturated hydr. conductivity tensor [L/T]
-          k_rel = relative permeability [-]
-          h     = pressure-head [L]
-          z     = elevation-head [L]
-          Theta = local angle of slope [-]
-
-        INPUT: 
-          Press = 3D (z,y,x) pressure-head [L]
-          Krel  = 3D (z,y,x) rel. permeability [-]
-          Other Parameters are part of class-object (self)
-
-        RETURN:
-          Subsurface flow though all 6 ParFlow cell faces [L^3/T]:
-            flowleft,flowright,flowfront,flowback,flowbottom,flowtop
-          All flows are calculate for the cell faces and not the cell center.
-        """
-        #ParFlow
-        #x_dir_g   = Mean(gravity * sin(atan(x_ssl_dat[io])), gravity * sin(atan(x_ssl_dat[io + 1])));
-        #x_dir_g_c = Mean(gravity * cos(atan(x_ssl_dat[io])), gravity * cos(atan(x_ssl_dat[io + 1])));
-        #y_dir_g   = Mean(gravity * sin(atan(y_ssl_dat[io])), gravity * sin(atan(y_ssl_dat[io + sy_p])));
-        #y_dir_g_c = Mean(gravity * cos(atan(y_ssl_dat[io])), gravity * cos(atan(y_ssl_dat[io + sy_p])));
-
-        # Below lines does belong to the term: 'cos(Theta) + sin(Theta)'
-        # Init values (0 and 1) are choosen to take into account terrain-following 
-        # as well as no-terrai-following grid.
-        shape3D   = (self.Nz,self.Ny,self.Nx)
-        x_dir_g   = ht.zeros(shape3D, split=self.Split3D)
-        x_dir_g_c = ht.full(shape3D, 1.0, split=self.Split3D)
-        y_dir_g   = ht.zeros(shape3D, split=self.Split3D)
-        y_dir_g_c = ht.full(shape3D, 1.0, split=self.Split3D)
-
-        if self.Terrainfollowing:
-            printroot('Terrain following')
-            for k in range (self.Nz):
-                #x_dir_g[k,:,:-1]   = ( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0
-                #x_dir_g_c[k,:,:-1] = ( ht.arctan(self.Slopex[0,:,:-1]) + ht.arctan(self.Slopex[0,:,1:]) )/2.0
-                #y_dir_g[k,:-1,:]   = ( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0
-                #y_dir_g_c[k,:-1,:] = ( ht.arctan(self.Slopey[0,:-1,:]) + ht.arctan(self.Slopey[0,1:,:]) )/2.0
-                x_dir_g[k,:,:-1]   = ( ht.sin(ht.arctan(self.Slopex[0,:,:-1])) 
-                                     + ht.sin(ht.arctan(self.Slopex[0,:,1:])) )/2.0
-                x_dir_g_c[k,:,:-1] = ( ht.cos(ht.arctan(self.Slopex[0,:,:-1]))
-                                     + ht.cos(ht.arctan(self.Slopex[0,:,1:])) )/2.0
-                y_dir_g[k,:-1,:]   = ( ht.sin(ht.arctan(self.Slopey[0,:-1,:]))
-                                     + ht.sin(ht.arctan(self.Slopey[0,1:,:])) )/2.0
-                y_dir_g_c[k,:-1,:] = ( ht.cos(ht.arctan(self.Slopey[0,:-1,:])) 
-                                     + ht.cos(ht.arctan(self.Slopey[0,1:,:])) )/2.0
-
-        # Expanding 'dzmult' to 3D for easy application to other variables
-        Dzmult3D = ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
-        # Needed to calculate harmonic mean of 'Perm'
-        inv_perm = 1.0 / self.Perm
-
-        #Calculate the flux across the right and left face
-        # Left and Right
-        flowright = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
-        flowleft  = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
-
-        # Note, in the inactive cells Perm is zero thus 1/Perm results in inf, which then results in Kmean = 0!
-        Kmean = 2. / (inv_perm[2,:, :, :-1] + inv_perm[2,:, :, 1:])
-        # missleading and wrong: 'diff = pp[ip] - pp[ip + 1];'?
-        #diff = pp[ip] - pp[ip + 1];
-        #updir = (diff / dx) * x_dir_g_c - x_dir_g;
-        grad = ht.diff(Press, axis=2)/self.Dx
-        # comment below is wrong according to above wrong comment?
-        # + sign, because we later multiply by (-1.0)
-        grad = grad * x_dir_g_c[:,:,:-1] + x_dir_g[:,:,:-1]
-
-        flowright[:, :, :-1] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[:, :, 1:], Krel[:, :, :-1])
-        flowleft[:,:,1:] = flowright[:,:,:-1]
-
-        flowright *= self.Dy * self.Dz * Dzmult3D
-        flowleft  *= self.Dy * self.Dz * Dzmult3D  # save this by setting flowleft after multiplication
-
-        # Front and Back
-        flowback = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
-        flowfront = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
-
-        #Note, in the inactive cells, Perm is zero, thus, 1/Perm results in inf, which then results in Kmean = 0!
-        Kmean = 2. / (inv_perm[1,:, :-1, :] + inv_perm[1,:, 1:, :])
-        #print('before diff Press.shape=', Press.gshape, 'Press.lshape', Press.lshape, flush=True)
-        grad = ht.diff(Press, axis=1)/self.Dy
-        # + sign, because we later multiply by (-1.0)
-        grad = grad * y_dir_g_c[:,:-1,:] + y_dir_g[:,:-1,:]
-
-        flowback[:, :-1, :] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[:, 1:, :], Krel[:, :-1, :])
-        flowfront[:, 1:, :] = flowback[:, :-1, :]
-
-        #print('before mul', (self.Dx * self.Dz * Dzmult3D).lshape, flowback.lshape, flush=True)
-        flowback = flowback * self.Dx * self.Dz * Dzmult3D
-        flowfront  = flowfront * self.Dx * self.Dz * Dzmult3D
-        #print('after flows', flush=True)
-
-        #  Top and Bottom
-        flowtop = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
-        flowbottom = ht.zeros(shape3D,dtype=ht.float64,split=self.Split3D)
-
-        # NOTE:
-        # In the inactive cells, Perm is zero, thus, 1/Perm results in inf, 
-        # which then results in Kmean = 0!
-        # This is important for non-terrain-following grid only
-        # Calculating harmonic mean of Perm between two layers
-        Kmean = ( (Dzmult3D[:-1] + Dzmult3D[1:]) /
-                (Dzmult3D[:-1]/self.Perm[0,:-1,:,:] + Dzmult3D[1:]/self.Perm[0,1:,:,:]) )
-
-        grad = 1. + ht.diff(Press, axis=0) * 2. / (self.Dz * (Dzmult3D[:-1] + Dzmult3D[1:]))
-
-        #Application of mask checks if node k is active
-        flowtop[:-1, :, :] = -1. * Kmean * grad * ht.where(grad > 0.0, Krel[1:, :, :], Krel[:-1, :, :])
-        flowbottom[1:, :, :] = flowtop[:-1, :, :]
-
-        # Multiply with face area to change from [L/T] to [L^3/T]
-        flowtop *= self.Dx * self.Dy
-        flowbottom *= self.Dx * self.Dy
-        #print('subsurfaceflow finished', flush=True)
-
-        return(flowleft,flowright,flowfront,flowback,flowbottom,flowtop)
 
     def VanGenuchten(self,Press):
         #ParFlow:
@@ -332,7 +110,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         Krel  = ht.where(Press<ht.float64(0.0), (ht.float64(1.0)-ahnm1 / (opahn)**m)**ht.float64(2.0) / opahn**(m/ht.float64(2.0)), ht.float64(1.0))
         return(Satur,Krel)
 
-    def _SubsurfaceStorage(self, Press, Satur):
+    def SubsurfaceStorage(self, Press, Satur):
         shape3D = (self.Nz, self.Ny, self.Nx)
         subsurface_storage = ht.zeros(shape3D, dtype=ht.float64, split=self.Split3D)
         # for k in range(self.Nz):
@@ -344,7 +122,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         subsurface_storage[:] *= ht.array(self.Dzmult, dtype=ht.float64).expand_dims(axis=-1).expand_dims(axis=-1)
         return(subsurface_storage)
 
-    def _TopLayerPressure(self, Press, fill_val=99999.0):
+    def TopLayerPressure(self, Press, fill_val=99999.0):
         layers = (self.Mask > 0) * ht.arange(1, 1+self.Nz, dtype=ht.long).expand_dims(-1).expand_dims(-1)
         toplayer = layers.max(0) - 1
         #toplayer = ht.array(toplayer.larray, copy=False, is_split=self.Split2D)
@@ -369,7 +147,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         #     check[:,:] = ht.where((self.Mask[k,:,:]>0.0) & (check[:,:]<0), k, check[:,:])
         return Toplayerpress
 
-    def _NetLateralOverlandFlow(self, overland_flow_x, overland_flow_y):
+    def NetLateralOverlandFlow(self, overland_flow_x, overland_flow_y):
         shape2D = (self.Ny, self.Nx)
         Nix = ht.zeros(shape2D, split=self.Split2D)
 
@@ -431,7 +209,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
 
         return(net_lateral_overlandflow)
 
-    def _SubsurfaceFlow(self, Press, Krel):
+    def SubsurfaceFlow(self, Press, Krel):
         #ParFlow
         #x_dir_g = Mean(gravity * sin(atan(x_ssl_dat[io])), gravity * sin(atan(x_ssl_dat[io + 1])));
         #x_dir_g_c = Mean(gravity * cos(atan(x_ssl_dat[io])), gravity * cos(atan(x_ssl_dat[io + 1])));
@@ -452,7 +230,7 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
                                   + ht.sin(ht.arctan(self.Slopex[0,:,1:])) )/2.0).expand_dims(0)
             x_dir_g_c[:,:,:-1] = (( ht.cos(ht.arctan(self.Slopex[0,:,:-1]))
                                   + ht.cos(ht.arctan(self.Slopex[0,:,1:])) )/2.0).expand_dims(0)
-            y_dir_g[:,:-1,:]   = (( ht.sin(ht.arctan(self.Slopey[0,:-1,:])) 
+            y_dir_g[:,:-1,:]   = (( ht.sin(ht.arctan(self.Slopey[0,:-1,:]))
                                   + ht.sin(ht.arctan(self.Slopey[0,1:,:])) )/2.0).expand_dims(0)
             y_dir_g_c[:,:-1,:] = (( ht.cos(ht.arctan(self.Slopey[0,:-1,:]))
                                   + ht.cos(ht.arctan(self.Slopey[0,1:,:])) )/2.0).expand_dims(0)
