@@ -10,8 +10,6 @@ For details on HeAT, see the respective information referenced on the [HeAT gith
 
 **Important prerequisite: The PD assume you use HeAT >v1.1. And, as of Autumn 2021, the experimental HeAT version `experimental_heat` provided on JUWELS/JURECA. If you follow this README this is ensured.**
 
-**The `parallel_tests` branch is the current git branch of PD.**
-
 **All tests and scripts of Autumn 2021 refer to the application on CPUs. GPU tests are ongoing.**
 
 This repository covers six related aspects of using and testing PD and not every user needs to cover them all; the information provided here addresses novel HPC users as well as experienced users who just want to start using PD with HeAT:
