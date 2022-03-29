@@ -210,6 +210,43 @@ class Diagnostics:  # Make this a subclass of ht.DNDarray?
         return(net_lateral_overlandflow)
 
     def SubsurfaceFlow(self, Press, Krel):
+        """ This function does calculate the subsurface flow based Richards EQ
+
+        This function does calculate the subsurface flow through all 6 ParFlow 
+        cell faces based on the Richards-Equation. The sign is according to 
+        the coordinate system used by ParFlow, with the origin in the lower 
+        left corner and at the model bottom. One example: a positive flowleft 
+        value indicates a positive flow along the x-axis at the left cell face, 
+        meaning water is flowing into the respective cell. In turn a negative 
+        flowright value indicates a negative flow along the x-axis at the right 
+        cell face, meaning water is flowing into the respective cell also.
+        More detailed explaination can be found with the following paper, also 
+        including adjustments for a terrain-following grid formulation:
+        https://www.sciencedirect.com/science/article/abs/pii/S0309170812002564
+
+        --- Used equations
+        orig.: q(x) = -K_s(x) * k_rel(h) * grad(h+z)
+        terr.: q(x) = -K_s(x) * k_rel(h) * [grad(h+z) * cos(Theta) + sin(Theta)]
+
+        With:
+          q     = volumetric (Darcy) flux in [L/T]
+          K_s   = saturated hydr. conductivity tensor [L/T]
+          k_rel = relative permeability [-]
+          h     = pressure-head [L]
+          z     = elevation-head [L]
+          Theta = local angle of slope [-]
+
+        INPUT: 
+          Press = 3D (z,y,x) pressure-head [L]
+          Krel  = 3D (z,y,x) rel. permeability [-]
+          Other Parameters are part of class-object (self)
+
+        RETURN:
+          Subsurface flow though all 6 ParFlow cell faces [L^3/T]:
+            flowleft,flowright,flowfront,flowback,flowbottom,flowtop
+          All flows are calculate for the cell faces and not the cell center.
+        """
+
         #ParFlow
         #x_dir_g = Mean(gravity * sin(atan(x_ssl_dat[io])), gravity * sin(atan(x_ssl_dat[io + 1])));
         #x_dir_g_c = Mean(gravity * cos(atan(x_ssl_dat[io])), gravity * cos(atan(x_ssl_dat[io + 1])));
